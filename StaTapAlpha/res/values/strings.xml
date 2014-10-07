@@ -30,5 +30,25 @@
     <string name="points">Points:</string>
     <string name="fouls">Fouls:</string>
     <string name="p1p">0</string>
+    <string name="p1f">0</string>
+    <string name="p2p">0</string>
+    <string name="p2f">0</string>
+    <string name="p3p">0</string>
+    <string name="p3f">0</string>
+    <string name="p4p">0</string>
+    <string name="p4f">0</string>
+    <string name="p5p">0</string>
+    <string name="p5f">0</string>
+    <string name="p6p">0</string>
+    <string name="p6f">0</string>
+    <string name="p7p">0</string>
+    <string name="p7f">0</string>
+    <string name="p8p">0</string>
+    <string name="p8f">0</string>
+    <string name="p9p">0</string>
+    <string name="p9f">0</string>
+    <string name="p10p">0</string>
+    <string name="p10f">0</string>
+    
 
 </resources>
