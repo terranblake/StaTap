@@ -10,7 +10,7 @@
         android:layout_height="600dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/court" />
+        android:src="@drawable/court" android:contentDescription="@string/undo"/>
 
     <Button
         android:id="@+id/editPlays"
