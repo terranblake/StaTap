@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">StaTapAlpha</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="edit_plays">Edit Plays</string>
+    <string name="undo">Undo Play</string>
+    <string name="redo">Redo Play</string>
+    <string name="made">Made</string>
+    <string name="miss">Missed</string>
+    <string name="field_goal">Field Goal</string>
+    <string name="free_throw">Free Throw</string>
+    <string name="foul">Foul</string>
+    <string name="sub">Player Sub</string>
+    <string name="turnover">Turnover</string>
+    <string name="steal">Steal</string>
+    <string name="block">Block</string>
+    <string name="assist">Assist</string>
+    <string name="rebound">Rebound</string>
+    <string name="p1">1</string>
+    <string name="p2">2</string>
+    <string name="p3">3</string>
+    <string name="p4">4</string>
+    <string name="p5">5</string>
+    <string name="p6">6</string>
+    <string name="p7">7</string>
+    <string name="p8">8</string>
+    <string name="p9">9</string>
+    <string name="p10">10</string>
+    <string name="points">Points:</string>
+    <string name="fouls">Fouls:</string>
+    <string name="p1p">0</string>
+
+</resources>
