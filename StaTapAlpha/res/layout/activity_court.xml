@@ -5,14 +5,6 @@
     tools:context="${relativePackage}.${activityClass}" 
     android:background="@color/white" >
 
-    <ImageView
-        android:id="@+id/court"
-        android:layout_width="1000dp"
-        android:layout_height="600dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/court" android:contentDescription="@string/undo"/>
-
     <Button
         android:id="@+id/editPlays"
         android:layout_width="190dp"
@@ -131,7 +123,8 @@
         android:layout_height="80dp"
         android:layout_above="@+id/assist"
         android:layout_alignParentLeft="true"
-        android:text="@string/rebound" />
+        android:text="@string/rebound" 
+        android:onClick="player.rebound()"/>
 
     <Button
         android:id="@+id/p1"
@@ -446,5 +439,14 @@
         android:layout_marginRight="35dp"
         android:text="@string/p10f"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/court"
+        android:layout_width="1000dp"
+        android:layout_height="600dp"
+        android:layout_alignBottom="@+id/foul"
+        android:layout_alignLeft="@+id/fouls"
+        android:contentDescription="@string/undo"
+        android:src="@drawable/court" />
 
 </RelativeLayout>
