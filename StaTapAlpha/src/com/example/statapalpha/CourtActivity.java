@@ -24,13 +24,13 @@ public class CourtActivity extends Activity {
 		public int threePointMiss = 0;
 		public int freeThrowMade = 0;
 		public int freeThrowMiss = 0;
-	}
-	player player;
-	final Button rebond = (Button) findViewById(R.id.rebound);
-	
+		
 		public void rebound() {
-			player.rebounds++;
+			rebounds++;
 		}
+	}
+	
+	final Button rebond = (Button) findViewById(R.id.rebound);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
