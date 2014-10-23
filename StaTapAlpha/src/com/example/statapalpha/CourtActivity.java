@@ -2,8 +2,6 @@ package com.example.statapalpha;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 public class CourtActivity extends Activity {
 
@@ -29,8 +27,6 @@ public class CourtActivity extends Activity {
 			rebounds++;
 		}
 	}
-	
-	final Button rebond = (Button) findViewById(R.id.rebound);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
