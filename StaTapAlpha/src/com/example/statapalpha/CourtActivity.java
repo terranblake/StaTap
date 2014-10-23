@@ -2,6 +2,8 @@ package com.example.statapalpha;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class CourtActivity extends Activity {
 
@@ -23,7 +25,13 @@ public class CourtActivity extends Activity {
 		public int freeThrowMade = 0;
 		public int freeThrowMiss = 0;
 	}
+	player player;
+	final Button rebond = (Button) findViewById(R.id.rebound);
 	
+		public void rebound() {
+			player.rebounds++;
+		}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
