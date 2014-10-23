@@ -14,6 +14,12 @@ public class CourtActivity extends Activity {
 		public int blocks = 0;
 		public int steals = 0;
 		public int turnovers = 0;
+		public int twoPointMade = 0;
+		public int twoPointMiss = 0;
+		public int threePointMade = 0;
+		public int threePointMiss = 0;
+		public int freeThrowMade = 0;
+		public int freeThrowMiss = 0;
 	}
 	
 	@Override
