@@ -26,6 +26,10 @@ public class HomeScreen extends Activity {
     	Intent intent = new Intent(this, NewGameActivity.class);
     	startActivity(intent);
     }
+    public void courtActivity(View view) {
+    	Intent intent = new Intent(this, CourtActivity.class);
+    	startActivity(intent);
+    }
     private void registerClickCallback() {
 		// TODO Auto-generated method stub
     	ListView list = (ListView) findViewById(R.id.listViewMain);

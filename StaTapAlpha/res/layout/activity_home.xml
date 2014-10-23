@@ -63,4 +63,13 @@
 
     </ListView>
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/listViewMain"
+        android:onClick="courtActivity"
+        android:text="@string/title_activity_court_activity" />
+
 </RelativeLayout>
