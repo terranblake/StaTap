@@ -6,6 +6,8 @@ import android.os.Bundle;
 public class CourtActivity extends Activity {
 
 	public class player {
+		public String firstName = "";
+		public String lastName = "";
 		public int number = 0;
 		public int points = 0;
 		public int fouls = 0;
