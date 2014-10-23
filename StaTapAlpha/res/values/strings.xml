@@ -54,6 +54,7 @@
     <string name="edit">Edit</string>
     <string name="testg">Game 1</string>
     <string name="title_activity_new_game">NewGame</string>
+    <string name="title_activity_court_activity">Court Activity</string>
     <string name="team1">Team 1</string>
     <string name="team2">Team 2</string>
     <string name="versus">VERSUS</string>
