@@ -49,6 +49,16 @@
     <string name="p9f">0</string>
     <string name="p10p">0</string>
     <string name="p10f">0</string>
-    
+    <string name="title">StaTap</string>
+    <string name="new_game">New</string>
+    <string name="edit">Edit</string>
+    <string name="testg">Game 1</string>
+    <string name="title_activity_new_game">NewGame</string>
+    <string name="team1">Team 1</string>
+    <string name="team2">Team 2</string>
+    <string name="versus">VERSUS</string>
+    <string name="pickteams">PICK YOUR TEAMS</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
