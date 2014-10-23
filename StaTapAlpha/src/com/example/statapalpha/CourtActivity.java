@@ -26,8 +26,18 @@ public class CourtActivity extends Activity {
 		public void rebound() {
 			rebounds++;
 		}
+		
+		public void assist() {
+			assists++;
+		}
+		
+		public void foul() {
+			fouls++;
+		}
 	}
 
+	public player[] players = new player[25];
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
