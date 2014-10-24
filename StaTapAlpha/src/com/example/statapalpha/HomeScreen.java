@@ -23,15 +23,19 @@ public class HomeScreen extends Activity {
         registerClickCallback();
 	}
     public void newGame(View view) {
+    	//This here starts the New Game Screen
     	Intent intent = new Intent(this, NewGameActivity.class);
     	startActivity(intent);
     }
     public void courtActivity(View view) {
+    	//This here starts the Court Activity Screen
     	Intent intent = new Intent(this, CourtActivity.class);
     	startActivity(intent);
     }
     private void registerClickCallback() {
 		// TODO Auto-generated method stub
+    	//This uses the List View and adds a listener to check for clicks/taps on different
+    	//list view items. It will then display a message telling you which one you have selected.
     	ListView list = (ListView) findViewById(R.id.listViewMain);
     	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -39,6 +43,7 @@ public class HomeScreen extends Activity {
 			public void onItemClick(AdapterView<?> parent, View viewClicked,
 					int position, long id) {
 					TextView textView = (TextView) viewClicked;
+					//Toast message
 					String message = "You Clicked # " + (position + 1) + ", which is string: " + textView.getText().toString();
 					Toast.makeText(HomeScreen.this, message, Toast.LENGTH_SHORT).show();
 			}

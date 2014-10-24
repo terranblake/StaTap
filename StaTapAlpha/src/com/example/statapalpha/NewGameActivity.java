@@ -4,10 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
 import com.example.statapalpha.R;
 
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class NewGameActivity extends Activity {
 
@@ -17,15 +22,16 @@ public class NewGameActivity extends Activity {
 		setContentView(R.layout.activity_newgame);
 		
 		populateListViews();
+		registerClickCallback();
 	}
 
 	private void populateListViews() {
 		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS
     	//Create list of items
-    	String[] team1Names = {"Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7", "Team 8", "Team 9", 
-    			"Team 10", "Team 11", "Team 12", "Team 13", "Team 14", "Team 15", "Team 16", "Team 17", "Team 18", "Team 19", "Team 20"};
-    	String[] team2Names = {"Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7", "Team 8", "Team 9", 
-    			"Team 10", "Team 11", "Team 12", "Team 13", "Team 14", "Team 15", "Team 16", "Team 17", "Team 18", "Team 19", "Team 20"};    	
+    	String[] team1Names = {"Olathe South", "Olathe East", "Olathe North", "Olathe Northwest", "Shawnee Mission North", "Shawnee Mission South", "Shawnee Mission West", 
+    			"Blue Valley High", "Blue Valley Northwest"};
+    	String[] team2Names = {"Olathe South", "Olathe East", "Olathe North", "Olathe Northwest", "Shawnee Mission North", "Shawnee Mission South", "Shawnee Mission West", 
+    			"Blue Valley High", "Blue Valley Northwest"};    	
     	//Build Adapter
     	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
     			this,					// Context
@@ -41,7 +47,36 @@ public class NewGameActivity extends Activity {
     	ListView t2list = (ListView) findViewById(R.id.listView2);
     	t2list.setAdapter(t2adapter);
 	}
-	
+    private void registerClickCallback() {
+    	//This uses the List View and adds a listener to check for clicks/taps on different
+    	//list view items. It will then display a message telling you which one you have selected.
+    	ListView t1list = (ListView) findViewById(R.id.listView1);
+    	ListView t2list = (ListView) findViewById(R.id.listView2);
+    	t1list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View viewClicked,
+					int position, long id) {
+					TextView textView = (TextView) viewClicked;
+					//Toast message
+					String message = "You Selected " + textView.getText().toString() + " for Team 1";
+					Toast.makeText(NewGameActivity.this, message, Toast.LENGTH_SHORT).show();
+			}
+			
+		});
+    	t2list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View viewClicked,
+					int position, long id) {
+					TextView textView = (TextView) viewClicked;
+					//Toast message
+					String message = "You Selected " + textView.getText().toString() + " for Team 2";
+					Toast.makeText(NewGameActivity.this, message, Toast.LENGTH_SHORT).show();
+			}
+			
+		});
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
