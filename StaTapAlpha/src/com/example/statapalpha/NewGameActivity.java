@@ -16,24 +16,30 @@ public class NewGameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_newgame);
 		
-		populateListView();
+		populateListViews();
 	}
 
-	private void populateListView() {
-		// TODO Auto-generated method stub
+	private void populateListViews() {
+		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS
     	//Create list of items
     	String[] team1Names = {"Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7", "Team 8", "Team 9", 
     			"Team 10", "Team 11", "Team 12", "Team 13", "Team 14", "Team 15", "Team 16", "Team 17", "Team 18", "Team 19", "Team 20"};
-    	
+    	String[] team2Names = {"Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7", "Team 8", "Team 9", 
+    			"Team 10", "Team 11", "Team 12", "Team 13", "Team 14", "Team 15", "Team 16", "Team 17", "Team 18", "Team 19", "Team 20"};    	
     	//Build Adapter
-    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+    	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
     			this,					// Context
     			R.layout.teamlistviews,		// Layout to use
     			team1Names);				// Items to be displayed
-    			
+    	ArrayAdapter<String> t2adapter = new ArrayAdapter<String>(
+    			this,					// Context
+    			R.layout.teamlistviews,		// Layout to use
+    			team2Names);		
     	//Configure the List View
-    	ListView list = (ListView) findViewById(R.id.listView1);
-    	list.setAdapter(adapter);		
+    	ListView t1list = (ListView) findViewById(R.id.listView1);
+    	t1list.setAdapter(t1adapter);
+    	ListView t2list = (ListView) findViewById(R.id.listView2);
+    	t2list.setAdapter(t2adapter);
 	}
 	
 	@Override

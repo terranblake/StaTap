@@ -55,10 +55,11 @@
             android:textSize="45sp" />
 
         <ListView
-            android:id="@+id/ListView01"
+            android:id="@+id/listView2"
             android:layout_width="200dp"
             android:layout_height="400dp"
-            android:layout_weight="1" >
+            android:layout_weight="1"
+            android:background="#1E90FF" >
         </ListView>
     </LinearLayout>
 
