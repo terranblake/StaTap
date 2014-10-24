@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 public class CourtActivity extends Activity {
 
-	
 	// Player class to declare all players as and store their info
 	public class player {
 		public String firstName = "";
@@ -54,6 +53,12 @@ public class CourtActivity extends Activity {
 	// Array that will hold all the players for both teams
 	public player[] homePlayers = new player[25];
 	public player[] awayPlayers = new player[25];
+	
+	int player = 0;
+	
+	void setPlayer(String playerString) {
+		player = Integer.parseInt(playerString);
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
