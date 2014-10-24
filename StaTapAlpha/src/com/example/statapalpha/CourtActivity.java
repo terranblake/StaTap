@@ -33,6 +33,19 @@ public class CourtActivity extends Activity {
 			assists++;
 		}
 		
+		public void block() {
+			blocks++;
+		}
+
+		
+		public void steal() {
+			steals++;
+		}
+		
+		public void turnover() {
+			turnovers++;
+		}
+		
 		public void foul() {
 			fouls++;
 		}
