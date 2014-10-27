@@ -2,6 +2,8 @@ package com.example.statapalpha;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class CourtActivity extends Activity {
@@ -57,9 +59,10 @@ public class CourtActivity extends Activity {
 	
 	int player = 0;
 	
-	void setPlayer(String playerString) {
-		player = Integer.parseInt(playerString);
-		String message = "You Clicked Player #" + player;
+	void setPlayer(View v) {
+		Button b = (Button)v;
+		player = Integer.parseInt(b.getText().toString());
+		String message = "You Clicked Player #" + Integer.toString(player);
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 	

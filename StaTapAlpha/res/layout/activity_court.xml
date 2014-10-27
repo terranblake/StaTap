@@ -143,7 +143,7 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/rebound"
         android:text="@string/p1"
-        android:onClick="setPlayer(@string/p1)" />
+        android:onClick="setPlayer" />
 
     <Button
         android:id="@+id/p2"
