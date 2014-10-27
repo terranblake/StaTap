@@ -58,6 +58,11 @@ public class NewGameActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View viewClicked,
 					int position, long id) {
 					TextView textView = (TextView) viewClicked;
+					
+					//Changing team name
+			    	TextView t1 = (TextView) findViewById(R.id.textView4);
+					String team1 = textView.getText().toString();
+					t1.setText(team1);
 					//Toast message
 					String message = "You Selected " + textView.getText().toString() + " for Team 1";
 					Toast.makeText(NewGameActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -70,6 +75,10 @@ public class NewGameActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View viewClicked,
 					int position, long id) {
 					TextView textView = (TextView) viewClicked;
+					//Changing Team name
+					TextView t2 = (TextView) findViewById(R.id.textView5);
+					String team2 = textView.getText().toString();
+					t2.setText(team2);
 					//Toast message
 					String message = "You Selected " + textView.getText().toString() + " for Team 2";
 					Toast.makeText(NewGameActivity.this, message, Toast.LENGTH_SHORT).show();
