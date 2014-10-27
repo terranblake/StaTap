@@ -2,6 +2,8 @@ package com.example.statapalpha;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class CourtActivity extends Activity {
 
@@ -58,6 +60,8 @@ public class CourtActivity extends Activity {
 	
 	void setPlayer(String playerString) {
 		player = Integer.parseInt(playerString);
+		String message = "You Clicked Player #" + player;
+		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 	
 	@Override
