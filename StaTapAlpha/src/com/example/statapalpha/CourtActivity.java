@@ -10,22 +10,22 @@ public class CourtActivity extends Activity {
 
 	// Player class to declare all players as and store their info
 	public class player {
-		public String firstName = "";
-		public String lastName = "";
-		public int number = 0;
-		public int points = 0;
-		public int fouls = 0;
-		public int rebounds = 0;
-		public int assists = 0;
-		public int blocks = 0;
-		public int steals = 0;
-		public int turnovers = 0;
-		public int twoPointMade = 0;
-		public int twoPointMiss = 0;
-		public int threePointMade = 0;
-		public int threePointMiss = 0;
-		public int freeThrowMade = 0;
-		public int freeThrowMiss = 0;
+		private String firstName = "";
+		private String lastName = "";
+		private int number = 0;
+		private int points = 0;
+		private int fouls = 0;
+		private int rebounds = 0;
+		private int assists = 0;
+		private int blocks = 0;
+		private int steals = 0;
+		private int turnovers = 0;
+		private int twoPointMade = 0;
+		private int twoPointMiss = 0;
+		private int threePointMade = 0;
+		private int threePointMiss = 0;
+		private int freeThrowMade = 0;
+		private int freeThrowMiss = 0;
 		
 		public void rebound() {
 			rebounds++;
@@ -51,6 +51,21 @@ public class CourtActivity extends Activity {
 		public void foul() {
 			fouls++;
 		}
+		
+		public void twoPoint(int i) {
+			if (i==0) twoPointMiss++;
+			if (i==1) twoPointMade++;
+		}
+		
+		public void threePoint(int i) {
+			if (i==0) threePointMiss++;
+			if (i==1) threePointMade++;
+		}
+		
+		public void freeThrow(int i) {
+			if (i==0) freeThrowMiss++;
+			if (i==1) freeThrowMade++;
+		}
 	}
 
 	// Array that will hold all the players for both teams
@@ -59,7 +74,7 @@ public class CourtActivity extends Activity {
 	
 	int player = 0;
 	
-	void setPlayer(View v) {
+	public void setPlayer(View v) {
 		Button b = (Button)v;
 		player = Integer.parseInt(b.getText().toString());
 		String message = "You Clicked Player #" + Integer.toString(player);

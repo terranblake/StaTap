@@ -57,6 +57,7 @@ public class NewGameActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View viewClicked,
 					int position, long id) {
+				//team 1
 					TextView textView = (TextView) viewClicked;
 					
 					//Changing team name
@@ -74,6 +75,7 @@ public class NewGameActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View viewClicked,
 					int position, long id) {
+				//team 2
 					TextView textView = (TextView) viewClicked;
 					//Changing Team name
 					TextView t2 = (TextView) findViewById(R.id.textView5);
