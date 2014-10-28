@@ -30,7 +30,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="@string/miss"
-        android:onClick="player.ftMissed" />
+        android:onClick="setAction" />
 
     <Button
         android:id="@+id/ftMade"
@@ -39,7 +39,7 @@
         android:layout_above="@+id/ftMissed"
         android:layout_alignParentRight="true"
         android:text="@string/made"
-        android:onClick="player.ftMade" />
+        android:onClick="setAction" />
 
     <Button
         android:id="@+id/fgMade"
@@ -48,7 +48,7 @@
         android:layout_above="@+id/fgMissed"
         android:layout_alignParentRight="true"
         android:text="@string/made"
-        android:onClick="fgMade" />
+        android:onClick="setAction" />
 
     <Button
         android:id="@+id/fgMissed"
@@ -58,7 +58,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="52dp"
         android:text="@string/miss"
-        android:onClick="fgMissed" />
+        android:onClick="setAction" />
 
     <TextView
         android:id="@+id/fgText"
@@ -99,7 +99,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/ftMade"
         android:text="@string/foul"
-        android:onClick="player.foul" />
+        android:onClick="setAction" />
 
     <Button
         android:id="@+id/steal"
@@ -108,7 +108,7 @@
         android:layout_above="@+id/turnover"
         android:layout_alignParentLeft="true"
         android:text="@string/steal"
-        android:onClick="player.steal" />
+        android:onClick="setAction" />
 
     <Button
         android:id="@+id/block"
@@ -116,7 +116,8 @@
         android:layout_height="80dp"
         android:layout_above="@+id/steal"
         android:layout_alignParentLeft="true"
-        android:text="@string/block" />
+        android:text="@string/block"
+        android:onClick="setAction" />
 
     <Button
         android:id="@+id/assist"
@@ -125,7 +126,7 @@
         android:layout_above="@+id/block"
         android:layout_alignParentLeft="true"
         android:text="@string/assist"
-        android:onClick="player.assist" />
+        android:onClick="setAction" />
 
     <Button
         android:id="@+id/rebound"
@@ -134,7 +135,7 @@
         android:layout_above="@+id/assist"
         android:layout_alignParentLeft="true"
         android:text="@string/rebound" 
-        android:onClick="player.rebound" />
+        android:onClick="setAction" />
 
     <Button
         android:id="@+id/p1"
@@ -233,7 +234,7 @@
         android:layout_above="@+id/foul"
         android:layout_toLeftOf="@+id/p1"
         android:text="@string/sub"
-         android:onClick="sub" />
+         android:onClick="setAction" />
 
     <Button
         android:id="@+id/turnover"
@@ -242,7 +243,7 @@
         android:layout_above="@+id/sub"
         android:layout_toLeftOf="@+id/p1"
         android:text="@string/turnover"
-         android:onClick="player.turnover" />
+         android:onClick="setAction" />
 
     <TextView
         android:id="@+id/points"

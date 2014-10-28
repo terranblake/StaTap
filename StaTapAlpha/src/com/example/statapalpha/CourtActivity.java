@@ -27,6 +27,18 @@ public class CourtActivity extends Activity {
 		private int freeThrowMade = 0;
 		private int freeThrowMiss = 0;
 		
+		public void setFirstName(String first) {
+			firstName = first;
+		}
+		
+		public void setLastName(String last) {
+			lastName = last;
+		}
+		
+		public void setNumber(int num) {
+			number = num;
+		}
+		
 		public void rebound() {
 			rebounds++;
 		}
@@ -54,17 +66,26 @@ public class CourtActivity extends Activity {
 		
 		public void twoPoint(int i) {
 			if (i==0) twoPointMiss++;
-			if (i==1) twoPointMade++;
+			if (i==1) {
+				twoPointMade++;
+				points += 2;
+			}
 		}
 		
 		public void threePoint(int i) {
 			if (i==0) threePointMiss++;
-			if (i==1) threePointMade++;
+			if (i==1) {
+				threePointMade++;
+				points += 3;
+			}
 		}
 		
 		public void freeThrow(int i) {
 			if (i==0) freeThrowMiss++;
-			if (i==1) freeThrowMade++;
+			if (i==1) {
+				freeThrowMade++;
+				points++;
+			}
 		}
 	}
 
@@ -73,11 +94,34 @@ public class CourtActivity extends Activity {
 	public player[] awayPlayers = new player[25];
 	
 	int player = 0;
+	String action = "";
+	
 	
 	public void setPlayer(View v) {
 		Button b = (Button)v;
 		player = Integer.parseInt(b.getText().toString());
 		String message = "You Clicked Player #" + Integer.toString(player);
+		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
+	}
+	
+	public void setAction(View v) {
+		Button b = (Button)v;
+		
+		switch(b.getId()) {
+		case 2131296260: action = "Made Goal";
+		case 2131296261: action = "Missed Goal";
+		case 2131296259: action = "Made Freethrow";
+		case 2131296258: action = "Missed Freethrow";
+		case 2131296270: action = "Rebound";
+		case 2131296269: action = "Assist";
+		case 2131296268: action = "Block";
+		case 2131296266: action = "Steal";
+		case 2131296267: action = "Turnover";
+		case 2131296281: action = "Substitution";
+		case 2131296265: action = "Foul";
+		}
+			
+		String message = "Action: " + b.getId();
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 	
