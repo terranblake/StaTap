@@ -3,7 +3,11 @@ package com.example.statapalpha;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,9 +22,10 @@ public class HomeScreen extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		
+		ListView lv = (ListView) findViewById(R.id.listViewMain);
         populateListView();
         registerClickCallback();
+        registerForContextMenu(lv);
 	}
     public void newGame(View view) {
     	//This here starts the New Game Screen
@@ -32,13 +37,22 @@ public class HomeScreen extends Activity {
     	Intent intent = new Intent(this, CourtActivity.class);
     	startActivity(intent);
     }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home_context_menu, menu);
+    }
     private void registerClickCallback() {
 		// TODO Auto-generated method stub
     	//This uses the List View and adds a listener to check for clicks/taps on different
     	//list view items. It will then display a message telling you which one you have selected.
     	ListView list = (ListView) findViewById(R.id.listViewMain);
+    	
+    	//This Will check if there is a click on a ListView item
     	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+    		
 			@Override
 			public void onItemClick(AdapterView<?> parent, View viewClicked,
 					int position, long id) {
@@ -48,6 +62,19 @@ public class HomeScreen extends Activity {
 					Toast.makeText(HomeScreen.this, message, Toast.LENGTH_SHORT).show();
 			}
 		});
+    	
+    	//This will check if there is a LONG click on a ListView item
+    	list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                    int position, long id) {
+                // TODO Auto-generated method stub
+            	
+                Log.v("long clicked","pos: " + position);
+
+                return true;
+            }
+        }); 
 	}
     
 	private void populateListView() {

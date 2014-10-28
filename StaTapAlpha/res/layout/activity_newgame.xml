@@ -61,7 +61,6 @@
         android:layout_height="400dp"
         android:layout_alignLeft="@+id/TextView01"
         android:layout_below="@+id/TextView01"
-        android:layout_weight="1"
         android:background="#1E90FF" >
     </ListView>
 
@@ -72,70 +71,16 @@
         android:layout_alignTop="@+id/linearLayout1"
         android:layout_marginLeft="47dp"
         android:layout_toRightOf="@+id/linearLayout1"
-        android:layout_weight="1"
         android:text="@string/team2"
         android:textSize="45sp" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextView01"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#1E90FF"
-            android:text="@string/team1"
-            android:textSize="40sp" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/selectT"
-            android:textColor="#FFFF00"
-            android:textSize="30sp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/linearLayout4"
-        android:layout_below="@+id/linearLayout3"
-        android:layout_marginTop="44dp"
-        android:text="@string/versus"
-        android:textSize="30sp"
-        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button2"
-        android:layout_alignLeft="@+id/linearLayout3"
         android:layout_marginBottom="29dp"
         android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#1E90FF"
-            android:text="@string/team2"
-            android:textSize="40sp" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/selectT"
-            android:textColor="#FFFF00"
-            android:textSize="30sp" />
     </LinearLayout>
 
     <Button
@@ -146,6 +91,48 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="165dp"
         android:text="@string/confirm"
+        android:textSize="30sp"
+        android:onClick="confirm" />
+    
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignTop="@+id/listView2"
+        android:background="#1E90FF"
+        android:text="@string/team1"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_below="@+id/textView6"
+        android:text="@string/selectT"
+        android:textColor="#FFFF00"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="33dp"
+        android:background="#1E90FF"
+        android:text="@string/team2"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView7"
+        android:layout_below="@+id/textView7"
+        android:text="@string/selectT"
+        android:textColor="#FFFF00"
         android:textSize="30sp" />
 
 </RelativeLayout>

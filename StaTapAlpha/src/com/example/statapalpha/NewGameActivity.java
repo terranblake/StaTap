@@ -1,6 +1,7 @@
 package com.example.statapalpha;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -88,6 +89,12 @@ public class NewGameActivity extends Activity {
 			
 		});
 	}
+    public void confirm(View view) {
+    	//This here will confirm and send which teams are selected.
+    	//Then switch activities to the court screen.
+    	Intent intent = new Intent(this, CourtActivity.class);
+    	startActivity(intent);
+    }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
