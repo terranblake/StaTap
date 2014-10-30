@@ -2,9 +2,11 @@ package com.example.statapalpha;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 
 public class CourtActivity extends Activity {
 
@@ -87,15 +89,84 @@ public class CourtActivity extends Activity {
 				points++;
 			}
 		}
+		
+		public String getFirstName() {
+			return firstName;
+		}
+		
+		public String getLastName() {
+			return lastName;
+		}
+		
+		public int getNumber() {
+			return number;
+		}
+		
+		public int getPoints() {
+			return points;
+		}
+		
+		public int getFouls() {
+			return fouls;
+		}
+		
+		public int getRebounds() {
+			return rebounds;
+		}
+		
+		public int getAssists() {
+			return assists;
+		}
+		
+		public int getBlocks() {
+			return blocks;
+		}
+		
+		public int getSteals() {
+			return steals;
+		}
+		
+		public int getTurnovers() {
+			return turnovers;
+		}
+		
+		public int getTwoPointMade() {
+			return twoPointMade;
+		}
+		
+		public int getTwoPointMiss() {
+			return twoPointMiss;
+		}
+		
+		public int getThreePointMade() {
+			return threePointMade;
+		}
+		
+		public int getThreePointMiss() {
+			return threePointMiss;
+		}
+		
+		public int getFreeThrowMade() {
+			return freeThrowMade;
+		}
+		
+		public int getFreeThrowMiss() {
+			return freeThrowMiss;
+		}
 	}
 
+	public class position {
+		public int x;
+		public int y;
+	}
+	
 	// Array that will hold all the players for both teams
 	public player[] homePlayers = new player[25];
 	public player[] awayPlayers = new player[25];
 	
 	int player = 0;
 	String action = "";
-	
+	position position;
 	
 	public void setPlayer(View v) {
 		Button b = (Button)v;
@@ -123,6 +194,18 @@ public class CourtActivity extends Activity {
 			
 		String message = "Action: " + b.getId();
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		position.x = (int)event.getX(0);
+		position.y = (int)event.getY(0);
+	    
+	    switch (event.getAction()) {
+	        case MotionEvent.ACTION_DOWN:
+	        case MotionEvent.ACTION_UP:
+	    }
+	return false;
 	}
 	
 	@Override
