@@ -52,6 +52,7 @@
     <string name="title">StaTap</string>
     <string name="new_game">New</string>
     <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
     <string name="testg">Game 1</string>
     <string name="title_activity_new_game">NewGame</string>
     <string name="title_activity_court_activity">Court Activity</string>

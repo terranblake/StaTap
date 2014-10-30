@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -37,12 +38,32 @@ public class HomeScreen extends Activity {
     	Intent intent = new Intent(this, CourtActivity.class);
     	startActivity(intent);
     }
+    /**
+     * MENU
+     */
+
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v,
-                                    ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.home_context_menu, menu);
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+          super.onCreateContextMenu(menu, v, menuInfo);
+          if (v.getId()==R.id.listViewMain) {
+              MenuInflater inflater = getMenuInflater();
+              inflater.inflate(R.menu.home_context_menu, menu);
+          }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+          AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+          switch(item.getItemId()) {
+              case R.id.edit:
+                // edit stuff here
+                    return true;
+              case R.id.delete:
+            // remove stuff here
+                    return true;
+              default:
+                    return super.onContextItemSelected(item);
+          }
     }
     private void registerClickCallback() {
 		// TODO Auto-generated method stub
@@ -64,17 +85,19 @@ public class HomeScreen extends Activity {
 		});
     	
     	//This will check if there is a LONG click on a ListView item
-    	list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+    	/*list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                     int position, long id) {
-                // TODO Auto-generated method stub
+            	TextView textView = (TextView) arg1;
+            	//Dummy log message and toast message
             	
                 Log.v("long clicked","pos: " + position);
-
+                String message = "You long clicked the " + textView.getText().toString() + " button";
+                //Toast.makeText(HomeScreen.this, message, Toast.LENGTH_SHORT).show();
                 return true;
             }
-        }); 
+        }); */
 	}
     
 	private void populateListView() {
