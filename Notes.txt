@@ -1,3 +1,5 @@
 Data Base links
 http://developer.android.com/guide/topics/data/data-storage.html#db
 http://developer.android.com/guide/topics/providers/content-providers.html
+coordinate
+http://stackoverflow.com/questions/11483345/how-android-screen-coordinates-works 
