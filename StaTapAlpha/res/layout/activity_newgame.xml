@@ -82,17 +82,6 @@
         android:layout_marginBottom="29dp"
         android:orientation="vertical" >
     </LinearLayout>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="190dp"
-        android:layout_height="80dp"
-        android:layout_alignBottom="@+id/listView2"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="165dp"
-        android:text="@string/confirm"
-        android:textSize="30sp"
-        android:onClick="confirm" />
     
     <TextView
         android:id="@+id/textView6"
@@ -134,5 +123,30 @@
         android:text="@string/selectT"
         android:textColor="#FFFF00"
         android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
+        android:layout_alignBottom="@+id/listView2"
+        android:layout_marginLeft="96dp"
+        android:layout_toRightOf="@+id/editText1"
+        android:onClick="confirm"
+        android:text="@string/confirm"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/linearLayout4"
+        android:layout_alignLeft="@+id/textView5"
+        android:ems="10"
+        android:inputType="text"
+        android:labelFor="@+id/editText1"
+        android:maxLength="35" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>
