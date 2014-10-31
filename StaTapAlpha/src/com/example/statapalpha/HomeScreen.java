@@ -99,7 +99,9 @@ public class HomeScreen extends Activity {
             }
         }); */
 	}
-    
+    public void helppdf() {
+    	//Open the pdf here
+    }
 	private void populateListView() {
     	//Create list of items
     	String[] gameNames = {"Game 1", "Game 2", "Game 3", "Game 4", "Game 5", "Game 6", "Game 7", "Game 8", "Game 9", 

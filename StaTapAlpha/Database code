@@ -1,40 +1,41 @@
-CREATE DATABASE Sta_Tap; //When createing the database do each separately or might not come together correctly.
+CREATE DATABASE Sta_Tap; //When creating the database do each separately or might not come together correctly.
 
-CREATE TABLE Game
+CREATE TABLE GAME
 (
-Game_Nbr      number(03),
-Home_Team_Nbr number(03),
-Away_Team_Nbr number(03),
+Game_Num      number(03),
+Home_Team_Num number(03),
+Away_Team_Num number(03),
 Date	      date,
-UNIQUE(Game_Nbr)
+UNIQUE(Game_Num)
 );
-CREATE TABLE Player
+CREATE TABLE PLAYER
 (
-Team_Nbr      number(02),
-Jersery_Nbr   number(02),
+Team_Num      number(02),
+Jersey_Num   number(02),
 Last_Name     varchar(03) NOT NULL,
 First_Name    varchar(03) NOT NULL,
-UNIQUE(Team_Nbr)
+UNIQUE(Team_Num)
+UNIQUE(Jersey_Num)
 );
-CREATE TABLE Team
+CREATE TABLE TEAM
 (
-Team_Nbr      number(02),
+Team_Num      number(02),
 Team_Name     varchar(02) NOT NULL,
-UNIQUE(Team_Nbr)
+UNIQUE(Team_Num)
 );
-CREATE TABLE Stats
+CREATE TABLE STATS
 (
-Stat_Nbr      number(03),
-Jersey_Nbr    number(02),
-Team_Nbr      number(02),
-Game_Nbr      number(03),
+Stat_Num      number(03),
+Jersey_Num    number(02),
+Team_Num      number(02),
+Game_Num      number(03),
 Half_Time     number(01),
 Action	      varchar2(3),//Still have to figure out how to include the three diget action codes.
-X	      number(03),
-Y	      number(03)
+X_Coord	      number(03),
+Y_Coord	      number(03)
 );
 
-//Createing the outline of the database not JOINED at the moment.
+//Creating the outline of the database not JOINED at the moment.
 //Careful on viewing or messing with tables if you must see them either use a view function or 
 //create a index(speeds up query searches). ex
 
