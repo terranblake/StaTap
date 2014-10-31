@@ -1,0 +1,54 @@
+CREATE DATABASE Sta_Tap;
+
+CREATE TABLE Game
+(
+Game_Nbr      number(03),
+Home_Team_Nbr number(03),
+Away_Team_Nbr number(03),
+Date	      date,
+UNIQUE(Game_Nbr)
+);
+CREATE TABLE Player
+(
+Team_Nbr      number(02),
+Jersery_Nbr   number(02),
+Last_Name     varchar(03) NOT NULL,
+First_Name    varchar(03) NOT NULL,
+UNIQUE(Team_Nbr)
+);
+CREATE TABLE Team
+(
+Team_Nbr      number(02),
+Team_Name     varchar(02) NOT NULL,
+UNIQUE(Team_Nbr)
+);
+CREATE TABLE Stats
+(
+Stat_Nbr      number(03),
+Jersey_Nbr    number(02),
+Team_Nbr      number(02),
+Game_Nbr      number(03),
+Half_Time     number(01),
+Action	      varchar2(3),//Still have to figure out how to include the three diget action codes.
+X	      number(03),
+Y	      number(03)
+);
+
+//Createing the outline of the database not JOINED at the moment.
+//Careful on viewing or messing with tables if you must see them either use a view function or 
+//create a index(speeds up query searches). ex
+
+CREATE INDEX index_name
+ON table_name (column_name)
+
+//Join Statements not sure if they will work or not the way I am thinking they will work.
+
+SELECT * 
+FROM Player
+FULL OUTER JOIN Team
+ON Player.Team_Nbr = Team.Team_Nbr;
+
+SELECT *
+FROM Game
+FULL OUTER JOIN Stats
+ON Game.Game_Nbr = Stats.Game_Nbr;
