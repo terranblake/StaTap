@@ -14,12 +14,15 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 	
 	public DatabaseOperations(Context context) {
 		super(context, HomeTableInfo.DATABASE_NAME, null, database_version);
+		Log.d("Database operations", "Datavase created");//Message that make sure it's made
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void onCreate(SQLiteDatabase sdb) {
 		// TODO Auto-generated method stub
+		sdb.execSQL(CREATE_QUERY);//Creates table
+		Log.d("Database operations","Table created");//Message that make sure it's made also
 
 	}
 
