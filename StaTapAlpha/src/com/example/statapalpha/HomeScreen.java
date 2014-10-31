@@ -3,7 +3,6 @@ package com.example.statapalpha;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -16,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.database.*;
+import android.database.sqlite.*;
 
 public class HomeScreen extends Activity {
 
@@ -84,20 +85,7 @@ public class HomeScreen extends Activity {
 			}
 		});
     	
-    	//This will check if there is a LONG click on a ListView item
-    	/*list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                    int position, long id) {
-            	TextView textView = (TextView) arg1;
-            	//Dummy log message and toast message
-            	
-                Log.v("long clicked","pos: " + position);
-                String message = "You long clicked the " + textView.getText().toString() + " button";
-                //Toast.makeText(HomeScreen.this, message, Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        }); */
+    	
 	}
     public void helppdf() {
     	//Open the pdf here
