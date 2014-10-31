@@ -1,4 +1,4 @@
-CREATE DATABASE Sta_Tap;
+CREATE DATABASE Sta_Tap; //When createing the database do each separately or might not come together correctly.
 
 CREATE TABLE Game
 (
