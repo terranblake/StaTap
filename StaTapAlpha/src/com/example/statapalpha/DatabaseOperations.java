@@ -2,10 +2,12 @@ package com.example.statapalpha;
 
 import com.example.statapalpha.HomeTable.HomeTableInfo;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseOperations extends SQLiteOpenHelper {
 
@@ -31,14 +33,14 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 
 	}
-	public void putInformation(DatabaseOperations dop,String(colum_name),String (colum_name)//Information where it is put
+	public void putInformation(DatabaseOperations dop, String colum_name)//Information where it is put
 	{
-		SQLiteDatabase SQ = dop.getWriteableDatabase();//Object that inserts the data
+		SQLiteDatabase SQ = dop.getWritableDatabase();//Object that inserts the data
 		ContentValues cv = new ContentValues();
-		cv.put(HomeTableInfo.column_name,(name);//Puts the data into the column and also names it
+		//cv.put(HomeTableInfo.column_name,(name);//Puts the data into the column and also names it
 		long k = SQ.insert(HomeTableInfo.TABLE_NAME,null, cv);//inserts the data into the table
 		Log.d("Database operations", "One row inserted");//Makes sure the row got into the table
 	}
 	}
 
-}
+
