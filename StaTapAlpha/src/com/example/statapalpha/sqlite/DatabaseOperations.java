@@ -48,10 +48,14 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         String CREATE_TEAMS = "CREATE TABLE teams ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
                 "name TEXT )";
+        String CREATE_STATS = "CREATE TABLE stats ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "name TEXT )";
         // Create the Tables
         db.execSQL(CREATE_GAMES);
         db.execSQL(CREATE_PLAYER);
         db.execSQL(CREATE_TEAMS);
+        db.execSQL(CREATE_STATS);
     }
  
     @Override
