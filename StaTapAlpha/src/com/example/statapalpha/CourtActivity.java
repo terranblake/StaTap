@@ -166,7 +166,8 @@ public class CourtActivity extends Activity {
 	
 	int player = 0;
 	String action = "";
-	position position;
+	position position = new position();
+	
 	
 	public void setPlayer(View v) {
 		Button b = (Button)v;
@@ -179,20 +180,31 @@ public class CourtActivity extends Activity {
 		Button b = (Button)v;
 		
 		switch(b.getId()) {
-		case 2131296260: action = "Made Goal";
-		case 2131296261: action = "Missed Goal";
-		case 2131296259: action = "Made Freethrow";
-		case 2131296258: action = "Missed Freethrow";
-		case 2131296270: action = "Rebound";
-		case 2131296269: action = "Assist";
-		case 2131296268: action = "Block";
-		case 2131296266: action = "Steal";
-		case 2131296267: action = "Turnover";
-		case 2131296281: action = "Substitution";
-		case 2131296265: action = "Foul";
+		case R.id.fgMade: action = "Made Goal";
+		break;
+		case R.id.fgMissed: action = "Missed Goal";
+		break;
+		case R.id.ftMade: action = "Made Freethrow";
+		break;
+		case R.id.ftMissed: action = "Missed Freethrow";
+		break;
+		case R.id.rebound: action = "Rebound";
+		break;
+		case R.id.assist: action = "Assist";
+		break;
+		case R.id.block: action = "Block";
+		break;
+		case R.id.steal: action = "Steal";
+		break;
+		case R.id.turnover: action = "Turnover";
+		break;
+		case R.id.sub: action = "Substitution";
+		break;
+		case R.id.foul: action = "Foul";
+		break;
 		}
 			
-		String message = "Action: " + b.getId();
+		String message = "Action: " + action;
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 	
@@ -200,12 +212,13 @@ public class CourtActivity extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 		position.x = (int)event.getX(0);
 		position.y = (int)event.getY(0);
-	    
+	    String message = "touch at: " + position.x + "," + position.y;
+		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	    switch (event.getAction()) {
 	        case MotionEvent.ACTION_DOWN:
 	        case MotionEvent.ACTION_UP:
 	    }
-	return false;
+	return super.onTouchEvent(event);
 	}
 	
 	@Override
