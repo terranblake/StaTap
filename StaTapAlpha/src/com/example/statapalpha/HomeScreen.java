@@ -1,7 +1,12 @@
 package com.example.statapalpha;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -78,8 +83,9 @@ public class HomeScreen extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View viewClicked,
 					int position, long id) {
-					TextView textView = (TextView) viewClicked;
+					TextView textView = (TextView) viewClicked; 
 					//Toast message
+					
 					String message = "You Clicked # " + (position + 1) + ", which is string: " + textView.getText().toString();
 					Toast.makeText(HomeScreen.this, message, Toast.LENGTH_SHORT).show();
 			}
@@ -88,7 +94,16 @@ public class HomeScreen extends Activity {
     	
 	}
     public void helppdf() {
-    	//Open the pdf here
+    	Intent intent = new Intent(Intent.ACTION_VIEW,
+    	        Uri.parse("M:/pdf-test.pdf"));
+    	intent.setType("application/pdf");
+    	PackageManager pm = getPackageManager();
+    	List<ResolveInfo> activities = pm.queryIntentActivities(intent, 0);
+    	if (activities.size() > 0) {
+    	    startActivity(intent);
+    	} else {
+    	    // Do something else here. Maybe pop up a Dialog or Toast
+    	}
     }
 	private void populateListView() {
     	//Create list of items
