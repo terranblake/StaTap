@@ -25,6 +25,10 @@
 //Creating databse and table 
         db=openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
       db.execSQL("CREATE TABLE IF NOT EXISTS game(Game_Num NUMBER, Home_Team_Num NUMBER, Away_Team_Num NUMBER, Date DATE);");
+      db.execSQL("CREATE TABLE IF NOT EXISTS player(Team_Num NUMBER,Jersery_Num NUMBER,Last_Name VARCHAR,First_Name VARCHAR);");
+      db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num NUMBER,Team_Name VARCHAR);");
+      db.execSQL("CREATE TABLE IF NOT EXISTS stats(Stat_Num NUMBER,Jersey_Num NUMBER,Team_Num NUMBER,Game_Num NUMBER,
+      Half_Time NUMBER,Action VARCHAR2,X_Cord NUMBER,Y_Cord NUMBER);");
       }
       
       
