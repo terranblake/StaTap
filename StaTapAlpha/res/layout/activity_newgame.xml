@@ -131,7 +131,6 @@
         android:layout_alignBottom="@+id/listView2"
         android:layout_marginLeft="96dp"
         android:layout_toRightOf="@+id/editText1"
-        android:onClick="confirm"
         android:text="@string/confirm"
         android:textSize="30sp" />
 

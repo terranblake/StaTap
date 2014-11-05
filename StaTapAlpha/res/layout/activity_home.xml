@@ -31,12 +31,21 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/Button1"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="190dp"
             android:layout_height="80dp"
+            android:onClick="newGame"
             android:text="@string/new_game"
-            android:textSize="50sp" 
+            android:textSize="50sp" />
+
+        <Button
+            android:id="@+id/button2"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="190dp"
+            android:layout_height="80dp"
+            android:text="@string/edit"
+            android:textSize="25sp" 
             android:onClick="newGame"
             />
 
