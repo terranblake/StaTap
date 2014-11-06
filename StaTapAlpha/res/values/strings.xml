@@ -67,5 +67,6 @@
     <string name="selectT">Select a Team</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="manual">?</string>
 
 </resources>

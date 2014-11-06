@@ -93,9 +93,11 @@ public class HomeScreen extends Activity {
     	
     	
 	}
-    public void helppdf() {
+   /* 
+    
+     	public void helppdf() {
     	Intent intent = new Intent(Intent.ACTION_VIEW,
-    	        Uri.parse("M:/pdf-test.pdf"));
+    	        Uri.parse("H:\\GitHub\\StaTap\\StaTapAlpha\\"));
     	intent.setType("application/pdf");
     	PackageManager pm = getPackageManager();
     	List<ResolveInfo> activities = pm.queryIntentActivities(intent, 0);
@@ -104,7 +106,10 @@ public class HomeScreen extends Activity {
     	} else {
     	    // Do something else here. Maybe pop up a Dialog or Toast
     	}
+        
     }
+    
+    */
 	private void populateListView() {
     	//Create list of items
     	String[] gameNames = {"Game 1", "Game 2", "Game 3", "Game 4", "Game 5", "Game 6", "Game 7", "Game 8", "Game 9", 
