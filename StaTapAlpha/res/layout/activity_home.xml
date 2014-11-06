@@ -78,7 +78,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/textView1"
-        android:onClick="sendMessage"
-        android:layout_marginRight="66dp"
+        android:layout_marginRight="77dp"
+        android:onClick="sendMessage" />
         android:src="@drawable/helpbutton" />
+
 </RelativeLayout>
