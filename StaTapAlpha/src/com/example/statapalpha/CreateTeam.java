@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.content.Context;
+import android.database.sqlite.*;
 
 public class CreateTeam extends Activity {
 
@@ -11,8 +15,29 @@ public class CreateTeam extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_team);
+		
+		//Database Text Box Initialization
+		EditText editTeam = (EditText)findViewById(R.id.editTeam);
+		
+		
+		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
+		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT);");
 	}
-
+	
+	public void create() {
+		EditText editTeam = (EditText)findViewById(R.id.editTeam);
+		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
+		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT);");
+		if(editTeam.getText().toString().trim().length()==0) {
+			String errormessage = "Error: Team name cannot be blank";
+			Toast.makeText(CreateTeam.this, errormessage, Toast.LENGTH_SHORT).show();
+		      return;
+		}
+		db.execSQL("INSERT INTO student VALUES('"+editTeam.getText()+"');");
+		String message = "Team " + editTeam.getText().toString() + " was added to the database";
+		Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
