@@ -10,10 +10,18 @@ import android.widget.Toast;
 
 public class CourtActivity extends Activity {
 
+	int player = 0; // Player number for current play
+	String action = ""; // Action text for current play
+	position position = new position(); // Position for current play
+	
+	// Arrays that will hold all the players for both teams
+	public player[] homePlayers = new player[25];
+	public player[] awayPlayers = new player[25];
+	
 	// Player class to declare all players as and store their info
 	public class player {
-		private String firstName = "";
-		private String lastName = "";
+		private String firstName = new String();
+		private String lastName = new String();
 		private int number = 0;
 		private int points = 0;
 		private int fouls = 0;
@@ -155,24 +163,25 @@ public class CourtActivity extends Activity {
 		}
 	}
 
+	// Class for each play
+	public class play {
+		int playNumber = 0;
+		int playerNumber = 0;
+		position position = new position();
+		String playText = new String();
+	}
+	
+	// Stores x and y coordinate
 	public class position {
 		public int x;
 		public int y;
 	}
 	
-	// Array that will hold all the players for both teams
-	public player[] homePlayers = new player[25];
-	public player[] awayPlayers = new player[25];
-	
-	int player = 0;
-	String action = "";
-	position position = new position();
-	
-	
+	// Sets current player when a player button is clicked
 	public void setPlayer(View v) {
 		Button b = (Button)v;
 		player = Integer.parseInt(b.getText().toString());
-		String message = "You Clicked Player #" + Integer.toString(player);
+		String message = "Player: " + Integer.toString(player);
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 	
@@ -212,18 +221,26 @@ public class CourtActivity extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 		position.x = (int)event.getX(0);
 		position.y = (int)event.getY(0);
-	    String message = "touch at: " + position.x + "," + position.y;
+	    String message = "At: " + position.x + ", " + position.y;
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	    switch (event.getAction()) {
 	        case MotionEvent.ACTION_DOWN:
 	        case MotionEvent.ACTION_UP:
 	    }
-	return super.onTouchEvent(event);
+	    
+	    recordPlay(player, action, position);
+	    
+	    return super.onTouchEvent(event);
 	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_court);
+	}
+	
+	void recordPlay(int player, String action, position position) {
+		final int playNumber = 0;
+		
 	}
 }
