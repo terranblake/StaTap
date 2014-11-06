@@ -16,7 +16,7 @@
         btnViewAll=(Button)findViewById(R.id.btnViewAll);//View all button and change name
         btnShowInfo=(Button)findViewById(R.id.btnShowInfo);//Show info button and change name
 //Registering even handlers
-        btnAdd.setOnClickListener(this);
+        btnAdd.setOnClickListener(this);//Read the comments above to match them up
         btnDelete.setOnClickListener(this);
         btnModify.setOnClickListener(this);
         btnView.setOnClickListener(this);
@@ -31,7 +31,7 @@
       Half_Time NUMBER,Action VARCHAR2,X_Cord NUMBER,Y_Cord NUMBER);");
       }
       
-      
+      //Seperate public voids
 public void onClick(View View)
 {
 //Adding a record
