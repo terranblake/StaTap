@@ -240,7 +240,7 @@ public class CourtActivity extends Activity {
 	}
 	
 	void recordPlay(int player, String action, position position) {
-		final int playNumber = 1;
+		final int playNumber = 0;
 		
 	}
 }
