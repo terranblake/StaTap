@@ -72,14 +72,18 @@
 
     </ListView>
 
-    <Button
-        android:id="@+id/manual"
-        style="@style/AppBaseTheme"
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/textView1"
+<<<<<<< HEAD
         android:text="@string/manual" 
         android:onClick="sendMessage" />
 
+=======
+        android:layout_marginRight="66dp"
+        android:src="@drawable/helpbutton" />
+>>>>>>> origin/master
 </RelativeLayout>
