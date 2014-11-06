@@ -51,8 +51,7 @@
     <string name="p10f">0</string>
     <string name="title">StaTap</string>
     <string name="new_game">New</string>
-    <string name="edit">Edit Teams</string>
-    <string name="create">Create Team</string>
+    <string name="edit">Create Team</string>
     <string name="delete">Delete</string>
     <string name="testg">Game 1</string>
     <string name="title_activity_new_game">NewGame</string>
@@ -72,5 +71,6 @@
     <string name="currentteams">Current Teams</string>
     <string name="editmsg">Tap a team to edit it.</string>
     <string name="teamname">Team Name:</string>
+    <string name="title_activity_manual_">Manual_Activity</string>
 
 </resources>

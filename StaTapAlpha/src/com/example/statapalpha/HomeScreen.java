@@ -22,9 +22,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.database.*;
 import android.database.sqlite.*;
+import android.widget.EditText;
 
 public class HomeScreen extends Activity {
 
+	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";{
+    
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,6 +44,10 @@ public class HomeScreen extends Activity {
     public void newGame(View view) {
     	//This here starts the New Game Screen
     	Intent intent = new Intent(this, NewGameActivity.class);
+    	startActivity(intent);
+    }
+    public void editTeams(View view) {
+    	Intent intent = new Intent(this, CreateTeam.class);
     	startActivity(intent);
     }
     public void courtActivity(View view) {
@@ -73,6 +82,15 @@ public class HomeScreen extends Activity {
                     return super.onContextItemSelected(item);
           }
     }
+    
+    public void sendMessage(View view) {
+    	 Intent intent = new Intent(this, DisplayMessageActivity.class);
+    	 EditText editText = (EditText) findViewById(R.id.edit_message);
+    	 String message = editText.getText().toString();
+    	 intent.putExtra(EXTRA_MESSAGE, message);
+    	 startActivity(intent);
+    }
+
     private void registerClickCallback() {
 		// TODO Auto-generated method stub
     	//This uses the List View and adds a listener to check for clicks/taps on different

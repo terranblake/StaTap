@@ -34,6 +34,10 @@
             android:name=".CreateTeam"
             android:label="@string/title_activity_create_team" >
         </activity>
+        <activity
+            android:name=".Manual_Activity"
+            android:label="@string/title_activity_manual_" >
+        </activity>
     </application>
 
 </manifest>
