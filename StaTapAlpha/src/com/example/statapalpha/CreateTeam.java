@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Context;
@@ -18,13 +20,13 @@ public class CreateTeam extends Activity {
 		
 		//Database Text Box Initialization
 		EditText editTeam = (EditText)findViewById(R.id.editTeam);
-		
+		Button create = (Button)findViewById(R.id.create);
 		
 		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
 		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT);");
 	}
 	
-	public void create() {
+	public void create(View view) {
 		EditText editTeam = (EditText)findViewById(R.id.editTeam);
 		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
 		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT);");
