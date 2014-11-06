@@ -4,7 +4,7 @@
     {
         <code>super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-//Initializint controls
+//Initializing controls
         editGame_Num=(EditText)findViewById(R.id.editGame_Num);
         editHome_Team_Num=(EditText)findViewById(R.id.editHome_Team_Num);
         editAway_Team_Num=(EditText)findViewById(R.id.editAway_Team_Num);
@@ -22,8 +22,8 @@
         btnView.setOnClickListener(this);
         btnViewAll.setOnClickListener(this);
         btnShowInfo.setOnClickListener(this);
-//Creating databse and table 
-        db=openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
+//Creating database and table 
+      db=openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
       db.execSQL("CREATE TABLE IF NOT EXISTS game(Game_Num NUMBER, Home_Team_Num NUMBER, Away_Team_Num NUMBER, Date DATE);");
       db.execSQL("CREATE TABLE IF NOT EXISTS player(Team_Num NUMBER,Jersery_Num NUMBER,Last_Name VARCHAR,First_Name VARCHAR);");
       db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num NUMBER,Team_Name VARCHAR);");

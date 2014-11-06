@@ -132,7 +132,8 @@
         android:layout_marginLeft="96dp"
         android:layout_toRightOf="@+id/editText1"
         android:text="@string/confirm"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:onClick="confirm" />
 
     <EditText
         android:id="@+id/editText1"

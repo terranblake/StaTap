@@ -1,16 +1,21 @@
 package com.example.statapalpha;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.*;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 
 import com.example.statapalpha.R;
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,13 +26,33 @@ public class NewGameActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_newgame);
-		
+		//ListViews
 		populateListViews();
 		registerClickCallback();
-		
-		//editName=(EditText)
+		//Database TextField Initialization
+		EditText editName = (EditText)findViewById(R.id.editText1);
+		//Button btnConfirm = (Button)findViewById(R.id.button2);
+		SQLiteDatabase db = openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
+		db.execSQL("CREATE TABLE IF NOT EXISTS game(Game_Num INTEGER PRIMARY KEY AUTOINCREMENT, Home_Team_Num INTEGER, Away_Team_Num INTEGER, Date DATE);");
 	}
 
+	/*
+	 * 
+	 * Database Functions
+	 * 
+	 */
+	public void confirm() {
+		
+	}
+	
+	
+	
+	
+	/*
+	 * 
+	 * ListView Stuff
+	 * 
+	 */
 	private void populateListViews() {
 		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS
     	//Create list of items

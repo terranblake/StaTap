@@ -29,10 +29,12 @@ public class HomeScreen extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		//ListView Functions
 		ListView lv = (ListView) findViewById(R.id.listViewMain);
         populateListView();
         registerClickCallback();
         registerForContextMenu(lv);
+        //Database Textfield Initialization
 	}
     public void newGame(View view) {
     	//This here starts the New Game Screen
