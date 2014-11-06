@@ -72,8 +72,14 @@
 
     </ListView>
 
+<<<<<<< HEAD
     <ImageView
         android:id="@+id/imageView1"
+=======
+    <Button
+        android:id="@+id/manual"
+        style="@style/AppBaseTheme"
+>>>>>>> origin/master
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
