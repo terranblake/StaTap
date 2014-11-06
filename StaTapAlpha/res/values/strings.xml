@@ -67,13 +67,10 @@
     <string name="selectT">Select a Team</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
-<<<<<<< HEAD
     <string name="title_activity_create_team">Create Team</string>
     <string name="currentteams">Current Teams</string>
     <string name="editmsg">Tap a team to edit it.</string>
     <string name="teamname">Team Name:</string>
-=======
     <string name="manual">?</string>
->>>>>>> origin/master
 
 </resources>
