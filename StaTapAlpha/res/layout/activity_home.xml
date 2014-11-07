@@ -34,7 +34,7 @@
             android:id="@+id/Button1"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="190dp"
-            android:layout_height="80dp"
+            android:layout_height="110dp"
             android:onClick="newGame"
             android:text="@string/new_game"
             android:textSize="50sp" />
@@ -78,8 +78,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/textView1"
-        android:layout_marginRight="77dp"
-        android:onClick="sendMessage" />
-        android:src="@drawable/helpbutton" />
+        android:layout_marginRight="1dp"
+        android:onClick="sendMessage"
+        android:src="@drawable/helpbutton" 
+        android:contentDescription="" />
 
 </RelativeLayout>
