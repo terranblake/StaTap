@@ -8,7 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.webkit.WebView;
+=======
+>>>>>>> origin/master
 
 public class Manual_Activity extends Activity {
 
@@ -19,6 +22,14 @@ public class Manual_Activity extends Activity {
 		setContentView(webview);
 	
 		
+<<<<<<< HEAD
+=======
+		if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                .add(R.id.container, new PlaceholderFragment()).commit();
+		}
+
+>>>>>>> origin/master
 	}
 
 	@Override

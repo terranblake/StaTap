@@ -6,19 +6,29 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.content.Context;
+import android.database.sqlite.*;
 
-
+// Court Screen
 public class CourtActivity extends Activity {
 
+	// Opens database
+	SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
+	
 	int player = 0; // Player number for current play
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
+	
+	int playNumber = 0; // Number to use for play ID
 	
 	// Arrays that will hold all the players for both teams
 	public player[] homePlayers = new player[25];
 	public player[] awayPlayers = new player[25];
 	
 	// Player class to declare all players as and store their info
+	// firstName, lastName, number, points, fouls, rebounds, assists,
+	// blocks, steals, turnovers, twoPointMade, twoPointMiss, 
+	// threePointMade, threePointMiss, freeThrowMade, freeThrowMiss
 	public class player {
 		private String firstName = new String();
 		private String lastName = new String();
@@ -163,13 +173,6 @@ public class CourtActivity extends Activity {
 		}
 	}
 
-	// Class for each play
-	public class play {
-		int playNumber = 0;
-		int playerNumber = 0;
-		position position = new position();
-		String playText = new String();
-	}
 	
 	// Stores x and y coordinate
 	public class position {
@@ -185,6 +188,7 @@ public class CourtActivity extends Activity {
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 	
+	// Sets string Action to whatever action the user taps
 	public void setAction(View v) {
 		Button b = (Button)v;
 		
@@ -217,6 +221,8 @@ public class CourtActivity extends Activity {
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 	
+	// Gets tap position and saves it to 'position'
+	// then records play to database
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		position.x = (int)event.getX(0);
@@ -239,8 +245,10 @@ public class CourtActivity extends Activity {
 		setContentView(R.layout.activity_court);
 	}
 	
+	// Records play to database
 	void recordPlay(int player, String action, position position) {
-		final int playNumber = 0;
-				
+		//db.execSQL("INSERT INTO team(Team_Name) VALUES('"+editTeam.getText()+"');");
+		
+		playNumber++;
 	}
 }
