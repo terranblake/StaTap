@@ -19,6 +19,7 @@ public class Manual_Activity extends Activity {
 		if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                 .add(R.id.container, new PlaceholderFragment()).commit();
+		}
 
 	}
 
