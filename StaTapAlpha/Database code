@@ -51,5 +51,5 @@ ON Player.Team_Nbr = Team.Team_Nbr;
 
 SELECT *
 FROM Game
-FULL OUTER JOIN Stats
+FULL OUTER JOIN Stats   
 ON Game.Game_Nbr = Stats.Game_Nbr;

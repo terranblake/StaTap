@@ -6,10 +6,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.content.Context;
+import android.database.sqlite.*;
 
 // Court Screen
 public class CourtActivity extends Activity {
 
+	// Opens database
+	SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
+	
 	int player = 0; // Player number for current play
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
@@ -242,6 +247,8 @@ public class CourtActivity extends Activity {
 	
 	// Records play to database
 	void recordPlay(int player, String action, position position) {
+		//db.execSQL("INSERT INTO team(Team_Name) VALUES('"+editTeam.getText()+"');");
+		
 		playNumber++;
 	}
 }
