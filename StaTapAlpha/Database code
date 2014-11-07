@@ -30,7 +30,7 @@ Jersey_Num    number(02),
 Team_Num      number(02),
 Game_Num      number(03),
 Half_Time     number(01),
-Action	      varchar2(3),//Still have to figure out how to include the three diget action codes.
+Action	      varchar2(3),//Still have to figure out how to include the three digit action codes.
 X_Coord	      number(03),
 Y_Coord	      number(03)
 );
