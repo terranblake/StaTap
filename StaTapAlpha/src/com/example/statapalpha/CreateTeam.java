@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.*;
 
 public class CreateTeam extends Activity {
@@ -26,6 +29,7 @@ public class CreateTeam extends Activity {
 		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT);");
 	}
 	
+	
 	public void create(View view) {
 		EditText editTeam = (EditText)findViewById(R.id.editTeam);
 		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
@@ -35,10 +39,33 @@ public class CreateTeam extends Activity {
 			Toast.makeText(CreateTeam.this, errormessage, Toast.LENGTH_SHORT).show();
 		      return;
 		}
-		db.execSQL("INSERT INTO student VALUES('"+editTeam.getText()+"');");
+		db.execSQL("INSERT INTO team(Team_Name) VALUES('"+editTeam.getText()+"');");
 		String message = "Team " + editTeam.getText().toString() + " was added to the database";
 		Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
 	}
+	
+	
+	/*
+	 * 
+	 * ListViews
+	 * 
+	 */
+	private void populateListViews() {
+		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS
+    	//Create list of items
+    	String[] teamNames = {"Olathe South", "Olathe East", "Olathe North", "Olathe Northwest", "Shawnee Mission North", "Shawnee Mission South", "Shawnee Mission West", 
+    			"Blue Valley High", "Blue Valley Northwest"};
+    	//Build Adapter
+    	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
+    			this,					// Context
+    			R.layout.teamlistviews,		// Layout to use
+    			teamNames);				// Items to be displayed		
+    	//Configure the List View
+    	ListView t1list = (ListView) findViewById(R.id.listView1);
+    	t1list.setAdapter(t1adapter);
+	}
+	
+	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
