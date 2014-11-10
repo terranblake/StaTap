@@ -1,5 +1,8 @@
 package com.example.statapalpha;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 import android.content.Context;
 import android.database.Cursor;
@@ -24,8 +28,11 @@ public class CreateTeam extends Activity {
 		//Database Text Box Initialization
 		EditText editTeam = (EditText)findViewById(R.id.editTeam);
 		Button create = (Button)findViewById(R.id.create);
-		String[] Team_Name = new String[]{"name"};
+		//ListViews
+		ListView lv = (ListView)findViewById(R.id.listView1);
+
 		populateListViews();
+		//DB
 		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
 		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT UNIQUE);");
 	}
@@ -51,6 +58,8 @@ public class CreateTeam extends Activity {
 	 * ListViews
 	 * 
 	 */
+	
+
 	private void populateListViews() {
 		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS
     	//Create list of items
@@ -65,7 +74,7 @@ public class CreateTeam extends Activity {
     	ListView t1list = (ListView) findViewById(R.id.listView1);
     	t1list.setAdapter(t1adapter);
 	}
-	
+
 	
 	
 	@Override
