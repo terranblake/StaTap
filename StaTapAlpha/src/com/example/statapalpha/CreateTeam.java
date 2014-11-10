@@ -39,7 +39,6 @@ public class CreateTeam extends Activity {
 	
 	
 	public void create(View view) {
-		EditText editTeam = (EditText)findViewById(R.id.editTeam);
 		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
 		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT UNIQUE);");
 		if(editTeam.getText().toString().trim().length()==0) {

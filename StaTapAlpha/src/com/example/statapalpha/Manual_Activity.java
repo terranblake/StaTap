@@ -19,9 +19,9 @@ public class Manual_Activity extends Activity {
 		WebView webview = new WebView(this);
 		setContentView(webview);
 	
+		//http://stackoverflow.com/questions/5813188/how-to-reference-local-css-files-in-a-static-webview-window-in-android-dev
 
-		String summary = "<html><body>You scored <b>192</b> points.</body></html>";
-		 webview.loadData(summary, "text/html", null);
+		String summary = "<html><body></body></html>";webview.loadData(summary, "text/html", null);
 
 	}
 
