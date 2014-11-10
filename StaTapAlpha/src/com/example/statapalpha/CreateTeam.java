@@ -24,16 +24,17 @@ public class CreateTeam extends Activity {
 		//Database Text Box Initialization
 		EditText editTeam = (EditText)findViewById(R.id.editTeam);
 		Button create = (Button)findViewById(R.id.create);
-		
+		String[] Team_Name = new String[]{"name"};
+		populateListViews();
 		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
-		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT);");
+		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT UNIQUE);");
 	}
 	
 	
 	public void create(View view) {
 		EditText editTeam = (EditText)findViewById(R.id.editTeam);
 		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
-		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT);");
+		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT UNIQUE);");
 		if(editTeam.getText().toString().trim().length()==0) {
 			String errormessage = "Error: Team name cannot be blank";
 			Toast.makeText(CreateTeam.this, errormessage, Toast.LENGTH_SHORT).show();
