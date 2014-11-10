@@ -20,10 +20,8 @@ public class Manual_Activity extends Activity {
 		setContentView(webview);
 	
 
-		if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, new PlaceholderFragment()).commit();
-		}
+		String summary = "<html><body>You scored <b>192</b> points.</body></html>";
+		 webview.loadData(summary, "text/html", null);
 
 	}
 

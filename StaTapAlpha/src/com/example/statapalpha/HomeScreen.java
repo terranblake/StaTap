@@ -55,6 +55,11 @@ public class HomeScreen extends Activity {
     	Intent intent = new Intent(this, CourtActivity.class);
     	startActivity(intent);
     }
+    public void manual(View view) {
+    	//This here starts the Court Activity Screen
+    	Intent intent = new Intent(this, Manual_Activity.class);
+    	startActivity(intent);
+    }
     /**
      * MENU
      */
