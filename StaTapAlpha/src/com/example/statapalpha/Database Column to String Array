@@ -1,4 +1,4 @@
-//How to transfer databse column into a string array.
+//How to transfer database column into a string array.
 
 public String[] getContacts(){
     Cursor cursor = getReadableDatabase().rawQuery("SELECT name FROM contacts", null);//Select Database and also column
