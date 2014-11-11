@@ -247,6 +247,11 @@ public class CourtActivity extends Activity {
 		
 	}
 	
+	public void create(View view) {
+	
+		db.execSQL("CREATE TABLE IF NOT EXISTS player(player_rebound INTEGER PRIMARY KEY AUTOINCREMENT,player_assist INTEGER PRIMARY KEY AUTOINCREMENT ,player_block INTEGER PRIMARY KEY AUTOINCREMENT ,player_steal INTEGER PRIMARY KEY AUTOINCREMENT ,player_turnover INTEGER PRIMARY KEY AUTOINCREMENT ,player_sub INTEGER PRIMARY KEY AUTOINCREMENT ,player_foul INTEGER PRIMARY KEY AUTOINCREMENT);");
+	}
+	
 	// Records play to database
 	void recordPlay(int player, String action, position position) {
 		
