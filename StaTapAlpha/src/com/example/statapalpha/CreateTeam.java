@@ -19,27 +19,27 @@ import android.database.Cursor;
 import android.database.sqlite.*;
 
 public class CreateTeam extends Activity {
-
+	EditText editTeam = (EditText)findViewById(R.id.editTeam);
+	SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_team);
 		
 		//Database Text Box Initialization
-		EditText editTeam = (EditText)findViewById(R.id.editTeam);
 		Button create = (Button)findViewById(R.id.create);
 		//ListViews
 		ListView lv = (ListView)findViewById(R.id.listView1);
 
 		populateListViews();
 		//DB
-		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
 		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT UNIQUE);");
 	}
 	
 	
 	public void create(View view) {
-		SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
+		
+		
 		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT UNIQUE);");
 		if(editTeam.getText().toString().trim().length()==0) {
 			String errormessage = "Error: Team name cannot be blank";
@@ -62,6 +62,9 @@ public class CreateTeam extends Activity {
 	private void populateListViews() {
 		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS
     	//Create list of items
+		Cursor cursor = db.rawQuery("SELECT Team_Name FROM team", null);
+		cursor.moveToFirst();
+		ArrayList<String> teams = new ArrayList<String>();//New array list
     	String[] teamNames = {"Olathe South", "Olathe East", "Olathe North", "Olathe Northwest", "Shawnee Mission North", "Shawnee Mission South", "Shawnee Mission West", 
     			"Blue Valley High", "Blue Valley Northwest"};
     	//Build Adapter
