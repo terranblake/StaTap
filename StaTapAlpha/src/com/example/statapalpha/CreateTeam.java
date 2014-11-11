@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,36 +18,38 @@ import android.database.Cursor;
 import android.database.sqlite.*;
 
 public class CreateTeam extends Activity {
-	EditText editTeam = (EditText)findViewById(R.id.editTeam);
-	SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
+	EditText editTeam;
+	SqliteHelper db;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_team);
-		
+		//Test
+		editTeam = (EditText)findViewById(R.id.editTeam);
+		//End
 		//Database Text Box Initialization
+		db = new SqliteHelper(this.getApplicationContext());
 		Button create = (Button)findViewById(R.id.create);
 		//ListViews
 		ListView lv = (ListView)findViewById(R.id.listView1);
 
 		populateListViews();
 		//DB
-		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT UNIQUE);");
 	}
-	
 	
 	public void create(View view) {
 		
-		
-		db.execSQL("CREATE TABLE IF NOT EXISTS team(Team_Num INTEGER PRIMARY KEY AUTOINCREMENT,Team_Name TEXT UNIQUE);");
+
 		if(editTeam.getText().toString().trim().length()==0) {
 			String errormessage = "Error: Team name cannot be blank";
 			Toast.makeText(CreateTeam.this, errormessage, Toast.LENGTH_SHORT).show();
 		      return;
 		}
-		db.execSQL("INSERT INTO team(Team_Name) VALUES('"+editTeam.getText()+"');");
+		db.execSQL("INSERT INTO teams(Team_Names) VALUES('"+editTeam.getText()+"');");
 		String message = "Team " + editTeam.getText().toString() + " was added to the database";
 		Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
+		populateListViews();
 	}
 	
 	
@@ -55,21 +58,29 @@ public class CreateTeam extends Activity {
 	 * ListViews
 	 * 
 	 */
-	
 
 	private void populateListViews() {
 		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS
     	//Create list of items
-		Cursor cursor = db.rawQuery("SELECT Team_Name FROM team", null);
-		cursor.moveToFirst();
-		ArrayList<String> teams = new ArrayList<String>();//New array list
+		String[] projection = { "Team_Names" };
+		Cursor cursor = db.query("teams",projection, null, null, null, null, null, null);
+		ArrayList<String> values = new ArrayList<String>();
+		if (cursor != null && cursor.getCount() != 0) {
+		    cursor.moveToFirst();
+		    while (!cursor.isAfterLast()) {
+
+		        values.add(cursor.getString(cursor.getColumnIndex("Team_Names")));
+
+		        cursor.moveToNext();
+		    }
+		}
     	String[] teamNames = {"Olathe South", "Olathe East", "Olathe North", "Olathe Northwest", "Shawnee Mission North", "Shawnee Mission South", "Shawnee Mission West", 
     			"Blue Valley High", "Blue Valley Northwest"};
     	//Build Adapter
     	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
     			this,					// Context
     			R.layout.teamlistviews,		// Layout to use
-    			teamNames);				// Items to be displayed		
+    			values);				// Items to be displayed		
     	//Configure the List View
     	ListView t1list = (ListView) findViewById(R.id.listView1);
     	t1list.setAdapter(t1adapter);
