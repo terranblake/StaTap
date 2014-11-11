@@ -13,7 +13,7 @@ import android.database.sqlite.*;
 public class CourtActivity extends Activity {
 
 	// Opens database
-	SQLiteDatabase db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
+	SQLiteDatabase db; 
 	
 	int player = 0; // Player number for current play
 	String action = ""; // Action text for current play
@@ -243,6 +243,8 @@ public class CourtActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_court);
+		db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
+		
 	}
 	
 	// Records play to database
