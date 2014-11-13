@@ -40,13 +40,15 @@ public class CreateTeam extends Activity {
 	
 	public void create(View view) {
 		
-
+		
 		if(editTeam.getText().toString().trim().length()==0) {
 			String errormessage = "Error: Team name cannot be blank";
 			Toast.makeText(CreateTeam.this, errormessage, Toast.LENGTH_SHORT).show();
 		      return;
 		}
-		//db.execSQL("INSERT INTO teams(Team_Names) VALUES('"+editTeam.getText()+"');");
+		
+		String Team_Name = editTeam.getText().toString();
+		db.addTeam(Team_Name);
 		String message = "Team " + editTeam.getText().toString() + " was added to the database";
 		Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
 		populateListViews();
