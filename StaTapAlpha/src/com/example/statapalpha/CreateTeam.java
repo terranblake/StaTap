@@ -46,7 +46,7 @@ public class CreateTeam extends Activity {
 			Toast.makeText(CreateTeam.this, errormessage, Toast.LENGTH_SHORT).show();
 		      return;
 		}
-		db.execSQL("INSERT INTO teams(Team_Names) VALUES('"+editTeam.getText()+"');");
+		//db.execSQL("INSERT INTO teams(Team_Names) VALUES('"+editTeam.getText()+"');");
 		String message = "Team " + editTeam.getText().toString() + " was added to the database";
 		Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
 		populateListViews();
@@ -62,8 +62,8 @@ public class CreateTeam extends Activity {
 	private void populateListViews() {
 		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS
     	//Create list of items
-		String[] projection = { "Team_Names" };
-		Cursor cursor = db.query("teams",projection, null, null, null, null, null, null);
+		Cursor cursor = db.getTeams();
+		
 		ArrayList<String> values = new ArrayList<String>();
 		if (cursor != null && cursor.getCount() != 0) {
 		    cursor.moveToFirst();
@@ -74,8 +74,6 @@ public class CreateTeam extends Activity {
 		        cursor.moveToNext();
 		    }
 		}
-    	String[] teamNames = {"Olathe South", "Olathe East", "Olathe North", "Olathe Northwest", "Shawnee Mission North", "Shawnee Mission South", "Shawnee Mission West", 
-    			"Blue Valley High", "Blue Valley Northwest"};
     	//Build Adapter
     	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
     			this,					// Context
