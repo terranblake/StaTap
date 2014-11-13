@@ -34,10 +34,10 @@
             android:id="@+id/Button1"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="190dp"
-            android:layout_height="110dp"
+            android:layout_height="80dp"
             android:onClick="newGame"
             android:text="@string/new_game"
-            android:textSize="50sp" />
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/button2"
@@ -54,6 +54,7 @@
             android:layout_width="190dp"
             android:layout_height="80dp"
             android:onClick="courtActivity"
+            android:textSize="25sp"
             android:text="@string/title_activity_court_activity" />
 
     </LinearLayout>

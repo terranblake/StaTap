@@ -26,20 +26,19 @@ import android.widget.EditText;
 
 public class HomeScreen extends Activity {
 
-	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";{
-    
-	}
+	SqliteHelper db;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+        db = new SqliteHelper(this.getApplicationContext());
 		//ListView Functions
 		ListView lv = (ListView) findViewById(R.id.listViewMain);
         populateListView();
         registerClickCallback();
         registerForContextMenu(lv);
-        //Database Textfield Initialization
+        //Database TextField Initialization
 	}
     public void newGame(View view) {
     	//This here starts the New Game Screen
@@ -77,24 +76,15 @@ public class HomeScreen extends Activity {
     public boolean onContextItemSelected(MenuItem item) {
           AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
           switch(item.getItemId()) {
-              case R.id.edit:
-                // edit stuff here
-                    return true;
               case R.id.delete:
             // remove stuff here
+            	  
                     return true;
               default:
                     return super.onContextItemSelected(item);
           }
     }
     
-/*    public void sendMessage(View view) {
-    	 Intent intent = new Intent(this, DisplayMessageActivity.class);
-    	 EditText editText = (EditText) findViewById(R.id.edit_message);
-    	 String message = editText.getText().toString();
-    	 intent.putExtra(EXTRA_MESSAGE, message);
-    	 startActivity(intent);
-    }*/
 
     private void registerClickCallback() {
 		// TODO Auto-generated method stub

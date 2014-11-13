@@ -1,7 +1,10 @@
 package com.example.statapalpha;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.*;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,11 +20,13 @@ import com.example.statapalpha.R;
 
 public class NewGameActivity extends Activity {
 
+	SqliteHelper db;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_newgame);
 		//ListViews
+		db = new SqliteHelper(this.getApplicationContext());
 		populateListViews();
 		registerClickCallback();
 		//Database TextField Initialization
@@ -51,19 +56,27 @@ public class NewGameActivity extends Activity {
 	private void populateListViews() {
 		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS
     	//Create list of items
-    	String[] team1Names = {"Olathe South", "Olathe East", "Olathe North", "Olathe Northwest", "Shawnee Mission North", "Shawnee Mission South", "Shawnee Mission West", 
-    			"Blue Valley High", "Blue Valley Northwest"};
-    	String[] team2Names = {"Olathe South", "Olathe East", "Olathe North", "Olathe Northwest", "Shawnee Mission North", "Shawnee Mission South", "Shawnee Mission West", 
-    			"Blue Valley High", "Blue Valley Northwest"};    	
+		Cursor cursor = db.getTeams();
+		
+		ArrayList<String> values = new ArrayList<String>();
+		if (cursor != null && cursor.getCount() != 0) {
+		    cursor.moveToFirst();
+		    while (!cursor.isAfterLast()) {
+
+		        values.add(cursor.getString(cursor.getColumnIndex("Team_Names")));
+
+		        cursor.moveToNext();
+		    }
+		}    	
     	//Build Adapter
     	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
     			this,					// Context
     			R.layout.teamlistviews,		// Layout to use
-    			team1Names);				// Items to be displayed
+    			values);				// Items to be displayed
     	ArrayAdapter<String> t2adapter = new ArrayAdapter<String>(
     			this,					// Context
     			R.layout.teamlistviews,		// Layout to use
-    			team2Names);		
+    			values);		
     	//Configure the List View
     	ListView t1list = (ListView) findViewById(R.id.listView1);
     	t1list.setAdapter(t1adapter);

@@ -50,7 +50,7 @@
     <string name="p10p">0</string>
     <string name="p10f">0</string>
     <string name="title">StaTap</string>
-    <string name="new_game">New</string>
+    <string name="new_game">New Game</string>
     <string name="edit">Edit Teams</string>
     <string name="create">Create Team</string>
     <string name="delete">Delete</string>
