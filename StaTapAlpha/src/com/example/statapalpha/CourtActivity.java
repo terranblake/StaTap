@@ -255,8 +255,7 @@ public class CourtActivity extends Activity {
 	// Records play to database
 	void recordPlay(int player, String action, position position) {
 		
-		db.execSQL("INSERT INTO team(Team_Name) VALUES('');");
+		db.execSQL("INSERT INTO Stats(X_Coord,Y_Coord) VALUES(position.x,position.y) WHERE Jersey_Nbr = player.number;");
 		
-		playNumber++;
 	}
 }
