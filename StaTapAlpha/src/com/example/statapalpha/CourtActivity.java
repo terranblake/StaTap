@@ -237,7 +237,10 @@ public class CourtActivity extends Activity {
 	        case MotionEvent.ACTION_DOWN:
 	        case MotionEvent.ACTION_UP:
 	    }
-	    
+	    if(action == "Substitution")
+	    {
+	    	SubstitutionActivity;
+	    }
 	    //recordPlay(player, action, position);
 	    
 	    return super.onTouchEvent(event);

@@ -69,7 +69,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     
     // For updating player stats
-    public void updatePlayer(CourtActivity.player player){
+    public void updatePlayer(){
 
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();

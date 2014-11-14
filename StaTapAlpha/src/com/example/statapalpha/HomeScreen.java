@@ -34,7 +34,7 @@ public class HomeScreen extends Activity {
 		setContentView(R.layout.activity_home);
         db = new SqliteHelper(this.getApplicationContext());
 		//ListView Functions
-		ListView lv = (ListView) findViewById(R.id.listViewMain);
+		ListView lv = (ListView) findViewById(R.id.homeTeamLV);
         populateListView();
         registerClickCallback();
         registerForContextMenu(lv);
@@ -66,7 +66,7 @@ public class HomeScreen extends Activity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
           super.onCreateContextMenu(menu, v, menuInfo);
-          if (v.getId()==R.id.listViewMain) {
+          if (v.getId()==R.id.homeTeamLV) {
               MenuInflater inflater = getMenuInflater();
               inflater.inflate(R.menu.home_context_menu, menu);
           }
@@ -90,7 +90,7 @@ public class HomeScreen extends Activity {
 		// TODO Auto-generated method stub
     	//This uses the List View and adds a listener to check for clicks/taps on different
     	//list view items. It will then display a message telling you which one you have selected.
-    	ListView list = (ListView) findViewById(R.id.listViewMain);
+    	ListView list = (ListView) findViewById(R.id.homeTeamLV);
     	
     	//This Will check if there is a click on a ListView item
     	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -137,7 +137,7 @@ public class HomeScreen extends Activity {
     			gameNames);				// Items to be displayed
     			
     	//Configure the List View
-    	ListView list = (ListView) findViewById(R.id.listViewMain);
+    	ListView list = (ListView) findViewById(R.id.homeTeamLV);
     	list.setAdapter(adapter);
     }
     
