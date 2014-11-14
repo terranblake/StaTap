@@ -79,7 +79,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	//values.put(TEAM_NAMES, teamname.toString()); // get title 
 
     	// 3. insert
-    	db.insert("teamlist", // table name
+    	db.insert("stats", // table name
     	null, //nullColumnHack
     	values); // key/value -> keys = column names/ values = column values
 

@@ -200,6 +200,7 @@ public class CourtActivity extends Activity {
 	}
 	
 	// Sets string Action to whatever action the user taps
+	// then records play to database.
 	public void setAction(View v) {
 		Button b = (Button)v;
 		
@@ -231,11 +232,10 @@ public class CourtActivity extends Activity {
 		String message = "Action: " + action;
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		
-		//recordPlay(player, action, position);
+		SqliteHelper.recordPlay(player, action, position);
 	}
 	
 	// Gets tap position and saves it to 'position'
-	// then records play to database
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (event.getAction() == MotionEvent.ACTION_UP) {
