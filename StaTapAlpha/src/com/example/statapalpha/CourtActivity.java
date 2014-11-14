@@ -230,6 +230,7 @@ public class CourtActivity extends Activity {
 			
 		String message = "Action: " + action;
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
+		
 		//recordPlay(player, action, position);
 	}
 	
