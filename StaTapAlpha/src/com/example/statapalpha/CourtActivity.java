@@ -234,7 +234,7 @@ public class CourtActivity extends Activity {
 	        case MotionEvent.ACTION_UP:
 	    }
 	    
-	    recordPlay(player, action, position);
+	    //recordPlay(player, action, position);
 	    
 	    return super.onTouchEvent(event);
 	}
