@@ -21,6 +21,8 @@ public class CourtActivity extends Activity {
 	
 	int playNumber = 0; // Number to use for play ID
 	
+	/*
+	
 	// Arrays that will hold all the players for both teams
 	public player[] homePlayers = new player[25];
 	public player[] awayPlayers = new player[25];
@@ -172,6 +174,8 @@ public class CourtActivity extends Activity {
 			return freeThrowMiss;
 		}
 	}
+	
+	*/
 
 	
 	// Stores x and y coordinate
