@@ -8,12 +8,15 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.content.Context;
 import android.database.sqlite.*;
+import java.lang.Math;
 
 // Court Screen
 public class CourtActivity extends Activity {
 
 	// Opens database
 	SQLiteDatabase db; 
+	
+	int homePlayer[] = new int[25], awayPlayer[] = new int[25];
 	
 	int player = 0; // Player number for current play
 	String action = ""; // Action text for current play
@@ -177,6 +180,10 @@ public class CourtActivity extends Activity {
 	
 	*/
 
+	// Populates arrays with player numbers
+	void getPlayers() {
+		
+	}
 	
 	// Stores x and y coordinate
 	public class position {
@@ -197,32 +204,33 @@ public class CourtActivity extends Activity {
 		Button b = (Button)v;
 		
 		switch(b.getId()) {
-		case R.id.fgMade: action = "Made Goal";
+		case R.id.fgMade: action = "F" + goal(position) + "H";
 		break;
-		case R.id.fgMissed: action = "Missed Goal";
+		case R.id.fgMissed: action = "F" + goal(position) + "M";
 		break;
-		case R.id.ftMade: action = "Made Freethrow";
+		case R.id.ftMade: action = "FTH";
 		break;
-		case R.id.ftMissed: action = "Missed Freethrow";
+		case R.id.ftMissed: action = "FTM";
 		break;
-		case R.id.rebound: action = "Rebound";
+		case R.id.rebound: action = "RB";
 		break;
-		case R.id.assist: action = "Assist";
+		case R.id.assist: action = "AST";
 		break;
-		case R.id.block: action = "Block";
+		case R.id.block: action = "BL";
 		break;
-		case R.id.steal: action = "Steal";
+		case R.id.steal: action = "STL";
 		break;
-		case R.id.turnover: action = "Turnover";
+		case R.id.turnover: action = "TO";
 		break;
-		case R.id.sub: action = "Substitution";
+		case R.id.sub: action = "SUB";
 		break;
-		case R.id.foul: action = "Foul";
+		case R.id.foul: action = "FC";
 		break;
 		}
 			
 		String message = "Action: " + action;
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
+		//recordPlay(player, action, position);
 	}
 	
 	// Gets tap position and saves it to 'position'
@@ -238,9 +246,15 @@ public class CourtActivity extends Activity {
 	        case MotionEvent.ACTION_UP:
 	    }
 	    
-	    //recordPlay(player, action, position);
-	    
 	    return super.onTouchEvent(event);
+	}
+	
+	int goal(position position) {
+		int points=3;
+		
+		if ((Math.sqrt(Math.pow((position.x - 1085), 2) + Math.pow((position.y - 455), 2)) < 273) || (Math.sqrt(Math.pow((position.x - 194), 2) + Math.pow((position.y - 455), 2)) < 273)) points = 2;
+		
+		return points;
 	}
 	
 	@Override
@@ -248,16 +262,6 @@ public class CourtActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_court);
 		db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
-		
 	}
-	
-	public void create(View view) {
-	
-		
-	}
-	
-	// Records play to database
-	void recordPlay(int player, String action, position position) {
-		
-	}
+
 }
