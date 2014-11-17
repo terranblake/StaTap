@@ -10,7 +10,7 @@
     tools:context="com.example.statapalpha.MainActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/homeTeamTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/homeTeamTV"
         android:layout_marginRight="161dp"
         android:orientation="vertical" >
 
@@ -60,11 +60,11 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/listViewMain"
+        android:id="@+id/homeTeamLV"
         android:layout_width="match_parent"
         android:background="#1E90FF"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/homeTeamTV"
         android:layout_alignParentBottom="true"
         android:layout_alignTop="@+id/linearLayout1"
         android:layout_toLeftOf="@+id/linearLayout1"
@@ -78,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/textView1"
+        android:layout_alignTop="@+id/homeTeamTV"
         android:layout_marginRight="1dp"
         android:onClick="manual"
         android:src="@drawable/helpbutton" 

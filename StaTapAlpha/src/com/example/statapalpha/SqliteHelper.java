@@ -69,7 +69,15 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     
     // For updating player stats
+<<<<<<< HEAD
    /* public void updatePlayer(CourtActivity.player player){
+=======
+<<<<<<< HEAD
+    public void updatePlayer(){
+=======
+    public void recordPlay(int player, String action, CourtActivity.position position){
+>>>>>>> origin/master
+>>>>>>> origin/master
 
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
@@ -79,7 +87,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	//values.put(TEAM_NAMES, teamname.toString()); // get title 
 
     	// 3. insert
-    	db.insert("teamlist", // table name
+    	db.insert("stats", // table name
     	null, //nullColumnHack
     	values); // key/value -> keys = column names/ values = column values
 

@@ -73,5 +73,6 @@
     <string name="editmsg">Tap a team to edit it.</string>
     <string name="teamname">Team Name:</string>
     <string name="title_activity_manual_">Manual_Activity</string>
+    <string name="title_activity_substitution">SubstitutionActivity</string>
 
 </resources>
