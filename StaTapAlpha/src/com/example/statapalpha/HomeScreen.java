@@ -1,12 +1,7 @@
 package com.example.statapalpha;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -15,14 +10,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
+//import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.database.*;
-import android.database.sqlite.*;
-import android.widget.EditText;
 
 public class HomeScreen extends Activity {
 
@@ -74,7 +66,7 @@ public class HomeScreen extends Activity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-          AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+          //AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
           switch(item.getItemId()) {
               case R.id.delete:
             // remove stuff here

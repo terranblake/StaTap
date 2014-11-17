@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +29,7 @@ public class NewGameActivity extends Activity {
 		populateListViews();
 		registerClickCallback();
 		//Database TextField Initialization
-		EditText editName = (EditText)findViewById(R.id.editText1);
+		//EditText editName = (EditText)findViewById(R.id.editText1);
 		//Button btnConfirm = (Button)findViewById(R.id.button2);
 		SQLiteDatabase db = openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
 		db.execSQL("CREATE TABLE IF NOT EXISTS game(Game_Num INTEGER PRIMARY KEY AUTOINCREMENT, Home_Team_Num INTEGER, Away_Team_Num INTEGER, Date DATE);");

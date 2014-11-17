@@ -4,18 +4,15 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+//import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.*;
 
 public class CreateTeam extends Activity {
 	EditText editTeam;
@@ -30,9 +27,9 @@ public class CreateTeam extends Activity {
 		//End
 		//Database Text Box Initialization
 		db = new SqliteHelper(this.getApplicationContext());
-		Button create = (Button)findViewById(R.id.create);
+		//Button create = (Button)findViewById(R.id.create);
 		//ListViews
-		ListView lv = (ListView)findViewById(R.id.listView1);
+		//ListView lv = (ListView)findViewById(R.id.listView1);
 
 		populateListViews();
 		//DB
