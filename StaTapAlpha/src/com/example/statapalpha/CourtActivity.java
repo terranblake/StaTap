@@ -19,9 +19,8 @@ public class CourtActivity extends Activity {
 	int player = 0; // Player number for current play
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
+	int playNumber = 0;
 	
-	int playNumber = 0; // Number to use for play ID
-
 	// Populates arrays with player numbers
 	void getPlayers() {
 		
@@ -74,7 +73,9 @@ public class CourtActivity extends Activity {
 		String message = "Action: " + action;
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		
-		db.recordPlay(player, action, position);
+		
+		playNumber++;
+		db.recordPlay(player, action, position, playNumber);
 		Toast.makeText(CourtActivity.this, "Recorded to database", Toast.LENGTH_SHORT).show();
 	}
 	

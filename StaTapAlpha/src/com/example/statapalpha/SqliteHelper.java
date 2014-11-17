@@ -69,8 +69,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     
     // For updating player stats
-    public void recordPlay(int player, String action, CourtActivity.position position) {
-
+    public void recordPlay(int player, String action, CourtActivity.position position, int playNumber) {
+    	
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
     	
@@ -80,6 +80,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	values.put("action", action);
     	values.put("x_coord", position.x);
     	values.put("y_coord", position.y);
+    	values.put("stat_nbr", playNumber);
     	
     	// 3. insert
     	db.insert("stats", // table name
