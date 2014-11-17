@@ -84,16 +84,10 @@ public class CourtActivity extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 		if (event.getAction() == MotionEvent.ACTION_UP) {
 			position.x = (int)event.getX(0);
-			position.y = (int)event.getY(0);	
+			position.y = (int)event.getY(0);
+		    String message = "At: " + position.x + ", " + position.y;
+			Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		}
-
-	    String message = "At: " + position.x + ", " + position.y;
-		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
-
-	    switch (event.getAction()) {
-	        case MotionEvent.ACTION_DOWN:
-	        case MotionEvent.ACTION_UP:
-	    }
 	    
 	    return super.onTouchEvent(event);
 	}
