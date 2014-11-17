@@ -69,15 +69,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     
     // For updating player stats
-<<<<<<< HEAD
-   /* public void updatePlayer(CourtActivity.player player){
-=======
-<<<<<<< HEAD
-    public void updatePlayer(){
-=======
     public void recordPlay(int player, String action, CourtActivity.position position){
->>>>>>> origin/master
->>>>>>> origin/master
 
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
@@ -94,5 +86,4 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// 4. close
     	db.close(); 
     }
- */
 }
