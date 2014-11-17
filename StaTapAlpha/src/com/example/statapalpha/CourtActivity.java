@@ -88,18 +88,11 @@ public class CourtActivity extends Activity {
 
 	    String message = "At: " + position.x + ", " + position.y;
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
-<<<<<<< HEAD
+
 	    switch (event.getAction()) {
 	        case MotionEvent.ACTION_DOWN:
 	        case MotionEvent.ACTION_UP:
 	    }
-	    if(action == "Substitution")
-	    {
-	    	SubstitutionActivity;
-	    }
-	    //recordPlay(player, action, position);
-=======
->>>>>>> origin/master
 	    
 	    return super.onTouchEvent(event);
 	}
