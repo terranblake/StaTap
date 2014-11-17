@@ -26,7 +26,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE IF NOT EXISTS player(team_nbr NUMBER(02) UNIQUE, jersey_nbr NUMBER(02) UNIQUE, last_name VARCHAR(03), first_name VARCHAR(03));");
 		
 		// Create stats table
-		db.execSQL("CREATE TABLE IF NOT EXISTS stats(stat_nbr NUMBER(03), jersey_nbr NUMBER(02), team_nbr NUMBER(02), game_nbr NUMBER(03), half_nbr NUMBER(01), action VARCHAR2(3), x_coord NUMBER(03), y_coord NUMBER(03);");
+		db.execSQL("CREATE TABLE IF NOT EXISTS stats(stat_nbr NUMBER(03), jersey_nbr NUMBER(02), team_nbr NUMBER(02), game_nbr NUMBER(03), half_nbr NUMBER(01), action VARCHAR2(3), x_coord NUMBER(03), y_coord NUMBER(03));");
     }
     public Cursor getTeams() {
     	SQLiteDatabase db = this.getWritableDatabase();
@@ -69,20 +69,24 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     
     // For updating player stats
-    public void recordPlay(int player, String action, CourtActivity.position position){
+    public void recordPlay(int player, String action, CourtActivity.position position) {
 
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
     	
     	// 2. create ContentValues to add key "column"/value
     	ContentValues values = new ContentValues();
-    	//values.put(TEAM_NAMES, teamname.toString()); // get title 
-
+    	values.put("jersey_nbr", player); // get title 
+    	values.put("action", action);
+    	values.put("x_coord", position.x);
+    	values.put("y_coord", position.y);
+    	
     	// 3. insert
     	db.insert("stats", // table name
     	null, //nullColumnHack
     	values); // key/value -> keys = column names/ values = column values
-
+    	
+    	
     	// 4. close
     	db.close(); 
     }

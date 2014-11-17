@@ -6,15 +6,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import android.content.Context;
-import android.database.sqlite.*;
 import java.lang.Math;
 
 // Court Screen
 public class CourtActivity extends Activity {
 
 	// Opens database
-	SQLiteDatabase db; 
+	SqliteHelper db;
 	
 	int homePlayer[] = new int[25], awayPlayer[] = new int[25];
 	
@@ -23,162 +21,6 @@ public class CourtActivity extends Activity {
 	position position = new position(); // Position for current play
 	
 	int playNumber = 0; // Number to use for play ID
-	
-	/*
-	
-	// Arrays that will hold all the players for both teams
-	public player[] homePlayers = new player[25];
-	public player[] awayPlayers = new player[25];
-	
-	// Player class to declare all players as and store their info
-	// firstName, lastName, number, points, fouls, rebounds, assists,
-	// blocks, steals, turnovers, twoPointMade, twoPointMiss, 
-	// threePointMade, threePointMiss, freeThrowMade, freeThrowMiss
-	public class player {
-		private String firstName = new String();
-		private String lastName = new String();
-		private int number = 0;
-		private int points = 0;
-		private int fouls = 0;
-		private int rebounds = 0;
-		private int assists = 0;
-		private int blocks = 0;
-		private int steals = 0;
-		private int turnovers = 0;
-		private int twoPointMade = 0;
-		private int twoPointMiss = 0;
-		private int threePointMade = 0;
-		private int threePointMiss = 0;
-		private int freeThrowMade = 0;
-		private int freeThrowMiss = 0;
-		
-		public void setFirstName(String first) {
-			firstName = first;
-		}
-		
-		public void setLastName(String last) {
-			lastName = last;
-		}
-		
-		public void setNumber(int num) {
-			number = num;
-		}
-		
-		public void rebound() {
-			rebounds++;
-		}
-		
-		public void assist() {
-			assists++;
-		}
-		
-		public void block() {
-			blocks++;
-		}
-
-		
-		public void steal() {
-			steals++;
-		}
-		
-		public void turnover() {
-			turnovers++;
-		}
-		
-		public void foul() {
-			fouls++;
-		}
-		
-		public void twoPoint(int i) {
-			if (i==0) twoPointMiss++;
-			if (i==1) {
-				twoPointMade++;
-				points += 2;
-			}
-		}
-		
-		public void threePoint(int i) {
-			if (i==0) threePointMiss++;
-			if (i==1) {
-				threePointMade++;
-				points += 3;
-			}
-		}
-		
-		public void freeThrow(int i) {
-			if (i==0) freeThrowMiss++;
-			if (i==1) {
-				freeThrowMade++;
-				points++;
-			}
-		}
-		
-		public String getFirstName() {
-			return firstName;
-		}
-		
-		public String getLastName() {
-			return lastName;
-		}
-		
-		public int getNumber() {
-			return number;
-		}
-		
-		public int getPoints() {
-			return points;
-		}
-		
-		public int getFouls() {
-			return fouls;
-		}
-		
-		public int getRebounds() {
-			return rebounds;
-		}
-		
-		public int getAssists() {
-			return assists;
-		}
-		
-		public int getBlocks() {
-			return blocks;
-		}
-		
-		public int getSteals() {
-			return steals;
-		}
-		
-		public int getTurnovers() {
-			return turnovers;
-		}
-		
-		public int getTwoPointMade() {
-			return twoPointMade;
-		}
-		
-		public int getTwoPointMiss() {
-			return twoPointMiss;
-		}
-		
-		public int getThreePointMade() {
-			return threePointMade;
-		}
-		
-		public int getThreePointMiss() {
-			return threePointMiss;
-		}
-		
-		public int getFreeThrowMade() {
-			return freeThrowMade;
-		}
-		
-		public int getFreeThrowMiss() {
-			return freeThrowMiss;
-		}
-	}
-	
-	*/
 
 	// Populates arrays with player numbers
 	void getPlayers() {
@@ -232,7 +74,8 @@ public class CourtActivity extends Activity {
 		String message = "Action: " + action;
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		
-		SqliteHelper.recordPlay(player, action, position);
+		db.recordPlay(player, action, position);
+		Toast.makeText(CourtActivity.this, "Recorded to database", Toast.LENGTH_SHORT).show();
 	}
 	
 	// Gets tap position and saves it to 'position'
@@ -273,7 +116,7 @@ public class CourtActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_court);
-		db = openOrCreateDatabase("StaTap", Context.MODE_PRIVATE, null);
+		db = new SqliteHelper(this.getApplicationContext());
 	}
 
 }
