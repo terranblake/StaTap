@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 import java.lang.Math;
 
@@ -20,6 +21,7 @@ public class CourtActivity extends Activity {
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
 	int playNumber = 0;
+	private PopupMenu popupMenu;
 	
 	// Populates arrays with player numbers
 	void getPlayers() {
@@ -71,7 +73,9 @@ public class CourtActivity extends Activity {
 		}
 		
 		if (action == "SUB") {
+			popupMenu = new PopupMenu(this.getBaseContext(), v);
 			
+			popupMenu.show();
 		}
 			
 		String message = "Action: " + action;
