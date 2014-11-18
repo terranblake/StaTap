@@ -80,7 +80,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/undoPlay"
         android:onClick="redoPlay"
-        android:text="@string/redo" />
+        android:text="@string/playerStats" />
 
     <TextView
         android:id="@+id/ftText"
