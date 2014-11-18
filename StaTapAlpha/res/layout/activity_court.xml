@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" 
-    android:background="@color/white" >
+    android:background="@color/white"
+    tools:context="${relativePackage}.${activityClass}" xmlns:android1="http://schemas.android.com/apk/res/android">
 
     <Button
         android:id="@+id/editPlays"
@@ -11,8 +11,8 @@
         android:layout_height="75dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="@string/edit_plays"
-        android:onClick="editPlays" />
+        android:onClick="editPlays"
+        android:text="@string/edit_plays" />
 
     <Button
         android:id="@+id/undoPlay"
@@ -20,8 +20,8 @@
         android:layout_height="75dp"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/editPlays"
-        android:text="@string/undo"
-        android:onClick="undoPlay" />
+        android:onClick="undoPlay"
+        android:text="@string/undo" />
 
     <Button
         android:id="@+id/ftMissed"
@@ -29,8 +29,8 @@
         android:layout_height="85dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/miss"
-        android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/miss" />
 
     <Button
         android:id="@+id/ftMade"
@@ -38,8 +38,8 @@
         android:layout_height="85dp"
         android:layout_above="@+id/ftMissed"
         android:layout_alignParentRight="true"
-        android:text="@string/made"
-        android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/made" />
 
     <Button
         android:id="@+id/fgMade"
@@ -47,8 +47,8 @@
         android:layout_height="85dp"
         android:layout_above="@+id/fgMissed"
         android:layout_alignParentRight="true"
-        android:text="@string/made"
-        android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/made" />
 
     <Button
         android:id="@+id/fgMissed"
@@ -57,30 +57,30 @@
         android:layout_above="@+id/ftMade"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="52dp"
-        android:text="@string/miss"
-        android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/miss" />
 
     <TextView
         android:id="@+id/fgText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/fgMade"
-        android:layout_alignLeft="@+id/redoPlay"
-        android:layout_marginLeft="10dp"
+        android:layout_alignLeft="@+id/playerStats"
         android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:text="@string/field_goal"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="38sp" />
 
     <Button
-        android:id="@+id/redoPlay"
+        android:id="@+id/playerStats"
         android:layout_width="190dp"
         android:layout_height="75dp"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/undoPlay"
-        android:text="@string/redo"
-        android:onClick="redoPlay" />
+        android:onClick="redoPlay"
+        android:text="@string/redo" />
 
     <TextView
         android:id="@+id/ftText"
@@ -98,8 +98,8 @@
         android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/ftMade"
-        android:text="@string/foul"
-        android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/foul" />
 
     <Button
         android:id="@+id/steal"
@@ -107,8 +107,8 @@
         android:layout_height="80dp"
         android:layout_above="@+id/turnover"
         android:layout_alignParentLeft="true"
-        android:text="@string/steal"
-        android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/steal" />
 
     <Button
         android:id="@+id/block"
@@ -116,8 +116,8 @@
         android:layout_height="80dp"
         android:layout_above="@+id/steal"
         android:layout_alignParentLeft="true"
-        android:text="@string/block"
-        android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/block" />
 
     <Button
         android:id="@+id/assist"
@@ -125,8 +125,8 @@
         android:layout_height="80dp"
         android:layout_above="@+id/block"
         android:layout_alignParentLeft="true"
-        android:text="@string/assist"
-        android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/assist" />
 
     <Button
         android:id="@+id/rebound"
@@ -134,8 +134,8 @@
         android:layout_height="80dp"
         android:layout_above="@+id/assist"
         android:layout_alignParentLeft="true"
-        android:text="@string/rebound" 
-        android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/rebound" />
 
     <Button
         android:id="@+id/p1"
@@ -143,8 +143,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/rebound"
-        android:text="@string/p1"
-        android:onClick="setPlayer" />
+        android:onClick="setPlayer"
+        android:text="@string/p1" />
 
     <Button
         android:id="@+id/p2"
@@ -152,8 +152,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/p1"
-        android:text="@string/p2"
-         android:onClick="setPlayer" />
+        android:onClick="setPlayer"
+        android:text="@string/p2" />
 
     <Button
         android:id="@+id/p3"
@@ -161,8 +161,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/p2"
-        android:text="@string/p3"
-         android:onClick="setPlayer" />
+        android:onClick="setPlayer"
+        android:text="@string/p3" />
 
     <Button
         android:id="@+id/p4"
@@ -170,8 +170,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/p3"
-        android:text="@string/p4"
-        android:onClick="setPlayer" />
+        android:onClick="setPlayer"
+        android:text="@string/p4" />
 
     <Button
         android:id="@+id/p5"
@@ -179,8 +179,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/p4"
-        android:text="@string/p5"
-         android:onClick="setPlayer" />
+        android:onClick="setPlayer"
+        android:text="@string/p5" />
 
     <Button
         android:id="@+id/p10"
@@ -188,8 +188,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/editPlays"
-        android:text="@string/p10"
-         android:onClick="setPlayer" />
+        android:onClick="setPlayer"
+        android:text="@string/p10" />
 
     <Button
         android:id="@+id/p9"
@@ -197,8 +197,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/p10"
-        android:text="@string/p9"
-         android:onClick="setPlayer" />
+        android:onClick="setPlayer"
+        android:text="@string/p9" />
 
     <Button
         android:id="@+id/p8"
@@ -206,8 +206,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/p9"
-        android:text="@string/p8"
-         android:onClick="setPlayer" />
+        android:onClick="setPlayer"
+        android:text="@string/p8" />
 
     <Button
         android:id="@+id/p7"
@@ -215,8 +215,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/p8"
-        android:text="@string/p7"
-         android:onClick="setPlayer" />
+        android:onClick="setPlayer"
+        android:text="@string/p7" />
 
     <Button
         android:id="@+id/p6"
@@ -224,8 +224,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/p7"
-        android:text="@string/p6"
-         android:onClick="setPlayer" />
+        android:onClick="setPlayer"
+        android:text="@string/p6" />
 
     <Button
         android:id="@+id/sub"
@@ -233,8 +233,8 @@
         android:layout_height="80dp"
         android:layout_above="@+id/foul"
         android:layout_toLeftOf="@+id/p1"
-        android:text="@string/sub"
-         android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/sub" />
 
     <Button
         android:id="@+id/turnover"
@@ -242,8 +242,8 @@
         android:layout_height="80dp"
         android:layout_above="@+id/sub"
         android:layout_toLeftOf="@+id/p1"
-        android:text="@string/turnover"
-         android:onClick="setAction" />
+        android:onClick="setAction"
+        android:text="@string/turnover" />
 
     <TextView
         android:id="@+id/points"
@@ -282,7 +282,7 @@
         android:layout_marginRight="35dp"
         android:text="@string/p1f"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+
     <TextView
         android:id="@+id/p2p"
         android:layout_width="wrap_content"
@@ -302,7 +302,7 @@
         android:layout_marginRight="35dp"
         android:text="@string/p2f"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+
     <TextView
         android:id="@+id/p3p"
         android:layout_width="wrap_content"
@@ -322,7 +322,7 @@
         android:layout_marginRight="35dp"
         android:text="@string/p3f"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+
     <TextView
         android:id="@+id/p4p"
         android:layout_width="wrap_content"
@@ -342,7 +342,7 @@
         android:layout_marginRight="35dp"
         android:text="@string/p4f"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+
     <TextView
         android:id="@+id/p5p"
         android:layout_width="wrap_content"
@@ -362,7 +362,7 @@
         android:layout_marginRight="35dp"
         android:text="@string/p5f"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+
     <TextView
         android:id="@+id/p6p"
         android:layout_width="wrap_content"
@@ -382,7 +382,7 @@
         android:layout_marginRight="35dp"
         android:text="@string/p6f"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+
     <TextView
         android:id="@+id/p7p"
         android:layout_width="wrap_content"
@@ -402,7 +402,7 @@
         android:layout_marginRight="35dp"
         android:text="@string/p7f"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+
     <TextView
         android:id="@+id/p8p"
         android:layout_width="wrap_content"
@@ -422,7 +422,7 @@
         android:layout_marginRight="35dp"
         android:text="@string/p8f"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+
     <TextView
         android:id="@+id/p9p"
         android:layout_width="wrap_content"
@@ -442,7 +442,7 @@
         android:layout_marginRight="35dp"
         android:text="@string/p9f"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+
     <TextView
         android:id="@+id/p10p"
         android:layout_width="wrap_content"

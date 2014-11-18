@@ -74,5 +74,6 @@
     <string name="teamname">Team Name:</string>
     <string name="title_activity_manual_">Manual_Activity</string>
     <string name="title_activity_substitution">SubstitutionActivity</string>
+    <string name="playerStats">Player Stats</string>
 
 </resources>

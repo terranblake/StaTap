@@ -69,6 +69,10 @@ public class CourtActivity extends Activity {
 		case R.id.foul: action = "FC";
 		break;
 		}
+		
+		if (action == "SUB") {
+			
+		}
 			
 		String message = "Action: " + action;
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
