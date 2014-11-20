@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#00BFFF"
+    android:background="@drawable/stockbackground"
     tools:context="com.example.statapalpha.MainActivity" >
 
     <TextView
@@ -62,14 +62,13 @@
     <ListView
         android:id="@+id/homeTeamLV"
         android:layout_width="match_parent"
-        android:background="#1E90FF"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/homeTeamTV"
         android:layout_alignParentBottom="true"
         android:layout_alignTop="@+id/linearLayout1"
         android:layout_toLeftOf="@+id/linearLayout1"
-        android:textSize="40sp"
-         >
+        android:background="#40969696"
+        android:textSize="40sp" >
 
     </ListView>
 
@@ -79,9 +78,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/homeTeamTV"
-        android:layout_marginRight="1dp"
+        android:layout_marginRight="40dp"
         android:onClick="manual"
-        android:src="@drawable/helpbutton" 
-        android:contentDescription="" />
+        android:src="@drawable/questionmark" />
 
 </RelativeLayout>
