@@ -46,28 +46,7 @@
         android:textSize="70sp"
         android:textStyle="bold" />
 
-<<<<<<< HEAD
-    <ListView
-        android:id="@+id/listView2"
-        android:layout_width="200dp"
-        android:layout_height="400dp"
-        android:layout_alignLeft="@+id/TextView01"
-        android:layout_below="@+id/TextView01"
-        android:background="#40969696" >
-    </ListView>
-
-    <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/linearLayout1"
-        android:layout_marginLeft="47dp"
-        android:layout_toRightOf="@+id/linearLayout1"
-        android:text="@string/team2"
-        android:textSize="45sp" />
-
-=======
->>>>>>> origin/master
+    
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
@@ -110,19 +89,6 @@
             android:textColor="#FFFF00"
             android:textSize="30sp" />
     </LinearLayout>
-<<<<<<< HEAD
-    
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView3"
-        android:layout_alignTop="@+id/listView2"
-        android:background="#40969696"
-        android:text="@string/team1"
-        android:textSize="40sp" />
-=======
->>>>>>> origin/master
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -133,25 +99,12 @@
         android:layout_toRightOf="@+id/linearLayout1"
         android:orientation="vertical" >
 
-<<<<<<< HEAD
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="33dp"
-        android:background="#40969696"
-        android:text="@string/team2"
-        android:textSize="40sp" />
-=======
         <TextView
             android:id="@+id/TextView01"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/team2"
             android:textSize="45sp" />
->>>>>>> origin/master
 
         <ListView
             android:id="@+id/listView2"

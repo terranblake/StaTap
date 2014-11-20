@@ -1,0 +1,234 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.statap_playerhalftime.MainActivity" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+        <TextView
+            android:id="@+id/txtPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player #"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="P"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtFreeThrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:text="FT"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtFieldGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:text="FG"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtAssists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:text="A"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtRebounds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:text="RB"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtSteals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:text="S"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtTurnovers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:text="T"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtFouls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:text="F"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Back" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btnBack"
+        android:layout_alignTop="@+id/linearLayout1"
+        android:layout_marginRight="132dp"
+        android:layout_marginTop="86dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtPO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="P = Points"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/txtFT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FT = Freethrows"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/txtFG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FG = Field Goals"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/txtA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A = Assists"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/txtR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RB = Rebounds"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/txtS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S = Steals"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/txtT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T = Turnovers"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/txtF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="F = Fouls"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp" >
+
+        <TextView
+            android:id="@+id/txtPlayerNumTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/txtPointsTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="54dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/txtFreethrowsTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="34dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/txtFieldGoalTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/txtAssistsTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="34dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/txtReboundsTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/txtStealsTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/txtTurnoversTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/txtFoulsTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0" />
+    </LinearLayout>
+
+</RelativeLayout>
