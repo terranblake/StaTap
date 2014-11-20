@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BFFF"
+    android:background="@drawable/teambackground"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -31,7 +31,7 @@
             android:id="@+id/listView1"
             android:layout_width="500dp"
             android:layout_height="400dp"
-            android:background="#1E90FF" >
+            android:background="#40969696" >
         </ListView>
 
         <TextView
@@ -60,7 +60,7 @@
             android:text="@string/teamname"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="20sp"
-            android:background="#1E90FF" />
+            android:background="#40969696" />
 
         <EditText
             android:id="@+id/editTeam"
