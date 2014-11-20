@@ -2,6 +2,7 @@ package com.example.statapalpha;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -113,6 +114,12 @@ public class CourtActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_court);
 		db = new SqliteHelper(this.getApplicationContext());
+		
+		// Gets players
+		getPlayers();
+		
+		for(int i=1;i<25;i++) {
+			popupMenu.getMenu().add(Menu.NONE, i, Menu.NONE, Integer.toString(homePlayer[i]));
+		}
 	}
-
 }
