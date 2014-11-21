@@ -46,29 +46,30 @@ public class CourtActivity extends Activity {
 	public void setAction(View v) {
 		Button b = (Button)v;
 		String toastAction = "";
+		String message = "";
 		
 		switch(b.getId()) {
 		case R.id.fgMade: action = "F" + goal(position) + "H"; toastAction = "made " + goal(position) + " point shot";
 		break;
-		case R.id.fgMissed: action = "F" + goal(position) + "M";
+		case R.id.fgMissed: action = "F" + goal(position) + "M"; toastAction = "missed " + goal(position) + " point shot";
 		break;
-		case R.id.ftMade: action = "FTH";
+		case R.id.ftMade: action = "FTH"; toastAction = "made freethrow";
 		break;
-		case R.id.ftMissed: action = "FTM";
+		case R.id.ftMissed: action = "FTM"; toastAction = "missed freethrow";
 		break;
-		case R.id.rebound: action = "RB";
+		case R.id.rebound: action = "RB"; toastAction = "rebound";
 		break;
-		case R.id.assist: action = "AST";
+		case R.id.assist: action = "AST"; toastAction = "assist";
 		break;
-		case R.id.block: action = "BL";
+		case R.id.block: action = "BL"; toastAction = "block";
 		break;
-		case R.id.steal: action = "STL";
+		case R.id.steal: action = "STL"; toastAction = "steal";
 		break;
-		case R.id.turnover: action = "TO";
+		case R.id.turnover: action = "TO"; toastAction = "turnover";
 		break;
-		case R.id.sub: action = "SUB";
+		case R.id.sub: action = "SUB"; toastAction = "substitution";
 		break;
-		case R.id.foul: action = "FC";
+		case R.id.foul: action = "FC"; toastAction = "commited foul";
 		break;
 		}
 		
@@ -77,10 +78,13 @@ public class CourtActivity extends Activity {
 			
 			popupMenu.show();
 		}
+		else {
+			message = "Player " + Integer.toString(player) + " " + toastAction + " at ("  + Integer.toString(position.x) + ", " + Integer.toString(position.y) + ")";
+		}
 		
 		playNumber++;
 		db.recordPlay(player, action, position, playNumber);
-		Toast.makeText(CourtActivity.this, "Player " + Integer.toString(player) + " " + toastAction + " at ("  + Integer.toString(position.x) + ", " + Integer.toString(position.y) + ")", Toast.LENGTH_SHORT).show();
+		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 	
 	// Gets tap position and saves it to 'position'
