@@ -116,10 +116,12 @@ public class CourtActivity extends Activity {
 		db = new SqliteHelper(this.getApplicationContext());
 		
 		// Gets players
+		/*
 		getPlayers();
 		
 		for(int i=1;i<25;i++) {
 			popupMenu.getMenu().add(Menu.NONE, i, Menu.NONE, Integer.toString(homePlayer[i]));
 		}
+		*/
 	}
 }
