@@ -101,6 +101,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/ftMade"
         android:onClick="setAction"
+        android:color= "#FF0079FF"
         android:text="@string/foul" />
 
     <Button
@@ -137,9 +138,7 @@
         android:layout_above="@+id/assist"
         android:layout_alignParentLeft="true"
         android:onClick="setAction"
-        android:text="@string/rebound"
-        android1:background="@color/white"
-         />
+        android:text="@string/rebound" />
 
     <Button
         android:id="@+id/p1"
