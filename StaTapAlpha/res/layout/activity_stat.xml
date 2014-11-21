@@ -81,7 +81,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@id/layoutContainer"
+        android:id="@+id/layoutContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -110,7 +110,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@id/layoutPoints"
+            android:id="@+id/layoutPoints"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
@@ -152,7 +152,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@id/layoutFG"
+            android:id="@+id/layoutFG"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical" >
@@ -172,7 +172,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@id/layoutAssists"
+            android:id="@+id/layoutAssists"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical" >
@@ -192,7 +192,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@id/layoutRebounds"
+            android:id="@+id/layoutRebounds"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical" >
@@ -212,7 +212,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@id/layoutSteals"
+            android:id="@+id/layoutSteals"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical" >

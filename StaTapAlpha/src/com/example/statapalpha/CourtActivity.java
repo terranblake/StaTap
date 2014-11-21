@@ -104,7 +104,7 @@ public class CourtActivity extends Activity {
 	int goal(position position) {
 		int points=3;
 		
-		if ((Math.sqrt(Math.pow((position.x - 1085), 2) + Math.pow((position.y - 455), 2)) < 273) || (Math.sqrt(Math.pow((position.x - 194), 2) + Math.pow((position.y - 455), 2)) < 273)) points = 2;
+		if ((Math.sqrt(Math.pow((position.x - 1082), 2) + Math.pow((position.y - 453), 2)) < 270) || (Math.sqrt(Math.pow((position.x - 193), 2) + Math.pow((position.y - 453), 2)) < 270)) points = 2;
 		
 		return points;
 	}
