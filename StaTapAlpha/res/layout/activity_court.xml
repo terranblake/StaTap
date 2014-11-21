@@ -138,12 +138,8 @@
         android:layout_above="@+id/assist"
         android:layout_alignParentLeft="true"
         android:onClick="setAction"
-<<<<<<< HEAD
         android:text="@string/rebound" />
-=======
-        android:text="@string/rebound"
-         />
->>>>>>> origin/master
+
 
     <Button
         android:id="@+id/p1"
