@@ -138,7 +138,6 @@
         android:layout_alignParentLeft="true"
         android:onClick="setAction"
         android:text="@string/rebound"
-        android1:background="@color/white"
          />
 
     <Button
