@@ -39,8 +39,6 @@ public class CourtActivity extends Activity {
 	public void setPlayer(View v) {
 		Button b = (Button)v;
 		player = Integer.parseInt(b.getText().toString());
-		String message = "Player: " + Integer.toString(player);
-		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 	
 	// Sets string Action to whatever action the user taps
@@ -78,14 +76,10 @@ public class CourtActivity extends Activity {
 			
 			popupMenu.show();
 		}
-			
-		String message = "Action: " + action;
-		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
-		
 		
 		playNumber++;
 		db.recordPlay(player, action, position, playNumber);
-		Toast.makeText(CourtActivity.this, "Recorded to database", Toast.LENGTH_SHORT).show();
+		Toast.makeText(CourtActivity.this, "Player " + Integer.toString(player) + " did " + action + " at ("  + Integer.toString(position.x) + ", " + Integer.toString(position.y) + ")", Toast.LENGTH_SHORT).show();
 	}
 	
 	// Gets tap position and saves it to 'position'
@@ -94,8 +88,6 @@ public class CourtActivity extends Activity {
 		if (event.getAction() == MotionEvent.ACTION_UP) {
 			position.x = (int)event.getX(0);
 			position.y = (int)event.getY(0);
-		    String message = "At: " + position.x + ", " + position.y;
-			Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		}
 	    
 	    return super.onTouchEvent(event);
