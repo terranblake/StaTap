@@ -45,9 +45,10 @@ public class CourtActivity extends Activity {
 	// then records play to database.
 	public void setAction(View v) {
 		Button b = (Button)v;
+		String toastAction = "";
 		
 		switch(b.getId()) {
-		case R.id.fgMade: action = "F" + goal(position) + "H";
+		case R.id.fgMade: action = "F" + goal(position) + "H"; toastAction = "made " + goal(position) + " point shot";
 		break;
 		case R.id.fgMissed: action = "F" + goal(position) + "M";
 		break;
@@ -79,7 +80,7 @@ public class CourtActivity extends Activity {
 		
 		playNumber++;
 		db.recordPlay(player, action, position, playNumber);
-		Toast.makeText(CourtActivity.this, "Player " + Integer.toString(player) + " did " + action + " at ("  + Integer.toString(position.x) + ", " + Integer.toString(position.y) + ")", Toast.LENGTH_SHORT).show();
+		Toast.makeText(CourtActivity.this, "Player " + Integer.toString(player) + " " + toastAction + " at ("  + Integer.toString(position.x) + ", " + Integer.toString(position.y) + ")", Toast.LENGTH_SHORT).show();
 	}
 	
 	// Gets tap position and saves it to 'position'
