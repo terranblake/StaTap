@@ -46,6 +46,10 @@
             android:name=".StatActivity"
             android:label="@string/title_activity_stat" >
         </activity>
+        <activity
+            android:name=".EditTeam"
+            android:label="@string/title_activity_edit_team" >
+        </activity>
     </application>
 
 </manifest>

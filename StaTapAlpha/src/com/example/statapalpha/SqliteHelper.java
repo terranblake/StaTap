@@ -23,10 +23,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE IF NOT EXISTS teamlist(id INTEGER PRIMARY KEY AUTOINCREMENT,Team_Names TEXT UNIQUE);");
 
 		// Create player table
-		db.execSQL("CREATE TABLE IF NOT EXISTS player(team_nbr NUMBER(02) UNIQUE, jersey_nbr NUMBER(02) UNIQUE, last_name VARCHAR(03), first_name VARCHAR(03));");
+		db.execSQL("CREATE TABLE IF NOT EXISTS player(team_nbr INTEGER, jersey_nbr INTEGER UNIQUE, last_name TEXT, first_name TEXT);");
+		
+		//Create Games Table
+		db.execSQL("CREATE TABLE IF NOT EXISTS games(id INTEGER PRIMARY KEY AUTOINCREMENT, team1 INTEGER, team2 INTEGER, game_name TEXT)");
 		
 		// Create stats table
-		db.execSQL("CREATE TABLE IF NOT EXISTS stats(stat_nbr NUMBER(03), jersey_nbr NUMBER(02), team_nbr NUMBER(02), game_nbr NUMBER(03), half_nbr NUMBER(01), action VARCHAR2(3), x_coord NUMBER(03), y_coord NUMBER(03));");
+		db.execSQL("CREATE TABLE IF NOT EXISTS stats(play_id INTEGER PRIMARY KEY AUTOINCREMENT, game_id INTEGER, jersey_nbr INTEGER, team_nbr INTEGER, " +
+				"half_nbr INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER);");
     }
     public Cursor getTeams() {
     	SQLiteDatabase db = this.getWritableDatabase();

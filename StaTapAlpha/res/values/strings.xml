@@ -76,5 +76,8 @@
     <string name="title_activity_substitution">SubstitutionActivity</string>
     <string name="playerStats">Player Stats</string>
     <string name="title_activity_stat">StatActivity</string>
+    <string name="title_activity_edit_team">EditTeam</string>
+    <string name="dteamname">Team Name</string>
+    <string name="playerHelp">Tap a Player to edit it</string>
 
 </resources>
