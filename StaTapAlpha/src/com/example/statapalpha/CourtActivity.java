@@ -71,8 +71,8 @@ public class CourtActivity extends Activity {
 		break;
 		case R.id.foul: action = "FC"; toastAction = "commited foul";
 		break;
+		case R.id.undoPlay: db.undoPlay(Integer.toString(playNumber));
 		}
-		
 		if (action == "SUB") {
 			popupMenu = new PopupMenu(this.getBaseContext(), v);
 			

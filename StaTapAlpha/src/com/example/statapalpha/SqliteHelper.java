@@ -130,4 +130,15 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// 4. close
     	db.close(); 
     }
+    public void undoPlay(String number)
+    {
+    	// 1. get reference to writable DB
+    	SQLiteDatabase db = this.getWritableDatabase();
+
+    	//db.delete("stats", number, whereArgs)
+    	db.delete("stats", number, null);
+    	
+    	db.close();
+    	
+    }
 }
