@@ -49,6 +49,11 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	return db.query("teamlist",projection, null, null, null, null, null, null);
     	
     }
+    public Cursor getTeamId(String teamname) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	
+    	return db.rawQuery("SELECT id FROM teamlist WHERE Team_Names='"+teamname+"'", null);
+    }
     public void addPlayer(Integer teamnum, Integer jerseynum, String firstname, String lastname){
 
     	// 1. get reference to writable DB

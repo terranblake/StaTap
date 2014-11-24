@@ -8,10 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 //import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 import android.database.Cursor;
 
 public class CreateTeam extends Activity {
@@ -28,10 +31,11 @@ public class CreateTeam extends Activity {
 		//Database Text Box Initialization
 		db = new SqliteHelper(this.getApplicationContext());
 		//Button create = (Button)findViewById(R.id.create);
-		//ListViews
+
 		//ListView lv = (ListView)findViewById(R.id.listView1);
 
 		populateListViews();
+		registerClickCallback();
 		//DB
 	}
 	
@@ -57,7 +61,35 @@ public class CreateTeam extends Activity {
 	 * ListViews
 	 * 
 	 */
-
+    private void registerClickCallback() {
+		// TODO Auto-generated method stub
+    	//This uses the List View and adds a listener to check for clicks/taps on different
+    	//list view items. It will then display a message telling you which one you have selected.
+    	ListView list = (ListView) findViewById(R.id.listView1);
+    	
+    	//This Will check if there is a click on a ListView item
+    	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    		
+			@Override
+			public void onItemClick(AdapterView<?> parent, View viewClicked,
+					int position, long id) {
+					
+					TextView textView = (TextView) viewClicked; 
+					//Toast message
+					String teamname = textView.getText().toString();
+					Cursor teamid = db.getTeamId(teamname);
+					
+					//editTeam(teamid, null);
+					String message = "You Clicked # " + (position + 1) + ", which is string: " + textView.getText().toString();
+					Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
+			}
+		});
+   	}
+public void editTeam(Integer teamid, View view) {
+	Intent intent = new Intent(this, EditTeam.class);
+	intent.putExtra("TEAM_ID", teamid);
+	startActivity(intent);
+    }
 	private void populateListViews() {
 		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS
     	//Create list of items
