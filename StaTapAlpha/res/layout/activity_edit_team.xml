@@ -9,23 +9,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.statapalpha.EditTeam" >
 
-    <TextView
-        android:id="@+id/teamName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:textSize="75sp"
-        android:textColor="#0066FF"
-        android:text="@string/dteamname" />
-
     <LinearLayout
         android:id="@+id/layoutPlayers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/teamName"
-        android:layout_below="@+id/teamName"
         android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/teamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dteamname"
+            android:textColor="#0066FF"
+            android:textSize="75sp" />
 
         <ListView
             android:id="@+id/listViewPlayers"
@@ -40,7 +36,98 @@
             android:text="@string/playerHelp"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
-
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutInputs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/layoutPlayers"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="77dp"
+        android:layout_toRightOf="@+id/layoutPlayers"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/layoutJersey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textJersey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/jerseynum"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="2" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutFirstname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/firstname"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutLastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textLast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/lastname"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonConfirm"
+        android:layout_alignBottom="@+id/layoutPlayers"
+        android:layout_alignRight="@+id/layoutInputs"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
+        android:text="@string/addplayer" />
 
 </RelativeLayout>
