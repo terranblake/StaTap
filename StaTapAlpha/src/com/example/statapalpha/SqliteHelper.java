@@ -13,7 +13,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "StaTap";
     private static final String TEAM_NAMES = "Team_Names";
-    private static final String TEAM_NUM = "Team_Nbr";
     private static final String JERSEY_NUM = "Jersey_nbr";
     private static final String LAST_NAME = "last_name";
     private static final String FIRST_NAME = "first_name";
@@ -23,9 +22,10 @@ public class SqliteHelper extends SQLiteOpenHelper {
  
     @Override
     public void onCreate(SQLiteDatabase db) {
-    	// Create Team Table
-		db.execSQL("CREATE TABLE IF NOT EXISTS teamlist(id INTEGER PRIMARY KEY AUTOINCREMENT,Team_Names TEXT UNIQUE);");
-
+    	// Create Teamlist Table
+		db.execSQL("CREATE TABLE IF NOT EXISTS teams3(id INTEGER PRIMARY KEY AUTOINCREMENT,Team_Names TEXT UNIQUE);");
+		
+		// Create Team Table
 		// Create player table
 		db.execSQL("CREATE TABLE IF NOT EXISTS player(Team_nbr INTEGER, Jersey_nbr INTEGER UNIQUE PRIMARY KEY, first_name TEXT, last_name TEXT);");
 		
@@ -39,35 +39,29 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     public Cursor getTeams() {
     	SQLiteDatabase db = this.getWritableDatabase();
+    	db.execSQL("CREATE TABLE IF NOT EXISTS teams3(id INTEGER PRIMARY KEY AUTOINCREMENT,Team_Names TEXT UNIQUE);");
     	String[] projection = { "Team_Names" };
-    	return db.query("teamlist",projection, null, null, null, null, null, null);
+    	return db.query("teams3",projection, null, null, null, null, null, null);
     	
     }
     public Cursor getPlayers() {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	String[] projection = { "Team_Names" };
-    	return db.query("teamlist",projection, null, null, null, null, null, null);
+    	return db.rawQuery("SELECT ",null);
     	
     }
-    public Cursor getTeamId(String teamname) {
-    	SQLiteDatabase db = this.getWritableDatabase();
-    	
-    	return db.rawQuery("SELECT id FROM teamlist WHERE Team_Names='"+teamname+"'", null);
-    }
-    public void addPlayer(Integer teamnum, Integer jerseynum, String firstname, String lastname){
+    public void addPlayer(String teamname, Integer jerseynum, String firstname, String lastname){
 
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
     	
     	// 2. create ContentValues to add key "column"/value
     	ContentValues values = new ContentValues();
-    	values.put(TEAM_NUM, teamnum);
     	values.put(JERSEY_NUM, jerseynum);
-    	values.put(FIRST_NAME, firstname);
+    	values.put(FIRST_NAME, firstname.toString());
     	values.put(LAST_NAME, lastname.toString()); // get title 
 
     	// 3. insert
-    	db.insert("player", // table name
+    	db.insert(teamname, // table name
     	null, //nullColumnHack
     	values); // key/value -> keys = column names/ values = column values
 
@@ -82,12 +76,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// 2. create ContentValues to add key "column"/value
     	ContentValues values = new ContentValues();
     	values.put(TEAM_NAMES, teamname.toString()); // get title 
-
+    	String teamname2;
+    	teamname2 = teamname.replaceAll(" ", "_").toLowerCase();
+    	db.execSQL("CREATE TABLE IF NOT EXISTS "+teamname2+"(jersey_num INTEGER PRIMARY KEY UNIQUE, first_name TEXT, last_name TEXT)");
     	// 3. insert
-    	db.insert("teamlist", // table name
+    	db.insert("teams3", // table name
     	null, //nullColumnHack
     	values); // key/value -> keys = column names/ values = column values
-
+    	
     	// 4. close
     	db.close(); 
     }

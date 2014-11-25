@@ -77,18 +77,14 @@ public class CreateTeam extends Activity {
 					TextView textView = (TextView) viewClicked; 
 					//Toast message
 					String teamname = textView.getText().toString();
-					Cursor teamid = db.getTeamId(teamname);
-					
-					//editTeam(teamid, null);
-					String message = "You Clicked # " + (position + 1) + ", which is string: " + textView.getText().toString();
-					Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
+					editTeam(teamname, null);
 			}
 		});
    	}
-public void editTeam(Integer teamid, View view) {
-	Intent intent = new Intent(this, EditTeam.class);
-	intent.putExtra("TEAM_ID", teamid);
-	startActivity(intent);
+    public void editTeam(String teamname, View view) {
+    	Intent intent = new Intent(this, EditTeam.class);
+    	intent.putExtra("TEAM_NAME", teamname);
+    	startActivity(intent);
     }
 	private void populateListViews() {
 		// THIS HERE WILL POPULATE BOTH TEAM LIST VIEWS

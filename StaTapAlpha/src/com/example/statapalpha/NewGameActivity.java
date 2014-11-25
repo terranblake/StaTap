@@ -32,7 +32,7 @@ public class NewGameActivity extends Activity {
 		//EditText editName = (EditText)findViewById(R.id.editText1);
 		//Button btnConfirm = (Button)findViewById(R.id.button2);
 		SQLiteDatabase db = openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
-		db.execSQL("CREATE TABLE IF NOT EXISTS game(Game_Num INTEGER PRIMARY KEY AUTOINCREMENT, Home_Team_Num INTEGER, Away_Team_Num INTEGER, Date DATE);");
+		
 	}
 
 	/*

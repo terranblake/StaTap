@@ -1,16 +1,27 @@
 package com.example.statapalpha;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class EditTeam extends Activity {
-
+	String teamname;
+	SqliteHelper db;
+	TextView tname;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_team);
+		Intent mIntent = getIntent();
+		teamname = mIntent.getStringExtra("TEAM_NAME");
+		db = new SqliteHelper(this.getApplicationContext());
+		tname = (TextView)findViewById(R.id.teamName);
+		tname.setText(teamname);
 	}
 
 	@Override
