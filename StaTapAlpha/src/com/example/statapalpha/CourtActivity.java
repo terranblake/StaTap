@@ -71,7 +71,6 @@ public class CourtActivity extends Activity {
 		break;
 		case R.id.foul: action = "FC"; toastAction = "commited foul";
 		break;
-		case R.id.undoPlay: db.undoPlay(Integer.toString(playNumber));
 		}
 		if (action == "SUB") {
 			popupMenu = new PopupMenu(this.getBaseContext(), v);
@@ -104,6 +103,10 @@ public class CourtActivity extends Activity {
 		if ((Math.sqrt(Math.pow((position.x - 1082), 2) + Math.pow((position.y - 453), 2)) < 270) || (Math.sqrt(Math.pow((position.x - 193), 2) + Math.pow((position.y - 453), 2)) < 270)) points = 2;
 		
 		return points;
+	}
+	
+	void undoPlay() {
+		db.undoPlay(Integer.toString(playNumber));
 	}
 	
 	@Override
