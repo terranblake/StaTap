@@ -72,6 +72,7 @@ public class CourtActivity extends Activity {
 		case R.id.foul: action = "FC"; toastAction = "commited foul";
 		break;
 		}
+		
 		if (action == "SUB") {
 			popupMenu = new PopupMenu(this.getBaseContext(), v);
 			
