@@ -10,21 +10,35 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class EditTeam extends Activity {
 	String teamname;
 	SqliteHelper db;
 	TextView tname;
+	EditText editTextJersey;
+	EditText editTextFirst;
+	EditText editTextLast;
+	String teamname2;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_team);
+		
+    	
 		// All this random crap here just to set the Team Name
+		editTextJersey = (EditText)findViewById(R.id.editTextJersey);
+		editTextFirst = (EditText)findViewById(R.id.editTextFirst);
+		editTextLast = (EditText)findViewById(R.id.editTextLast);
 		Intent mIntent = getIntent();
 		teamname = mIntent.getStringExtra("TEAM_NAME");
+		teamname2 = teamname.replaceAll(" ", "_").toLowerCase();
 		db = new SqliteHelper(this.getApplicationContext());
 		tname = (TextView)findViewById(R.id.teamName);
 		tname.setText(teamname);
@@ -34,8 +48,6 @@ public class EditTeam extends Activity {
 
 	private void populateListViews() {
 		
-		String teamname2;
-    	teamname2 = teamname.replaceAll(" ", "_").toLowerCase();
 		Cursor cursor = db.getPlayerFNames(teamname2);
 		
 		ArrayList<String> values = new ArrayList<String>();
@@ -56,6 +68,31 @@ public class EditTeam extends Activity {
     	//Configure the List View
     	ListView t1list = (ListView) findViewById(R.id.listViewPlayers);
     	t1list.setAdapter(t1adapter);
+	}
+	
+	public void addPlayer(View view) {
+		if(editTextJersey.getText().toString().trim().length()==0) {
+			String errormessage = "Error: Jersey Number cannot be blank";
+			Toast.makeText(EditTeam.this, errormessage, Toast.LENGTH_SHORT).show();
+		      return;
+		}
+		if(editTextFirst.getText().toString().trim().length()==0) {
+			String errormessage = "Error: First Name cannot be blank";
+			Toast.makeText(EditTeam.this, errormessage, Toast.LENGTH_SHORT).show();
+		      return;
+		}
+		if(editTextLast.getText().toString().trim().length()==0) {
+			String errormessage = "Error: Last Name cannot be blank";
+			Toast.makeText(EditTeam.this, errormessage, Toast.LENGTH_SHORT).show();
+		      return;
+		}
+		
+		Integer Jersey_Num = Integer.parseInt(editTextJersey.getText().toString());
+		String First_Name = editTextFirst.getText().toString();
+		String Last_Name = editTextLast.getText().toString();
+		db.addPlayer(teamname2, Jersey_Num, First_Name, Last_Name);
+		populateListViews();
+		
 	}
 	
 	@Override

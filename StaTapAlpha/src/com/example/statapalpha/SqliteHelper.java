@@ -13,7 +13,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "StaTap";
     private static final String TEAM_NAMES = "Team_Names";
-    private static final String JERSEY_NUM = "Jersey_nbr";
+    private static final String JERSEY_NUM = "Jersey_num";
     private static final String LAST_NAME = "last_name";
     private static final String FIRST_NAME = "first_name";
     public SqliteHelper(Context context) {
@@ -25,17 +25,13 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// Create Teamlist Table
 		db.execSQL("CREATE TABLE IF NOT EXISTS teams3(id INTEGER PRIMARY KEY AUTOINCREMENT,Team_Names TEXT UNIQUE);");
 		
-		// Create Team Table
-		// Create player table
-		db.execSQL("CREATE TABLE IF NOT EXISTS player(Team_nbr INTEGER, Jersey_nbr INTEGER UNIQUE PRIMARY KEY, first_name TEXT, last_name TEXT);");
-		
 		
 		//Create Games Table
 		db.execSQL("CREATE TABLE IF NOT EXISTS games(id INTEGER PRIMARY KEY AUTOINCREMENT, team1 INTEGER, team2 INTEGER, game_name TEXT)");
 		
 		// Create stats table
-		db.execSQL("CREATE TABLE IF NOT EXISTS stats(play_id INTEGER PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_nbr INTEGER, team_nbr INTEGER, " +
-				"half_nbr INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER);");
+		db.execSQL("CREATE TABLE IF NOT EXISTS stats(play_id INTEGER PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_num INTEGER, " +
+				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER);");
     }
     public Cursor getTeams() {
     	SQLiteDatabase db = this.getWritableDatabase();
@@ -98,7 +94,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public Cursor getPlayerNumber() {
     	
     	SQLiteDatabase db = this.getWritableDatabase();
-    	String[] projection = { "stat_nbr" };
+    	String[] projection = { "stat_num" };
     	return db.query("player",projection, null, null, null, null, null, null);
     }
     
@@ -110,11 +106,11 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	
     	// 2. create ContentValues to add key "column"/value
     	ContentValues values = new ContentValues();
-    	values.put("jersey_nbr", player); // get title 
+    	values.put("jersey_num", player); // get title 
     	values.put("action", action);
     	values.put("x_coord", position.x);
     	values.put("y_coord", position.y);
-    	values.put("stat_nbr", playNumber);
+    	values.put("stat_num", playNumber);
     	
     	// 3. insert
     	db.insert("stats", // table name
