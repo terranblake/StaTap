@@ -104,7 +104,7 @@ public class CreateTeam extends Activity {
     	//Build Adapter
     	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
     			this,					// Context
-    			R.layout.teamlistviews,		// Layout to use
+    			R.layout.teamlistviews,	// Layout to use
     			values);				// Items to be displayed		
     	//Configure the List View
     	ListView t1list = (ListView) findViewById(R.id.listView1);

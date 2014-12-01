@@ -39,14 +39,13 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     public Cursor getTeams() {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	db.execSQL("CREATE TABLE IF NOT EXISTS teams3(id INTEGER PRIMARY KEY AUTOINCREMENT,Team_Names TEXT UNIQUE);");
     	String[] projection = { "Team_Names" };
     	return db.query("teams3",projection, null, null, null, null, null, null);
-    	
     }
-    public Cursor getPlayers() {
+    public Cursor getPlayerFNames(String teamname) {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	return db.rawQuery("SELECT ",null);
+    	String[] projection = { "first_name" };
+    	return db.query(teamname,projection, null, null, null, null, null, null);
     	
     }
     public void addPlayer(String teamname, Integer jerseynum, String firstname, String lastname){
