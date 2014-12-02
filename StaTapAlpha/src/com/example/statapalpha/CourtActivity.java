@@ -3,30 +3,61 @@ package com.example.statapalpha;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.Toast;
 import java.lang.Math;
+import java.util.ArrayList;
 
 // Court Screen
-public class CourtActivity extends Activity {
+public class CourtActivity extends Activity implements OnMenuItemClickListener{
 
 	// Opens database
 	SqliteHelper db;
 	
-	int homePlayer[] = new int[25], awayPlayer[] = new int[25];
+	ArrayList<String> homePlayersIn = new ArrayList<String>();
+	ArrayList<String> awayPlayersIn = new ArrayList<String>();
+	ArrayList<String> homePlayersBench = new ArrayList<String>();
+	ArrayList<String> awayPlayersBench = new ArrayList<String>();
 	
-	int player = 0; // Player number for current play
+	String player = "0"; // Player number for current play
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
 	int playNumber = 0;
 	private PopupMenu popupMenu;
+	boolean isHome = false;
 	
 	// Populates arrays with player numbers
 	void getPlayers() {
+		homePlayersBench.add("12");
+		homePlayersBench.add("10");
+		homePlayersBench.add("32");
+		homePlayersBench.add("16");
+		homePlayersBench.add("13");
+		homePlayersBench.add("19");
 		
+		homePlayersIn.add("13");
+		homePlayersIn.add("14");
+		homePlayersIn.add("15");
+		homePlayersIn.add("16");
+		homePlayersIn.add("17");
+		
+		awayPlayersBench.add("21");
+		awayPlayersBench.add("22");
+		awayPlayersBench.add("23");
+		awayPlayersBench.add("24");
+		awayPlayersBench.add("25");
+		awayPlayersBench.add("26");
+		
+		awayPlayersIn.add("31");
+		awayPlayersIn.add("32");
+		awayPlayersIn.add("33");
+		awayPlayersIn.add("34");
+		awayPlayersIn.add("35");
 	}
 	
 	// Stores x and y coordinate
@@ -38,7 +69,16 @@ public class CourtActivity extends Activity {
 	// Sets current player when a player button is clicked
 	public void setPlayer(View v) {
 		Button b = (Button)v;
-		player = Integer.parseInt(b.getText().toString());
+		player = b.getText().toString();
+		switch(b.getId()) {
+		case R.id.p1: 
+		case R.id.p2:
+		case R.id.p3:
+		case R.id.p4:
+		case R.id.p5: isHome = true; break;
+		default: isHome = false;
+				break;
+		}
 	}
 	
 	// Sets string Action to whatever action the user taps
@@ -75,15 +115,30 @@ public class CourtActivity extends Activity {
 		
 		if (action == "SUB") {
 			popupMenu = new PopupMenu(this.getBaseContext(), v);
+			Menu menu = popupMenu.getMenu();
 			
+			if (isHome == true) {
+				for (String number : homePlayersBench) {
+					menu.add(number);
+				}
+			}
+			else {
+				for (String number : awayPlayersBench) {
+						menu.add(number);
+					}
+			}
+			
+			popupMenu.setOnMenuItemClickListener(this);
 			popupMenu.show();
+			
+			return;
 		}
 		else {
-			message = "Player " + Integer.toString(player) + " " + toastAction + " at ("  + Integer.toString(position.x) + ", " + Integer.toString(position.y) + ")";
+			message = "Player " + player + " " + toastAction + " at ("  + Integer.toString(position.x) + ", " + Integer.toString(position.y) + ")";
 		}
 		
 		playNumber++;
-		db.recordPlay(player, action, position, playNumber);
+		db.recordPlay(Integer.parseInt(player), action, position, playNumber);
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 	
@@ -117,12 +172,19 @@ public class CourtActivity extends Activity {
 		db = new SqliteHelper(this.getApplicationContext());
 		
 		// Gets players
-		/*
 		getPlayers();
+	}
+
+	@Override
+	public boolean onMenuItemClick(MenuItem item) {
+		Toast.makeText(CourtActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
 		
-		for(int i=1;i<25;i++) {
-			popupMenu.getMenu().add(Menu.NONE, i, Menu.NONE, Integer.toString(homePlayer[i]));
-		}
-		*/
+		
+		
+		return false;
+	}
+	
+	void refreshTeams() {
+		
 	}
 }
