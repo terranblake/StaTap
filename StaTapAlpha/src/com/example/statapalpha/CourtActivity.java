@@ -111,6 +111,8 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		break;
 		case R.id.foul: action = "FC"; toastAction = "commited foul";
 		break;
+		case R.id.undoPlay: undoPlay();
+		break;
 		}
 		
 		if (action == "SUB") {
@@ -161,6 +163,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		return points;
 	}
 	
+
 	void undoPlay() {
 		db.undoPlay(Integer.toString(playNumber));
 	}
@@ -187,4 +190,6 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	void refreshTeams() {
 		
 	}
+
+	
 }

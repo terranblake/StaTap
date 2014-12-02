@@ -119,7 +119,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	
     	
     	// 4. close
-    	db.close(); 
+    	db.close();  
     }
     public void undoPlay(String number)
     {
@@ -127,8 +127,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	SQLiteDatabase db = this.getWritableDatabase();
 
     	//db.delete("stats", number, whereArgs)
-    	db.delete("stats", number, null);
-    	
+    	db.delete("stats", number ,null);
     	db.close();
     	
     }
