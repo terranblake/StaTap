@@ -121,7 +121,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// 4. close
     	db.close();  
     }
-    public void undoPlay(String number)
+    public void undoPlay(String number)//See my comment Paul link might help
     {
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
