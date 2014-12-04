@@ -189,7 +189,11 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	}
 	
 	void refreshTeams() {
-		
+		for(int i=0; i<10; i++) {
+			for(int j=0; j < 2; j++) {
+				
+			}
+		}
 	}
 
 	
