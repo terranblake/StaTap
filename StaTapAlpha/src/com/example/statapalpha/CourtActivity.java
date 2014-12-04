@@ -30,6 +30,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	int playNumber = 0;
 	private PopupMenu popupMenu;
 	boolean isHome = false;
+	int playerButton = 0;
 	
 	// Populates arrays with player numbers
 	void getPlayers() {
@@ -70,6 +71,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	public void setPlayer(View v) {
 		Button b = (Button)v;
 		player = b.getText().toString();
+		playerButton = b.getId();
 		switch(b.getId()) {
 		case R.id.p1: 
 		case R.id.p2:
@@ -180,9 +182,8 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
-		Toast.makeText(CourtActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
-		
-		
+		Button button = (Button)findViewById(playerButton);
+		button.setText(item.getTitle());
 		
 		return false;
 	}
