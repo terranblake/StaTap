@@ -92,6 +92,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// 4. close
     	db.close(); 
     }
+    public void delTeam(String teamname) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	String teamname2;
+    	teamname2 = teamname.replaceAll(" ",  "_").toLowerCase();
+    	
+    	db.execSQL("DELETE FROM teams3 WHERE Team_Names = '"+teamname+"'");
+    	db.execSQL("DROP TABLE IF EXISTS "+teamname2);
+    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older books table if existed

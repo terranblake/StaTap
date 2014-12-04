@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 //import android.widget.Button;
@@ -27,15 +30,16 @@ public class CreateTeam extends Activity {
 		setContentView(R.layout.activity_create_team);
 		//Test
 		editTeam = (EditText)findViewById(R.id.editTeam);
+		ListView lv = (ListView)findViewById(R.id.listView1);
 		//End
 		//Database Text Box Initialization
 		db = new SqliteHelper(this.getApplicationContext());
 		//Button create = (Button)findViewById(R.id.create);
 
-		//ListView lv = (ListView)findViewById(R.id.listView1);
 
 		populateListViews();
 		registerClickCallback();
+		registerForContextMenu(lv);
 		//DB
 	}
 	
@@ -54,13 +58,39 @@ public class CreateTeam extends Activity {
 		Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
 		populateListViews();
 	}
-	
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+    	super.onCreateContextMenu(menu, v, menuInfo);
+    	if (v.getId()==R.id.listView1) {
+    		MenuInflater inflater = getMenuInflater();
+    		inflater.inflate(R.menu.home_context_menu, menu);
+    	}
+}
 	
 	/*
 	 * 
 	 * ListViews
 	 * 
 	 */
+	//long press
+	
+    public boolean onContextItemSelected(MenuItem item) {
+        //AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+        switch(item.getItemId()) {
+            case R.id.delete:
+          // remove stuff here
+            	deleteTeam();
+            return true;
+            default:
+                  return super.onContextItemSelected(item);
+        }
+  }
+    public void deleteTeam() {
+    	String teamname;
+    	teamname = editTeam.getText().toString();
+    	db.delTeam(teamname);
+    	populateListViews();
+    }
+    //single tap
     private void registerClickCallback() {
 		// TODO Auto-generated method stub
     	//This uses the List View and adds a listener to check for clicks/taps on different
