@@ -71,25 +71,21 @@ public class EditTeam extends Activity {
 	}
 	
 	public void addPlayer(View view) {
+		Integer Jersey_Num;
+		String First_Name = "";
+		String Last_Name = "";
 		if(editTextJersey.getText().toString().trim().length()==0) {
 			String errormessage = "Error: Jersey Number cannot be blank";
 			Toast.makeText(EditTeam.this, errormessage, Toast.LENGTH_SHORT).show();
 		      return;
 		}
 		if(editTextFirst.getText().toString().trim().length()==0) {
-			String errormessage = "Error: First Name cannot be blank";
-			Toast.makeText(EditTeam.this, errormessage, Toast.LENGTH_SHORT).show();
-		      return;
+			First_Name = editTextFirst.getText().toString();
 		}
 		if(editTextLast.getText().toString().trim().length()==0) {
-			String errormessage = "Error: Last Name cannot be blank";
-			Toast.makeText(EditTeam.this, errormessage, Toast.LENGTH_SHORT).show();
-		      return;
+			Last_Name = editTextLast.getText().toString();
 		}
-		
-		Integer Jersey_Num = Integer.parseInt(editTextJersey.getText().toString());
-		String First_Name = editTextFirst.getText().toString();
-		String Last_Name = editTextLast.getText().toString();
+		Jersey_Num = Integer.parseInt(editTextJersey.getText().toString());
 		db.addPlayer(teamname2, Jersey_Num, First_Name, Last_Name);
 		populateListViews();
 		
