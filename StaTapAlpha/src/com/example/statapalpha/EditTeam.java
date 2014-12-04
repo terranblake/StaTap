@@ -45,7 +45,15 @@ public class EditTeam extends Activity {
 		
 		populateListViews();
 	}
-
+	/*
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+        	super.onCreateContextMenu(menu, v, menuInfo);
+        	if (v.getId()==R.id.homeTeamLV) {
+        		MenuInflater inflater = getMenuInflater();
+        		inflater.inflate(R.menu.home_context_menu, menu);
+        	}
+	}
+	*/
 	private void populateListViews() {
 		
 		Cursor cursor = db.getPlayerFNames(teamname2);
