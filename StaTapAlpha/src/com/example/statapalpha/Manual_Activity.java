@@ -15,13 +15,8 @@ public class Manual_Activity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		WebView webview = new WebView(this);
-		setContentView(webview);
-	
-		//http://stackoverflow.com/questions/5813188/how-to-reference-local-css-files-in-a-static-webview-window-in-android-dev
-
-		String summary = "<html><body></body></html>";webview.loadData(summary, "text/html", null);
-
+		
+		
 	}
 
 	@Override
