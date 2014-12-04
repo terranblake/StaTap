@@ -78,10 +78,11 @@
     <string name="title_activity_stat">StatActivity</string>
     <string name="title_activity_edit_team">EditTeam</string>
     <string name="dteamname">Team Name</string>
-    <string name="playerHelp">Tap a Player to edit it</string>
+    <string name="playerHelp">Tap a Jersey Number to get info about that player</string>
 	<string name="jerseynum">Jersey Number:</string>
 	<string name="firstname">First Name:</string>
 	<string name="lastname">Last Name:</string>
 	<string name="addplayer">Add Player</string>
+	<string name="gametitle">Game Title:</string>
 	
 </resources>

@@ -8,9 +8,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -24,46 +28,47 @@ public class EditTeam extends Activity {
 	EditText editTextJersey;
 	EditText editTextFirst;
 	EditText editTextLast;
-	String teamname2;
+	String tableteamname;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_team);
 		
-    	
+		ListView lv = (ListView) findViewById(R.id.listViewPlayers);
 		// All this random crap here just to set the Team Name
 		editTextJersey = (EditText)findViewById(R.id.editTextJersey);
 		editTextFirst = (EditText)findViewById(R.id.editTextFirst);
 		editTextLast = (EditText)findViewById(R.id.editTextLast);
 		Intent mIntent = getIntent();
 		teamname = mIntent.getStringExtra("TEAM_NAME");
-		teamname2 = teamname.replaceAll(" ", "_").toLowerCase();
+		tableteamname = teamname.replaceAll(" ", "_").toLowerCase();
 		db = new SqliteHelper(this.getApplicationContext());
 		tname = (TextView)findViewById(R.id.teamName);
 		tname.setText(teamname);
-		
+		registerForContextMenu(lv);
+		registerClickCallback();
 		populateListViews();
 	}
-	/*
+	
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
         	super.onCreateContextMenu(menu, v, menuInfo);
-        	if (v.getId()==R.id.homeTeamLV) {
+        	if (v.getId()==R.id.listViewPlayers) {
         		MenuInflater inflater = getMenuInflater();
         		inflater.inflate(R.menu.home_context_menu, menu);
         	}
 	}
-	*/
+	
 	private void populateListViews() {
 		
-		Cursor cursor = db.getPlayerFNames(teamname2);
+		Cursor cursor = db.getPlayerJNums(tableteamname);
 		
-		ArrayList<String> values = new ArrayList<String>();
+		ArrayList<String> jnums = new ArrayList<String>();
 		if (cursor != null && cursor.getCount() != 0) {
 		    cursor.moveToFirst();
 		    while (!cursor.isAfterLast()) {
 
-		        values.add(cursor.getString(cursor.getColumnIndex("first_name")));
+		        jnums.add(cursor.getString(cursor.getColumnIndex("jersey_num")));
 
 		        cursor.moveToNext();
 		    }
@@ -71,8 +76,8 @@ public class EditTeam extends Activity {
     	//Build Adapter
     	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
     			this,					// Context
-    			R.layout.teamlistviews,	// Layout to use
-    			values);				// Items to be displayed		
+    			R.layout.jerseylistview,	// Layout to use
+    			jnums);				// Items to be displayed		
     	//Configure the List View
     	ListView t1list = (ListView) findViewById(R.id.listViewPlayers);
     	t1list.setAdapter(t1adapter);
@@ -94,7 +99,7 @@ public class EditTeam extends Activity {
 			Last_Name = editTextLast.getText().toString();
 		}
 		Jersey_Num = Integer.parseInt(editTextJersey.getText().toString());
-		db.addPlayer(teamname2, Jersey_Num, First_Name, Last_Name);
+		db.addPlayer(tableteamname, Jersey_Num, First_Name, Last_Name);
 		populateListViews();
 		
 	}
@@ -105,7 +110,59 @@ public class EditTeam extends Activity {
 		getMenuInflater().inflate(R.menu.edit_team, menu);
 		return true;
 	}
-
+    public boolean onContextItemSelected(MenuItem item) {
+        //AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+        switch(item.getItemId()) {
+            case R.id.delete:
+          // remove stuff here
+          	  
+            return true;
+            default:
+                  return super.onContextItemSelected(item);
+        }
+  }
+    private void registerClickCallback() {
+		// TODO Auto-generated method stub
+    	//This uses the List View and adds a listener to check for clicks/taps on different
+    	//list view items. It will then display a message telling you which one you have selected.
+    	ListView list = (ListView) findViewById(R.id.listViewPlayers);
+    	
+    	//This Will check if there is a click on a ListView item
+    	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    		
+			@Override
+			public void onItemClick(AdapterView<?> parent, View viewClicked,
+					int position, long id) {
+					TextView textView = (TextView) viewClicked; 
+					Integer Jersey_Num = Integer.parseInt(textView.getText().toString());
+					String fname = "N/A";
+					String lname = "N/A";
+					
+					Cursor cursorF;
+					Cursor cursorL;
+					//Toast message
+					cursorF = db.getPlayerFName(Jersey_Num, tableteamname);
+					while (cursorF.moveToNext()) {
+						fname = cursorF.getString(0);
+					}
+					cursorL = db.getPlayerLName(Jersey_Num, tableteamname);
+					while (cursorL.moveToNext()) {
+						lname = cursorL.getString(0);
+					}
+					if (fname.equals("")) {
+						fname = "N/A";
+					}
+					if (lname.equals("")) {
+						lname = "N/A";
+					}
+					
+					String message = "Jersey Number:" + Jersey_Num + " First Name:" + fname + " Last Name:" + lname;
+					Toast.makeText(EditTeam.this, message, Toast.LENGTH_SHORT).show();
+			}
+		});
+    	
+    	
+	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will

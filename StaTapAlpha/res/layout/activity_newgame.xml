@@ -9,51 +9,87 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.statapalpha.NewGame" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/homeTeamTV"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:text="@string/team1"
-            android:textSize="45sp" />
-
-        <ListView
-            android:id="@+id/listView1"
-            android:layout_width="200dp"
-            android:layout_height="400dp"
-            android:layout_weight="1"
-            android:background="#40969696" >
-        </ListView>
-    </LinearLayout>
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="75dp"
-        android:layout_alignLeft="@+id/linearLayout1"
         android:layout_alignParentTop="true"
         android:text="@string/pickteams"
         android:textSize="70sp"
         android:textStyle="bold" />
 
-    
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/linearLayout2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
+        android:layout_alignLeft="@+id/linearLayout3"
+        android:layout_centerVertical="true"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/teamlv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="26dp"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/homeTeamTV"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="@string/team1"
+                android:textSize="45sp" />
+
+            <ListView
+                android:id="@+id/listView1"
+                android:layout_width="200dp"
+                android:layout_height="400dp"
+                android:layout_weight="1"
+                android:background="#40969696" >
+            </ListView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/team2"
+                android:textSize="45sp" />
+
+            <ListView
+                android:id="@+id/listView2"
+                android:layout_width="200dp"
+                android:layout_height="400dp"
+                android:background="#40969696" >
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="900dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/teamlv"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@+id/teamlv"
         android:orientation="vertical" >
 
         <TextView
@@ -88,54 +124,39 @@
             android:text="@string/selectT"
             android:textColor="#FFFF00"
             android:textSize="30sp" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/linearLayout1"
-        android:layout_marginLeft="21dp"
-        android:layout_toRightOf="@+id/linearLayout1"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/TextView01"
-            android:layout_width="200dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/team2"
-            android:textSize="45sp" />
+            android:orientation="horizontal" >
 
-        <ListView
-            android:id="@+id/listView2"
-            android:layout_width="200dp"
-            android:layout_height="400dp"
-            android:background="#40969696" >
-        </ListView>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@string/gametitle" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/linearLayout2"
-        android:layout_alignLeft="@+id/linearLayout3" >
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text"
+                android:labelFor="@+id/editText1"
+                android:maxLength="35" />
 
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="text"
-            android:labelFor="@+id/editText1"
-            android:maxLength="35" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="190dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="55dp"
+            android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_marginTop="120dp"
             android:onClick="confirm"
             android:text="@string/confirm"
             android:textSize="30sp" />

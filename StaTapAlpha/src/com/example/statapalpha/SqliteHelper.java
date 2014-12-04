@@ -38,11 +38,21 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	String[] projection = { "Team_Names" };
     	return db.query("teams3",projection, null, null, null, null, null, null);
     }
-    public Cursor getPlayerFNames(String teamname) {
+    public Cursor getPlayerJNums(String teamname) {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	String[] projection = { "first_name" };
+    	String[] projection = { "jersey_num" };
     	return db.query(teamname,projection, null, null, null, null, null, null);
     	
+    }
+    public Cursor getPlayerFName(Integer jnum, String teamname) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	
+    	return db.rawQuery("SELECT first_name FROM "+teamname+" WHERE jersey_num = "+jnum, null);
+    }
+    public Cursor getPlayerLName(Integer jnum, String teamname) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	
+    	return db.rawQuery("SELECT last_name FROM "+teamname+" WHERE jersey_num = "+jnum, null);
     }
     public void addPlayer(String teamname, Integer jerseynum, String firstname, String lastname){
 
