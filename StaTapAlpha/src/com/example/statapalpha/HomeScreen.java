@@ -24,13 +24,12 @@ public class HomeScreen extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-        db = new SqliteHelper(this.getApplicationContext());
+        	db = new SqliteHelper(this.getApplicationContext());
 		//ListView Functions
 		ListView lv = (ListView) findViewById(R.id.homeTeamLV);
-        populateListView();
-        registerClickCallback();
-        registerForContextMenu(lv);
-        //Database TextField Initialization
+        	populateListView();
+        	registerClickCallback();
+        	registerForContextMenu(lv);
 	}
     public void newGame(View view) {
     	//This here starts the New Game Screen
