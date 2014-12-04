@@ -5,40 +5,47 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-
+import android.widget.LinearLayout;
 
 public class Manual_Activity extends Activity {
+    private LinearLayout container;   
+    private int currentX;   
+    private int currentY; 
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		
-		return super.onOptionsItemSelected(item);
-	}
-	
-	public static class PlaceholderFragment extends Fragment {
+        setContentView(R.layout.activity_manual);
+        container = (LinearLayout) findViewById(R.id.Container);
+        container.scrollTo(220, 400);
+    }
 
-        public PlaceholderFragment() { }
+    @Override  
+    public boolean onTouchEvent(MotionEvent event) { 
+      switch (event.getAction()) { 
+          case MotionEvent.ACTION_DOWN: { 
+              currentX = (int) event.getRawX(); 
+              currentY = (int) event.getRawY(); 
+              break; 
+          } 
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                  Bundle savedInstanceState) {
-					return container;
-              
-        }
-
-	}
-	
+          case MotionEvent.ACTION_MOVE: { 
+              int x2 = (int) event.getRawX(); 
+              int y2 = (int) event.getRawY(); 
+              container.scrollBy(currentX - x2 , currentY - y2); 
+              currentX = x2; 
+              currentY = y2; 
+              break; 
+          }    
+          case MotionEvent.ACTION_UP: { 
+              break; 
+          } 
+      } 
+        return true;  
+    } 
 }
