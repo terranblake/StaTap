@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 //import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ import android.database.Cursor;
 public class CreateTeam extends Activity {
 	EditText editTeam;
 	SqliteHelper db;
+	ListView lv;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class CreateTeam extends Activity {
 		setContentView(R.layout.activity_create_team);
 		//Test
 		editTeam = (EditText)findViewById(R.id.editTeam);
-		ListView lv = (ListView)findViewById(R.id.listView1);
+		lv = (ListView)findViewById(R.id.listView1);
 		//End
 		//Database Text Box Initialization
 		db = new SqliteHelper(this.getApplicationContext());
@@ -74,19 +76,22 @@ public class CreateTeam extends Activity {
 	//long press
 	
     public boolean onContextItemSelected(MenuItem item) {
-        //AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+        AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
         switch(item.getItemId()) {
             case R.id.delete:
           // remove stuff here
-            	deleteTeam();
+            Integer Position = ((AdapterView.AdapterContextMenuInfo)info).position;
+            Object obj = lv.getItemAtPosition(Position);
+            String teamname2 = obj.toString();
+            deleteTeam(teamname2);
             return true;
             default:
                   return super.onContextItemSelected(item);
         }
   }
-    public void deleteTeam() {
+    public void deleteTeam(String teamname2) {
     	String teamname;
-    	teamname = editTeam.getText().toString();
+    	teamname = teamname2;
     	db.delTeam(teamname);
     	populateListViews();
     }
