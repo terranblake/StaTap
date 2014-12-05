@@ -143,6 +143,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     {
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
+    	
 
     	//db.delete("stats", number, whereArgs)
     	db.delete("stats", number ,null);

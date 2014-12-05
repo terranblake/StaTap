@@ -167,6 +167,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	
 
 	public void undoPlay(View v) {
+		
 		db.undoPlay(Integer.toString(playNumber));
 	}
 	
