@@ -81,155 +81,197 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutContainer"
+        android:id="@+id/layoutT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/linearLayout2"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="35dp" >
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
 
         <LinearLayout
-            android:id="@+id/layoutNumber"
+            android:id="@+id/layoutT1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/team1"
+                android:textSize="40sp" />
+
+            <LinearLayout
+                android:id="@+id/layoutContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    android:id="@+id/txtPlayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Player #"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtPoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="P"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtFreeThrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FT"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtFieldGoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FG"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtAssists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtRebounds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RB"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtSteals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="S"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtTurnovers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtFouls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/listView1"
+                android:layout_width="400dp"
+                android:layout_height="427dp"
+                android:layout_marginTop="24dp" >
+            </ListView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutT2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/txtPlayer"
+                android:id="@+id/TextView03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Player #"
-                android:textSize="25sp" />
+                android:text="@string/team2"
+                android:textSize="40sp" />
 
-            <TextView
-                android:id="@+id/txtPlayerNumTemp"
+            <LinearLayout
+                android:id="@+id/LinearLayout01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0" />
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Player #"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView09"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="P"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FT"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FG"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView07"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RB"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="S"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView06"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView08"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/ListView01"
+                android:layout_width="400dp"
+                android:layout_height="427dp"
+                android:layout_marginTop="24dp" >
+            </ListView>
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutPoints"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/txtPoints"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P"
-                android:textSize="25sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutFT"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/txtFreeThrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="FT"
-                android:textSize="25sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutFG"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp" >
-
-            <TextView
-                android:id="@+id/txtFieldGoal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="FG"
-                android:textSize="25sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutAssists"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp" >
-
-            <TextView
-                android:id="@+id/txtAssists"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="A"
-                android:textSize="25sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutRebounds"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp" >
-
-            <TextView
-                android:id="@+id/txtRebounds"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RB"
-                android:textSize="25sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutSteals"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp" >
-
-            <TextView
-                android:id="@+id/txtSteals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="S"
-                android:textSize="25sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutTurnovers"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp" >
-
-            <TextView
-                android:id="@+id/txtTurnovers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="T"
-                android:textSize="25sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutFouls"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp" >
-
-            <TextView
-                android:id="@+id/txtFouls"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="F"
-                android:textSize="25sp" />
-        </LinearLayout>
-
     </LinearLayout>
 
 </RelativeLayout>
