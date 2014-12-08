@@ -35,7 +35,7 @@ public class StatBaseAdapter extends BaseAdapter {
  
         @Override
         public long getItemId(int position) {
-                return 0;
+                return position;
         }
  
         @Override
@@ -50,30 +50,27 @@ public class StatBaseAdapter extends BaseAdapter {
                         mViewHolder = (MyViewHolder) convertView.getTag();
                 }
                 
-                //mViewHolder.tvTitle = detail(convertView, R.id.tvTitle, myList.get(position).getTitle());
-                //mViewHolder.tvDesc  = detail(convertView, R.id.tvDesc,  myList.get(position).getDescription());
-                //mViewHolder.ivIcon  = detail(convertView, R.id.ivIcon,  myList.get(position).getImgResId());
-                
+                mViewHolder.tvNum = detail(convertView, R.id.textViewNum, myList.get(position).getJersey());
+                mViewHolder.tvP  = detail(convertView, R.id.textViewP,  myList.get(position).getPoints());
+                mViewHolder.tvFT  = detail(convertView, R.id.textViewFT,  myList.get(position).getFT());
+                mViewHolder.tvFG  = detail(convertView, R.id.textViewFG,  myList.get(position).getFG());
+                mViewHolder.tvA  = detail(convertView, R.id.textViewA,  myList.get(position).getAssists());
+                mViewHolder.tvRB  = detail(convertView, R.id.textViewRB,  myList.get(position).getRebounds());
+                mViewHolder.tvS  = detail(convertView, R.id.textViewS,  myList.get(position).getSteals());
+                mViewHolder.tvTO  = detail(convertView, R.id.textViewTO,  myList.get(position).getTO());
+                mViewHolder.tvF  = detail(convertView, R.id.textViewF,  myList.get(position).getFouls());
                 return convertView;
         }
         
         // or you can try better way
-        private TextView detail(View v, int resId, String text) {
+        private TextView detail(View v, int resId, int num) {
                 TextView tv = (TextView) v.findViewById(resId);
-                tv.setText(text);
+                tv.setText(num);
                 return tv;
         }
         
-        private ImageView detail(View v, int resId, int icon) {
-                ImageView iv = (ImageView) v.findViewById(resId);
-                iv.setImageResource(icon); // 
-                
-                return iv;
-        }
-        
         private class MyViewHolder {
-                TextView tvTitle, tvDesc;
-                ImageView ivIcon;
+                public TextView tvNum, tvP, tvFT, tvFG, tvA, tvRB, tvS, tvTO, tvF;
         }
  
 }
