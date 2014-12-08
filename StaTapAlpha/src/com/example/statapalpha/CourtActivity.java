@@ -192,64 +192,75 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	}
 	
 	void refreshPlayers() {
+		
+		Button button = (Button)findViewById(R.id.p1);
 		TextView text = (TextView)findViewById(R.id.p1p);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
 		text = (TextView)findViewById(R.id.p1f);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
+		button = (Button)findViewById(R.id.p2);
 		text = (TextView)findViewById(R.id.p2p);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
 		text = (TextView)findViewById(R.id.p2f);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
+		button = (Button)findViewById(R.id.p3);
 		text = (TextView)findViewById(R.id.p3p);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
 		text = (TextView)findViewById(R.id.p3f);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
+		button = (Button)findViewById(R.id.p4);
 		text = (TextView)findViewById(R.id.p4p);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
 		text = (TextView)findViewById(R.id.p4f);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
+		button = (Button)findViewById(R.id.p5);
 		text = (TextView)findViewById(R.id.p5p);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
 		text = (TextView)findViewById(R.id.p5f);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
+		button = (Button)findViewById(R.id.p6);
 		text = (TextView)findViewById(R.id.p6p);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
 		text = (TextView)findViewById(R.id.p6f);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
+		button = (Button)findViewById(R.id.p7);
 		text = (TextView)findViewById(R.id.p7p);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
 		text = (TextView)findViewById(R.id.p7f);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
+		button = (Button)findViewById(R.id.p8);
 		text = (TextView)findViewById(R.id.p8p);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
 		text = (TextView)findViewById(R.id.p8f);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
+		button = (Button)findViewById(R.id.p9);
 		text = (TextView)findViewById(R.id.p9p);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
 		text = (TextView)findViewById(R.id.p9f);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
+		button = (Button)findViewById(R.id.p10);
 		text = (TextView)findViewById(R.id.p10p);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 		
 		text = (TextView)findViewById(R.id.p10f);
-		text.setText(Integer.toString(12));
+		text.setText(button.getText().toString());
 	}
 }
