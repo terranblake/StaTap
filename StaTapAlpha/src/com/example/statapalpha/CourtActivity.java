@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.lang.Math;
 import java.util.ArrayList;
@@ -144,6 +145,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		playNumber++;
 		db.recordPlay(Integer.parseInt(player), action, position, playNumber);
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
+		refreshPlayers();
 	}
 	
 	// Gets tap position and saves it to 'position'
@@ -185,13 +187,69 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	public boolean onMenuItemClick(MenuItem item) {
 		Button button = (Button)findViewById(playerButton);
 		button.setText(item.getTitle());
-		
+		refreshPlayers();
 		return false;
 	}
 	
-	void refreshTeams() {
+	void refreshPlayers() {
+		TextView text = (TextView)findViewById(R.id.p1p);
+		text.setText(Integer.toString(12));
 		
+		text = (TextView)findViewById(R.id.p1f);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p2p);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p2f);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p3p);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p3f);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p4p);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p4f);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p5p);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p5f);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p6p);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p6f);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p7p);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p7f);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p8p);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p8f);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p9p);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p9f);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p10p);
+		text.setText(Integer.toString(12));
+		
+		text = (TextView)findViewById(R.id.p10f);
+		text.setText(Integer.toString(12));
 	}
-
-	
 }
