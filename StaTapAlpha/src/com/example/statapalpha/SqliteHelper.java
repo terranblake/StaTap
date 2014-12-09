@@ -121,13 +121,15 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
     	
+    	onCreate(db);
+    	
     	// 2. create ContentValues to add key "column"/value
     	ContentValues values = new ContentValues();
     	values.put("jersey_num", player); // get title 
     	values.put("action", action);
     	values.put("x_coord", position.x);
     	values.put("y_coord", position.y);
-    	values.put("stat_num", playNumber);
+    	values.put("play_id", playNumber);
     	
     	// 3. insert
     	db.insert("stats", // table name
