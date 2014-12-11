@@ -149,6 +149,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	//db.delete("stats", number, whereArgs)
     	db.delete("stats", number ,null);
     	db.close();
-    	
     }
+
 }
