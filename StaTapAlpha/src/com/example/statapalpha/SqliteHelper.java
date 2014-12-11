@@ -72,6 +72,19 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// 4. close
     	db.close(); 
     }
+    public Cursor getJNums(String teamname) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	String teamname2;
+    	teamname2 = teamname.replaceAll(" ", "_").toLowerCase();
+    	String command = "SELECT jersey_num FROM "+teamname2;
+    	return db.rawQuery(command, null);
+    }
+    public int getStats(String action, Integer jnum) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	String command;
+    	command = "SELECT count("+action+") FROM stats2 WHERE Jersey_num = "+jnum;
+    	return db.rawQuery(command, null).getInt(0);
+    }
     public void addTeam(String teamname){
 
     	// 1. get reference to writable DB

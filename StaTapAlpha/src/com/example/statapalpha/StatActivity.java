@@ -1,7 +1,10 @@
 package com.example.statapalpha;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +19,7 @@ public class StatActivity extends Activity {
 		Intent mIntent = getIntent();
 		team1 = mIntent.getStringExtra("TEAM1");
 		team2 = mIntent.getStringExtra("TEAM2");
+		
 		db = new SqliteHelper(this.getApplicationContext());
 		
 		
@@ -43,5 +47,23 @@ public class StatActivity extends Activity {
 	
 	public void pullStats() {
 		
+		Cursor cursor1 = db.getJNums(team1);
+		Cursor cursor2 = db.getJNums(team2);
+		
+			ArrayList<StatListData> values = new ArrayList<StatListData>();
+			if (cursor1 != null && cursor1.getCount() != 0) {
+			    cursor1.moveToFirst();
+			    while (!cursor1.isAfterLast()) {
+			    	StatListData data = new StatListData();
+			    	int jnum = cursor1.getInt(0);
+			    	data.Jersey = jnum;
+			    	data.Assists = db.getStats("Assist", jnum);
+			    	
+			    	
+			    	
+			    	values.add(data);
+			        cursor1.moveToNext();
+			    }
+			}
 	}
 }
