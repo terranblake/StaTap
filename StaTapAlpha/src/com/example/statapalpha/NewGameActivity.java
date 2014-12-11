@@ -46,19 +46,7 @@ public class NewGameActivity extends Activity {
 	 * Database Functions
 	 * 
 	 */
-	public void confirm(View view) {
-		String t1, t2, gTitle;
-		t1 = team1.toString();
-		t2 = team2.toString();
-		gTitle = title.toString();
-		
-		Intent intent = new Intent(this, CourtActivity.class);
-    	intent.putExtra("TEAM1", t1);
-    	intent.putExtra("TEAM2", t2);
-    	intent.putExtra("GAME_TITLE", gTitle);
-    	startActivity(intent);
-		
-	}
+
 	
 	
 	
@@ -138,6 +126,19 @@ public class NewGameActivity extends Activity {
 			}
 			
 		});
+	}
+	public void confirm(View view) {
+		String t1, t2, gTitle;
+		t1 = team1.toString();
+		t2 = team2.toString();
+		gTitle = title.toString();
+		
+		Intent intent = new Intent(this, CourtActivity.class);
+    	intent.putExtra("TEAM1", t1);
+    	intent.putExtra("TEAM2", t2);
+    	intent.putExtra("GAME_TITLE", gTitle);
+    	startActivity(intent);
+		
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

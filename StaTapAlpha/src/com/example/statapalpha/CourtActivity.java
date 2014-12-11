@@ -34,19 +34,11 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	private PopupMenu popupMenu;
 	boolean isHome = false;
 	int playerButton = 0;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_court);
-		db = new SqliteHelper(this.getApplicationContext());
-		//Get Team 1 and 2 and Game Title
+
+	public void convertStrings() {
 		Intent mIntent = getIntent();
 		team1n = mIntent.getStringExtra("TEAM1");
 		team2n = mIntent.getStringExtra("TEAM2");
-		team1 = team1n.replaceAll(" ", "_").toLowerCase();
-		team2 = team2n.replaceAll(" ", "_").toLowerCase();
-		// Gets players
-		getPlayers();
 	}
 	// Populates arrays with player numbers
 	void getPlayers() {
@@ -169,6 +161,16 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		refreshPlayers();
 	}
 	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_court);
+		db = new SqliteHelper(this.getApplicationContext());
+		//Get Team 1 and 2 and Game Title
+		convertStrings();
+		// Gets players
+		getPlayers();
+	}
 	// Gets tap position and saves it to 'position'
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
