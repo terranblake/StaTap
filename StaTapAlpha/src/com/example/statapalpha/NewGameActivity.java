@@ -46,7 +46,7 @@ public class NewGameActivity extends Activity {
 	 * Database Functions
 	 * 
 	 */
-	public void confirm() {
+	public void confirm(View view) {
 		String t1, t2, gTitle;
 		t1 = team1.toString();
 		t2 = team2.toString();
