@@ -34,11 +34,6 @@ public class NewGameActivity extends Activity {
 		db = new SqliteHelper(this.getApplicationContext());
 		populateListViews();
 		registerClickCallback();
-		//Database TextField Initialization
-		//EditText editName = (EditText)findViewById(R.id.editText1);
-		//Button btnConfirm = (Button)findViewById(R.id.button2);
-		SQLiteDatabase db = openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
-		
 	}
 
 	/*
