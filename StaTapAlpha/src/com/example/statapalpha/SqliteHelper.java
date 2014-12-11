@@ -29,7 +29,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE IF NOT EXISTS games(id INTEGER PRIMARY KEY AUTOINCREMENT, team1 INTEGER, team2 INTEGER, game_name TEXT)");
 		
 		// Create stats table
-		db.execSQL("CREATE TABLE IF NOT EXISTS stats(play_id INTEGER PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
+		db.execSQL("CREATE TABLE IF NOT EXISTS stats2(play_id INTEGER PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
 				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER);");
     }
     public Cursor getTeams() {
@@ -133,7 +133,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	values.put("team_name", team);
     	
     	// 3. insert
-    	db.insert("stats", // table name
+    	db.insert("stats2", // table name
     	null, //nullColumnHack
     	values); // key/value -> keys = column names/ values = column values
     	
@@ -148,7 +148,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	
 
     	//db.delete("stats", number, whereArgs)
-    	db.delete("stats", number ,null);
+    	db.delete("stats2", number ,null);
     	db.close();
     }
 
