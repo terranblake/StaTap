@@ -105,6 +105,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		Button b = (Button)v;
 		String toastAction = "";
 		String message = "";
+		String team = "";
 		
 		switch(b.getId()) {
 		case R.id.fgMade: action = "F" + goal(position) + "H"; toastAction = "made " + goal(position) + " point shot";
@@ -157,8 +158,13 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 			message = "Player " + player + " " + toastAction + " at ("  + Integer.toString(position.x) + ", " + Integer.toString(position.y) + ")";
 		}
 		
+		if (isHome == true)
+			team = team1;
+		else
+			team = team2;
+		
 		playNumber++;
-		db.recordPlay(Integer.parseInt(player), action, position, playNumber);
+		db.recordPlay(Integer.parseInt(player), team, action, position, playNumber);
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		refreshPlayers();
 	}
