@@ -1,16 +1,24 @@
 package com.example.statapalpha;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class StatActivity extends Activity {
-
+	SqliteHelper db;
+	String team1, team2;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stat);
+		Intent mIntent = getIntent();
+		team1 = mIntent.getStringExtra("TEAM1");
+		team2 = mIntent.getStringExtra("TEAM2");
+		db = new SqliteHelper(this.getApplicationContext());
+		
+		
 		pullStats();
 	}
 

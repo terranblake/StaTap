@@ -8,54 +8,63 @@
         android:id="@+id/textViewNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/na"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:id="@+id/textViewP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/na"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/textViewFT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/na"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/textViewFG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/na"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/textViewA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/na"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/textViewRB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/na"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/textViewS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/na"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/textViewTO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/na"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/textViewF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/na"
+        android:layout_marginLeft="20dp" />
 
 </LinearLayout>

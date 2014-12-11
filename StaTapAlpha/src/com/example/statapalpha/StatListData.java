@@ -16,7 +16,6 @@ public class StatListData {
         int Fouls;
         
         String title;
-        int imgResId;
  
         public Integer getJersey() {
                 return Jersey;

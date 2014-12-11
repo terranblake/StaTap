@@ -84,5 +84,7 @@
 	<string name="lastname">Last Name:</string>
 	<string name="addplayer">Add Player</string>
 	<string name="gametitle">Game Title:</string>
+	<string name="zero">0</string>
+	<string name="na">N/A</string>
 	
 </resources>
