@@ -38,13 +38,6 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/txtFG"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FG = Field Goals"
-            android:textSize="20sp" />
-
-        <TextView
             android:id="@+id/txtA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -131,13 +124,6 @@
                     android:textSize="25sp" />
 
                 <TextView
-                    android:id="@+id/txtFieldGoal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FG"
-                    android:textSize="25sp" />
-
-                <TextView
                     android:id="@+id/txtAssists"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -220,13 +206,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FT"
-                    android:textSize="25sp" />
-
-                <TextView
-                    android:id="@+id/TextView02"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FG"
                     android:textSize="25sp" />
 
                 <TextView

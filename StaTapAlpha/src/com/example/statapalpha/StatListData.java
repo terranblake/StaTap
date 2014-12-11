@@ -39,13 +39,6 @@ public class StatListData {
         public void setFT(Integer fts) {
             FT = fts;
         }
-        public Integer getFG() {
-            return FG;
-        }
-
-        public void setFG(Integer fgs) {
-            FG = fgs;
-        }
         public Integer getAssists() {
             return Assists;
         }

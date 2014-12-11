@@ -79,11 +79,24 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	String command = "SELECT jersey_num FROM "+teamname2;
     	return db.rawQuery(command, null);
     }
-    public int getStats(String action, Integer jnum) {
+    public int getStats(String action, Integer jnum, String teamname) {
     	SQLiteDatabase db = this.getReadableDatabase();
-    	String command;
-    	command = "SELECT count("+action+") FROM stats2 WHERE Jersey_num = "+jnum;
+    	String command, teamName;
+    	teamName = teamname.replaceAll(" ", "_").toLowerCase();
+    	command = "SELECT count("+action+") FROM stats2 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";;
     	return db.rawQuery(command, null).getInt(0);
+    }
+    public int getPoints(Integer jnum, String teamname) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	int twopt, threept, points;
+    	String command1, command2, teamName;
+    	teamName = teamname.replaceAll(" ", "_").toLowerCase();
+    	command1 = "SELECT count(F2H) FROM stats2 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";
+    	command2 = "SELECT count(F3H) FROM stats2 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";
+    	twopt = (db.rawQuery(command1, null).getInt(0) * 2);
+    	threept = (db.rawQuery(command2, null).getInt(0) * 3);
+    	points = (twopt + threept);
+    	return points;
     }
     public void addTeam(String teamname){
 
@@ -119,7 +132,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
         // create fresh books table
         this.onCreate(db);
     }
-    
     // For getting player info
     public Cursor getPlayerNumber() {
     	

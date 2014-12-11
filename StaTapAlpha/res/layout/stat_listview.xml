@@ -26,13 +26,6 @@
         android:layout_marginLeft="20dp" />
 
     <TextView
-        android:id="@+id/textViewFG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/na"
-        android:layout_marginLeft="20dp" />
-
-    <TextView
         android:id="@+id/textViewA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
