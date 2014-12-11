@@ -1,6 +1,7 @@
 package com.example.statapalpha;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	ArrayList<String> homePlayersBench = new ArrayList<String>();
 	ArrayList<String> awayPlayersBench = new ArrayList<String>();
 	
+	String team1, team2, team1n, team2n;
 	String player = "0"; // Player number for current play
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
@@ -32,7 +34,20 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	private PopupMenu popupMenu;
 	boolean isHome = false;
 	int playerButton = 0;
-	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_court);
+		db = new SqliteHelper(this.getApplicationContext());
+		//Get Team 1 and 2 and Game Title
+		Intent mIntent = getIntent();
+		team1n = mIntent.getStringExtra("TEAM1");
+		team2n = mIntent.getStringExtra("TEAM2");
+		team1 = team1n.replaceAll(" ", "_").toLowerCase();
+		team2 = team2n.replaceAll(" ", "_").toLowerCase();
+		// Gets players
+		getPlayers();
+	}
 	// Populates arrays with player numbers
 	void getPlayers() {
 		homePlayersBench.add("12");
@@ -173,15 +188,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		db.undoPlay(Integer.toString(playNumber));
 	}
 	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_court);
-		db = new SqliteHelper(this.getApplicationContext());
-		
-		// Gets players
-		getPlayers();
-	}
+
 
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {

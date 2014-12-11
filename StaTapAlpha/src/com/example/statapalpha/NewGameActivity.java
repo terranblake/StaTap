@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.*;
 import android.os.Bundle;
@@ -12,19 +13,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.statapalpha.R;
 
 public class NewGameActivity extends Activity {
-
+	EditText title;
+	TextView team1, team2;
 	SqliteHelper db;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_newgame);
 		//ListViews
+		team1 = (TextView) findViewById(R.id.textView4);
+		team2 = (TextView) findViewById(R.id.textView5);
+		title = (EditText) findViewById(R.id.editText1);
 		db = new SqliteHelper(this.getApplicationContext());
 		populateListViews();
 		registerClickCallback();
@@ -41,6 +47,16 @@ public class NewGameActivity extends Activity {
 	 * 
 	 */
 	public void confirm() {
+		String t1, t2, gTitle;
+		t1 = team1.toString();
+		t2 = team2.toString();
+		gTitle = title.toString();
+		
+		Intent intent = new Intent(this, CourtActivity.class);
+    	intent.putExtra("TEAM1", t1);
+    	intent.putExtra("TEAM2", t2);
+    	intent.putExtra("GAME_TITLE", gTitle);
+    	startActivity(intent);
 		
 	}
 	
