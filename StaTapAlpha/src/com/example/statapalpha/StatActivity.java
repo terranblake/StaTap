@@ -11,6 +11,7 @@ public class StatActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stat);
+		pullStats();
 	}
 
 	@Override
@@ -30,5 +31,9 @@ public class StatActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void pullStats() {
+		
 	}
 }
