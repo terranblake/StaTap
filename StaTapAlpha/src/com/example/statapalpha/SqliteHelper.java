@@ -29,7 +29,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE IF NOT EXISTS games(id INTEGER PRIMARY KEY AUTOINCREMENT, team1 INTEGER, team2 INTEGER, game_name TEXT)");
 		
 		// Create stats table
-		db.execSQL("CREATE TABLE IF NOT EXISTS stats2(play_id INTEGER PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
+		db.execSQL("CREATE TABLE IF NOT EXISTS stats3(play_id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
 				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER);");
     }
     public Cursor getTeams() {
@@ -83,7 +83,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	SQLiteDatabase db = this.getReadableDatabase();
     	String command, teamName;
     	teamName = teamname.replaceAll(" ", "_").toLowerCase();
-    	command = "SELECT count("+action+") FROM stats2 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";;
+    	command = "SELECT count("+action+") FROM stats3 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";;
     	return db.rawQuery(command, null).getInt(0);
     }
     public int getPoints(Integer jnum, String teamname) {
@@ -91,8 +91,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	int twopt, threept, points;
     	String command1, command2, teamName;
     	teamName = teamname.replaceAll(" ", "_").toLowerCase();
-    	command1 = "SELECT count(F2H) FROM stats2 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";
-    	command2 = "SELECT count(F3H) FROM stats2 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";
+    	command1 = "SELECT count(F2H) FROM stats3 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";
+    	command2 = "SELECT count(F3H) FROM stats3 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";
     	twopt = (db.rawQuery(command1, null).getInt(0) * 2);
     	threept = (db.rawQuery(command2, null).getInt(0) * 3);
     	points = (twopt + threept);
@@ -158,7 +158,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	values.put("team_name", team);
     	
     	// 3. insert
-    	db.insert("stats2", // table name
+    	db.insert("stats3", // table name
     	null, //nullColumnHack
     	values); // key/value -> keys = column names/ values = column values
     	
@@ -173,7 +173,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	
 
     	//db.delete("stats", number, whereArgs)
-    	db.delete("stats2", number ,null);
+    	db.delete("stats3", number ,null);
     	db.close();
     }
 

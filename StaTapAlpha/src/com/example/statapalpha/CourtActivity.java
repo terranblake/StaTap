@@ -3,6 +3,7 @@ package com.example.statapalpha;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -77,7 +78,10 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		awayPlayersIn.add("34");
 		awayPlayersIn.add("35");
 	}
-	
+	@Override
+	public void onBackPressed() {
+		//DO NOTHING
+	}
 	// Stores x and y coordinate
 	public class position {
 		public int x;
