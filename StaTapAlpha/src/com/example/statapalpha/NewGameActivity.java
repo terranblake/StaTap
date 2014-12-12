@@ -23,6 +23,7 @@ public class NewGameActivity extends Activity {
 	EditText title;
 	TextView team1, team2;
 	SqliteHelper db;
+	String teamn1, teamn2, gTitle;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -96,10 +97,11 @@ public class NewGameActivity extends Activity {
 					
 					//Changing team name
 			    	TextView t1 = (TextView) findViewById(R.id.textView4);
-					String team1 = textView.getText().toString();
-					t1.setText(team1);
+					teamn1 = textView.getText().toString();
+					t1.setText(teamn1);
 					//Toast message
 					String message = "You Selected " + textView.getText().toString() + " for Team 1";
+					
 					Toast.makeText(NewGameActivity.this, message, Toast.LENGTH_SHORT).show();
 			}
 			
@@ -113,8 +115,8 @@ public class NewGameActivity extends Activity {
 					TextView textView = (TextView) viewClicked;
 					//Changing Team name
 					TextView t2 = (TextView) findViewById(R.id.textView5);
-					String team2 = textView.getText().toString();
-					t2.setText(team2);
+					teamn2 = textView.getText().toString();
+					t2.setText(teamn2);
 					//Toast message
 					String message = "You Selected " + textView.getText().toString() + " for Team 2";
 					Toast.makeText(NewGameActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -123,14 +125,10 @@ public class NewGameActivity extends Activity {
 		});
 	}
 	public void confirm(View view) {
-		String t1, t2, gTitle;
-		t1 = team1.toString();
-		t2 = team2.toString();
-		gTitle = title.toString();
 		
 		Intent intent = new Intent(this, CourtActivity.class);
-    	intent.putExtra("TEAM1", t1);
-    	intent.putExtra("TEAM2", t2);
+    	intent.putExtra("TEAM1", teamn1);
+    	intent.putExtra("TEAM2", teamn2);
     	intent.putExtra("GAME_TITLE", gTitle);
     	startActivity(intent);
 		

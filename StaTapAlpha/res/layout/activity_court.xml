@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/ftMade"
         android:layout_alignRight="@+id/fgText"
-        android1:layout_alignLeft="@+id/ftMade"
+        android:layout_alignLeft="@+id/ftMade"
         android:text="@string/free_throw"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="34sp" />
@@ -475,5 +475,14 @@
         android:layout_alignRight="@+id/p10"
         android:contentDescription="@string/undo"
         android:src="@drawable/court" />
+
+    <Button
+        android:id="@+id/buttonStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="stats"
+        android:text="@string/stats" />
 
 </RelativeLayout>

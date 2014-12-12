@@ -86,5 +86,5 @@
 	<string name="gametitle">Game Title:</string>
 	<string name="zero">0</string>
 	<string name="na">N/A</string>
-	
+	<string name="stats">Stats</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.statapalpha;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -43,40 +44,57 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		//Get Team 1 and 2 and Game Title
 		convertStrings();
 		// Gets players
+		Toast.makeText(CourtActivity.this, team1, Toast.LENGTH_SHORT).show();
+		Toast.makeText(CourtActivity.this, team2, Toast.LENGTH_SHORT).show();
 		getPlayers();
+	}
+	public void stats(View view) {
+		Intent intent = new Intent(this, StatActivity.class);
+    	intent.putExtra("TEAM1", team1);
+    	intent.putExtra("TEAM2", team2);
+    	startActivity(intent);
 	}
 	public void convertStrings() {
 		Intent mIntent = getIntent();
 		team1n = mIntent.getStringExtra("TEAM1");
 		team2n = mIntent.getStringExtra("TEAM2");
+		team1 = team1n.replaceAll(" ", "_").toLowerCase();
+		team2 = team2n.replaceAll(" ", "_").toLowerCase();
 	}
 	// Populates arrays with player numbers
 	void getPlayers() {
-		homePlayersBench.add("12");
-		homePlayersBench.add("10");
-		homePlayersBench.add("32");
-		homePlayersBench.add("16");
-		homePlayersBench.add("13");
-		homePlayersBench.add("19");
+		Cursor cursorH = db.getPlayerJNums(team1);
+		Cursor cursorA = db.getPlayerJNums(team2);
+		Button button = (Button) findViewById(R.id.p1);
+		int i = 1;
+		if (cursorH != null && cursorH.getCount() != 0) {
+		    cursorH.moveToFirst();
+		    while (!cursorH.isAfterLast()) {
+		    	if (i < 6) {
+		        homePlayersIn.add(cursorH.getString(cursorH.getColumnIndex("jersey_num")));		 
+		        i++;		  
+		    	} else {
+		    	homePlayersBench.add(cursorH.getString(cursorH.getColumnIndex("jersey_num")));
+		    	}
+		    	cursorH.moveToNext();
+		    }
+		}
+		i=1;
+		if (cursorA != null && cursorA.getCount() != 0) {
+		    cursorA.moveToFirst();
+		    while (!cursorA.isAfterLast()) {
+		    	if (i < 6) {
+		        homePlayersIn.add(cursorA.getString(cursorA.getColumnIndex("jersey_num")));		 
+		        i++;		  
+		    	} else {
+		    	homePlayersBench.add(cursorA.getString(cursorA.getColumnIndex("jersey_num")));
+		    	}
+		    	cursorA.moveToNext();
+		    }
+		}
 		
-		homePlayersIn.add("13");
-		homePlayersIn.add("14");
-		homePlayersIn.add("15");
-		homePlayersIn.add("16");
-		homePlayersIn.add("17");
 		
-		awayPlayersBench.add("21");
-		awayPlayersBench.add("22");
-		awayPlayersBench.add("23");
-		awayPlayersBench.add("24");
-		awayPlayersBench.add("25");
-		awayPlayersBench.add("26");
 		
-		awayPlayersIn.add("31");
-		awayPlayersIn.add("32");
-		awayPlayersIn.add("33");
-		awayPlayersIn.add("34");
-		awayPlayersIn.add("35");
 	}
 	@Override
 	public void onBackPressed() {
@@ -206,6 +224,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	public boolean onMenuItemClick(MenuItem item) {
 		Button button = (Button)findViewById(playerButton);
 		button.setText(item.getTitle());
+		
 		refreshPlayers();
 		return false;
 	}
