@@ -81,20 +81,35 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     public int getStats(String action, Integer jnum, String teamname) {
     	SQLiteDatabase db = this.getReadableDatabase();
-    	String command, teamName;
-    	teamName = teamname.replaceAll(" ", "_").toLowerCase();
-    	command = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = '"+action+"' + team_name = '"+teamName+"'";;
-    	return db.rawQuery(command, null).getInt(0);
+    	String command;
+    	Cursor cursor;
+    	int number = 99;
+    	command = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = '"+action+"' AND team_name = '"+teamname+"'";
+    	cursor = db.rawQuery(command, null);
+    	if(cursor.moveToFirst()){
+    		number = cursor.getInt(0);
+    	}
+    	return number;
     }
     public int getPoints(Integer jnum, String teamname) {
     	SQLiteDatabase db = this.getReadableDatabase();
     	int twopt, threept, points;
-    	String command1, command2, teamName;
-    	teamName = teamname.replaceAll(" ", "_").toLowerCase();
-    	command1 = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = 'F2H' AND team_name = '"+teamName+"'";
-    	command2 = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = 'F3H' AND team_name = '"+teamName+"'";
-    	twopt = (db.rawQuery(command1, null).getInt(0) * 2);
-    	threept = (db.rawQuery(command2, null).getInt(0) * 3);
+    	int rawtwopt = 0;
+    	int rawthreept = 0;
+    	String command1, command2;
+    	Cursor cursor1, cursor2;
+    	command1 = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = 'F2H' AND team_name = '"+teamname+"'";
+    	command2 = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = 'F3H' AND team_name = '"+teamname+"'";
+    	cursor1 = db.rawQuery(command1, null);
+    	cursor2 = db.rawQuery(command2, null);
+    	if(cursor1.moveToFirst()){
+    	    rawtwopt = cursor1.getInt(0);
+    	}
+    	if(cursor2.moveToFirst()){
+    	    rawthreept = cursor2.getInt(0);
+    	}
+    	twopt = (rawtwopt * 2);
+    	threept = (rawthreept * 3);
     	points = (twopt + threept);
     	return points;
     }

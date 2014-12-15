@@ -64,7 +64,8 @@ public class StatBaseAdapter extends BaseAdapter {
         // or you can try better way
         private TextView detail(View v, int resId, int num) {
                 TextView tv = (TextView) v.findViewById(resId);
-                tv.setText(num);
+                String rawr = Integer.toString(num);
+                tv.setText(rawr);
                 return tv;
         }
         
