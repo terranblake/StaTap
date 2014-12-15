@@ -13,9 +13,12 @@ public class SqliteHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "StaTap";
     private static final String TEAM_NAMES = "Team_Names";
+    private static final String GAME_TITLES = "game_name";
     private static final String JERSEY_NUM = "Jersey_num";
     private static final String LAST_NAME = "last_name";
     private static final String FIRST_NAME = "first_name";
+    private static final String TEAM_1 = "team1";
+    private static final String TEAM_2 = "team2";
     public SqliteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);  
     }
@@ -26,11 +29,12 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE IF NOT EXISTS teams3(id INTEGER PRIMARY KEY AUTOINCREMENT,Team_Names TEXT UNIQUE);");
 		
 		//Create Games Table
-		db.execSQL("CREATE TABLE IF NOT EXISTS games(id INTEGER PRIMARY KEY AUTOINCREMENT, team1 INTEGER, team2 INTEGER, game_name TEXT)");
+		db.execSQL("CREATE TABLE IF NOT EXISTS games2(id INTEGER PRIMARY KEY AUTOINCREMENT, game_name TEXT)");
 		
 		// Create stats table
 		db.execSQL("CREATE TABLE IF NOT EXISTS stats4(play_id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
 				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER);");
+		
     }
     public Cursor getTeams() {
     	SQLiteDatabase db = this.getWritableDatabase();
@@ -131,6 +135,27 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	
     	// 4. close
     	db.close(); 
+    }
+    public void createGame(String gamename, String team1, String team2) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	String team1n, team2n;
+    	team1n = team1.replaceAll(" ", "_").toLowerCase();
+    	team2n = team2.replaceAll(" ", "_").toLowerCase();
+    	ContentValues values = new ContentValues();
+    	values.put(GAME_TITLES, gamename.toString());
+    	values.put(GAME_TITLES, team1n.toString());
+    	values.put(GAME_TITLES, team2n.toString());// get title 
+    	ContentValues values2 = new ContentValues();
+    	values2.put(TEAM_1, team1n.toString());
+    	values2.put(TEAM_2, team2n.toString());
+    	String gamenamen = gamename.replaceAll(" ", "_").toLowerCase();
+    	db.execSQL("CREATE TABLE IF NOT EXISTS "+gamenamen+"(id INTEGER PRIMARY KEY UNIQUE, team1 TEXT, team2 TEXT)");
+    	db.insert("games2", // table name
+    	    	null, //nullColumnHack
+    	    	values);
+    	db.insert(gamenamen, // table name
+    	    	null, //nullColumnHack
+    	    	values);
     }
     public void delTeam(String teamname) {
     	SQLiteDatabase db = this.getWritableDatabase();
