@@ -44,8 +44,6 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		//Get Team 1 and 2 and Game Title
 		convertStrings();
 		// Gets players
-		Toast.makeText(CourtActivity.this, team1, Toast.LENGTH_SHORT).show();
-		Toast.makeText(CourtActivity.this, team2, Toast.LENGTH_SHORT).show();
 		getPlayers();
 	}
 	public void stats(View view) {
