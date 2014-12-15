@@ -128,6 +128,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	public void onBackPressed() {
 		//DO NOTHING
 	}
+	
 	// Stores x and y coordinate
 	public class position {
 		public int x;
