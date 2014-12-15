@@ -16,8 +16,8 @@ public class StatActivity extends Activity {
 	SqliteHelper db;
 	String team1, team2;
 	ListView lv1, lv2;
-	ArrayList<StatListData> values = new ArrayList<StatListData>();
-	ArrayList<StatListData> values2 = new ArrayList<StatListData>();
+	ArrayList<StatListData> values;
+	ArrayList<StatListData> values2;
 	
 	Context context = StatActivity.this;
 	@Override

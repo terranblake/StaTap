@@ -29,7 +29,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE IF NOT EXISTS games(id INTEGER PRIMARY KEY AUTOINCREMENT, team1 INTEGER, team2 INTEGER, game_name TEXT)");
 		
 		// Create stats table
-		db.execSQL("CREATE TABLE IF NOT EXISTS stats3(play_id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
+		db.execSQL("CREATE TABLE IF NOT EXISTS stats4(play_id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
 				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER);");
     }
     public Cursor getTeams() {
@@ -83,7 +83,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	SQLiteDatabase db = this.getReadableDatabase();
     	String command, teamName;
     	teamName = teamname.replaceAll(" ", "_").toLowerCase();
-    	command = "SELECT count("+action+") FROM stats3 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";;
+    	command = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = '"+action+"' + team_name = '"+teamName+"'";;
     	return db.rawQuery(command, null).getInt(0);
     }
     public int getPoints(Integer jnum, String teamname) {
@@ -91,8 +91,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	int twopt, threept, points;
     	String command1, command2, teamName;
     	teamName = teamname.replaceAll(" ", "_").toLowerCase();
-    	command1 = "SELECT count(F2H) FROM stats3 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";
-    	command2 = "SELECT count(F3H) FROM stats3 WHERE Jersey_num = "+jnum+" AND team_name = '"+teamName+"'";
+    	command1 = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = 'F2H' AND team_name = '"+teamName+"'";
+    	command2 = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = 'F3H' AND team_name = '"+teamName+"'";
     	twopt = (db.rawQuery(command1, null).getInt(0) * 2);
     	threept = (db.rawQuery(command2, null).getInt(0) * 3);
     	points = (twopt + threept);
@@ -141,24 +141,22 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     
     // For updating player stats
-    public void recordPlay(int player, String team, String action, CourtActivity.position position, int playNumber) {
+    public void recordPlay(int player, String team, String action, CourtActivity.position position) {
     	
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
     	
     	onCreate(db);
-    	
     	// 2. create ContentValues to add key "column"/value
     	ContentValues values = new ContentValues();
     	values.put("jersey_num", player); // get title 
     	values.put("action", action);
     	values.put("x_coord", position.x);
     	values.put("y_coord", position.y);
-    	values.put("play_id", playNumber);
     	values.put("team_name", team);
     	
     	// 3. insert
-    	db.insert("stats3", // table name
+    	db.insert("stats4", // table name
     	null, //nullColumnHack
     	values); // key/value -> keys = column names/ values = column values
     	
@@ -173,7 +171,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	
 
     	//db.delete("stats", number, whereArgs)
-    	db.delete("stats3", number ,null);
+    	db.delete("stats4", number ,null);
     	db.close();
     }
 

@@ -79,21 +79,49 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		    	cursorH.moveToNext();
 		    }
 		}
+		String string;
+		string = homePlayersIn.get(0);
+		button.setText(string);
+		string = homePlayersIn.get(1);
+		button = (Button) findViewById(R.id.p2);
+		button.setText(string);
+		string = homePlayersIn.get(2);
+		button = (Button) findViewById(R.id.p3);
+		button.setText(string);
+		string = homePlayersIn.get(3);
+		button = (Button) findViewById(R.id.p4);
+		button.setText(string);
+		string = homePlayersIn.get(4);
+		button = (Button) findViewById(R.id.p5);
+		button.setText(string);
 		i=1;
 		if (cursorA != null && cursorA.getCount() != 0) {
 		    cursorA.moveToFirst();
 		    while (!cursorA.isAfterLast()) {
 		    	if (i < 6) {
-		        homePlayersIn.add(cursorA.getString(cursorA.getColumnIndex("jersey_num")));		 
+		        awayPlayersIn.add(cursorA.getString(cursorA.getColumnIndex("jersey_num")));		 
 		        i++;		  
 		    	} else {
-		    	homePlayersBench.add(cursorA.getString(cursorA.getColumnIndex("jersey_num")));
+		    	awayPlayersBench.add(cursorA.getString(cursorA.getColumnIndex("jersey_num")));
 		    	}
 		    	cursorA.moveToNext();
 		    }
 		}
-		
-		
+		string = awayPlayersIn.get(0);
+		button = (Button) findViewById(R.id.p6);
+		button.setText(string);
+		string = awayPlayersIn.get(1);
+		button = (Button) findViewById(R.id.p7);
+		button.setText(string);
+		string = awayPlayersIn.get(2);
+		button = (Button) findViewById(R.id.p8);
+		button.setText(string);
+		string = awayPlayersIn.get(3);
+		button = (Button) findViewById(R.id.p9);
+		button.setText(string);
+		string = awayPlayersIn.get(4);
+		button = (Button) findViewById(R.id.p10);
+		button.setText(string);
 		
 	}
 	@Override
@@ -186,8 +214,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		else
 			team = team2;
 		
-		playNumber++;
-		db.recordPlay(Integer.parseInt(player), team, action, position, playNumber);
+		db.recordPlay(Integer.parseInt(player), team, action, position);
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		refreshPlayers();
 	}
