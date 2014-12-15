@@ -1,7 +1,10 @@
 package com.example.statapalpha;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -114,14 +117,25 @@ public class HomeScreen extends Activity {
     */
 	private void populateListView() {
     	//Create list of items
-    	String[] gameNames = {"Game 1", "Game 2", "Game 3", "Game 4", "Game 5", "Game 6", "Game 7", "Game 8", "Game 9", 
-    			"Game 10", "Game 11", "Game 12", "Game 13", "Game 14", "Game 15", "Game 16", "Game 17", "Game 18", "Game 19", "Game 20"};
+		Cursor cursor = db.getGames();
+		
+		ArrayList<String> values = new ArrayList<String>();
+		if (cursor != null && cursor.getCount() != 0) {
+		    cursor.moveToFirst();
+		    while (!cursor.isAfterLast()) {
+
+		        values.add(cursor.getString(cursor.getColumnIndex("game_name")));
+
+		        cursor.moveToNext();
+		    }
+		}    	
+    	
     	
     	//Build Adapter
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(
     			this,					// Context
     			R.layout.listviews,		// Layout to use
-    			gameNames);				// Items to be displayed
+    			values);				// Items to be displayed
     			
     	//Configure the List View
     	ListView list = (ListView) findViewById(R.id.homeTeamLV);

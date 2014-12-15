@@ -41,6 +41,11 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	String[] projection = { "Team_Names" };
     	return db.query("teams3",projection, null, null, null, null, null, null);
     }
+    public Cursor getGames() {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	String[] projection = { "game_name" };
+    	return db.query("games2",projection, null, null, null, null, null, null);
+    }
     public Cursor getPlayerJNums(String teamname) {
     	SQLiteDatabase db = this.getWritableDatabase();
     	String[] projection = { "jersey_num" };
