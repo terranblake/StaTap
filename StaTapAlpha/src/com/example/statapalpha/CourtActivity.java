@@ -45,10 +45,11 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		db = new SqliteHelper(this.getApplicationContext());
 		//Get Team 1 and 2 and Game Title
 		
-		Toast.makeText(CourtActivity.this, Integer.toString(currentplay), Toast.LENGTH_SHORT).show();
+		
 		convertStrings();
 		createTable();
 		getCurrentPlay();
+		Toast.makeText(CourtActivity.this, Integer.toString(currentplay), Toast.LENGTH_SHORT).show();
 		// Gets players
 		getPlayers();
 		refreshPlayers();

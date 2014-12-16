@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,9 @@ public class EditTeam extends Activity {
 	EditText editTextLast;
 	ListView lv;
 	String tableteamname;
-	
+	ArrayList<EditListData> values;
+	Cursor cursor;
+	Context context = EditTeam.this;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,9 +53,28 @@ public class EditTeam extends Activity {
 		tname.setText(teamname);
 		registerForContextMenu(lv);
 		registerClickCallback();
-		populateListViews();
+		getPlayers();
+		lv.setAdapter(new EditBaseAdapter(context, values));
+		
 	}
-	
+	public void getPlayers() {
+		cursor = db.getJNums(tableteamname);
+		values = new ArrayList<EditListData>();
+		if (cursor != null && cursor.getCount() != 0) {
+		    cursor.moveToFirst();
+		    while (!cursor.isAfterLast()) {
+		    	EditListData data = new EditListData();
+		    	int jnum = cursor.getInt(0);
+		    	String jnums = Integer.toString(jnum);
+		    	data.jnum = jnums;
+		    	data.FName = db.getPlayerFName(jnum, tableteamname);
+		    	data.LName = db.getPlayerLName(jnum, tableteamname);
+		    	
+		    	values.add(data);
+		        cursor.moveToNext();
+		    }
+		}
+	}
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
         	super.onCreateContextMenu(menu, v, menuInfo);
         	if (v.getId()==R.id.listViewPlayers) {
@@ -110,7 +132,8 @@ public class EditTeam extends Activity {
 			editTextFirst.setText("");
 			editTextLast.setText("");
 			db.addPlayer(tableteamname, Jersey_Num, First_Name, Last_Name);
-			populateListViews();
+			getPlayers();
+			lv.setAdapter(new EditBaseAdapter(context, values));
 		} else {
 			Toast.makeText(EditTeam.this, "Names must be BLANK or contain [a-Z]", Toast.LENGTH_SHORT).show();
 		}
@@ -129,12 +152,14 @@ public class EditTeam extends Activity {
         switch(item.getItemId()) {
             case R.id.delete:
           // remove stuff here
-            Integer Position = ((AdapterView.AdapterContextMenuInfo)info).position;
-            Object obj = lv.getItemAtPosition(Position);
-            String teamname2 = obj.toString();
+            View view = ((AdapterView.AdapterContextMenuInfo)info).targetView;
+            LinearLayout linearLayoutParent = (LinearLayout) view;
+            TextView tv = (TextView) linearLayoutParent.getChildAt(0);
+            String teamname2 = tv.getText().toString();
             int jnum = Integer.parseInt(teamname2);
           	db.delPlayer(jnum, tableteamname);
-          	populateListViews();
+          	getPlayers();
+          	lv.setAdapter(new EditBaseAdapter(context, values));
             return true;
             default:
                   return super.onContextItemSelected(item);
@@ -152,17 +177,18 @@ public class EditTeam extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View viewClicked,
 					int position, long id) {
-					TextView textView = (TextView) viewClicked; 
+					LinearLayout linearLayoutParent = (LinearLayout) viewClicked;
+					TextView textView = (TextView) linearLayoutParent.getChildAt(0);
+					TextView fname = (TextView) linearLayoutParent.getChildAt(1);
+					TextView lname = (TextView) linearLayoutParent.getChildAt(2);
 					Integer Jersey_Num = Integer.parseInt(textView.getText().toString());
-					String fname = "N/A";
-					String lname = "N/A";
+					String fnamef = "N/A";
+					String lnamel = "N/A";
 					
-					Cursor cursorF;
-					Cursor cursorL;
 					//Toast message
-					fname = db.getPlayerFName(Jersey_Num, tableteamname);
-					lname = db.getPlayerLName(Jersey_Num, tableteamname);
-					String message = "Jersey Number:" + Jersey_Num + " First Name:" + fname + " Last Name:" + lname;
+					fnamef = fname.getText().toString();
+					lnamel = lname.getText().toString();
+					String message = "Jersey Number:" + Jersey_Num + " First Name:" + fnamef + " Last Name:" + lnamel;
 					Toast.makeText(EditTeam.this, message, Toast.LENGTH_SHORT).show();
 			}
 		});
