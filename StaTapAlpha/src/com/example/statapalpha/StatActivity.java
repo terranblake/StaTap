@@ -106,7 +106,7 @@ public class StatActivity extends Activity {
 			    	int jnum = cursor2.getInt(0);
 			    	data.Jersey = jnum;
 			    	data.Points = db.getPoints(jnum, team2, tablename);
-			    	t2p = t2p+(db.getPoints(jnum, team1, tablename));
+			    	t2p = t2p+(db.getPoints(jnum, team2, tablename));
 			    	data.FT = db.getStats("FTM", jnum, team2, tablename);
 			    	data.Assists = db.getStats("AST", jnum, team2, tablename);
 			    	data.Rebounds = db.getStats("RB", jnum, team2, tablename);
