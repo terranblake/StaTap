@@ -100,9 +100,6 @@ public class NewGameActivity extends Activity {
 					teamn1 = textView.getText().toString();
 					t1.setText(teamn1);
 					//Toast message
-					String message = "You Selected " + textView.getText().toString() + " for Team 1";
-					
-					Toast.makeText(NewGameActivity.this, message, Toast.LENGTH_SHORT).show();
 			}
 			
 		});
@@ -118,8 +115,6 @@ public class NewGameActivity extends Activity {
 					teamn2 = textView.getText().toString();
 					t2.setText(teamn2);
 					//Toast message
-					String message = "You Selected " + textView.getText().toString() + " for Team 2";
-					Toast.makeText(NewGameActivity.this, message, Toast.LENGTH_SHORT).show();
 			}
 			
 		});
@@ -128,12 +123,17 @@ public class NewGameActivity extends Activity {
 		
 		Intent intent = new Intent(this, CourtActivity.class);
 		gTitle = title.getText().toString();
-    	intent.putExtra("TEAM1", teamn1);
-    	intent.putExtra("TEAM2", teamn2);
-    	intent.putExtra("GAME_TITLE", gTitle);
-    	db.createGame(gTitle, teamn1, teamn2);
-    	finish();
-    	startActivity(intent);
+		if (gTitle.matches("[a-zA-Z0-9 ]*")) {
+
+	    	intent.putExtra("TEAM1", teamn1);
+	    	intent.putExtra("TEAM2", teamn2);
+	    	intent.putExtra("GAME_TITLE", gTitle);
+	    	db.createGame(gTitle, teamn1, teamn2);
+	    	finish();
+	    	startActivity(intent);
+		} else {
+			Toast.makeText(NewGameActivity.this, "Invalid characters in Game Title", Toast.LENGTH_SHORT).show();
+		}
 		
 	}
 	@Override

@@ -55,11 +55,15 @@ public class CreateTeam extends Activity {
 		}
 		
 		String Team_Name = editTeam.getText().toString();
+		if (Team_Name.matches("[a-zA-Z ]*")) {
 		editTeam.setText("");
 		db.addTeam(Team_Name);
 		String message = "Team " + editTeam.getText().toString() + " was added to the database";
 		Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
 		populateListViews();
+		} else {
+			Toast.makeText(CreateTeam.this, "Invalid characters in Team Name", Toast.LENGTH_SHORT).show();
+		}
 	}
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
     	super.onCreateContextMenu(menu, v, menuInfo);

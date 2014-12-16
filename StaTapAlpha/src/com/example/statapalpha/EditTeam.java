@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -28,6 +29,7 @@ public class EditTeam extends Activity {
 	EditText editTextJersey;
 	EditText editTextFirst;
 	EditText editTextLast;
+	ListView lv;
 	String tableteamname;
 	
 	@Override
@@ -35,7 +37,7 @@ public class EditTeam extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_team);
 		
-		ListView lv = (ListView) findViewById(R.id.listViewPlayers);
+		lv = (ListView) findViewById(R.id.listViewPlayers);
 		// All this random crap here just to set the Team Name
 		editTextJersey = (EditText)findViewById(R.id.editTextJersey);
 		editTextFirst = (EditText)findViewById(R.id.editTextFirst);
@@ -93,18 +95,23 @@ public class EditTeam extends Activity {
 			Toast.makeText(EditTeam.this, errormessage, Toast.LENGTH_SHORT).show();
 		      return;
 		}
-		if(editTextFirst.getText().toString().trim().length()==0) {
+		if(!(editTextFirst.getText().toString().trim().length()==0)) {
 			First_Name = editTextFirst.getText().toString();
 		}
-		if(editTextLast.getText().toString().trim().length()==0) {
+		if(!(editTextLast.getText().toString().trim().length()==0)) {
 			Last_Name = editTextLast.getText().toString();
 		}
-		Jersey_Num = Integer.parseInt(editTextJersey.getText().toString());
-		editTextJersey.setText("");
-		editTextFirst.setText("");
-		editTextLast.setText("");
-		db.addPlayer(tableteamname, Jersey_Num, First_Name, Last_Name);
-		populateListViews();
+		if (First_Name.matches("[a-zA-Z]*") && Last_Name.matches("[a-zA-Z]*")) {
+			Jersey_Num = Integer.parseInt(editTextJersey.getText().toString());
+			editTextJersey.setText("");
+			editTextFirst.setText("");
+			editTextLast.setText("");
+			db.addPlayer(tableteamname, Jersey_Num, First_Name, Last_Name);
+			populateListViews();
+		} else {
+			Toast.makeText(EditTeam.this, "Names must be BLANK or contain [a-Z]", Toast.LENGTH_SHORT).show();
+		}
+		
 		
 	}
 	
@@ -115,11 +122,16 @@ public class EditTeam extends Activity {
 		return true;
 	}
     public boolean onContextItemSelected(MenuItem item) {
-        //AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+        AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
         switch(item.getItemId()) {
             case R.id.delete:
           // remove stuff here
-          	  
+            Integer Position = ((AdapterView.AdapterContextMenuInfo)info).position;
+            Object obj = lv.getItemAtPosition(Position);
+            String teamname2 = obj.toString();
+            int jnum = Integer.parseInt(teamname2);
+          	db.delPlayer(jnum, tableteamname);
+          	populateListViews();
             return true;
             default:
                   return super.onContextItemSelected(item);

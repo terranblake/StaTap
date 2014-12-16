@@ -88,12 +88,29 @@
             android:layout_marginLeft="40dp"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/layoutT11"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/team1"
-                android:textSize="40sp" />
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/team1"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/textT1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/p1p"
+                    android:textColor="#3399FF"
+                    android:textSize="35sp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layoutContainer"
@@ -180,12 +197,29 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/TextView03"
+            <LinearLayout
+                android:id="@+id/layoutT22"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/team2"
-                android:textSize="40sp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/TextView03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/team2"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/textT2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/p1p"
+                    android:textColor="#3399FF"
+                    android:textSize="35sp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/LinearLayout01"

@@ -259,6 +259,10 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	}
     	return gameId;
     }
+    public void delPlayer(int jnum, String teamname) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	db.execSQL("DELETE FROM "+teamname+" WHERE jersey_num = "+jnum);
+    }
     public void createStatTable(String gamename) {
     	SQLiteDatabase db = this.getWritableDatabase();
     	db.execSQL("CREATE TABLE IF NOT EXISTS "+gamename+"(play_id INTEGER UNIQUE PRIMARY KEY, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +

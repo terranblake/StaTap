@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class StatActivity extends Activity {
 	SqliteHelper db;
@@ -18,6 +19,8 @@ public class StatActivity extends Activity {
 	ListView lv1, lv2;
 	ArrayList<StatListData> values;
 	ArrayList<StatListData> values2;
+	TextView t1points, t2points;
+	int t1p, t2p;
 	
 	Context context = StatActivity.this;
 	@Override
@@ -28,6 +31,10 @@ public class StatActivity extends Activity {
 		team1 = mIntent.getStringExtra("TEAM1");
 		team2 = mIntent.getStringExtra("TEAM2");
 		tablename = mIntent.getStringExtra("TABLENAME");
+		t1p = 0;
+		t2p = 0;
+		t1points = (TextView) findViewById(R.id.textT1);
+		t2points = (TextView) findViewById(R.id.textT2);
 		db = new SqliteHelper(this.getApplicationContext());
 		lv1 = (ListView) findViewById(R.id.listView1);
 		lv2 = (ListView) findViewById(R.id.ListView01);
@@ -36,9 +43,15 @@ public class StatActivity extends Activity {
 		pullStats();
 		lv1.setAdapter(new StatBaseAdapter(context, values));
 		lv2.setAdapter(new StatBaseAdapter(context, values2));
-		
+		setPoints();
 	}
-
+	public void setPoints() {
+		String p1t, p2t;
+		p1t = Integer.toString(t1p);
+		p2t = Integer.toString(t2p);
+		t1points.setText(p1t);
+		t2points.setText(p2t);
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -72,6 +85,7 @@ public class StatActivity extends Activity {
 			    	int jnum = cursor1.getInt(0);
 			    	data.Jersey = jnum;
 			    	data.Points = db.getPoints(jnum, team1, tablename);
+			    	t1p = t1p+(db.getPoints(jnum, team1, tablename));
 			    	data.FT = db.getStats("FTM", jnum, team1, tablename);
 			    	data.Assists = db.getStats("AST", jnum, team1, tablename);
 			    	data.Rebounds = db.getStats("RB", jnum, team1, tablename);
@@ -92,6 +106,7 @@ public class StatActivity extends Activity {
 			    	int jnum = cursor2.getInt(0);
 			    	data.Jersey = jnum;
 			    	data.Points = db.getPoints(jnum, team2, tablename);
+			    	t2p = t2p+(db.getPoints(jnum, team1, tablename));
 			    	data.FT = db.getStats("FTM", jnum, team2, tablename);
 			    	data.Assists = db.getStats("AST", jnum, team2, tablename);
 			    	data.Rebounds = db.getStats("RB", jnum, team2, tablename);
