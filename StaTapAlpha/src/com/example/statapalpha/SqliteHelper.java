@@ -49,6 +49,16 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	}
     	return title;
     }
+    public int countPlayers(String teamname) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	int players = 0;
+    	String command = "SELECT count(*) FROM "+teamname;
+    	Cursor cursor = db.rawQuery(command, null);
+    	if(cursor.moveToFirst()) {
+    		players = cursor.getInt(0);
+    	}
+    	return players;
+    }
     public String getGameT1(int gid) {
     	SQLiteDatabase db = this.getReadableDatabase();
     	onCreate(db);

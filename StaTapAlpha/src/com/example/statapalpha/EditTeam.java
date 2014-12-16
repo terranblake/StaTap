@@ -90,6 +90,9 @@ public class EditTeam extends Activity {
 		Integer Jersey_Num;
 		String First_Name = "";
 		String Last_Name = "";
+		if(db.countPlayers(tableteamname) > 24) {
+			
+		}
 		if(editTextJersey.getText().toString().trim().length()==0) {
 			String errormessage = "Error: Jersey Number cannot be blank";
 			Toast.makeText(EditTeam.this, errormessage, Toast.LENGTH_SHORT).show();
