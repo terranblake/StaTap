@@ -15,11 +15,13 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".CourtActivity"
-            android:label="@string/title_activity_court_activity" >
+            android:label="@string/title_activity_court_activity" 
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".HomeScreen"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,27 +30,33 @@
         </activity>
         <activity
             android:name=".NewGameActivity"
-            android:label="@string/title_activity_new_game" >
+            android:label="@string/title_activity_new_game"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".CreateTeam"
-            android:label="@string/title_activity_create_team" >
+            android:label="@string/title_activity_create_team"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".Manual_Activity"
-            android:label="@string/title_activity_manual_" >
+            android:label="@string/title_activity_manual_"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".SubstitutionActivity"
-            android:label="@string/title_activity_substitution" >
+            android:label="@string/title_activity_substitution"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".StatActivity"
-            android:label="@string/title_activity_stat" >
+            android:label="@string/title_activity_stat"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".EditTeam"
-            android:label="@string/title_activity_edit_team" >
+            android:label="@string/title_activity_edit_team"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 
