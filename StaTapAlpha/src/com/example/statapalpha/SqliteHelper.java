@@ -222,6 +222,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	db.insert("games6", // table name
     	    	null, //nullColumnHack
     	    	values);
+    	db.close();  
     }
     public void delTeam(String teamname) {
     	SQLiteDatabase db = this.getWritableDatabase();
@@ -231,6 +232,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	db.execSQL("DELETE FROM teams3 WHERE Team_Names = '"+teamname+"'");
     	db.execSQL("DELETE FROM games6 WHERE team1 = '"+teamname+"'");
     	db.execSQL("DELETE FROM games6 WHERE team2 = '"+teamname+"'");
+    	db.close();  
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -262,11 +264,13 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public void delPlayer(int jnum, String teamname) {
     	SQLiteDatabase db = this.getWritableDatabase();
     	db.execSQL("DELETE FROM "+teamname+" WHERE jersey_num = "+jnum);
+    	db.close();  
     }
     public void createStatTable(String gamename) {
     	SQLiteDatabase db = this.getWritableDatabase();
     	db.execSQL("CREATE TABLE IF NOT EXISTS "+gamename+"(play_id INTEGER UNIQUE PRIMARY KEY, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
 				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER)");
+    	db.close();  
     }
     public void recordPlay(int player, String team, String action, CourtActivity.position position, String table) {
     	

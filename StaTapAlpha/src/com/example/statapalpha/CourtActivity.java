@@ -251,7 +251,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	int goal(position position) {
 		int points=3;
 		
-		if ((Math.sqrt(Math.pow((position.x - 1082), 2) + Math.pow((position.y - 453), 2)) < 270) || (Math.sqrt(Math.pow((position.x - 193), 2) + Math.pow((position.y - 453), 2)) < 270)) points = 2;
+		if ((Math.sqrt(Math.pow((position.x - 2170), 2) + Math.pow((position.y - 1000), 2)) < 500) || (Math.sqrt(Math.pow((position.x - 400), 2) + Math.pow((position.y - 1000), 2)) < 500)) points = 2;
 		
 		return points;
 	}
