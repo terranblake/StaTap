@@ -11,7 +11,6 @@
         android:layout_height="75dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:onClick="editPlays"
         android:text="@string/edit_plays"
          />
 

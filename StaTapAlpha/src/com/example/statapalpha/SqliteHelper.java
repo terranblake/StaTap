@@ -261,7 +261,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     public void createStatTable(String gamename) {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	db.execSQL("CREATE TABLE IF NOT EXISTS "+gamename+"(play_id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
+    	db.execSQL("CREATE TABLE IF NOT EXISTS "+gamename+"(play_id INTEGER UNIQUE PRIMARY KEY, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
 				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER)");
     }
     public void recordPlay(int player, String team, String action, CourtActivity.position position, String table) {
@@ -288,14 +288,25 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// 4. close
     	db.close();  
     }
-    public void undoPlay(String number, String tablename)//See my comment Paul link might help
+    public int countPlays(String tablename) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	Cursor cursor;
+    	String command;
+    	int plays = 0;
+    	command = "SELECT count(*) from "+tablename;
+    	cursor = db.rawQuery(command, null);
+    	if(cursor.moveToFirst()){
+    	    plays = cursor.getInt(0);
+    	}
+    	return plays;
+    }
+    public void undoPlay(String tablename, int play)//See my comment Paul link might help
     {
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
-    	
+    	int playd = (play-1);
+    	db.execSQL("DELETE FROM "+tablename+" WHERE play_id = "+playd);
 
-    	//db.delete("stats", number, whereArgs)
-    	db.delete(tablename, number ,null);
     	db.close();
     }
 

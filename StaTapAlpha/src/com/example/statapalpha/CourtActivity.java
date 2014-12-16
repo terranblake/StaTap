@@ -29,7 +29,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	ArrayList<String> awayPlayersBench = new ArrayList<String>();
 	
 	String team1, team2, team1n, team2n, gamename, gamenamen, tablename;
-	int GameId;
+	int GameId, currentplay;
 	String player = "0"; // Player number for current play
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
@@ -45,12 +45,16 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		db = new SqliteHelper(this.getApplicationContext());
 		//Get Team 1 and 2 and Game Title
 		
+		Toast.makeText(CourtActivity.this, Integer.toString(currentplay), Toast.LENGTH_SHORT).show();
 		convertStrings();
 		createTable();
-		Toast.makeText(CourtActivity.this, tablename, Toast.LENGTH_SHORT).show();
+		getCurrentPlay();
 		// Gets players
 		getPlayers();
 		refreshPlayers();
+	}
+	public void getCurrentPlay() {
+		currentplay = (db.countPlays(tablename)+1);
 	}
 	public void stats(View view) {
 		Intent intent = new Intent(this, StatActivity.class);
@@ -226,7 +230,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 			team = team1;
 		else
 			team = team2;
-		
+		currentplay++;
 		db.recordPlay(Integer.parseInt(player), team, action, position, tablename);
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		refreshPlayers();
@@ -253,9 +257,14 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	}
 	
 
-	public void undoPlay(View v) {
-		
-		db.undoPlay(Integer.toString(playNumber), tablename);
+	public void undoPlay(View view) {
+		if (currentplay == 1) {
+			Toast.makeText(CourtActivity.this, "No plays to Undo", Toast.LENGTH_SHORT).show();
+		} else {
+		db.undoPlay(tablename, currentplay);
+		currentplay--;
+		refreshPlayers();
+		}
 	}
 	
 
