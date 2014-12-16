@@ -152,6 +152,18 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	String command = "SELECT jersey_num FROM "+teamname2;
     	return db.rawQuery(command, null);
     }
+    public int getFouls(Integer jnum, String teamname, String tablename) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	Cursor cursor;
+    	String command1;
+    	int Fouls = 0;
+    	command1 = "SELECT count(action) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'FC' AND team_name = '"+teamname+"'";
+    	cursor = db.rawQuery(command1,  null);
+    	if(cursor.moveToFirst()){
+    	    Fouls = cursor.getInt(0);
+    	}
+    	return Fouls;
+    }
     public int getPoints(Integer jnum, String teamname, String tablename) {
     	SQLiteDatabase db = this.getReadableDatabase();
     	int twopt, threept, points;

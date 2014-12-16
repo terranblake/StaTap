@@ -50,6 +50,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		Toast.makeText(CourtActivity.this, tablename, Toast.LENGTH_SHORT).show();
 		// Gets players
 		getPlayers();
+		refreshPlayers();
 	}
 	public void stats(View view) {
 		Intent intent = new Intent(this, StatActivity.class);
@@ -281,75 +282,77 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	}
 	
 	void refreshPlayers() {
-		
+		//First Player
 		Button button = (Button)findViewById(R.id.p1);
-		TextView text = (TextView)findViewById(R.id.p1p);
-		text.setText(button.getText().toString());
-		
-		text = (TextView)findViewById(R.id.p1f);
-		text.setText(button.getText().toString());
-		
+		int jnum = Integer.parseInt(button.getText().toString());
+		String team = team1;
+		TextView textp = (TextView)findViewById(R.id.p1p);
+		TextView textf = (TextView)findViewById(R.id.p1f);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
+		//Second Player
 		button = (Button)findViewById(R.id.p2);
-		text = (TextView)findViewById(R.id.p2p);
-		text.setText(button.getText().toString());
-		
-		text = (TextView)findViewById(R.id.p2f);
-		text.setText(button.getText().toString());
-		
+		jnum = Integer.parseInt(button.getText().toString());
+		textp = (TextView)findViewById(R.id.p2p);
+		textf = (TextView)findViewById(R.id.p2f);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
+		//Third Player
 		button = (Button)findViewById(R.id.p3);
-		text = (TextView)findViewById(R.id.p3p);
-		text.setText(button.getText().toString());
-		
-		text = (TextView)findViewById(R.id.p3f);
-		text.setText(button.getText().toString());
-		
+		jnum = Integer.parseInt(button.getText().toString());
+		textp = (TextView)findViewById(R.id.p3p);
+		textf = (TextView)findViewById(R.id.p3f);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
+		//Fourth Player
 		button = (Button)findViewById(R.id.p4);
-		text = (TextView)findViewById(R.id.p4p);
-		text.setText(button.getText().toString());
-		
-		text = (TextView)findViewById(R.id.p4f);
-		text.setText(button.getText().toString());
-		
+		jnum = Integer.parseInt(button.getText().toString());
+		textp = (TextView)findViewById(R.id.p4p);
+		textf = (TextView)findViewById(R.id.p4f);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
+		//Fifth Player
 		button = (Button)findViewById(R.id.p5);
-		text = (TextView)findViewById(R.id.p5p);
-		text.setText(button.getText().toString());
-		
-		text = (TextView)findViewById(R.id.p5f);
-		text.setText(button.getText().toString());
-		
+		jnum = Integer.parseInt(button.getText().toString());
+		textp = (TextView)findViewById(R.id.p5p);
+		textf = (TextView)findViewById(R.id.p5f);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
+		//Sixth Player
 		button = (Button)findViewById(R.id.p6);
-		text = (TextView)findViewById(R.id.p6p);
-		text.setText(button.getText().toString());
-		
-		text = (TextView)findViewById(R.id.p6f);
-		text.setText(button.getText().toString());
-		
+		team = team2;
+		jnum = Integer.parseInt(button.getText().toString());
+		textp = (TextView)findViewById(R.id.p6p);
+		textf = (TextView)findViewById(R.id.p6f);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
+		//Seventh Player
 		button = (Button)findViewById(R.id.p7);
-		text = (TextView)findViewById(R.id.p7p);
-		text.setText(button.getText().toString());
-		
-		text = (TextView)findViewById(R.id.p7f);
-		text.setText(button.getText().toString());
-		
+		jnum = Integer.parseInt(button.getText().toString());
+		textp = (TextView)findViewById(R.id.p7p);
+		textf = (TextView)findViewById(R.id.p7f);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
+		//Eighth Player
 		button = (Button)findViewById(R.id.p8);
-		text = (TextView)findViewById(R.id.p8p);
-		text.setText(button.getText().toString());
-		
-		text = (TextView)findViewById(R.id.p8f);
-		text.setText(button.getText().toString());
-		
+		jnum = Integer.parseInt(button.getText().toString());
+		textp = (TextView)findViewById(R.id.p8p);
+		textf = (TextView)findViewById(R.id.p8f);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
+		//Ninth Player
 		button = (Button)findViewById(R.id.p9);
-		text = (TextView)findViewById(R.id.p9p);
-		text.setText(button.getText().toString());
-		
-		text = (TextView)findViewById(R.id.p9f);
-		text.setText(button.getText().toString());
-		
+		jnum = Integer.parseInt(button.getText().toString());
+		textp = (TextView)findViewById(R.id.p9p);
+		textf = (TextView)findViewById(R.id.p9f);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
+		//Tenth Player
 		button = (Button)findViewById(R.id.p10);
-		text = (TextView)findViewById(R.id.p10p);
-		text.setText(button.getText().toString());
-		
-		text = (TextView)findViewById(R.id.p10f);
-		text.setText(button.getText().toString());
+		jnum = Integer.parseInt(button.getText().toString());
+		textp = (TextView)findViewById(R.id.p10p);
+		textf = (TextView)findViewById(R.id.p10f);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
 	}
 }
