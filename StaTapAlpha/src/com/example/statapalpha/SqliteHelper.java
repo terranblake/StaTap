@@ -11,7 +11,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
-    private static final String DATABASE_NAME = "StaTap";
+    private static final String DATABASE_NAME = "StaTap2";
     private static final String TEAM_NAMES = "Team_Names";
     private static final String GAME_TITLES = "game_name";
     private static final String JERSEY_NUM = "Jersey_num";
@@ -29,22 +29,75 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE IF NOT EXISTS teams3(id INTEGER PRIMARY KEY AUTOINCREMENT,Team_Names TEXT UNIQUE);");
 		
 		//Create Games Table
-		db.execSQL("CREATE TABLE IF NOT EXISTS games2(id INTEGER PRIMARY KEY AUTOINCREMENT, game_name TEXT)");
+		db.execSQL("CREATE TABLE IF NOT EXISTS games6(id INTEGER PRIMARY KEY AUTOINCREMENT, game_name TEXT, team1 TEXT, team2 TEXT)");
 		
 		// Create stats table
 		db.execSQL("CREATE TABLE IF NOT EXISTS stats4(play_id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
 				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER);");
 		
     }
+    public String getGameTitle(int gid) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	onCreate(db);
+    	String command, title;
+    	title = "Didn't work";
+    	Cursor cursor;
+    	command = "SELECT game_name FROM games6 WHERE id = "+gid;
+    	cursor = db.rawQuery(command,  null);
+    	if(cursor.moveToFirst()) {
+    		title = cursor.getString(0);
+    	}
+    	return title;
+    }
+    public String getGameT1(int gid) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	onCreate(db);
+    	String command, title;
+    	title = "Didn't work";
+    	Cursor cursor;
+    	command = "SELECT team1 FROM games6 WHERE id = "+gid;
+    	cursor = db.rawQuery(command,  null);
+    	if(cursor.moveToFirst()) {
+    		title = cursor.getString(0);
+    	}
+    	return title;
+    }
+    public String getGameT2(int gid) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	onCreate(db);
+    	String command, title;
+    	title = "Didn't work";
+    	Cursor cursor;
+    	command = "SELECT team2 FROM games6 WHERE id = "+gid;
+    	cursor = db.rawQuery(command,  null);
+    	if(cursor.moveToFirst()) {
+    		title = cursor.getString(0);
+    	}
+    	return title;
+    }
+
+    public int getStats(String action, Integer jnum, String teamname, String tablename) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	String command;
+    	Cursor cursor;
+    	int number = 99;
+    	command = "SELECT count(action) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = '"+action+"' AND team_name = '"+teamname+"'";
+    	cursor = db.rawQuery(command, null);
+    	if(cursor.moveToFirst()){
+    		number = cursor.getInt(0);
+    	}
+    	return number;
+    }
     public Cursor getTeams() {
     	SQLiteDatabase db = this.getWritableDatabase();
     	String[] projection = { "Team_Names" };
     	return db.query("teams3",projection, null, null, null, null, null, null);
     }
-    public Cursor getGames() {
+    public Cursor getGameIDs() {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	String[] projection = { "game_name" };
-    	return db.query("games2",projection, null, null, null, null, null, null);
+    	onCreate(db);
+    	String[] projection = { "id" };
+    	return db.query("games6",projection, null, null, null, null, null, null);
     }
     public Cursor getPlayerJNums(String teamname) {
     	SQLiteDatabase db = this.getWritableDatabase();
@@ -52,15 +105,25 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	return db.query(teamname,projection, null, null, null, null, null, null);
     	
     }
-    public Cursor getPlayerFName(Integer jnum, String teamname) {
+    public String getPlayerFName(Integer jnum, String teamname) {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	
-    	return db.rawQuery("SELECT first_name FROM "+teamname+" WHERE jersey_num = "+jnum, null);
+    	Cursor cursor;
+    	String fname ="";
+    	cursor = db.rawQuery("SELECT first_name FROM "+teamname+" WHERE jersey_num = "+jnum, null);
+    	if(cursor.moveToFirst()){
+    		fname = cursor.getString(0);
+    	}
+    	return fname;
     }
-    public Cursor getPlayerLName(Integer jnum, String teamname) {
+    public String getPlayerLName(Integer jnum, String teamname) {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	
-    	return db.rawQuery("SELECT last_name FROM "+teamname+" WHERE jersey_num = "+jnum, null);
+    	Cursor cursor;
+    	String lname ="";
+    	cursor = db.rawQuery("SELECT last_name FROM "+teamname+" WHERE jersey_num = "+jnum, null);
+    	if(cursor.moveToFirst()){
+    		lname = cursor.getString(0);
+    	}
+    	return lname;
     }
     public void addPlayer(String teamname, Integer jerseynum, String firstname, String lastname){
 
@@ -79,6 +142,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	values); // key/value -> keys = column names/ values = column values
 
     	// 4. close
+    	
     	db.close(); 
     }
     public Cursor getJNums(String teamname) {
@@ -88,38 +152,32 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	String command = "SELECT jersey_num FROM "+teamname2;
     	return db.rawQuery(command, null);
     }
-    public int getStats(String action, Integer jnum, String teamname) {
-    	SQLiteDatabase db = this.getReadableDatabase();
-    	String command;
-    	Cursor cursor;
-    	int number = 99;
-    	command = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = '"+action+"' AND team_name = '"+teamname+"'";
-    	cursor = db.rawQuery(command, null);
-    	if(cursor.moveToFirst()){
-    		number = cursor.getInt(0);
-    	}
-    	return number;
-    }
-    public int getPoints(Integer jnum, String teamname) {
+    public int getPoints(Integer jnum, String teamname, String tablename) {
     	SQLiteDatabase db = this.getReadableDatabase();
     	int twopt, threept, points;
     	int rawtwopt = 0;
     	int rawthreept = 0;
-    	String command1, command2;
-    	Cursor cursor1, cursor2;
-    	command1 = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = 'F2H' AND team_name = '"+teamname+"'";
-    	command2 = "SELECT count(action) FROM stats4 WHERE Jersey_num = "+jnum+" AND action = 'F3H' AND team_name = '"+teamname+"'";
+    	int rawft = 0;
+    	String command1, command2, command3;
+    	Cursor cursor1, cursor2, cursor3;
+    	command1 = "SELECT count(action) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'F2H' AND team_name = '"+teamname+"'";
+    	command2 = "SELECT count(action) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'F3H' AND team_name = '"+teamname+"'";
+    	command3 = "SELECT count(action) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'FTH' AND team_name = '"+teamname+"'";
     	cursor1 = db.rawQuery(command1, null);
     	cursor2 = db.rawQuery(command2, null);
+    	cursor3 = db.rawQuery(command3, null);
     	if(cursor1.moveToFirst()){
     	    rawtwopt = cursor1.getInt(0);
     	}
     	if(cursor2.moveToFirst()){
     	    rawthreept = cursor2.getInt(0);
     	}
+    	if(cursor3.moveToFirst()){
+    	    rawft = cursor3.getInt(0);
+    	}
     	twopt = (rawtwopt * 2);
     	threept = (rawthreept * 3);
-    	points = (twopt + threept);
+    	points = (twopt + threept + rawft);
     	return points;
     }
     public void addTeam(String teamname){
@@ -142,23 +200,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	db.close(); 
     }
     public void createGame(String gamename, String team1, String team2) {
+    	
     	SQLiteDatabase db = this.getWritableDatabase();
-    	String team1n, team2n;
-    	team1n = team1.replaceAll(" ", "_").toLowerCase();
-    	team2n = team2.replaceAll(" ", "_").toLowerCase();
+    	onCreate(db);
     	ContentValues values = new ContentValues();
-    	values.put(GAME_TITLES, gamename.toString());
-    	values.put(GAME_TITLES, team1n.toString());
-    	values.put(GAME_TITLES, team2n.toString());// get title 
-    	ContentValues values2 = new ContentValues();
-    	values2.put(TEAM_1, team1n.toString());
-    	values2.put(TEAM_2, team2n.toString());
-    	String gamenamen = gamename.replaceAll(" ", "_").toLowerCase();
-    	db.execSQL("CREATE TABLE IF NOT EXISTS "+gamenamen+"(id INTEGER PRIMARY KEY UNIQUE, team1 TEXT, team2 TEXT)");
-    	db.insert("games2", // table name
-    	    	null, //nullColumnHack
-    	    	values);
-    	db.insert(gamenamen, // table name
+    	values.put(GAME_TITLES, gamename);
+    	values.put(TEAM_1, team1);
+    	values.put(TEAM_2, team2);
+    	db.insert("games6", // table name
     	    	null, //nullColumnHack
     	    	values);
     }
@@ -168,7 +217,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	teamname2 = teamname.replaceAll(" ",  "_").toLowerCase();
     	db.execSQL("DROP TABLE IF EXISTS "+teamname2);
     	db.execSQL("DELETE FROM teams3 WHERE Team_Names = '"+teamname+"'");
-    	
+    	db.execSQL("DELETE FROM games6 WHERE team1 = '"+teamname+"'");
+    	db.execSQL("DELETE FROM games6 WHERE team2 = '"+teamname+"'");
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -186,10 +236,27 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     
     // For updating player stats
-    public void recordPlay(int player, String team, String action, CourtActivity.position position) {
+    public int getGameId() {
+    	SQLiteDatabase db = this.getWritableDatabase();    	
+    	onCreate(db);
+    	Cursor cursor;
+    	int gameId = 9;
+    	cursor = db.rawQuery("SELECT count(*) FROM games6", null);
+    	if(cursor.moveToFirst()){
+    	    gameId = cursor.getInt(0);
+    	}
+    	return gameId;
+    }
+    public void createStatTable(String gamename) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	db.execSQL("CREATE TABLE IF NOT EXISTS "+gamename+"(play_id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
+				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER)");
+    }
+    public void recordPlay(int player, String team, String action, CourtActivity.position position, String table) {
     	
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
+    	
     	
     	onCreate(db);
     	// 2. create ContentValues to add key "column"/value
@@ -201,7 +268,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	values.put("team_name", team);
     	
     	// 3. insert
-    	db.insert("stats4", // table name
+    	db.insert(table, // table name
     	null, //nullColumnHack
     	values); // key/value -> keys = column names/ values = column values
     	
@@ -209,14 +276,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// 4. close
     	db.close();  
     }
-    public void undoPlay(String number)//See my comment Paul link might help
+    public void undoPlay(String number, String tablename)//See my comment Paul link might help
     {
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
     	
 
     	//db.delete("stats", number, whereArgs)
-    	db.delete("stats4", number ,null);
+    	db.delete(tablename, number ,null);
     	db.close();
     }
 

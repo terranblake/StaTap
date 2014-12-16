@@ -2,31 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/stockbackground"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/stockbackground"
     tools:context="com.example.statapalpha.MainActivity" >
-
-    <TextView
-        android:id="@+id/homeTeamTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="31dp"
-        android:layout_marginTop="31dp"
-        android:text="@string/title"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="70sp" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/homeTeamTV"
         android:layout_marginRight="161dp"
         android:orientation="vertical" >
 
@@ -44,42 +31,39 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="190dp"
             android:layout_height="80dp"
-            android:text="@string/edit"
-            android:textSize="25sp" 
             android:onClick="editTeams"
-            />
+            android:text="@string/edit"
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="190dp"
             android:layout_height="80dp"
-            android:onClick="courtActivity"
-            android:textSize="25sp"
-            android:text="@string/title_activity_court_activity" />
+            android:onClick="refresh"
+            android:text="@string/refresh"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/homeTeamLV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/homeTeamTV"
-        android:layout_alignParentBottom="true"
-        android:layout_alignTop="@+id/linearLayout1"
-        android:layout_toLeftOf="@+id/linearLayout1"
-        android:background="#40969696"
-        android:textSize="40sp" >
-
-    </ListView>
-
-    <ImageView
-        android:id="@+id/imageView1"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/homeTeamTV"
-        android:layout_marginRight="48dp"
-        android:onClick="manual"
-        android:src="@drawable/questionmark" />
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/homeTeamTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="70sp" />
+
+        <ListView
+            android:id="@+id/homeTeamLV"
+            android:layout_width="800dp"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+    </LinearLayout>
 
 </RelativeLayout>

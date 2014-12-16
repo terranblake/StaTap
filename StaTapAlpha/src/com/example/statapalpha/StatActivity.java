@@ -14,7 +14,7 @@ import android.widget.ListView;
 
 public class StatActivity extends Activity {
 	SqliteHelper db;
-	String team1, team2;
+	String team1, team2, tablename;
 	ListView lv1, lv2;
 	ArrayList<StatListData> values;
 	ArrayList<StatListData> values2;
@@ -27,6 +27,7 @@ public class StatActivity extends Activity {
 		Intent mIntent = getIntent();
 		team1 = mIntent.getStringExtra("TEAM1");
 		team2 = mIntent.getStringExtra("TEAM2");
+		tablename = mIntent.getStringExtra("TABLENAME");
 		db = new SqliteHelper(this.getApplicationContext());
 		lv1 = (ListView) findViewById(R.id.listView1);
 		lv2 = (ListView) findViewById(R.id.ListView01);
@@ -70,13 +71,14 @@ public class StatActivity extends Activity {
 			    	StatListData data = new StatListData();
 			    	int jnum = cursor1.getInt(0);
 			    	data.Jersey = jnum;
-			    	data.Points = db.getPoints(jnum, team1);
-			    	data.FT = db.getStats("FTM", jnum, team1);
-			    	data.Assists = db.getStats("AST", jnum, team1);
-			    	data.Rebounds = db.getStats("RB", jnum, team1);
-			    	data.Steals = db.getStats("STL", jnum, team1);
-			    	data.TO = db.getStats("TO", jnum, team1);
-			    	data.Fouls = db.getStats("FC", jnum, team1);
+			    	data.Points = db.getPoints(jnum, team1, tablename);
+			    	data.FT = db.getStats("FTM", jnum, team1, tablename);
+			    	data.Assists = db.getStats("AST", jnum, team1, tablename);
+			    	data.Rebounds = db.getStats("RB", jnum, team1, tablename);
+			    	data.Blocks = db.getStats("BL", jnum, team1, tablename);
+			    	data.Steals = db.getStats("STL", jnum, team1, tablename);
+			    	data.TO = db.getStats("TO", jnum, team1, tablename);
+			    	data.Fouls = db.getStats("FC", jnum, team1, tablename);
 			    	
 			    	
 			    	values.add(data);
@@ -89,13 +91,14 @@ public class StatActivity extends Activity {
 			    	StatListData data = new StatListData();
 			    	int jnum = cursor2.getInt(0);
 			    	data.Jersey = jnum;
-			    	data.Points = db.getPoints(jnum, team2);
-			    	data.FT = db.getStats("FTM", jnum, team2);
-			    	data.Assists = db.getStats("AST", jnum, team2);
-			    	data.Rebounds = db.getStats("RB", jnum, team2);
-			    	data.Steals = db.getStats("STL", jnum, team2);
-			    	data.TO = db.getStats("TO", jnum, team2);
-			    	data.Fouls = db.getStats("FC", jnum, team2);
+			    	data.Points = db.getPoints(jnum, team2, tablename);
+			    	data.FT = db.getStats("FTM", jnum, team2, tablename);
+			    	data.Assists = db.getStats("AST", jnum, team2, tablename);
+			    	data.Rebounds = db.getStats("RB", jnum, team2, tablename);
+			    	data.Blocks = db.getStats("BL", jnum, team2, tablename);
+			    	data.Steals = db.getStats("STL", jnum, team2, tablename);
+			    	data.TO = db.getStats("TO", jnum, team2, tablename);
+			    	data.Fouls = db.getStats("FC", jnum, team2, tablename);
 			    	
 			    	
 			    	values2.add(data);

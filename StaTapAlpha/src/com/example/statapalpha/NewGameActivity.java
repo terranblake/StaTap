@@ -127,11 +127,12 @@ public class NewGameActivity extends Activity {
 	public void confirm(View view) {
 		
 		Intent intent = new Intent(this, CourtActivity.class);
-		String team1n, team2n;
+		gTitle = title.getText().toString();
     	intent.putExtra("TEAM1", teamn1);
     	intent.putExtra("TEAM2", teamn2);
     	intent.putExtra("GAME_TITLE", gTitle);
     	db.createGame(gTitle, teamn1, teamn2);
+    	finish();
     	startActivity(intent);
 		
 	}

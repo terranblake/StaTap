@@ -28,7 +28,8 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	ArrayList<String> homePlayersBench = new ArrayList<String>();
 	ArrayList<String> awayPlayersBench = new ArrayList<String>();
 	
-	String team1, team2, team1n, team2n;
+	String team1, team2, team1n, team2n, gamename, gamenamen, tablename;
+	int GameId;
 	String player = "0"; // Player number for current play
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
@@ -36,13 +37,17 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	private PopupMenu popupMenu;
 	boolean isHome = false;
 	int playerButton = 0;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_court);
 		db = new SqliteHelper(this.getApplicationContext());
 		//Get Team 1 and 2 and Game Title
+		
 		convertStrings();
+		createTable();
+		Toast.makeText(CourtActivity.this, tablename, Toast.LENGTH_SHORT).show();
 		// Gets players
 		getPlayers();
 	}
@@ -50,7 +55,11 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		Intent intent = new Intent(this, StatActivity.class);
     	intent.putExtra("TEAM1", team1);
     	intent.putExtra("TEAM2", team2);
+    	intent.putExtra("TABLENAME", tablename);
     	startActivity(intent);
+	}
+	public void createTable() {
+		db.createStatTable(tablename);
 	}
 	public void convertStrings() {
 		Intent mIntent = getIntent();
@@ -58,6 +67,9 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		team2n = mIntent.getStringExtra("TEAM2");
 		team1 = team1n.replaceAll(" ", "_").toLowerCase();
 		team2 = team2n.replaceAll(" ", "_").toLowerCase();
+		gamenamen = mIntent.getStringExtra("GAME_TITLE");
+		gamename = gamenamen.replaceAll(" ", "_").toLowerCase();
+		tablename = gamename;
 	}
 	// Populates arrays with player numbers
 	void getPlayers() {
@@ -125,6 +137,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	@Override
 	public void onBackPressed() {
 		//DO NOTHING
+		finish();
 	}
 	
 	// Stores x and y coordinate
@@ -213,7 +226,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		else
 			team = team2;
 		
-		db.recordPlay(Integer.parseInt(player), team, action, position);
+		db.recordPlay(Integer.parseInt(player), team, action, position, tablename);
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		refreshPlayers();
 	}
@@ -241,7 +254,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 
 	public void undoPlay(View v) {
 		
-		db.undoPlay(Integer.toString(playNumber));
+		db.undoPlay(Integer.toString(playNumber), tablename);
 	}
 	
 
@@ -250,6 +263,18 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	public boolean onMenuItemClick(MenuItem item) {
 		Button button = (Button)findViewById(playerButton);
 		button.setText(item.getTitle());
+		if (isHome == true) {
+			homePlayersIn.remove(player);
+			homePlayersBench.add(player);
+			homePlayersIn.add(item.getTitle().toString());
+			homePlayersBench.remove(item.getTitle().toString());
+		}
+		else {
+			awayPlayersIn.remove(player);
+			awayPlayersBench.add(player);
+			awayPlayersIn.add(item.getTitle().toString());
+			awayPlayersBench.remove(item.getTitle().toString());
+		}
 		
 		refreshPlayers();
 		return false;

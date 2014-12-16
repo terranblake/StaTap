@@ -54,6 +54,7 @@ public class StatBaseAdapter extends BaseAdapter {
                 mViewHolder.tvP  = detail(convertView, R.id.textViewP,  myList.get(position).getPoints());
                 mViewHolder.tvFT  = detail(convertView, R.id.textViewFT,  myList.get(position).getFT());
                 mViewHolder.tvA  = detail(convertView, R.id.textViewA,  myList.get(position).getAssists());
+                mViewHolder.tvBL  = detail(convertView, R.id.textViewBL,  myList.get(position).getBlocks());
                 mViewHolder.tvRB  = detail(convertView, R.id.textViewRB,  myList.get(position).getRebounds());
                 mViewHolder.tvS  = detail(convertView, R.id.textViewS,  myList.get(position).getSteals());
                 mViewHolder.tvTO  = detail(convertView, R.id.textViewTO,  myList.get(position).getTO());
@@ -70,7 +71,7 @@ public class StatBaseAdapter extends BaseAdapter {
         }
         
         private class MyViewHolder {
-                public TextView tvNum, tvP, tvFT, tvFG, tvA, tvRB, tvS, tvTO, tvF;
+                public TextView tvNum, tvP, tvFT, tvFG, tvA, tvRB, tvS, tvTO, tvF, tvBL;
         }
  
 }

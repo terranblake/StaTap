@@ -14,6 +14,7 @@ public class StatListData {
         int Steals;
         int TO;
         int Fouls;
+        int Blocks;
         
         String title;
  
@@ -53,10 +54,16 @@ public class StatListData {
         public void setRebounds(Integer rb) {
             Rebounds = rb;
         }
+        public Integer getBlocks() {
+        	return Blocks;
+        }
+        public void setBlocks(Integer bl) {
+        	Blocks = bl;
+        }
         public Integer getSteals() {
             return Steals;
         }
-
+        
         public void setSteals(Integer stl) {
             Steals = stl;
         }

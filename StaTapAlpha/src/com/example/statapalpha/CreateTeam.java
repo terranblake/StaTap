@@ -55,6 +55,7 @@ public class CreateTeam extends Activity {
 		}
 		
 		String Team_Name = editTeam.getText().toString();
+		editTeam.setText("");
 		db.addTeam(Team_Name);
 		String message = "Team " + editTeam.getText().toString() + " was added to the database";
 		Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
@@ -80,6 +81,7 @@ public class CreateTeam extends Activity {
         switch(item.getItemId()) {
             case R.id.delete:
           // remove stuff here
+            	//TOOK THIS OFF FOR NOW. CAN'T DELETE TEAMS BECAUSE IT FUCKS WITH THE REST
             Integer Position = ((AdapterView.AdapterContextMenuInfo)info).position;
             Object obj = lv.getItemAtPosition(Position);
             String teamname2 = obj.toString();

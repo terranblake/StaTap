@@ -3,6 +3,7 @@ package com.example.statapalpha;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 //import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,15 +25,18 @@ import android.widget.Toast;
 public class HomeScreen extends Activity {
 
 	SqliteHelper db;
-	
+	ArrayList<HomeListData> values;
+	ListView lv;
+	Context context = HomeScreen.this;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
         db = new SqliteHelper(this.getApplicationContext());
 		//ListView Functions
-		ListView lv = (ListView) findViewById(R.id.homeTeamLV);
-        populateListView();
+		lv = (ListView) findViewById(R.id.homeTeamLV);
+		getGames();
+		lv.setAdapter(new HomeBaseAdapter(context, values));
         registerClickCallback();
         registerForContextMenu(lv);
 	}
@@ -44,10 +49,9 @@ public class HomeScreen extends Activity {
     	Intent intent = new Intent(this, CreateTeam.class);
     	startActivity(intent);
     }
-    public void courtActivity(View view) {
-    	//This here starts the Court Activity Screen
-    	Intent intent = new Intent(this, CourtActivity.class);
-    	startActivity(intent);
+    public void refresh(View view) {
+    	getGames();
+    	lv.setAdapter(new HomeBaseAdapter(context, values));
     }
     /**
      * MENU
@@ -75,7 +79,14 @@ public class HomeScreen extends Activity {
           }
     }
     
-
+    public void openGame(View view, String game, String team1, String team2) {
+    	Intent intent = new Intent(this, CourtActivity.class);
+    	intent.putExtra("TEAM1", team1);
+    	intent.putExtra("TEAM2", team2);
+    	intent.putExtra("GAME_TITLE", game);
+    	
+    	startActivity(intent);
+    }
     private void registerClickCallback() {
 		// TODO Auto-generated method stub
     	//This uses the List View and adds a listener to check for clicks/taps on different
@@ -88,11 +99,15 @@ public class HomeScreen extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View viewClicked,
 					int position, long id) {
-					TextView textView = (TextView) viewClicked; 
-					//Toast message
-					
-					String message = "You Clicked # " + (position + 1) + ", which is string: " + textView.getText().toString();
-					Toast.makeText(HomeScreen.this, message, Toast.LENGTH_SHORT).show();
+					LinearLayout linearLayoutParent = (LinearLayout) viewClicked;
+					String game, team1, team2;
+					TextView tvGame = (TextView) linearLayoutParent.getChildAt(0);
+					TextView tvT1 = (TextView) linearLayoutParent.getChildAt(1);
+					TextView tvT2 = (TextView) linearLayoutParent.getChildAt(2);
+					game = tvGame.getText().toString();
+					team1 = tvT1.getText().toString();
+					team2 = tvT2.getText().toString();
+					openGame(null, game, team1, team2);
 			}
 		});
     	
@@ -115,32 +130,24 @@ public class HomeScreen extends Activity {
     }
     
     */
-	private void populateListView() {
-    	//Create list of items
-		Cursor cursor = db.getGames();
-		
-		ArrayList<String> values = new ArrayList<String>();
-		if (cursor != null && cursor.getCount() != 0) {
+    public void getGames() {
+    	Cursor cursor = db.getGameIDs();
+    	values = new ArrayList<HomeListData>();
+    	if (cursor != null && cursor.getCount() != 0) {
 		    cursor.moveToFirst();
 		    while (!cursor.isAfterLast()) {
-
-		        values.add(cursor.getString(cursor.getColumnIndex("game_name")));
-
+		    	HomeListData data = new HomeListData();
+		    	int gid = cursor.getInt(0);
+		    	data.gametitle = db.getGameTitle(gid);
+		    	data.team1 = db.getGameT1(gid);
+		    	data.team2 = db.getGameT2(gid);
+		    	
+		    	values.add(data);
 		        cursor.moveToNext();
 		    }
-		}    	
-    	
-    	
-    	//Build Adapter
-    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-    			this,					// Context
-    			R.layout.listviews,		// Layout to use
-    			values);				// Items to be displayed
-    			
-    	//Configure the List View
-    	ListView list = (ListView) findViewById(R.id.homeTeamLV);
-    	list.setAdapter(adapter);
+		}
     }
+
     
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

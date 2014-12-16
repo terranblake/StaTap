@@ -26,6 +26,13 @@
         android:layout_marginLeft="20dp" />
 
     <TextView
+        android:id="@+id/textViewBL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="@string/na" />
+
+    <TextView
         android:id="@+id/textViewA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -124,6 +124,13 @@
                     android:textSize="25sp" />
 
                 <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:text="BL" />
+
+                <TextView
                     android:id="@+id/txtAssists"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -206,6 +213,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FT"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BL"
                     android:textSize="25sp" />
 
                 <TextView

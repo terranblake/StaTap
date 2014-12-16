@@ -81,6 +81,7 @@ public class EditTeam extends Activity {
     	//Configure the List View
     	ListView t1list = (ListView) findViewById(R.id.listViewPlayers);
     	t1list.setAdapter(t1adapter);
+    	
 	}
 	
 	public void addPlayer(View view) {
@@ -99,6 +100,9 @@ public class EditTeam extends Activity {
 			Last_Name = editTextLast.getText().toString();
 		}
 		Jersey_Num = Integer.parseInt(editTextJersey.getText().toString());
+		editTextJersey.setText("");
+		editTextFirst.setText("");
+		editTextLast.setText("");
 		db.addPlayer(tableteamname, Jersey_Num, First_Name, Last_Name);
 		populateListViews();
 		
@@ -141,21 +145,8 @@ public class EditTeam extends Activity {
 					Cursor cursorF;
 					Cursor cursorL;
 					//Toast message
-					cursorF = db.getPlayerFName(Jersey_Num, tableteamname);
-					while (cursorF.moveToNext()) {
-						fname = cursorF.getString(0);
-					}
-					cursorL = db.getPlayerLName(Jersey_Num, tableteamname);
-					while (cursorL.moveToNext()) {
-						lname = cursorL.getString(0);
-					}
-					if (fname.equals("")) {
-						fname = "N/A";
-					}
-					if (lname.equals("")) {
-						lname = "N/A";
-					}
-					
+					fname = db.getPlayerFName(Jersey_Num, tableteamname);
+					lname = db.getPlayerLName(Jersey_Num, tableteamname);
 					String message = "Jersey Number:" + Jersey_Num + " First Name:" + fname + " Last Name:" + lname;
 					Toast.makeText(EditTeam.this, message, Toast.LENGTH_SHORT).show();
 			}
