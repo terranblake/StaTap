@@ -104,7 +104,7 @@ public class EditTeam extends Activity {
 		if(!(editTextLast.getText().toString().trim().length()==0)) {
 			Last_Name = editTextLast.getText().toString();
 		}
-		if (First_Name.matches("[a-zA-Z]*") && Last_Name.matches("[a-zA-Z]*")) {
+		if (First_Name.matches("[a-zA-Z-]*") && Last_Name.matches("[a-zA-Z-]*")) {
 			Jersey_Num = Integer.parseInt(editTextJersey.getText().toString());
 			editTextJersey.setText("");
 			editTextFirst.setText("");
