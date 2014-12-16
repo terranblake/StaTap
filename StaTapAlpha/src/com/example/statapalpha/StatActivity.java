@@ -45,6 +45,11 @@ public class StatActivity extends Activity {
 		lv2.setAdapter(new StatBaseAdapter(context, values2));
 		setPoints();
 	}
+	@Override
+	public void onBackPressed() {
+		//DO NOTHING
+		finish();
+	}
 	public void setPoints() {
 		String p1t, p2t;
 		p1t = Integer.toString(t1p);
