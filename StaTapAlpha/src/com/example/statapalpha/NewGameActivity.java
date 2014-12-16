@@ -23,7 +23,7 @@ public class NewGameActivity extends Activity {
 	EditText title;
 	TextView team1, team2;
 	SqliteHelper db;
-	String teamn1, teamn2, gTitle;
+	String teamn1, teamn2, gTitle, gTeam1, gTeam2;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -123,16 +123,22 @@ public class NewGameActivity extends Activity {
 		
 		Intent intent = new Intent(this, CourtActivity.class);
 		gTitle = title.getText().toString();
-		if (gTitle.matches("[a-zA-Z0-9 ]*")) {
-
-	    	intent.putExtra("TEAM1", teamn1);
+		gTeam1 = team1.getText().toString();
+		gTeam2 = team2.getText().toString();
+		if (!gTitle.matches("[a-zA-Z0-9 ]*")) {
+			Toast.makeText(NewGameActivity.this, "", Toast.LENGTH_SHORT).show();
+	    	
+		} else if (gTeam1.matches("Select a Team")) {
+			Toast.makeText(NewGameActivity.this, "Error: Select a team for Team 1", Toast.LENGTH_SHORT).show();
+		} else if (gTeam2.matches("Select a Team")) {
+			Toast.makeText(NewGameActivity.this, "Error: Select a team for Team 2", Toast.LENGTH_SHORT).show();
+		} else {
+			intent.putExtra("TEAM1", teamn1);
 	    	intent.putExtra("TEAM2", teamn2);
 	    	intent.putExtra("GAME_TITLE", gTitle);
 	    	db.createGame(gTitle, teamn1, teamn2);
 	    	finish();
 	    	startActivity(intent);
-		} else {
-			Toast.makeText(NewGameActivity.this, "Invalid characters in Game Title", Toast.LENGTH_SHORT).show();
 		}
 		
 	}
