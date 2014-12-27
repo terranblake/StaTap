@@ -16,7 +16,7 @@ public class EditBaseAdapter extends BaseAdapter {
     LayoutInflater inflater;
     Context context;
     
-    
+    //test
     public EditBaseAdapter(Context context, ArrayList<EditListData> myList) {
             this.myList = myList;
             this.context = context;
