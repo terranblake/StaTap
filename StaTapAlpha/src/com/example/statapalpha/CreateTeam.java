@@ -25,7 +25,7 @@ public class CreateTeam extends Activity {
 	EditText editTeam;
 	SqliteHelper db;
 	ListView lv;
-
+	//TEST
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
