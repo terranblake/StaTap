@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/teambackground"
+    android:theme="@style/Team"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.statapalpha.NewGame" >
 
@@ -22,7 +22,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/linearLayout3"
+        android:layout_alignStart="@+id/linearLayout3"
         android:layout_centerVertical="true"
         android:orientation="vertical" >
     </LinearLayout>
@@ -32,21 +32,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginRight="26dp"
+        android:layout_marginEnd="26dp"
         android:orientation="horizontal" >
 
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/homeTeamTV"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:text="@string/team1"
                 android:textSize="45sp" />
@@ -64,7 +64,7 @@
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
             android:orientation="vertical" >
 
             <TextView
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/teamlv"
         android:layout_marginTop="50dp"
-        android:layout_toRightOf="@+id/teamlv"
+        android:layout_toEndOf="@+id/teamlv"
         android:orientation="vertical" >
 
         <TextView

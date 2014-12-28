@@ -2,20 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/teambackground"
+    android:theme="@style/Team"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.statapalpha.EditTeam" >
 
     <LinearLayout
         android:id="@+id/layoutInputs"
         android:layout_width="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_height="wrap_content"
-        android:layout_marginRight="36dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginTop="100dp"
         android:orientation="vertical" >
 
@@ -96,7 +96,7 @@
     <Button
         android:id="@+id/buttonConfirm"
         android:layout_alignBottom="@+id/layoutPlayers"
-        android:layout_alignRight="@+id/layoutInputs"
+        android:layout_alignEnd="@+id/layoutInputs"
         android:layout_width="190dp"
         android:layout_height="80dp"
         android:text="@string/addplayer"
@@ -106,9 +106,9 @@
         android:id="@+id/layoutPlayers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="120dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical" >
 

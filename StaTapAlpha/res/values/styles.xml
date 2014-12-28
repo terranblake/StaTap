@@ -18,7 +18,11 @@
     </style>
 	<style name="Blank" parent="android:Theme">
 	    <item name="android:background">#FFFFFF</item>
-    	<item name="android:windowNoTitle">true</item>
-    	<item name="android:windowFullscreen">true</item>
+	</style>
+	<style name="Stock" parent="android:Theme">
+	    <item name="android:background">@drawable/stockbackground</item>
+	</style>
+	<style name="Team" parent="android:Theme">
+	    <item name="android:background">@drawable/teambackground</item>
 	</style>
 </resources>
