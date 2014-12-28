@@ -16,5 +16,9 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
+	<style name="Blank" parent="android:Theme">
+	    <item name="android:background">#FFFFFF</item>
+    	<item name="android:windowNoTitle">true</item>
+    	<item name="android:windowFullscreen">true</item>
+	</style>
 </resources>

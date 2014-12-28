@@ -114,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/p1p"
+                    android:text="@string/zero"
                     android:textColor="#3399FF"
                     android:textSize="35sp" />
 
@@ -223,7 +223,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/p1p"
+                    android:text="@string/zero"
                     android:textColor="#3399FF"
                     android:textSize="35sp" />
 
