@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View.OnKeyListener;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -45,6 +47,18 @@ public class EditTeam extends Activity {
 		editTextJersey = (EditText)findViewById(R.id.editTextJersey);
 		editTextFirst = (EditText)findViewById(R.id.editTextFirst);
 		editTextLast = (EditText)findViewById(R.id.editTextLast);
+		editTextJersey.setOnKeyListener(new OnKeyListener() {
+		    public boolean onKey(View v, int keyCode, KeyEvent event) {
+		        // If the event is a key-down event on the "enter" button
+		        if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+		            (keyCode == KeyEvent.KEYCODE_ENTER)) {
+		          // Perform action on key press
+		        	addPlayer(v);
+		          return true;
+		        }
+		        return false;
+		    }
+		});
 		Intent mIntent = getIntent();
 		teamname = mIntent.getStringExtra("TEAM_NAME");
 		tableteamname = teamname.replaceAll(" ", "_").toLowerCase();

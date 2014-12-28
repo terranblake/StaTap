@@ -8,6 +8,9 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View.OnKeyListener;
+import android.view.inputmethod.EditorInfo;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.ArrayAdapter;
@@ -32,6 +35,18 @@ public class CreateTeam extends Activity {
 		setContentView(R.layout.activity_create_team);
 		//Test
 		editTeam = (EditText)findViewById(R.id.editTeam);
+		editTeam.setOnKeyListener(new OnKeyListener() {
+		    public boolean onKey(View v, int keyCode, KeyEvent event) {
+		        // If the event is a key-down event on the "enter" button
+		        if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+		            (keyCode == KeyEvent.KEYCODE_ENTER)) {
+		          // Perform action on key press
+		        	create(v);
+		          return true;
+		        }
+		        return false;
+		    }
+		});
 		lv = (ListView)findViewById(R.id.listView1);
 		//End
 		//Database Text Box Initialization
@@ -56,9 +71,10 @@ public class CreateTeam extends Activity {
 		
 		String Team_Name = editTeam.getText().toString();
 		if (Team_Name.matches("[a-zA-Z ]*")) {
+		String message = "Team " + editTeam.getText().toString() + " was added to the database";
 		editTeam.setText("");
 		db.addTeam(Team_Name);
-		String message = "Team " + editTeam.getText().toString() + " was added to the database";
+		
 		Toast.makeText(CreateTeam.this, message, Toast.LENGTH_SHORT).show();
 		populateListViews();
 		} else {
