@@ -49,14 +49,14 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		convertStrings();
 		createTable();
 		getCurrentPlay();
-		message = "There are currently "+Integer.toString(currentplay - 1)+" play(s) in this game";
+		message = "There are currently "+Integer.toString(currentplay)+" play(s) in this game";
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		// Gets players
 		getPlayers();
 		refreshPlayers();
 	}
 	public void getCurrentPlay() {
-		currentplay = (db.countPlays(tablename)+1);
+		currentplay = (db.countPlays(tablename));
 	}
 	public void stats(View view) {
 		Intent intent = new Intent(this, StatActivity.class);
