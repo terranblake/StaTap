@@ -2,7 +2,6 @@ package com.example.statapalpha;
 
 import java.util.ArrayList;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +9,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -48,6 +48,9 @@ public class StatActivity extends Activity {
 	@Override
 	public void onBackPressed() {
 		//DO NOTHING
+		finish();
+	}
+	public void back(View view) {
 		finish();
 	}
 	public void setPoints() {

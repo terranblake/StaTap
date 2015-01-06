@@ -28,7 +28,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	ArrayList<String> homePlayersBench = new ArrayList<String>();
 	ArrayList<String> awayPlayersBench = new ArrayList<String>();
 	
-	String team1, team2, team1n, team2n, gamename, gamenamen, tablename;
+	String team1, team2, team1n, team2n, gamename, gamenamen, tablename, message;
 	int GameId, currentplay;
 	String player = "0"; // Player number for current play
 	String action = ""; // Action text for current play
@@ -49,7 +49,8 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		convertStrings();
 		createTable();
 		getCurrentPlay();
-		Toast.makeText(CourtActivity.this, Integer.toString(currentplay), Toast.LENGTH_SHORT).show();
+		message = "There are currently "+Integer.toString(currentplay - 1)+" play(s) in this game";
+		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		// Gets players
 		getPlayers();
 		refreshPlayers();
