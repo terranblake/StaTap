@@ -2,8 +2,26 @@
 
 ##Assignments
 
-###Main Assignments
 ===================
+###Home Screen
+#####Refresh Button
+<ul>
+	<li>End activity when moving to Edit Teams</li>
+	<li>Remove Button</li>
+</ul>
+===================
+###New Game Screen
+#####Team < 5 Players
+<ul>
+	<li>SQL Statement to check if < 5 players</li>
+	<li>Display message saying team cannot be used with < 5 Players</li>
+</ul>
+===================
+###Court Screen
+#####Split Refresh Function into separate parts
+<ul>
+	<li>Make a different refresh for each function</li>
+</ul>
 #####Running Clock
 <ul>
 	<li>Find a clock function</li>
@@ -19,19 +37,10 @@
 	</ul>
 	</li>
 </ul>
+
+
 ===============		
-###Small Tweaks
-===============
-#####Refresh Button
-<ul>
-	<li>Close Home Screen When Opening 'Edit Teams'</li>
-	<li>Remove Button</li>
-</ul>
-#####Delete Games
-<ul>
-	<li>Change Table formats so removal of games is easier</li>
-	<li>Make sure stats are deleted with removal of games</li>
-</ul>
+###Stat Screen
 #####Stat Format
 <ul>
 	<li>Change Font sizes and colors to distinguish between stats</li>
@@ -39,3 +48,4 @@
 </ul>
 
 ================
+
