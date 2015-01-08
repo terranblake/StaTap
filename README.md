@@ -1,8 +1,8 @@
 StaTap
 ======
-```html
+
 <h4>Assignments</h4><br>
-<div style="color:red"><strong>Remove Refresh Button</strong></div>
+<span style="color:#FF0000"><strong>Remove Refresh Button</strong></span><br>
 <strong>Delete Game Button</strong>
 <strong></strong>
 <strong></strong>
@@ -10,4 +10,4 @@ StaTap
 <strong></strong>
 <strong></strong>
 
-```
+
