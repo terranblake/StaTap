@@ -31,7 +31,7 @@
 <ul>
 	<li>Make a different refresh for each function</li>
 </ul>
-#####Running Clock
+#####Running Clock - PAUL
 <ul>
 	<li>Find a clock function</li>
 	<li>Add clock display in text</li>
@@ -46,7 +46,12 @@
 	</ul>
 	</li>
 </ul>
-
+#####Plotting Points for FG/FGA
+<ul>
+	<li>Draw Dots for every Coord</li>
+	<li>4 Different Colors?</li>
+	<li>X's and O's?</li>
+</ul>
 
 ===============		
 ###Stat Screen
