@@ -96,6 +96,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		    	cursorH.moveToNext();
 		    }
 		}
+		//lskjgladg
 		String string;
 		string = homePlayersIn.get(0);
 		button.setText(string);
