@@ -1,5 +1,14 @@
 #StaTap
 
+##Bugs
+<ul>
+	<li>Random Crashes (Possibly overdraw)</li>
+</ul>
+
+
+
+
+
 ##Assignments
 
 ===================
