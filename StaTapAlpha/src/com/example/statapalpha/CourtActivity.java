@@ -291,8 +291,14 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		refreshPlayers();
 		return false;
 	}
-	
-	void refreshPlayers() {
+	public void refreshPoints() {
+		Button button = (Button)findViewById(R.id.p1);
+		int jnum = Integer.parseInt(button.getText().toString());
+		String team = team1;
+		TextView textp = (TextView)findViewById(R.id.p1p);
+		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+	}
+	public void refreshPlayers() {
 		//First Player
 		Button button = (Button)findViewById(R.id.p1);
 		int jnum = Integer.parseInt(button.getText().toString());
