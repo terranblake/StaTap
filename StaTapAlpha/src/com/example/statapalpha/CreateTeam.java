@@ -23,7 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 import android.database.Cursor;
-
+//ignore
 public class CreateTeam extends Activity {
 	EditText editTeam;
 	SqliteHelper db;
