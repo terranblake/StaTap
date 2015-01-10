@@ -11,7 +11,6 @@
 
 ##Assignments
 
-===================
 ###Home Screen
 #####Refresh Button
 <ul>
