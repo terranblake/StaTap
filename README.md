@@ -63,3 +63,18 @@
 
 ================
 
+
+
+
+
+##Long-Term Goals
+
+#####Web Integration
+Only attempt if accomplish all other essential things
+<ul>
+	<li>Acquire domain, or use existing</li>
+	<li>Design Web App for viewing game using dummy data</li>
+	<li>Develop table framework for layouts</li>
+	<li>Implement uploading games to website</li>
+	<li>Ability to edit/delete existing games online</li>
+</ul>
