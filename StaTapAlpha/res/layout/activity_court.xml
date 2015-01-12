@@ -382,7 +382,7 @@
                 android:id="@+id/foul"
                 android:layout_width="190dp"
                 android:layout_height="80dp"
-                android:onClick="setAction"
+                android:onClick="recordFoul"
                 android:text="@string/foul"
                 android:color="#FF0079FF" />
         </LinearLayout>
