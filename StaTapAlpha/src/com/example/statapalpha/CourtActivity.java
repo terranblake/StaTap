@@ -30,14 +30,15 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	ArrayList<String> awayPlayersBench = new ArrayList<String>();
 	
 	String team, team1, team2, team1n, team2n, gamename, gamenamen, tablename, message;
-	Button b, c;
+	Button b, c; //b = button c=player
+	TextView d, e; //d = Player Points TV	e = Player Fouls TV
 	int GameId, currentplay;
 	String player; // Player number for current play
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
 	int playNumber = 0;
 	private PopupMenu popupMenu;
-	boolean isHome = false;
+	boolean isHome;
 	int playerButton = 0;
 	
 	@Override
@@ -55,7 +56,13 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		// Gets players
 		getPlayers();
+		initialization();
+	}
+	public void initialization() {
+		//This is just so we don't have any errors to start with
 		team = team1;
+		c = (Button) findViewById(R.id.p1);
+		isHome = true;
 	}
 	public void getCurrentPlay() {
 		currentplay = ((db.countPlays(tablename))+1);
@@ -159,24 +166,40 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	
 	// Sets current player when a player button is clicked
 	public void setPlayer(View v) {
-		Button c = (Button)v;
+		c = (Button)v;
 		player = c.getText().toString();
 		playerButton = c.getId();
 		switch(c.getId()) {
-		case R.id.p1: 
-		case R.id.p2:
-		case R.id.p3:
-		case R.id.p4:
-		case R.id.p5: team = team1; break;
-		default: team = team2;
-				break;
+		case R.id.p1: team = team1; d = (TextView) findViewById(R.id.p1p); e = (TextView) findViewById(R.id.p1f); isHome=true;
+		break;
+		case R.id.p2: team = team1; d = (TextView) findViewById(R.id.p2p); e = (TextView) findViewById(R.id.p2f); isHome=true;
+		break;
+		case R.id.p3: team = team1; d = (TextView) findViewById(R.id.p3p); e = (TextView) findViewById(R.id.p3f); isHome=true;
+		break;
+		case R.id.p4: team = team1; d = (TextView) findViewById(R.id.p4p); e = (TextView) findViewById(R.id.p4f); isHome=true;
+		break;
+		case R.id.p5: team = team1; d = (TextView) findViewById(R.id.p5p); e = (TextView) findViewById(R.id.p5f); isHome=true;
+		break;
+		case R.id.p6: team = team2; d = (TextView) findViewById(R.id.p6p); e = (TextView) findViewById(R.id.p6f); isHome=false;
+		break;
+		case R.id.p7: team = team2; d = (TextView) findViewById(R.id.p7p); e = (TextView) findViewById(R.id.p7f); isHome=false;
+		break;
+		case R.id.p8: team = team2; d = (TextView) findViewById(R.id.p8p); e = (TextView) findViewById(R.id.p8f); isHome=false;
+		break;
+		case R.id.p9: team = team2; d = (TextView) findViewById(R.id.p9p); e = (TextView) findViewById(R.id.p9f); isHome=false;
+		break;
+		case R.id.p10: team = team2; d = (TextView) findViewById(R.id.p10p); e = (TextView) findViewById(R.id.p10f); isHome=false;
+		break;
+		
 		}
 	}
 	/*
 	Recording Functions 
 	*/
 	public void recordFoul(View v) {
+		int jnum = Integer.parseInt(c.getText().toString());
 		db.recordPlay(Integer.parseInt(player), team, "FC", position, tablename);
+		e.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
 		currentplay++;
 	}
 	public void recordRebound(View v) {
@@ -199,7 +222,51 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		db.recordPlay(Integer.parseInt(player), team, "TO", position, tablename);
 		currentplay++;
 	}
+	public void recordMadeShot(View v) {
+		b = (Button)v;
+		
+		switch(b.getId()) {
+		case R.id.fgMade:
+			action = "F" + goal(position) + "H";break;
+		case R.id.ftMade:
+			action = "FTH";break;
+		}
+		int jnum = Integer.parseInt(c.getText().toString());
+		
+		db.recordPlay(Integer.parseInt(player), team, action, position, tablename);
+		d.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
+		currentplay++;
+		
+	}
+	public void recordMissedShot(View v) {
+		b = (Button)v;
+		
+		switch(b.getId()) {
+		
+		
+		}
+	}
 	
+	public void substitution(View v) {
+		popupMenu = new PopupMenu(this.getBaseContext(), v);
+		Menu menu = popupMenu.getMenu();
+		
+		if (isHome == true) {
+			for (String number : homePlayersBench) {
+				menu.add(number);
+			}
+		}
+		else {
+			for (String number : awayPlayersBench) {
+					menu.add(number);
+				}
+		}
+		
+		popupMenu.setOnMenuItemClickListener(this);
+		popupMenu.show();
+		
+		return;
+	}
 	// Sets string Action to whatever action the user taps
 	// then records play to database.
 	public void setAction(View v) {
@@ -207,6 +274,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		String toastAction = "";
 		String message = "";
 		String team = "";
+		
 		
 		switch(b.getId()) {
 		case R.id.fgMade: action = "F" + goal(position) + "H"; toastAction = "made " + goal(position) + " point shot";

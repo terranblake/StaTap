@@ -340,42 +340,42 @@
                 android:id="@+id/rebound"
                 android:layout_width="190dp"
                 android:layout_height="80dp"
-                android:onClick="setAction"
+                android:onClick="recordRebound"
                 android:text="@string/rebound" />
 
             <Button
                 android:id="@+id/assist"
                 android:layout_width="190dp"
                 android:layout_height="80dp"
-                android:onClick="setAction"
+                android:onClick="recordAssist"
                 android:text="@string/assist" />
 
             <Button
                 android:id="@+id/block"
                 android:layout_width="190dp"
                 android:layout_height="80dp"
-                android:onClick="setAction"
+                android:onClick="recordBlock"
                 android:text="@string/block" />
 
             <Button
                 android:id="@+id/steal"
                 android:layout_width="190dp"
                 android:layout_height="80dp"
-                android:onClick="setAction"
+                android:onClick="recordSteal"
                 android:text="@string/steal" />
 
             <Button
                 android:id="@+id/turnover"
                 android:layout_width="190dp"
                 android:layout_height="80dp"
-                android:onClick="setAction"
+                android:onClick="recordTurnover"
                 android:text="@string/turnover" />
 
             <Button
                 android:id="@+id/sub"
                 android:layout_width="190dp"
                 android:layout_height="80dp"
-                android:onClick="setAction"
+                android:onClick="substitution"
                 android:text="@string/sub" />
 
             <Button
@@ -436,7 +436,7 @@
                 android:id="@+id/fgMade"
                 android:layout_width="190dp"
                 android:layout_height="85dp"
-                android:onClick="setAction"
+                android:onClick="recordMadeShot"
                 android:text="@string/made" />
 
             <Button
@@ -459,7 +459,7 @@
                 android:id="@+id/ftMade"
                 android:layout_width="190dp"
                 android:layout_height="85dp"
-                android:onClick="setAction"
+                android:onClick="recordMadeShot"
                 android:text="@string/made" />
 
             <Button
