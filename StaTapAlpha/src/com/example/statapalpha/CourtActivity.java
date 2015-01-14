@@ -62,6 +62,8 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		//This is just so we don't have any errors to start with
 		team = team1;
 		c = (Button) findViewById(R.id.p1);
+		d = (TextView) findViewById(R.id.p1p);
+		e = (TextView) findViewById(R.id.p1f);
 		isHome = true;
 	}
 	public void getCurrentPlay() {
@@ -242,6 +244,9 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		b = (Button)v;
 		
 		switch(b.getId()) {
+		case R.id.fgMissed:
+		case R.id.ftMissed:
+			
 		
 		
 		}
