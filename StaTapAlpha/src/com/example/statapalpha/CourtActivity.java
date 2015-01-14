@@ -1,5 +1,6 @@
 package com.example.statapalpha;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,6 +18,7 @@ import java.lang.Math;
 import java.util.ArrayList;
 
 // Court Screen
+@SuppressLint("DefaultLocale")
 public class CourtActivity extends Activity implements OnMenuItemClickListener{
 
 	// Opens database
@@ -53,7 +55,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		// Gets players
 		getPlayers();
-		refreshPlayers();
+		team = team1;
 	}
 	public void getCurrentPlay() {
 		currentplay = ((db.countPlays(tablename))+1);
@@ -68,6 +70,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	public void createTable() {
 		db.createStatTable(tablename);
 	}
+	@SuppressLint("DefaultLocale")
 	public void convertStrings() {
 		Intent mIntent = getIntent();
 		team1n = mIntent.getStringExtra("TEAM1");
@@ -291,7 +294,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		} else {
 		db.undoPlay(tablename, currentplay);
 		currentplay--;
-		refreshPlayers();
+		//SHIT
 		}
 	}
 	
@@ -314,7 +317,6 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 			awayPlayersBench.remove(item.getTitle().toString());
 		}
 		
-		refreshPlayers();
 		return false;
 	}
 	public void refreshPoints() {
@@ -371,7 +373,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		textp = (TextView)findViewById(R.id.p10p);
 		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
 	}
-	public void refreshPlayers() {
+	public void refreshFouls() {
 		//First Player
 		Button button = (Button)findViewById(R.id.p1);
 		int jnum = Integer.parseInt(button.getText().toString());
