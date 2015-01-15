@@ -377,7 +377,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
 		Button button = (Button)findViewById(playerButton);
-		int jnum = Integer.parseInt(button.getText().toString());
+		int jnum = Integer.parseInt(item.getTitle().toString());
 		button.setText(item.getTitle());
 		d.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
 		e.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
