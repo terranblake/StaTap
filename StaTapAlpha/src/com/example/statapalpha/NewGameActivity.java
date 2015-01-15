@@ -23,7 +23,7 @@ public class NewGameActivity extends Activity {
 	EditText title;
 	TextView team1, team2;
 	SqliteHelper db;
-	String teamn1, teamn2, gTitle, gTeam1, gTeam2;
+	String teamn1, teamn2, gTitle, gTeam1, gTeam2, teamm1, teamm2;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -119,6 +119,12 @@ public class NewGameActivity extends Activity {
 			
 		});
 	}
+	public void onBackPressed() {
+		//DO NOTHING
+		Intent intent = new Intent(this, HomeScreen.class);
+		finish();
+		startActivity(intent);
+	}
 	public void confirm(View view) {
 		
 		Intent intent = new Intent(this, CourtActivity.class);
@@ -129,10 +135,20 @@ public class NewGameActivity extends Activity {
 			Toast.makeText(NewGameActivity.this, "", Toast.LENGTH_SHORT).show();
 	    	
 		} else if (gTeam1.matches("Select a Team")) {
+		
 			Toast.makeText(NewGameActivity.this, "Error: Select a team for Team 1", Toast.LENGTH_SHORT).show();
 		} else if (gTeam2.matches("Select a Team")) {
 			Toast.makeText(NewGameActivity.this, "Error: Select a team for Team 2", Toast.LENGTH_SHORT).show();
+		} else if (db.countPlayers(teamn1) < 5){
+			Toast.makeText(NewGameActivity.this, "Error: Team 1 doesn't have 5 or more players", Toast.LENGTH_SHORT).show();
+		} else if (db.countPlayers(teamn2) < 5){
+			Toast.makeText(NewGameActivity.this, "Error: Team 2 doesn't have 5 or more players", Toast.LENGTH_SHORT).show();
+		} else if(title.getText().toString().trim().length() == 0) {
+			Toast.makeText(NewGameActivity.this, "Error: Please add a Game Title", Toast.LENGTH_SHORT).show();
+		} else if (db.duplicateGame(gTitle) > 0){
+			Toast.makeText(NewGameActivity.this, "Error: Another game with the same title already exists", Toast.LENGTH_SHORT).show();
 		} else {
+		
 			intent.putExtra("TEAM1", teamn1);
 	    	intent.putExtra("TEAM2", teamn2);
 	    	intent.putExtra("GAME_TITLE", gTitle);
