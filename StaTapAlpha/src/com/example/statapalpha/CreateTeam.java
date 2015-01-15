@@ -59,7 +59,12 @@ public class CreateTeam extends Activity {
 		registerForContextMenu(lv);
 		//DB
 	}
-	
+	public void onBackPressed() {
+		//DO NOTHING
+		Intent intent = new Intent(this, HomeScreen.class);
+		finish();
+		startActivity(intent);
+	}
 	public void create(View view) {
 		
 		
