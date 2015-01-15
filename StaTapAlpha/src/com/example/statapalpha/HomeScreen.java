@@ -43,10 +43,12 @@ public class HomeScreen extends Activity {
     public void newGame(View view) {
     	//This here starts the New Game Screen
     	Intent intent = new Intent(this, NewGameActivity.class);
+    	finish();
     	startActivity(intent);
     }
     public void editTeams(View view) {
     	Intent intent = new Intent(this, CreateTeam.class);
+    	finish();
     	startActivity(intent);
     }
     public void refresh(View view) {
@@ -73,6 +75,7 @@ public class HomeScreen extends Activity {
               case R.id.delete:
             // remove stuff here
             	  
+            	  
                     return true;
               default:
                     return super.onContextItemSelected(item);
@@ -84,7 +87,7 @@ public class HomeScreen extends Activity {
     	intent.putExtra("TEAM1", team1);
     	intent.putExtra("TEAM2", team2);
     	intent.putExtra("GAME_TITLE", game);
-    	
+    	finish();
     	startActivity(intent);
     }
     private void registerClickCallback() {
