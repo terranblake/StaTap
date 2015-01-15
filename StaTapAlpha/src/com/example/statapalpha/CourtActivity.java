@@ -158,7 +158,9 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	@Override
 	public void onBackPressed() {
 		//DO NOTHING
+		Intent intent = new Intent(this, HomeScreen.class);
 		finish();
+		startActivity(intent);
 	}
 	
 	// Stores x and y coordinate
