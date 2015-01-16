@@ -23,8 +23,8 @@
 ###New Game Screen
 #####~~Team < 5 Players~~
 <ul>
-	<li>~~SQL Statement to check if there are less than 5 players~~</li>
-	<li>~~Display message saying team cannot be used with less than 5 Players~~</li>
+	~~<li>SQL Statement to check if there are less than 5 players</li>~~
+	~~<li>Display message saying team cannot be used with less than 5 Players</li>~~
 </ul>
 ===================
 ###Court Screen
