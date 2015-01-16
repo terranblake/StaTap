@@ -328,14 +328,24 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	}
     	return plays;
     }
-    public void undoPlay(String tablename, int play)//See my comment Paul link might help
-    {
+    public void undoPlay(String tablename, int play) {
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
     	int playd = (play-1);
     	db.execSQL("DELETE FROM "+tablename+" WHERE play_id = "+playd);
 
     	db.close();
+    }
+    public String grabUndoAction(String tablename, int play) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	String action = "None";
+    	int playd = (play-1);
+    	String command = "SELECT action FROM "+tablename+" WHERE play_id = "+playd;
+    	Cursor cursor = db.rawQuery(command, null);
+    	if(cursor.moveToFirst()){
+    	    action = cursor.getString(0);
+    	}
+    	return action;
     }
 
 }

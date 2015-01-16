@@ -443,7 +443,7 @@
                 android:id="@+id/fgMissed"
                 android:layout_width="190dp"
                 android:layout_height="85dp"
-                android:onClick="setAction"
+                android:onClick="recordMissedShot"
                 android:text="@string/miss" />
 
             <TextView
@@ -466,7 +466,7 @@
                 android:id="@+id/ftMissed"
                 android:layout_width="190dp"
                 android:layout_height="85dp"
-                android:onClick="setAction"
+                android:onClick="recordMissedShot"
                 android:text="@string/miss" />
         </LinearLayout>
     </LinearLayout>

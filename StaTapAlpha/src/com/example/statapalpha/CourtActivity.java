@@ -248,11 +248,12 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		
 		switch(b.getId()) {
 		case R.id.fgMissed:
+			action = "F" + goal(position) + "M";break;
 		case R.id.ftMissed:
-			
-		
-		
+			action = "FTM";break;
 		}
+		db.recordPlay(Integer.parseInt(player), team, action, position, tablename);
+		currentplay++;
 	}
 	
 	public void substitution(View v) {
@@ -275,75 +276,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		
 		return;
 	}
-	// Sets string Action to whatever action the user taps
-	// then records play to database.
-	public void setAction(View v) {
-		b = (Button)v;
-		String toastAction = "";
-		String message = "";
-		String team = "";
-		
-		
-		switch(b.getId()) {
-		case R.id.fgMade: action = "F" + goal(position) + "H"; toastAction = "made " + goal(position) + " point shot";
-		break;
-		case R.id.fgMissed: action = "F" + goal(position) + "M"; toastAction = "missed " + goal(position) + " point shot";
-		break;
-		case R.id.ftMade: action = "FTH"; toastAction = "made freethrow";
-		break;
-		case R.id.ftMissed: action = "FTM"; toastAction = "missed freethrow";
-		break;
-		case R.id.rebound: action = "RB"; toastAction = "rebound";
-		break;
-		case R.id.assist: action = "AST"; toastAction = "assist";
-		break;
-		case R.id.block: action = "BL"; toastAction = "block";
-		break;
-		case R.id.steal: action = "STL"; toastAction = "steal";
-		break;
-		case R.id.turnover: action = "TO"; toastAction = "turnover";
-		break;
-		case R.id.sub: action = "SUB"; toastAction = "substitution";
-		break;
-		case R.id.foul: action = "FC"; toastAction = "commited foul";
-		break;
-		case R.id.undoPlay: undoPlay(v);
-		break;
-		}
-		
-		if (action == "SUB") {
-			popupMenu = new PopupMenu(this.getBaseContext(), v);
-			Menu menu = popupMenu.getMenu();
-			
-			if (isHome == true) {
-				for (String number : homePlayersBench) {
-					menu.add(number);
-				}
-			}
-			else {
-				for (String number : awayPlayersBench) {
-						menu.add(number);
-					}
-			}
-			
-			popupMenu.setOnMenuItemClickListener(this);
-			popupMenu.show();
-			
-			return;
-		}
-		else {
-			message = "Player " + player + " " + toastAction + " at ("  + Integer.toString(position.x) + ", " + Integer.toString(position.y) + ")";
-		}
-		
-		currentplay++;
-		db.recordPlay(Integer.parseInt(player), team, action, position, tablename);
-		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
-		/*
-		Place New Refresh Functions here in many IF statements
-		*/
-	}
 	
-
 	// Gets tap position and saves it to 'position'
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -369,12 +302,15 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 			Toast.makeText(CourtActivity.this, "No plays to Undo", Toast.LENGTH_SHORT).show();
 		} else {
 		db.undoPlay(tablename, currentplay);
+		String undoPlayAction = db.grabUndoAction(tablename, currentplay);
+		switch(undoPlayAction) {
+		case "F2H":case "F3H":case "FTH":
+		case "FC":
+		}
 		currentplay--;
 		//SHIT
 		}
 	}
-	
-
 
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
