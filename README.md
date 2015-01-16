@@ -21,10 +21,10 @@
 </ul>
 ===================
 ###New Game Screen
-#####Team < 5 Players
+#####~~Team < 5 Players~~
 <ul>
-	<li>SQL Statement to check if < 5 players</li>
-	<li>Display message saying team cannot be used with < 5 Players</li>
+	<li>~~SQL Statement to check if < 5 players~~</li>
+	<li>~~Display message saying team cannot be used with < 5 Players~~</li>
 </ul>
 ===================
 ###Court Screen
