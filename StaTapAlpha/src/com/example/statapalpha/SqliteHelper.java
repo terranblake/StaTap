@@ -347,5 +347,16 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	}
     	return action;
     }
+    public int grabUndoJNum(String tablename, int play) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	int jnum = -1;
+    	int playd = (play-1);
+    	String command = "SELECT Jersey_num FROM "+tablename+" WHERE play_id = "+playd;
+    	Cursor cursor = db.rawQuery(command, null);
+    	if(cursor.moveToFirst()){
+    	    jnum = cursor.getInt(0);
+    	}
+    	return jnum;
+    }
 
 }
