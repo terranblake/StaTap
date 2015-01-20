@@ -315,7 +315,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 					undoAwayScore(jnum);
 				}
 			}
-			
+			break;
 		case "FC":
 			if (isHome) {
 				if (homePlayersIn.contains(jnum)) { 
@@ -326,6 +326,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 					undoAwayFoul(jnum);
 				}
 			}
+			break;
 		}
 		currentplay--;
 		}
