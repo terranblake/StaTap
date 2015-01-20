@@ -315,25 +315,76 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 					undoAwayScore(jnum);
 				}
 			}
+			
 		case "FC":
-		}
-		if (currentplay == 1) {
-			Toast.makeText(CourtActivity.this, "No plays to Undo", Toast.LENGTH_SHORT).show();
-		} else if (isHome) {
-			if (homePlayersIn.contains(jnum)) { 
-				undoHomeScore(jnum);
+			if (isHome) {
+				if (homePlayersIn.contains(jnum)) { 
+					undoHomeFoul(jnum);
+				}
+			} else {
+				if (awayPlayersIn.contains(jnum)) { 
+					undoAwayFoul(jnum);
+				}
 			}
-		
-		currentplay--;
-		//SHIT
 		}
+		currentplay--;
 		}
 	}
 	public void undoHomeFoul(String jnum) {
+		Button z,y,x,w,v;
+		TextView u;
+		int jnumi = Integer.parseInt(jnum);
+		z = (Button) findViewById(R.id.p1);
+		y = (Button) findViewById(R.id.p2); 
+		x = (Button) findViewById(R.id.p3); 
+		w = (Button) findViewById(R.id.p4); 
+		v = (Button) findViewById(R.id.p5); 
+		//z.getText().toString();
 		
+		if (jnum == z.getText().toString()) {
+			u = (TextView)findViewById(R.id.p1f);
+			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
+		} else if (jnum == y.getText().toString()) {
+			u = (TextView)findViewById(R.id.p2f);
+			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
+		} else if (jnum == x.getText().toString()) {
+			u = (TextView)findViewById(R.id.p3f);
+			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
+		} else if (jnum == w.getText().toString()) {
+			u = (TextView)findViewById(R.id.p4f);
+			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
+		} else if (jnum == v.getText().toString()) {
+			u = (TextView)findViewById(R.id.p5f);
+			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
+		} 
 	}
 	public void undoAwayFoul(String jnum) {
+		Button z,y,x,w,v;
+		TextView u;
+		int jnumi = Integer.parseInt(jnum);
+		z = (Button) findViewById(R.id.p6);
+		y = (Button) findViewById(R.id.p7); 
+		x = (Button) findViewById(R.id.p8); 
+		w = (Button) findViewById(R.id.p9); 
+		v = (Button) findViewById(R.id.p10); 
+		//z.getText().toString();
 		
+		if (jnum == z.getText().toString()) {
+			u = (TextView)findViewById(R.id.p6f);
+			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
+		} else if (jnum == y.getText().toString()) {
+			u = (TextView)findViewById(R.id.p7f);
+			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
+		} else if (jnum == x.getText().toString()) {
+			u = (TextView)findViewById(R.id.p8f);
+			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
+		} else if (jnum == w.getText().toString()) {
+			u = (TextView)findViewById(R.id.p9f);
+			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
+		} else if (jnum == v.getText().toString()) {
+			u = (TextView)findViewById(R.id.p10f);
+			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
+		} 
 	}
 	public void undoHomeScore(String jnum) {
 		Button z,y,x,w,v;
