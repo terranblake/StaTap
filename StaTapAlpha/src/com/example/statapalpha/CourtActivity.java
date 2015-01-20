@@ -299,26 +299,99 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 
 	public void undoPlay(View view) {
 		String undoPlayAction = db.grabUndoAction(tablename, currentplay);
-		String jnum = db.grabUndoJNum(tablename, currentplay).toString();
+		String jnum = Integer.toString(db.grabUndoJNum(tablename, currentplay));
+		if (currentplay == 1) {
+			Toast.makeText(CourtActivity.this, "No plays to Undo", Toast.LENGTH_SHORT).show();
+		} else {
+		db.undoPlay(tablename, currentplay);
+		switch(undoPlayAction) {
+		case "F2H":case "F3H":case "FTH":
+			if (isHome) {
+				if (homePlayersIn.contains(jnum)) { 
+					undoHomeScore(jnum);
+				}
+			} else {
+				if (awayPlayersIn.contains(jnum)) { 
+					undoAwayScore(jnum);
+				}
+			}
+		case "FC":
+		}
 		if (currentplay == 1) {
 			Toast.makeText(CourtActivity.this, "No plays to Undo", Toast.LENGTH_SHORT).show();
 		} else if (isHome) {
-			
-			switch(undoPlayAction) {
-				case "F2H":case "F3H":case "FTH":
-				case "FC":
+			if (homePlayersIn.contains(jnum)) { 
+				undoHomeScore(jnum);
 			}
-		db.undoPlay(tablename, currentplay);
+		
 		currentplay--;
 		//SHIT
 		}
+		}
 	}
-	public void undoScore() {
+	public void undoHomeFoul(String jnum) {
 		
 	}
-	public void undoFoul() {
+	public void undoAwayFoul(String jnum) {
 		
 	}
+	public void undoHomeScore(String jnum) {
+		Button z,y,x,w,v;
+		TextView u;
+		int jnumi = Integer.parseInt(jnum);
+		z = (Button) findViewById(R.id.p1);
+		y = (Button) findViewById(R.id.p2); 
+		x = (Button) findViewById(R.id.p3); 
+		w = (Button) findViewById(R.id.p4); 
+		v = (Button) findViewById(R.id.p5); 
+		//z.getText().toString();
+		
+		if (jnum == z.getText().toString()) {
+			u = (TextView)findViewById(R.id.p1p);
+			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
+		} else if (jnum == y.getText().toString()) {
+			u = (TextView)findViewById(R.id.p2p);
+			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
+		} else if (jnum == x.getText().toString()) {
+			u = (TextView)findViewById(R.id.p3p);
+			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
+		} else if (jnum == w.getText().toString()) {
+			u = (TextView)findViewById(R.id.p4p);
+			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
+		} else if (jnum == v.getText().toString()) {
+			u = (TextView)findViewById(R.id.p5p);
+			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
+		} 
+	}
+	public void undoAwayScore(String jnum) {
+		Button z,y,x,w,v;
+		TextView u;
+		int jnumi = Integer.parseInt(jnum);
+		z = (Button) findViewById(R.id.p6);
+		y = (Button) findViewById(R.id.p7); 
+		x = (Button) findViewById(R.id.p8); 
+		w = (Button) findViewById(R.id.p9); 
+		v = (Button) findViewById(R.id.p10); 
+		//z.getText().toString();
+		
+		if (jnum == z.getText().toString()) {
+			u = (TextView)findViewById(R.id.p6p);
+			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
+		} else if (jnum == y.getText().toString()) {
+			u = (TextView)findViewById(R.id.p7p);
+			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
+		} else if (jnum == x.getText().toString()) {
+			u = (TextView)findViewById(R.id.p8p);
+			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
+		} else if (jnum == w.getText().toString()) {
+			u = (TextView)findViewById(R.id.p9p);
+			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
+		} else if (jnum == v.getText().toString()) {
+			u = (TextView)findViewById(R.id.p10p);
+			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
+		} 
+	}
+	
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
 		Button button = (Button)findViewById(playerButton);
