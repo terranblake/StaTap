@@ -298,20 +298,27 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	
 
 	public void undoPlay(View view) {
+		String undoPlayAction = db.grabUndoAction(tablename, currentplay);
+		String jnum = db.grabUndoJNum(tablename, currentplay).toString();
 		if (currentplay == 1) {
 			Toast.makeText(CourtActivity.this, "No plays to Undo", Toast.LENGTH_SHORT).show();
-		} else {
+		} else if (isHome) {
+			
+			switch(undoPlayAction) {
+				case "F2H":case "F3H":case "FTH":
+				case "FC":
+			}
 		db.undoPlay(tablename, currentplay);
-		String undoPlayAction = db.grabUndoAction(tablename, currentplay);
-		switch(undoPlayAction) {
-		case "F2H":case "F3H":case "FTH":
-		case "FC":
-		}
 		currentplay--;
 		//SHIT
 		}
 	}
-
+	public void undoScore() {
+		
+	}
+	public void undoFoul() {
+		
+	}
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
 		Button button = (Button)findViewById(playerButton);
