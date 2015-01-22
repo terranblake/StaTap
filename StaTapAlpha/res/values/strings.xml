@@ -29,6 +29,7 @@
     <string name="fouls">Fouls:</string>
     <string name="title">StaTap</string>
     <string name="new_game">New Game</string>
+    <string name="hyphen">-</string>
     <string name="edit">Edit Teams</string>
     <string name="create">Create Team</string>
     <string name="delete">Delete</string>

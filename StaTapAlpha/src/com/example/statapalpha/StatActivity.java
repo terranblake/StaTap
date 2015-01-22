@@ -47,11 +47,20 @@ public class StatActivity extends Activity {
 	}
 	@Override
 	public void onBackPressed() {
-		//DO NOTHING
-		finish();
+		Intent intent = new Intent(this, CourtActivity.class);
+    	intent.putExtra("TEAM1", team1);
+    	intent.putExtra("TEAM2", team2);
+    	intent.putExtra("GAME_TITLE", tablename);
+    	finish();
+    	startActivity(intent);
 	}
 	public void back(View view) {
-		finish();
+		Intent intent = new Intent(this, CourtActivity.class);
+    	intent.putExtra("TEAM1", team1);
+    	intent.putExtra("TEAM2", team2);
+    	intent.putExtra("GAME_TITLE", tablename);
+    	finish();
+    	startActivity(intent);
 	}
 	public void setPoints() {
 		String p1t, p2t;

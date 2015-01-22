@@ -110,6 +110,9 @@ public class HomeScreen extends Activity {
 					game = tvGame.getText().toString();
 					team1 = tvT1.getText().toString();
 					team2 = tvT2.getText().toString();
+					team1 = team1.replaceAll(" ", "_").toLowerCase();
+					team2 = team2.replaceAll(" ", "_").toLowerCase();
+					game = game.replaceAll(" ", "_").toLowerCase();
 					openGame(null, game, team1, team2);
 			}
 		});

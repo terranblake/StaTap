@@ -75,6 +75,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
     	intent.putExtra("TEAM1", team1);
     	intent.putExtra("TEAM2", team2);
     	intent.putExtra("TABLENAME", tablename);
+    	finish();
     	startActivity(intent);
 	}
 	public void createTable() {
@@ -83,12 +84,9 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	@SuppressLint("DefaultLocale")
 	public void convertStrings() {
 		Intent mIntent = getIntent();
-		team1n = mIntent.getStringExtra("TEAM1");
-		team2n = mIntent.getStringExtra("TEAM2");
-		team1 = team1n.replaceAll(" ", "_").toLowerCase();
-		team2 = team2n.replaceAll(" ", "_").toLowerCase();
-		gamenamen = mIntent.getStringExtra("GAME_TITLE");
-		gamename = gamenamen.replaceAll(" ", "_").toLowerCase();
+		team1 = mIntent.getStringExtra("TEAM1");
+		team2 = mIntent.getStringExtra("TEAM2");
+		gamename = mIntent.getStringExtra("GAME_TITLE");
 		tablename = gamename;
 	}
 	// Populates arrays with player numbers
@@ -298,32 +296,37 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	
 
 	public void undoPlay(View view) {
-		String undoPlayAction = db.grabUndoAction(tablename, currentplay);
-		String jnum = Integer.toString(db.grabUndoJNum(tablename, currentplay));
+		
 		if (currentplay == 1) {
 			Toast.makeText(CourtActivity.this, "No plays to Undo", Toast.LENGTH_SHORT).show();
 		} else {
+			String undoPlayAction = db.grabUndoAction(tablename, currentplay);
+			int jnum = db.grabUndoJNum(tablename, currentplay);
+			String jnumS = Integer.toString(jnum);
+			String teamname = db.grabTeamName(tablename, currentplay);
 		db.undoPlay(tablename, currentplay);
 		switch(undoPlayAction) {
 		case "F2H":case "F3H":case "FTH":
-			if (isHome) {
-				if (homePlayersIn.contains(jnum)) { 
-					undoHomeScore(jnum);
+			if (teamname.equals(team1)) {
+				
+				if (homePlayersIn.contains(jnumS)) { 
+					undoHomeScore(jnumS);
 				}
 			} else {
-				if (awayPlayersIn.contains(jnum)) { 
-					undoAwayScore(jnum);
+				if (awayPlayersIn.contains(jnumS)) { 
+					undoAwayScore(jnumS);
 				}
 			}
 			break;
 		case "FC":
-			if (isHome) {
-				if (homePlayersIn.contains(jnum)) { 
-					undoHomeFoul(jnum);
+			if (teamname.equals(team1)) {
+				
+				if (homePlayersIn.contains(jnumS)) { 
+					undoHomeFoul(jnumS);
 				}
 			} else {
-				if (awayPlayersIn.contains(jnum)) { 
-					undoAwayFoul(jnum);
+				if (awayPlayersIn.contains(jnumS)) { 
+					undoAwayFoul(jnumS);
 				}
 			}
 			break;
@@ -342,19 +345,19 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		v = (Button) findViewById(R.id.p5); 
 		//z.getText().toString();
 		
-		if (jnum == z.getText().toString()) {
+		if (jnum.equals(z.getText().toString())) {
 			u = (TextView)findViewById(R.id.p1f);
 			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
-		} else if (jnum == y.getText().toString()) {
+		} else if (jnum.equals(y.getText().toString())) {
 			u = (TextView)findViewById(R.id.p2f);
 			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
-		} else if (jnum == x.getText().toString()) {
+		} else if (jnum.equals(x.getText().toString())) {
 			u = (TextView)findViewById(R.id.p3f);
 			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
-		} else if (jnum == w.getText().toString()) {
+		} else if (jnum.equals(w.getText().toString())) {
 			u = (TextView)findViewById(R.id.p4f);
 			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
-		} else if (jnum == v.getText().toString()) {
+		} else if (jnum.equals(v.getText().toString())) {
 			u = (TextView)findViewById(R.id.p5f);
 			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
 		} 
@@ -370,19 +373,19 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		v = (Button) findViewById(R.id.p10); 
 		//z.getText().toString();
 		
-		if (jnum == z.getText().toString()) {
+		if (jnum.equals(z.getText().toString())) {
 			u = (TextView)findViewById(R.id.p6f);
 			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
-		} else if (jnum == y.getText().toString()) {
+		} else if (jnum.equals(y.getText().toString())) {
 			u = (TextView)findViewById(R.id.p7f);
 			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
-		} else if (jnum == x.getText().toString()) {
+		} else if (jnum.equals(x.getText().toString())) {
 			u = (TextView)findViewById(R.id.p8f);
 			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
-		} else if (jnum == w.getText().toString()) {
+		} else if (jnum.equals(w.getText().toString())) {
 			u = (TextView)findViewById(R.id.p9f);
 			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
-		} else if (jnum == v.getText().toString()) {
+		} else if (jnum.equals(v.getText().toString())) {
 			u = (TextView)findViewById(R.id.p10f);
 			u.setText(Integer.toString(db.getFouls(jnumi, team, tablename)));
 		} 
@@ -398,19 +401,19 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		v = (Button) findViewById(R.id.p5); 
 		//z.getText().toString();
 		
-		if (jnum == z.getText().toString()) {
+		if (jnum.equals(z.getText().toString())) {
 			u = (TextView)findViewById(R.id.p1p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
-		} else if (jnum == y.getText().toString()) {
+		} else if (jnum.equals(y.getText().toString())) {
 			u = (TextView)findViewById(R.id.p2p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
-		} else if (jnum == x.getText().toString()) {
+		} else if (jnum.equals(x.getText().toString())) {
 			u = (TextView)findViewById(R.id.p3p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
-		} else if (jnum == w.getText().toString()) {
+		} else if (jnum.equals(w.getText().toString())) {
 			u = (TextView)findViewById(R.id.p4p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
-		} else if (jnum == v.getText().toString()) {
+		} else if (jnum.equals(v.getText().toString())) {
 			u = (TextView)findViewById(R.id.p5p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
 		} 
@@ -426,19 +429,19 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		v = (Button) findViewById(R.id.p10); 
 		//z.getText().toString();
 		
-		if (jnum == z.getText().toString()) {
+		if (jnum.equals(z.getText().toString())) {
 			u = (TextView)findViewById(R.id.p6p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
-		} else if (jnum == y.getText().toString()) {
+		} else if (jnum.equals(y.getText().toString())) {
 			u = (TextView)findViewById(R.id.p7p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
-		} else if (jnum == x.getText().toString()) {
+		} else if (jnum.equals(x.getText().toString())) {
 			u = (TextView)findViewById(R.id.p8p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
-		} else if (jnum == w.getText().toString()) {
+		} else if (jnum.equals(w.getText().toString())) {
 			u = (TextView)findViewById(R.id.p9p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
-		} else if (jnum == v.getText().toString()) {
+		} else if (jnum.equals(v.getText().toString())) {
 			u = (TextView)findViewById(R.id.p10p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
 		} 

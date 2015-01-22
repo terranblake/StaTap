@@ -23,7 +23,7 @@ public class NewGameActivity extends Activity {
 	EditText title;
 	TextView team1, team2;
 	SqliteHelper db;
-	String teamn1, teamn2, gTitle, gTeam1, gTeam2, teamm1, teamm2;
+	String teamn1, teamn2, gTitle, gTeam1, gTeam2, teamm1, teamm2, titlee;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -148,10 +148,12 @@ public class NewGameActivity extends Activity {
 		} else if (db.duplicateGame(gTitle) > 0){
 			Toast.makeText(NewGameActivity.this, "Error: Another game with the same title already exists", Toast.LENGTH_SHORT).show();
 		} else {
-		
-			intent.putExtra("TEAM1", teamn1);
-	    	intent.putExtra("TEAM2", teamn2);
-	    	intent.putExtra("GAME_TITLE", gTitle);
+			teamm1 = teamn1.replaceAll(" ", "_").toLowerCase();
+			teamm2 = teamn2.replaceAll(" ", "_").toLowerCase();
+			titlee = gTitle.replaceAll(" ", "_").toLowerCase();
+			intent.putExtra("TEAM1", teamm1);
+	    	intent.putExtra("TEAM2", teamm2);
+	    	intent.putExtra("GAME_TITLE", titlee);
 	    	db.createGame(gTitle, teamn1, teamn2);
 	    	finish();
 	    	startActivity(intent);

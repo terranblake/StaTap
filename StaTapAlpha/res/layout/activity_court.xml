@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:theme="@style/Blank"
     android:layout_height="match_parent"
+    android:theme="@style/Blank"
     tools:context="${relativePackage}.${activityClass}" >
 
     <LinearLayout
@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp"
         android:layout_marginStart="190dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal" >
 
         <LinearLayout
@@ -75,8 +75,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#3399FF"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3399FF" />
 
                 <TextView
                     android:id="@+id/p2p"
@@ -84,8 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#3399FF"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3399FF" />
 
                 <TextView
                     android:id="@+id/p3p"
@@ -93,8 +93,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#3399FF"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3399FF" />
 
                 <TextView
                     android:id="@+id/p4p"
@@ -102,16 +102,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#3399FF"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3399FF" />
 
                 <TextView
                     android:id="@+id/p5p"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/zero"
-                    android:textColor="#3399FF"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3399FF" />
             </LinearLayout>
 
             <LinearLayout
@@ -127,8 +127,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#FF4747"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#FF4747" />
 
                 <TextView
                     android:id="@+id/p2f"
@@ -136,8 +136,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#FF4747"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#FF4747" />
 
                 <TextView
                     android:id="@+id/p3f"
@@ -145,8 +145,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#FF4747"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#FF4747" />
 
                 <TextView
                     android:id="@+id/p4f"
@@ -154,18 +154,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#FF4747"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#FF4747" />
 
                 <TextView
                     android:id="@+id/p5f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/zero"
-                    android:textColor="#FF4747"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#FF4747" />
             </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
@@ -230,8 +229,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#3399FF"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3399FF" />
 
                 <TextView
                     android:id="@+id/p7p"
@@ -239,8 +238,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#3399FF"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3399FF" />
 
                 <TextView
                     android:id="@+id/p8p"
@@ -248,8 +247,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#3399FF"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3399FF" />
 
                 <TextView
                     android:id="@+id/p9p"
@@ -257,16 +256,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#3399FF"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3399FF" />
 
                 <TextView
                     android:id="@+id/p10p"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/zero"
-                    android:textColor="#3399FF"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#3399FF" />
             </LinearLayout>
 
             <LinearLayout
@@ -282,8 +281,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#FF4747"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#FF4747" />
 
                 <TextView
                     android:id="@+id/p7f"
@@ -291,8 +290,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#FF4747"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#FF4747" />
 
                 <TextView
                     android:id="@+id/p8f"
@@ -300,8 +299,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#FF4747"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#FF4747" />
 
                 <TextView
                     android:id="@+id/p9f"
@@ -309,18 +308,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:text="@string/zero"
-                    android:textColor="#FF4747"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#FF4747" />
 
                 <TextView
                     android:id="@+id/p10f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/zero"
-                    android:textColor="#FF4747"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#FF4747" />
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 
@@ -420,8 +418,8 @@
                 android:id="@+id/playerStats"
                 android:layout_width="190dp"
                 android:layout_height="70dp"
-                android:visibility="gone"
-                android:text="@string/playerStats" />
+                android:text="@string/playerStats"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/fgText"
@@ -475,21 +473,21 @@
         android:id="@+id/points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
         android:layout_marginTop="62dp"
-		android:layout_marginStart="135dp"
         android:text="@string/points"
-        android:textColor="#3399FF"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#3399FF" />
 
     <TextView
         android:id="@+id/fouls"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
         android:layout_marginTop="84dp"
-		android:layout_marginStart="135dp"
         android:text="@string/fouls"
-        android:textColor="#FF4747"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FF4747" />
 
     <Button
         android:id="@+id/buttonStats"
@@ -499,5 +497,32 @@
         android:layout_alignParentTop="true"
         android:onClick="stats"
         android:text="@string/stats" />
+
+    <TextView
+        android:id="@+id/tvS1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zero"
+        android:textSize="50sp"
+        android:layout_marginStart="580dp"
+        android:layout_marginTop="55dp" />
+
+    <TextView
+        android:id="@+id/tvH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hyphen"
+        android:textSize="50sp"
+        android:layout_marginStart="610dp"
+        android:layout_marginTop="55dp" />
+
+    <TextView
+        android:id="@+id/tvS2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zero"
+        android:textSize="50sp"
+        android:layout_marginStart="590dp"
+        android:layout_marginTop="55dp" />
 
 </RelativeLayout>
