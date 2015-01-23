@@ -17,6 +17,8 @@
         android:layout_marginEnd="161dp"
         android:orientation="vertical" >
 
+        
+
         <Button
             android:id="@+id/Button1"
             style="?android:attr/buttonStyleSmall"
@@ -42,7 +44,7 @@
             android:onClick="refresh"
             android:text="@string/refresh"
             android:textSize="25sp"
-            android:visibility="gone" />
+            android:visibility="gone" /><Button android:id="@+id/Button4" android:layout_width="190dp" android:layout_height="80dp" android:onClick="test" android:text="@string/test" android:textSize="25sp"  />
 
     </LinearLayout>
 

@@ -81,7 +81,6 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	public void createTable() {
 		db.createStatTable(tablename);
 	}
-	@SuppressLint("DefaultLocale")
 	public void convertStrings() {
 		Intent mIntent = getIntent();
 		team1 = mIntent.getStringExtra("TEAM1");
@@ -239,6 +238,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		db.recordPlay(Integer.parseInt(player), team, action, position, tablename);
 		d.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
 		currentplay++;
+		refreshScore();
 		
 	}
 	public void recordMissedShot(View v) {
@@ -417,6 +417,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 			u = (TextView)findViewById(R.id.p5p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
 		} 
+		refreshScore();
 	}
 	public void undoAwayScore(String jnum) {
 		Button z,y,x,w,v;
@@ -445,6 +446,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 			u = (TextView)findViewById(R.id.p10p);
 			u.setText(Integer.toString(db.getPoints(jnumi, team, tablename)));
 		} 
+		refreshScore();
 	}
 	
 	@Override
@@ -468,7 +470,13 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		}
 		return false;
 	}
-
+	public void refreshScore() {
+		TextView textP1 = (TextView) findViewById(R.id.tvS1);
+		TextView textP2 = (TextView) findViewById(R.id.tvS2);
+		textP1.setText(Integer.toString(db.grabScore(tablename, team1)));
+		textP2.setText(Integer.toString(db.grabScore(tablename, team2)));
+	}
+	
 	public void initialLoad() {
 		//First Player
 		Button button = (Button)findViewById(R.id.p1);
@@ -542,5 +550,10 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		textp = (TextView)findViewById(R.id.p10p);
 		textp.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
 		textf.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
+		
+		textf = (TextView) findViewById(R.id.tvS1);
+		textp = (TextView) findViewById(R.id.tvS2);
+		textf.setText(Integer.toString(db.grabScore(tablename, team1)));
+		textp.setText(Integer.toString(db.grabScore(tablename, team2)));
 	}
 }

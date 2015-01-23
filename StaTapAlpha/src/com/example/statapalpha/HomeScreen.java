@@ -51,7 +51,7 @@ public class HomeScreen extends Activity {
     	finish();
     	startActivity(intent);
     }
-    public void refresh(View view) {
+    public void refresh() {
     	getGames();
     	lv.setAdapter(new HomeBaseAdapter(context, values));
     }
@@ -73,9 +73,17 @@ public class HomeScreen extends Activity {
           AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
           switch(item.getItemId()) {
               case R.id.delete:
-            // remove stuff here
-            	  
-            	  
+            	  View view = ((AdapterView.AdapterContextMenuInfo)info).targetView;
+                  LinearLayout linearLayoutParent = (LinearLayout) view;
+                  TextView tv1 = (TextView) linearLayoutParent.getChildAt(0);
+                  TextView tv2 = (TextView) linearLayoutParent.getChildAt(1);
+                  TextView tv3 = (TextView) linearLayoutParent.getChildAt(2);
+                  String gamename = tv1.getText().toString();
+                  String team1 = tv2.getText().toString();
+                  String team2 = tv3.getText().toString();
+                  Toast.makeText(HomeScreen.this, gamename, Toast.LENGTH_SHORT).show();
+                  db.delGame(gamename, team1, team2);
+                  refresh();
                     return true;
               default:
                     return super.onContextItemSelected(item);
@@ -91,9 +99,6 @@ public class HomeScreen extends Activity {
     	startActivity(intent);
     }
     private void registerClickCallback() {
-		// TODO Auto-generated method stub
-    	//This uses the List View and adds a listener to check for clicks/taps on different
-    	//list view items. It will then display a message telling you which one you have selected.
     	ListView list = (ListView) findViewById(R.id.homeTeamLV);
     	
     	//This Will check if there is a click on a ListView item
@@ -116,9 +121,12 @@ public class HomeScreen extends Activity {
 					openGame(null, game, team1, team2);
 			}
 		});
-    	
-    	
 	}
+    public void test(View view) {
+    	String test;
+    	test = Integer.toString(db.getGames());
+    	Toast.makeText(HomeScreen.this, test, Toast.LENGTH_SHORT).show();
+    }
    /* 
     
      	public void helppdf() {
@@ -153,7 +161,6 @@ public class HomeScreen extends Activity {
 		    }
 		}
     }
-
     
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

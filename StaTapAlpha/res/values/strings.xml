@@ -60,5 +60,6 @@
 	<string name="zero">0</string>
 	<string name="na">N/A</string>
 	<string name="stats">Stats</string>
+	<string name="test">Test</string>
 	<string name="refresh">Refresh</string>
 </resources>

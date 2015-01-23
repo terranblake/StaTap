@@ -5,13 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
  
 public class SqliteHelper extends SQLiteOpenHelper {
  
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
-    private static final String DATABASE_NAME = "StaTap2";
+    private static final String DATABASE_NAME = "StaTap";
     private static final String TEAM_NAMES = "Team_Names";
     private static final String GAME_TITLES = "game_name";
     private static final String JERSEY_NUM = "Jersey_num";
@@ -34,6 +35,28 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		
 		
 		
+    }
+    public void delGame(String gamenamen, String team1n, String team2n) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	String command1, command2, gamename, team1, team2;
+    	gamename = gamenamen.replaceAll(" ", "_").toLowerCase();
+    	team1 = team1n.replaceAll(" ", "_").toLowerCase();
+    	team2 = team2n.replaceAll(" ", "_").toLowerCase();
+    	command1 = "DELETE FROM games WHERE game_name = '"+gamename+"'";
+    	command2 = "DROP TABLE IF EXISTS "+gamename;
+    	db.execSQL(command1);
+    	db.execSQL(command2);
+    	
+    }
+    public int getGames() {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	int games = 0;
+    	String command = "SELECT count(*) from games";
+    	Cursor cursor = db.rawQuery(command, null);
+    	if(cursor.moveToFirst()) {
+    		games = cursor.getInt(0);
+    	}
+    	return games;
     }
     public String getGameTitle(int gid) {
     	SQLiteDatabase db = this.getReadableDatabase();
@@ -368,6 +391,27 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	    jnum = cursor.getInt(0);
     	}
     	return jnum;
+    }
+    public int grabScore(String tablename, String teamname) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	int score = 0, score1 = 0, score2 = 0, score3 = 0;
+    	String command1 = "SELECT count(*) FROM "+tablename+" WHERE team_name = '"+teamname+"' AND action = 'FTH'";
+    	String command2 = "SELECT count(*) FROM "+tablename+" WHERE team_name = '"+teamname+"' AND action = 'F2H'";
+    	String command3 = "SELECT count(*) FROM "+tablename+" WHERE team_name = '"+teamname+"' AND action = 'F3H'";
+    	Cursor cursor = db.rawQuery(command1, null);
+    	if(cursor.moveToFirst()){
+    	    score1 = cursor.getInt(0);
+    	}
+    	cursor = db.rawQuery(command2, null);
+    	if(cursor.moveToFirst()){
+    	    score2 = cursor.getInt(0);
+    	}
+    	cursor = db.rawQuery(command3, null);
+    	if(cursor.moveToFirst()){
+    	    score3 = cursor.getInt(0);
+    	}
+    	score = (score1 + (score2*2) + (score3*3));
+    	return score;
     }
 
 }
