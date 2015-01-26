@@ -28,7 +28,7 @@
 </ul>
 ===================
 ###Court Screen
-#####~~ Refresh Function into separate parts~~ <strong>DONE!</strong>
+#####~~Refresh Function into separate parts~~ <strong>DONE!</strong>
 <ul>
 	<li>Make a different refresh for each function</li>
 </ul>
