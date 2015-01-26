@@ -94,7 +94,6 @@
             android:id="@+id/layoutT1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -107,7 +106,7 @@
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/team1"
+                    android:text="@string/home"
                     android:textSize="40sp" />
 
                 <TextView
@@ -194,7 +193,7 @@
 
             <ListView
                 android:id="@+id/listView1"
-                android:layout_width="400dp"
+                android:layout_width="500dp"
                 android:layout_height="427dp"
                 android:layout_marginTop="24dp" >
             </ListView>
@@ -204,6 +203,7 @@
             android:id="@+id/layoutT2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -216,7 +216,7 @@
                     android:id="@+id/TextView03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/team2"
+                    android:text="@string/away"
                     android:textSize="40sp" />
 
                 <TextView
@@ -303,7 +303,7 @@
 
             <ListView
                 android:id="@+id/ListView01"
-                android:layout_width="400dp"
+                android:layout_width="500dp"
                 android:layout_height="427dp"
                 android:layout_marginTop="24dp" >
             </ListView>

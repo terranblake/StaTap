@@ -207,7 +207,26 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	}
     	return Fouls;
     }
+    public int getFTA(Integer jnum, String teamname, String tablename) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	int number = 0, FTH = 0, FTM = 0;
+    	String command1, command2;
+    	Cursor cursor1, cursor2;
+    	command1 = "SELECT count(*) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'FTH' AND team_name = '"+teamname+"'";
+    	command2 = "SELECT count(*) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'FTM' AND team_name = '"+teamname+"'";
+    	cursor1 = db.rawQuery(command1, null);
+    	cursor2 = db.rawQuery(command2, null);
+    	if(cursor1.moveToFirst()){
+    	    FTH = cursor1.getInt(0);
+    	}
+    	if(cursor2.moveToFirst()){
+    	    FTM = cursor2.getInt(0);
+    	}
+    	number = FTH+FTM;
+    	return number;
+    }
     public int getPoints(Integer jnum, String teamname, String tablename) {
+    	
     	SQLiteDatabase db = this.getReadableDatabase();
     	int twopt, threept, points;
     	int rawtwopt = 0;
@@ -215,9 +234,9 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	int rawft = 0;
     	String command1, command2, command3;
     	Cursor cursor1, cursor2, cursor3;
-    	command1 = "SELECT count(action) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'F2H' AND team_name = '"+teamname+"'";
-    	command2 = "SELECT count(action) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'F3H' AND team_name = '"+teamname+"'";
-    	command3 = "SELECT count(action) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'FTH' AND team_name = '"+teamname+"'";
+    	command1 = "SELECT count(*) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'F2H' AND team_name = '"+teamname+"'";
+    	command2 = "SELECT count(*) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'F3H' AND team_name = '"+teamname+"'";
+    	command3 = "SELECT count(*) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'FTH' AND team_name = '"+teamname+"'";
     	cursor1 = db.rawQuery(command1, null);
     	cursor2 = db.rawQuery(command2, null);
     	cursor3 = db.rawQuery(command3, null);

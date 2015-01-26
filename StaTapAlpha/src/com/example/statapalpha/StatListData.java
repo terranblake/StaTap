@@ -5,16 +5,10 @@ package com.example.statapalpha;
  * */
 public class StatListData {
  
-        int Jersey;
-        int Points;
-        int FT;
-        int FG;
-        int Assists;
-        int Rebounds;
-        int Steals;
-        int TO;
-        int Fouls;
-        int Blocks;
+        int Jersey, Points, FTA, FTM, FGA, FGM, TPA, TPM, Assists, Rebounds, Steals,
+        	TO, Fouls, Blocks;
+        
+        
         
         String title;
  
@@ -33,12 +27,47 @@ public class StatListData {
         public void setPoints(Integer points) {
             Points = points;
         }
-        public Integer getFT() {
-            return FT;
+        public Integer getFTA() {
+            return FTA;
         }
 
-        public void setFT(Integer fts) {
-            FT = fts;
+        public void setFTA(Integer fts) {
+            FTA = fts;
+        }
+        public Integer getFTM() {
+            return FTM;
+        }
+
+        public void setFTM(Integer fts) {
+            FTM = fts;
+        }
+        public Integer getFGA() {
+            return FGA;
+        }
+
+        public void setFGA(Integer fts) {
+            FGA = fts;
+        }
+        public Integer getFGM() {
+            return FGM;
+        }
+
+        public void setFGM(Integer fts) {
+            FGM = fts;
+        }
+        public Integer getTPA() {
+            return TPA;
+        }
+
+        public void setTPA(Integer fts) {
+            TPA = fts;
+        }
+        public Integer getTPM() {
+            return TPM;
+        }
+
+        public void setTPM(Integer fts) {
+            TPM = fts;
         }
         public Integer getAssists() {
             return Assists;

@@ -103,7 +103,8 @@ public class StatActivity extends Activity {
 			    	data.Jersey = jnum;
 			    	data.Points = db.getPoints(jnum, team1, tablename);
 			    	t1p = t1p+(db.getPoints(jnum, team1, tablename));
-			    	data.FT = db.getStats("FTM", jnum, team1, tablename);
+			    	data.FTA = db.getFTA(jnum, team1, tablename);
+			    	data.FTM = db.getStats("FTH", jnum, team1, tablename);
 			    	data.Assists = db.getStats("AST", jnum, team1, tablename);
 			    	data.Rebounds = db.getStats("RB", jnum, team1, tablename);
 			    	data.Blocks = db.getStats("BL", jnum, team1, tablename);
@@ -124,7 +125,8 @@ public class StatActivity extends Activity {
 			    	data.Jersey = jnum;
 			    	data.Points = db.getPoints(jnum, team2, tablename);
 			    	t2p = t2p+(db.getPoints(jnum, team2, tablename));
-			    	data.FT = db.getStats("FTM", jnum, team2, tablename);
+			    	data.FTA = db.getFTA(jnum, team2, tablename);
+			    	data.FTM = db.getStats("FTH", jnum, team2, tablename);
 			    	data.Assists = db.getStats("AST", jnum, team2, tablename);
 			    	data.Rebounds = db.getStats("RB", jnum, team2, tablename);
 			    	data.Blocks = db.getStats("BL", jnum, team2, tablename);

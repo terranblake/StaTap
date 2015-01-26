@@ -52,7 +52,12 @@ public class StatBaseAdapter extends BaseAdapter {
                 
                 mViewHolder.tvNum = detail(convertView, R.id.textViewNum, myList.get(position).getJersey());
                 mViewHolder.tvP  = detail(convertView, R.id.textViewP,  myList.get(position).getPoints());
-                mViewHolder.tvFT  = detail(convertView, R.id.textViewFT,  myList.get(position).getFT());
+                mViewHolder.tvFTA  = detail(convertView, R.id.textViewFTA,  myList.get(position).getFTA());
+                mViewHolder.tvFTM  = detail(convertView, R.id.textViewFTM,  myList.get(position).getFTM());
+                mViewHolder.tvFGA  = detail(convertView, R.id.textViewFGA,  myList.get(position).getFGA());
+                mViewHolder.tvFGM  = detail(convertView, R.id.textViewFGM,  myList.get(position).getFGM());
+                mViewHolder.tvTPA  = detail(convertView, R.id.textViewTPA,  myList.get(position).getTPA());
+                mViewHolder.tvTPM  = detail(convertView, R.id.textViewTPM,  myList.get(position).getTPM());
                 mViewHolder.tvA  = detail(convertView, R.id.textViewA,  myList.get(position).getAssists());
                 mViewHolder.tvBL  = detail(convertView, R.id.textViewBL,  myList.get(position).getBlocks());
                 mViewHolder.tvRB  = detail(convertView, R.id.textViewRB,  myList.get(position).getRebounds());
@@ -71,7 +76,7 @@ public class StatBaseAdapter extends BaseAdapter {
         }
         
         private class MyViewHolder {
-                public TextView tvNum, tvP, tvFT, tvFG, tvA, tvRB, tvS, tvTO, tvF, tvBL;
+                public TextView tvNum, tvP, tvFTA, tvFTM, tvFGA, tvFGM, tvTPA, tvTPM, tvA, tvRB, tvS, tvTO, tvF, tvBL;
         }
  
 }

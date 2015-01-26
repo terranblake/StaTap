@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/na"
+        android:textSize="20sp"
         android:layout_marginStart="10dp" />
 
     <TextView
@@ -16,55 +17,98 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/na"
-        android:layout_marginStart="20dp" />
-
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
     <TextView
-        android:id="@+id/textViewFT"
+        android:id="@+id/textViewFGA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/na"
-        android:layout_marginStart="20dp" />
-
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
+	<TextView
+        android:id="@+id/textViewFGM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/na"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
+	
+    
+	<TextView
+        android:id="@+id/textViewTPA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/na"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
+	<TextView
+        android:id="@+id/textViewTPM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/na"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
+	<TextView
+        android:id="@+id/textViewFTA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/na"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
+	<TextView
+        android:id="@+id/textViewFTM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/na"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
     <TextView
         android:id="@+id/textViewBL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="@string/na" />
+        android:layout_marginStart="10dp"
+        android:text="@string/na"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textViewA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/na"
-        android:layout_marginStart="20dp" />
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
 
     <TextView
         android:id="@+id/textViewRB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/na"
-        android:layout_marginStart="20dp" />
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
 
     <TextView
         android:id="@+id/textViewS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/na"
-        android:layout_marginStart="20dp" />
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
 
     <TextView
         android:id="@+id/textViewTO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/na"
-        android:layout_marginStart="20dp" />
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
 
     <TextView
         android:id="@+id/textViewF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/na"
-        android:layout_marginStart="20dp" />
+        android:textSize="20sp"
+        android:layout_marginStart="10dp" />
 
 </LinearLayout>
