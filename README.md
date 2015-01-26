@@ -14,7 +14,7 @@
 ##Assignments
 
 ###Home Screen
-#####Refresh Button
+#####~~Refresh Button~~ <strong>DONE!</strong>
 <ul>
 	<li>End activity when moving to Edit Teams</li>
 	<li>Remove Button</li>
@@ -28,7 +28,7 @@
 </ul>
 ===================
 ###Court Screen
-#####Split Refresh Function into separate parts
+#####~~ Refresh Function into separate parts~~ <strong>DONE!</strong>
 <ul>
 	<li>Make a different refresh for each function</li>
 </ul>
@@ -47,7 +47,7 @@
 	</ul>
 	</li>
 </ul>
-#####Plotting Points for FG/FGA
+#####Plotting Points for FG/FGA - LOGAN
 <ul>
 	<li>Draw Dots for every Coord</li>
 	<li>4 Different Colors?</li>
@@ -56,7 +56,7 @@
 
 ===============		
 ###Stat Screen
-#####Stat Format
+#####Stat Format - Damian
 <ul>
 	<li>Change Font sizes and colors to distinguish between stats</li>
 	<li>Clean up stats screen</li>
