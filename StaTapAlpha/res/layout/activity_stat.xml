@@ -8,216 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.statap_playerhalftime.MainActivity" >
 
-    <LinearLayout
-        android:id="@+id/layoutContainer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="0dp" >
-
-        <TextView
-            android:id="@+id/txtPlayer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/num"
-            android:layout_marginStart="10dp"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/txtPoints"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@string/statP"
-            android:textColor="#17B2FF"
-            android:textSize="25sp" />
-        <TextView
-            android:id="@+id/txtTwoPt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statFG"
-            android:textColor="#FF8E00"
-            android:textSize="25sp"
-            android:layout_marginLeft="20dp" />
-        <TextView
-            android:id="@+id/txtThreePt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statTP"
-            android:textColor="#00FF6A"
-            android:textSize="25sp"
-            android:layout_marginLeft="20dp" />
-
-        <TextView
-            android:id="@+id/txtFreeThrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statFT"
-            android:textColor="#00E658"
-            android:textSize="25sp"
-            android:layout_marginLeft="20dp" />
-
-        <TextView
-            android:id="@+id/textViewBl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statBL"
-            android:textColor="#00FBFF"
-            android:textSize="25sp"
-            android:layout_marginLeft="20dp" />
-
-        <TextView
-            android:id="@+id/txtAssists"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statA"
-            android:textColor="#0089FA"
-            android:layout_marginLeft="20dp"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/txtRebounds"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statR"
-            android:textColor="#0026FF"
-            android:textSize="25sp"
-            android:layout_marginLeft="20dp" />
-
-        <TextView
-            android:id="@+id/txtSteals"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statS"
-            android:textColor="#5D00FF"
-            android:textSize="25sp"
-            android:layout_marginLeft="20dp" />
-
-        <TextView
-            android:id="@+id/txtTurnovers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statT"
-            android:textColor="#EA00FF"
-            android:textSize="25sp"
-            android:layout_marginLeft="20dp" />
-
-        <TextView
-            android:id="@+id/txtFouls"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statF"
-            android:textColor="#FF0084"
-            android:textSize="25sp"
-            android:layout_marginLeft="20dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutContainer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="500dp" >
-
-        <TextView
-            android:id="@+id/TextView01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/num"
-            android:textSize="25sp"
-            android:layout_marginStart="10dp" />
-
-        <TextView
-            android:id="@+id/TextView08"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@string/statP"
-            android:textColor="#17B2FF"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/TextView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/statFG"
-            android:textColor="#FF8E00"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/TextView09"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/statTP"
-            android:textColor="#BBFF00"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/TextView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/statFT"
-            android:textColor="#00E658"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/TextView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/statBL"
-            android:textColor="#00FBFF"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/TextView04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/statA"
-            android:textColor="#0089FA"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/TextView06"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/statR"
-            android:textColor="#0026FF"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/TextView02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/statS"
-            android:textColor="#5D00FF"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/TextView05"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/statT"
-            android:textColor="#EA00FF"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/TextView07"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/statF"
-            android:textColor="#FF0084"
-            android:textSize="25sp" />
-    </LinearLayout>
-
     <Button
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
@@ -298,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
         <LinearLayout
             android:id="@+id/layoutT1"
@@ -330,11 +120,115 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/layoutContainer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp" >
+
+                <TextView
+                    android:id="@+id/txtPlayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/num"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtPoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/statP"
+                    android:textColor="#17B2FF"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtTwoPt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:text="@string/statFG"
+                    android:textColor="#FF8E00"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtThreePt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:text="@string/statTP"
+                    android:textColor="#00FF6A"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtFreeThrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:text="@string/statFT"
+                    android:textColor="#00E658"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/textViewBl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statBL"
+                    android:textColor="#00FBFF"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtAssists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statA"
+                    android:textColor="#0089FA"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtRebounds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statR"
+                    android:textColor="#0026FF"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtSteals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statS"
+                    android:textColor="#5D00FF"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtTurnovers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statT"
+                    android:textColor="#EA00FF"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtFouls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statF"
+                    android:textColor="#FF0084"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
             <ListView
                 android:id="@+id/listView1"
-                android:layout_width="500dp"
-                android:layout_height="427dp"
-                android:layout_marginTop="65dp" >
+                android:layout_width="1000dp"
+                android:layout_height="220dp" >
             </ListView>
         </LinearLayout>
 
@@ -369,11 +263,115 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/layoutContainer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp" >
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/num"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView08"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/statP"
+                    android:textColor="#17B2FF"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:text="@string/statFG"
+                    android:textColor="#FF8E00"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView09"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:text="@string/statTP"
+                    android:textColor="#00FF6A"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:text="@string/statFT"
+                    android:textColor="#00E658"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statBL"
+                    android:textColor="#00FBFF"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tvStuff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statA"
+                    android:textColor="#0089FA"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView06"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statR"
+                    android:textColor="#0026FF"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statS"
+                    android:textColor="#5D00FF"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statT"
+                    android:textColor="#EA00FF"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TextView07"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statF"
+                    android:textColor="#FF0084"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
             <ListView
                 android:id="@+id/ListView01"
-                android:layout_width="500dp"
-                android:layout_height="427dp"
-                android:layout_marginTop="65dp" >
+                android:layout_width="1000dp"
+                android:layout_height="220dp" >
             </ListView>
         </LinearLayout>
     </LinearLayout>
