@@ -15,6 +15,7 @@
     <string name="block">Block</string>
     <string name="assist">Assist</string>
     <string name="rebound">Rebound</string>
+    <string name="fore">For</string>
     <string name="p1">1</string>
     <string name="p2">2</string>
     <string name="p3">3</string>
@@ -64,4 +65,17 @@
 	<string name="stats">Stats</string>
 	<string name="test">Test</string>
 	<string name="refresh">Refresh</string>
+	<string name="statP">P</string>
+	<string name="statFT">FT</string>
+	<string name="statBL">BL</string>
+	<string name="statA">A</string>
+	<string name="statR">RB</string>
+	<string name="statS">S</string>
+	<string name="statT">T</string>
+	<string name="statF">F</string>
+	<string name="statFG">2Pt</string>
+	<string name="statTP">3Pt</string>
+	<string name="num">#</string>
+	<string name="jersey">Jersey</string>
+	
 </resources>

@@ -131,6 +131,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	}
     	return number;
     }
+    
     public Cursor getTeams() {
     	SQLiteDatabase db = this.getWritableDatabase();
     	String[] projection = { "Team_Names" };
@@ -206,6 +207,42 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	    Fouls = cursor.getInt(0);
     	}
     	return Fouls;
+    }
+    public int getTPA(Integer jnum, String teamname, String tablename) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	int number = 0, FTH = 0, FTM = 0;
+    	String command1, command2;
+    	Cursor cursor1, cursor2;
+    	command1 = "SELECT count(*) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'F3H' AND team_name = '"+teamname+"'";
+    	command2 = "SELECT count(*) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'F3M' AND team_name = '"+teamname+"'";
+    	cursor1 = db.rawQuery(command1, null);
+    	cursor2 = db.rawQuery(command2, null);
+    	if(cursor1.moveToFirst()){
+    	    FTH = cursor1.getInt(0);
+    	}
+    	if(cursor2.moveToFirst()){
+    	    FTM = cursor2.getInt(0);
+    	}
+    	number = FTH+FTM;
+    	return number;
+    }
+    public int getFGA(Integer jnum, String teamname, String tablename) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	int number = 0, FTH = 0, FTM = 0;
+    	String command1, command2;
+    	Cursor cursor1, cursor2;
+    	command1 = "SELECT count(*) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'F2H' AND team_name = '"+teamname+"'";
+    	command2 = "SELECT count(*) FROM "+tablename+" WHERE Jersey_num = "+jnum+" AND action = 'F2M' AND team_name = '"+teamname+"'";
+    	cursor1 = db.rawQuery(command1, null);
+    	cursor2 = db.rawQuery(command2, null);
+    	if(cursor1.moveToFirst()){
+    	    FTH = cursor1.getInt(0);
+    	}
+    	if(cursor2.moveToFirst()){
+    	    FTM = cursor2.getInt(0);
+    	}
+    	number = FTH+FTM;
+    	return number;
     }
     public int getFTA(Integer jnum, String teamname, String tablename) {
     	SQLiteDatabase db = this.getReadableDatabase();

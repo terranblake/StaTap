@@ -105,6 +105,10 @@ public class StatActivity extends Activity {
 			    	t1p = t1p+(db.getPoints(jnum, team1, tablename));
 			    	data.FTA = db.getFTA(jnum, team1, tablename);
 			    	data.FTM = db.getStats("FTH", jnum, team1, tablename);
+			    	data.FGA = db.getFGA(jnum, team1, tablename);
+			    	data.FGM = db.getStats("F2H", jnum, team1, tablename);
+			    	data.TPA = db.getTPA(jnum, team1, tablename);
+			    	data.TPM = db.getStats("F3H", jnum, team1, tablename);
 			    	data.Assists = db.getStats("AST", jnum, team1, tablename);
 			    	data.Rebounds = db.getStats("RB", jnum, team1, tablename);
 			    	data.Blocks = db.getStats("BL", jnum, team1, tablename);
@@ -127,6 +131,10 @@ public class StatActivity extends Activity {
 			    	t2p = t2p+(db.getPoints(jnum, team2, tablename));
 			    	data.FTA = db.getFTA(jnum, team2, tablename);
 			    	data.FTM = db.getStats("FTH", jnum, team2, tablename);
+			    	data.FGA = db.getFGA(jnum, team2, tablename);
+			    	data.FGM = db.getStats("F2H", jnum, team2, tablename);
+			    	data.TPA = db.getTPA(jnum, team2, tablename);
+			    	data.TPM = db.getStats("F3H", jnum, team2, tablename);
 			    	data.Assists = db.getStats("AST", jnum, team2, tablename);
 			    	data.Rebounds = db.getStats("RB", jnum, team2, tablename);
 			    	data.Blocks = db.getStats("BL", jnum, team2, tablename);
