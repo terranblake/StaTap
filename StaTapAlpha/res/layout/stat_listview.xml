@@ -51,15 +51,15 @@
         android:id="@+id/textViewTPM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="255dp"
+        android:layout_marginStart="252dp"
         android:text="@string/na"
-        android:textColor="#00FF6A"
+        android:textColor="#178009"
         android:textSize="25sp" />
     <TextView
         android:id="@+id/textViewFor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="285dp"
+        android:layout_marginStart="282dp"
         android:layout_marginTop="6dp"
         android:text="@string/fore"
         android:textSize="20sp" />
@@ -69,14 +69,14 @@
         android:layout_height="wrap_content"
         android:text="@string/na"
         android:textSize="25sp"
-        android:textColor="#00FF6A"
-        android:layout_marginStart="325dp" />
+        android:textColor="#178009"
+        android:layout_marginStart="322dp" />
 
 	<TextView
 	    android:id="@+id/textViewFTM"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_marginStart="380dp"
+	    android:layout_marginStart="370dp"
 	    android:text="@string/na"
 	    android:textColor="#00E658"
 	    android:textSize="25sp" />
@@ -84,7 +84,7 @@
         android:id="@+id/textViewFor3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="410dp"
+        android:layout_marginStart="400dp"
         android:text="@string/fore"
         android:layout_marginTop="6dp"
         android:textSize="20sp" />
@@ -95,12 +95,12 @@
         android:text="@string/na"
         android:textSize="25sp"
         android:textColor="#00E658"
-        android:layout_marginStart="450dp" />
+        android:layout_marginStart="440dp" />
     <TextView
         android:id="@+id/textViewBL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="550dp"
+        android:layout_marginStart="507dp"
         android:text="@string/na"
         android:textColor="#00FBFF"
         android:textSize="25sp" />
@@ -112,7 +112,7 @@
         android:text="@string/na"
         android:textSize="25sp"
         android:textColor="#0089FA"
-        android:layout_marginStart="620dp" />
+        android:layout_marginStart="602dp" />
 
     <TextView
         android:id="@+id/textViewRB"
@@ -121,7 +121,7 @@
         android:text="@string/na"
         android:textSize="25sp"
         android:textColor="#0026FF"
-        android:layout_marginStart="690dp" />
+        android:layout_marginStart="693dp" />
 
     <TextView
         android:id="@+id/textViewS"
@@ -130,7 +130,7 @@
         android:text="@string/na"
         android:textSize="25sp"
         android:textColor="#5D00FF"
-        android:layout_marginStart="760dp" />
+        android:layout_marginStart="785dp" />
 
     <TextView
         android:id="@+id/textViewTO"
@@ -139,7 +139,7 @@
         android:text="@string/na"
         android:textSize="25sp"
         android:textColor="#EA00FF"
-        android:layout_marginStart="830dp" />
+        android:layout_marginStart="870dp" />
 
     <TextView
         android:id="@+id/textViewF"
@@ -148,6 +148,6 @@
         android:text="@string/na"
         android:textSize="25sp"
         android:textColor="#FF0084"
-        android:layout_marginStart="900dp" />
+        android:layout_marginStart="955dp" />
 
 </RelativeLayout>
