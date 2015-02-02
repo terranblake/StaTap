@@ -2,7 +2,7 @@
 
 ##Bugs
 <ul>
-	<li>Random Crashes (Possibly overdraw)</li>
+	<li>~~Random Crashes (Possibly overdraw)~~</li>
 	<li>WE ARE GONNA CRASH IF YOU START A GAME WITH 4 PLAYERS</li>
 	<li>WE ARE ALSO GONNA CRASH IF YOU MAKE A GAME NORMALLY, THEN MAKE ONE OF THE TEAMS HAVE LESS THAN 4 PLAYERS AND TRY TO RESUME THAT GAME</li>
 </ul>
