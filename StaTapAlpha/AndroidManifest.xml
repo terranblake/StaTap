@@ -15,8 +15,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.statapalpha.CourtActivity"
-            android:label="@string/title_activity_court_activity" 
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_court_activity"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.statapalpha.HomeScreen"
@@ -29,24 +29,28 @@
             </intent-filter>
         </activity>
         <activity
-			android:name="com.statapalpha.NewGameActivity"
+            android:name="com.statapalpha.NewGameActivity"
             android:label="@string/title_activity_new_game"
             android:screenOrientation="landscape" >
         </activity>
-        <activity    
+        <activity
             android:name="com.statapalpha.CreateTeam"
             android:label="@string/title_activity_create_team"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-			android:name="com.statapalpha.StatActivity"
+            android:name="com.statapalpha.StatActivity"
             android:label="@string/title_activity_stat"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-			android:name="com.statapalpha.EditTeamname"
+            android:name="com.statapalpha.EditTeamname"
             android:label="@string/title_activity_edit_team"
             android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.statapalpha.CurrentStats"
+            android:label="@string/title_activity_current_stats" >
         </activity>
     </application>
 
