@@ -67,6 +67,7 @@ public class NewGameActivity extends Activity {
 		        cursor.moveToNext();
 		    }
 		}    	
+		cursor.close();
     	//Build Adapter
     	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
     			this,					// Context

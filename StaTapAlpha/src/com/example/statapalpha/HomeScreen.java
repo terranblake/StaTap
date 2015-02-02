@@ -160,6 +160,7 @@ public class HomeScreen extends Activity {
 		        cursor.moveToNext();
 		    }
 		}
+    	cursor.close();
     }
     
 	@Override

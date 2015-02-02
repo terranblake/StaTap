@@ -88,6 +88,8 @@ public class EditTeam extends Activity {
 		        cursor.moveToNext();
 		    }
 		}
+
+    	cursor.close();
 	}
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
         	super.onCreateContextMenu(menu, v, menuInfo);
@@ -111,6 +113,7 @@ public class EditTeam extends Activity {
 		        cursor.moveToNext();
 		    }
 		}
+    	cursor.close();
     	//Build Adapter
     	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
     			this,					// Context

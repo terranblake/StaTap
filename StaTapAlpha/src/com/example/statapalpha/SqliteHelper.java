@@ -56,6 +56,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()) {
     		games = cursor.getInt(0);
     	}
+    	cursor.close();
     	return games;
     }
     public String getGameTitle(int gid) {
@@ -69,6 +70,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()) {
     		title = cursor.getString(0);
     	}
+    	cursor.close();
     	return title;
     }
     public int duplicateGame(String gamename) {
@@ -79,6 +81,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()) {
     		number = cursor.getInt(0);
     	}
+    	cursor.close();
     	return number;
     }
     public int countPlayers(String teamname) {
@@ -90,6 +93,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()) {
     		players = cursor.getInt(0);
     	}
+    	cursor.close();
     	return players;
     }
     public String getGameT1(int gid) {
@@ -103,6 +107,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()) {
     		title = cursor.getString(0);
     	}
+    	cursor.close();
     	return title;
     }
     public String getGameT2(int gid) {
@@ -116,6 +121,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()) {
     		title = cursor.getString(0);
     	}
+    	cursor.close();
     	return title;
     }
 
@@ -129,6 +135,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()){
     		number = cursor.getInt(0);
     	}
+    	cursor.close();
     	return number;
     }
     
@@ -157,6 +164,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()){
     		fname = cursor.getString(0);
     	}
+    	cursor.close();
     	return fname;
     }
     public String getPlayerLName(Integer jnum, String teamname) {
@@ -167,6 +175,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()){
     		lname = cursor.getString(0);
     	}
+    	cursor.close();
     	return lname;
     }
     public void addPlayer(String teamname, Integer jerseynum, String firstname, String lastname){
@@ -206,6 +215,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()){
     	    Fouls = cursor.getInt(0);
     	}
+    	cursor.close();
     	return Fouls;
     }
     public int getTPA(Integer jnum, String teamname, String tablename) {
@@ -223,6 +233,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor2.moveToFirst()){
     	    FTM = cursor2.getInt(0);
     	}
+    	cursor1.close();
+    	cursor2.close();
     	number = FTH+FTM;
     	return number;
     }
@@ -241,6 +253,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor2.moveToFirst()){
     	    FTM = cursor2.getInt(0);
     	}
+    	cursor1.close();
+    	cursor2.close();
     	number = FTH+FTM;
     	return number;
     }
@@ -259,6 +273,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor2.moveToFirst()){
     	    FTM = cursor2.getInt(0);
     	}
+    	cursor1.close();
+    	cursor2.close();
     	number = FTH+FTM;
     	return number;
     }
@@ -289,6 +305,9 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	twopt = (rawtwopt * 2);
     	threept = (rawthreept * 3);
     	points = (twopt + threept + rawft);
+    	cursor1.close();
+    	cursor2.close();
+    	cursor3.close();
     	return points;
     }
     public void addTeam(String teamname){
@@ -358,6 +377,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()){
     	    gameId = cursor.getInt(0);
     	}
+    	cursor.close();
     	return gameId;
     }
     public void delPlayer(int jnum, String teamname) {
@@ -405,6 +425,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()){
     	    plays = cursor.getInt(0);
     	}
+    	cursor.close();
     	return plays;
     }
     public void undoPlay(String tablename, int play) {
@@ -424,6 +445,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()){
     	    action = cursor.getString(0);
     	}
+    	cursor.close();
     	return action;
     }
     public String grabTeamName(String tablename, int play) {
@@ -435,6 +457,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()){
     	    team = cursor.getString(0);
     	}
+    	cursor.close();
     	return team;
     }
     public int grabUndoJNum(String tablename, int play) {
@@ -446,6 +469,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()){
     	    jnum = cursor.getInt(0);
     	}
+    	cursor.close();
     	return jnum;
     }
     public int grabScore(String tablename, String teamname) {
@@ -466,6 +490,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	if(cursor.moveToFirst()){
     	    score3 = cursor.getInt(0);
     	}
+    	cursor.close();
     	score = (score1 + (score2*2) + (score3*3));
     	return score;
     }

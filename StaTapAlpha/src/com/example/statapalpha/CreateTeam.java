@@ -171,6 +171,8 @@ public class CreateTeam extends Activity {
     	//Configure the List View
     	ListView t1list = (ListView) findViewById(R.id.listView1);
     	t1list.setAdapter(t1adapter);
+
+    	cursor.close();
 	}
 
 	

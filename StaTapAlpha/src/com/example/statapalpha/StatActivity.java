@@ -147,5 +147,7 @@ public class StatActivity extends Activity {
 			        cursor2.moveToNext();
 			    }
 			}
+		cursor1.close();
+		cursor2.close();
 	}
 }

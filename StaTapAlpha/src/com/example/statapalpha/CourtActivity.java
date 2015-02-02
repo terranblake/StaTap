@@ -150,7 +150,9 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		string = awayPlayersIn.get(4);
 		button = (Button) findViewById(R.id.p10);
 		button.setText(string);
-		
+
+    	cursorH.close();
+    	cursorA.close();
 	}
 	@Override
 	public void onBackPressed() {
