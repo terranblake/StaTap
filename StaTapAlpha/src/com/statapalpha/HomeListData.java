@@ -1,4 +1,4 @@
-package com.example.statapalpha;
+package com.statapalpha;
 
 public class HomeListData {
 

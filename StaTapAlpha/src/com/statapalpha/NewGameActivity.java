@@ -1,4 +1,4 @@
-package com.example.statapalpha;
+package com.statapalpha;
 
 import java.util.ArrayList;
 
@@ -18,6 +18,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.statapalpha.R;
+import com.example.statapalpha.R.id;
+import com.example.statapalpha.R.layout;
+import com.example.statapalpha.R.menu;
 
 public class NewGameActivity extends Activity {
 	EditText title;

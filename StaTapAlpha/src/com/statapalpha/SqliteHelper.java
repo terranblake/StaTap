@@ -1,4 +1,4 @@
-package com.example.statapalpha;
+package com.statapalpha;
  
 import android.content.ContentValues;
 import android.content.Context;

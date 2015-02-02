@@ -1,4 +1,4 @@
-package com.example.statapalpha;
+package com.statapalpha;
 
 /*
  * ListData class will hold data for displaying in ListView

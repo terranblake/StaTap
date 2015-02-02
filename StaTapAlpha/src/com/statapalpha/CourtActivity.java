@@ -1,4 +1,4 @@
-package com.example.statapalpha;
+package com.statapalpha;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -16,6 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.lang.Math;
 import java.util.ArrayList;
+
+import com.example.statapalpha.R;
+import com.example.statapalpha.R.id;
+import com.example.statapalpha.R.layout;
 
 // Court Screen
 @SuppressLint("DefaultLocale")

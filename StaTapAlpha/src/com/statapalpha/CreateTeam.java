@@ -1,6 +1,11 @@
-package com.example.statapalpha;
+package com.statapalpha;
 
 import java.util.ArrayList;
+
+import com.example.statapalpha.R;
+import com.example.statapalpha.R.id;
+import com.example.statapalpha.R.layout;
+import com.example.statapalpha.R.menu;
 
 import android.app.Activity;
 import android.os.Bundle;
