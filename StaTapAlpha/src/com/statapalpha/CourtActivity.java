@@ -82,6 +82,14 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
     	finish();
     	startActivity(intent);
 	}
+	public void statList(View view) {
+		Intent intent = new Intent(this, CurrentStats.class);
+    	intent.putExtra("TEAM1", team1);
+    	intent.putExtra("TEAM2", team2);
+    	intent.putExtra("TABLENAME", tablename);
+    	finish();
+    	startActivity(intent);
+	}
 	public void createTable() {
 		db.createStatTable(tablename);
 	}
