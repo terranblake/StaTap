@@ -391,6 +391,13 @@ public class SqliteHelper extends SQLiteOpenHelper {
 				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER)");
     	db.close();  
     }
+    public Cursor grabPlays(String gamename) {
+    	Cursor cursor;
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	String command = "SELECT play_id, team_name, Jersey_num, action FROM "+gamename+" ORDER BY play_id DESC";
+    	cursor = db.rawQuery(command,  null);
+    	return cursor;
+    }
     public void recordPlay(int player, String team, String action, CourtActivity.position position, String table) {
     	
     	// 1. get reference to writable DB

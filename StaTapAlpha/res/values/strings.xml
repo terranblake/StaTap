@@ -79,5 +79,7 @@
     <string name="jersey">Jersey</string>
     <string name="title_activity_current_stats">CurrentStats</string>
     <string name="hello_world">Hello world!</string>
+    <string name="colon">:</string>
+    <string name="player">#</string>
 
 </resources>
