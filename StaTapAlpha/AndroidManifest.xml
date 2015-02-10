@@ -44,7 +44,7 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="com.statapalpha.EditTeamname"
+            android:name="com.statapalpha.EditTeam"
             android:label="@string/title_activity_edit_team"
             android:screenOrientation="landscape" >
         </activity>

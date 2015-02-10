@@ -22,6 +22,7 @@
         android:layout_height="75dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="Back" />
+        android:text="Back"
+        android:onClick="back" />
 
 </RelativeLayout>

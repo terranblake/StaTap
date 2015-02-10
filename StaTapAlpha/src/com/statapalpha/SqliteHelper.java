@@ -394,7 +394,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public Cursor grabPlays(String gamename) {
     	Cursor cursor;
     	SQLiteDatabase db = this.getWritableDatabase();
-    	String command = "SELECT play_id, team_name, Jersey_num, action FROM "+gamename+" ORDER BY play_id DESC";
+    	String command = "SELECT play_id, Jersey_num, action, team_name FROM "+gamename+" ORDER BY play_id DESC";
     	cursor = db.rawQuery(command,  null);
     	return cursor;
     }

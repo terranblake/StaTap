@@ -1,7 +1,7 @@
 package com.statapalpha;
 
 public class CurrentStatsListData {
-	String pNum, jNum, Play;
+	String pNum, jNum, Play, teamname;
 	public String getjNum() {
         return jNum;
 	}
@@ -22,5 +22,8 @@ public class CurrentStatsListData {
 
 	public void setPlay(String aaa) {
         Play = aaa;
+	}
+	public String getTeamName() {
+		return teamname;
 	}
 }

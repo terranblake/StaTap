@@ -404,8 +404,8 @@
                 android:id="@+id/editPlays"
                 android:layout_width="190dp"
                 android:layout_height="70dp"
-                android:text="@string/edit_plays"
-                android:visibility="gone" />
+                android:onClick="statList"
+                android:text="@string/edit_plays" />
 
             <Button
                 android:id="@+id/undoPlay"

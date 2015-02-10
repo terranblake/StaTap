@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class CurrentStats extends Activity {
 	public View.OnTouchListener gestureListener;
@@ -30,7 +31,7 @@ public class CurrentStats extends Activity {
 	static final String STEAL = "Stole Ball";
 	static final String REBOUND = "Rebounded Ball";
 	static final String BLOCK = "Blocked Shot";
-	static final String ASSIST = "Assist Made";
+	static final String ASSIST = "Assisted Shot";
 	static final String FOUL = "Committed Foul";
 	static final String TURNOVER = "Turned over ball";
 	ArrayList<CurrentStatsListData> values;
@@ -38,17 +39,20 @@ public class CurrentStats extends Activity {
 	String team1, team2, tablename;
 	Context context = CurrentStats.this;
 	SqliteHelper db;
-	Cursor cursor;
+	Cursor cursor, cursor2, cursor3;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_stats);
         ListView lv = (ListView)findViewById(R.id.lvStatList);
+        db = new SqliteHelper(this.getApplicationContext());
         Intent mIntent = getIntent();
         team1 = mIntent.getStringExtra("TEAM1");
 		team2 = mIntent.getStringExtra("TEAM2");
 		tablename = mIntent.getStringExtra("TABLENAME");
+		Toast.makeText(CurrentStats.this, tablename, Toast.LENGTH_SHORT).show();
 		registerForContextMenu(lv);
+		getPlays();
 		lv.setAdapter(new CurrentStatsBaseAdapter(context, values));
 	}
 	public void getPlays() {
@@ -58,21 +62,47 @@ public class CurrentStats extends Activity {
 		    cursor.moveToFirst();
 		    while (!cursor.isAfterLast()) {
 		    	CurrentStatsListData data = new CurrentStatsListData();
-		    	int jnum = cursor.getInt(0);
-		    	String jnums = Integer.toString(jnum);
-		    	data.pNum = jnums;
+		    	String playy = "";
+		    	data.pNum = cursor.getString(0);
+		    	data.jNum = cursor.getString(1);
+		    	switch (cursor.getString(2)) {
+		    	case "F3H": playy = MADE3PT;break;
+		    	case "F3M": playy = MISS3PT;break;
+		    	case "F2H": playy = MADE2PT;break;
+		    	case "F2M": playy = MISS2PT;break;
+		    	case "FTH": playy = MADEFT;break;
+		    	case "FTM": playy = MISSFT;break;
+		    	case "FC": playy = FOUL;break;
+		    	case "RB": playy = REBOUND;break;
+		    	case "TO": playy = TURNOVER;break;
+		    	case "BL": playy = BLOCK;break;
+		    	case "AST": playy = ASSIST;break;
+		    	case "STL": playy = STEAL;break;
+		    	}
+		    	data.Play = playy;
 		    	db = new SqliteHelper(this.getApplicationContext());
-		    	//data.jNum = db.getPlayerFName(jnum, tableteamname);
-		    	//data.Play = db.getPlayerLName(jnum, tableteamname);
-		    	
 		    	values.add(data);
 		        cursor.moveToNext();
 		    }
 		}
-
     	cursor.close();
 	}
-
+	public void onBackPressed() {
+		Intent intent = new Intent(this, CourtActivity.class);
+		intent.putExtra("TEAM1", team1);
+    	intent.putExtra("TEAM2", team2);
+    	intent.putExtra("GAME_TITLE", tablename);
+		finish();
+		startActivity(intent);
+	}
+	public void back(View view) {
+		Intent intent = new Intent(this, CourtActivity.class);
+    	intent.putExtra("TEAM1", team1);
+    	intent.putExtra("TEAM2", team2);
+    	intent.putExtra("GAME_TITLE", tablename);
+    	finish();
+    	startActivity(intent);
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

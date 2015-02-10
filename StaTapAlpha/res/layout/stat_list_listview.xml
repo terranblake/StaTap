@@ -8,34 +8,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/na"
-        android:textSize="30sp" />
+        android:textColor="#0000FF"
+        android:textSize="40sp" />
     <TextView
         android:id="@+id/tvColon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:textSize="30sp"
+        android:layout_marginStart="90dp"
+        android:textSize="40sp"
         android:text="@string/colon" />
     <TextView
         android:id="@+id/tvHashtag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
-        android:textSize="30sp"
+        android:layout_marginStart="110dp"
+        android:textSize="40sp"
+        android:textColor="#0000FF"
         android:text="@string/player" />
     <TextView
         android:id="@+id/tvJNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="115dp"
-        android:textSize="30sp"
+        android:layout_marginStart="140dp"
+        android:textSize="40sp"
+        android:textColor="#0000FF"
         android:text="@string/na" />
     <TextView
         android:id="@+id/tvPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:textSize="30sp"
+        android:layout_marginStart="230dp"
+        android:textSize="40sp"
+        android:textColor="#0000FF"
         android:text="@string/na" />
 
 </RelativeLayout>
