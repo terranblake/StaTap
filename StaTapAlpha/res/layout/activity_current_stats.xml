@@ -13,7 +13,9 @@
         android:layout_width="1000dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_marginTop="75dp"
+        android:layout_alignParentTop="true"
+        android:longClickable="true" >
     </ListView>
 
     <Button
@@ -22,7 +24,16 @@
         android:layout_height="75dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="Back"
+        android:text="@string/back"
         android:onClick="back" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lvStatList"
+        android:layout_alignParentTop="true"
+        android:textSize="60sp"
+        android:text="@string/delplay" />
 
 </RelativeLayout>

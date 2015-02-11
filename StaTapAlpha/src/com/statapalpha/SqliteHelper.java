@@ -387,7 +387,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
     public void createStatTable(String gamename) {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	db.execSQL("CREATE TABLE IF NOT EXISTS "+gamename+"(play_id INTEGER UNIQUE PRIMARY KEY, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
+    	db.execSQL("CREATE TABLE IF NOT EXISTS "+gamename+"(play_id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
 				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER)");
     	db.close();  
     }
@@ -397,6 +397,13 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	String command = "SELECT play_id, Jersey_num, action, team_name FROM "+gamename+" ORDER BY play_id DESC";
     	cursor = db.rawQuery(command,  null);
     	return cursor;
+    }
+    public void delPlay(String playNum, String gamename) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	int play = Integer.parseInt(playNum);
+    	String command = "DELETE FROM "+gamename+" WHERE play_id = "+play;
+    	db.execSQL(command);
+    	db.close();
     }
     public void recordPlay(int player, String team, String action, CourtActivity.position position, String table) {
     	

@@ -9,19 +9,12 @@
         android:layout_height="wrap_content"
         android:text="@string/na"
         android:textColor="#0000FF"
-        android:textSize="40sp" />
-    <TextView
-        android:id="@+id/tvColon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
         android:textSize="40sp"
-        android:text="@string/colon" />
+        android:visibility="gone" />
     <TextView
         android:id="@+id/tvHashtag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
         android:textSize="40sp"
         android:textColor="#0000FF"
         android:text="@string/player" />
@@ -29,7 +22,7 @@
         android:id="@+id/tvJNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
+        android:layout_marginStart="30dp"
         android:textSize="40sp"
         android:textColor="#0000FF"
         android:text="@string/na" />
@@ -37,7 +30,7 @@
         android:id="@+id/tvPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="230dp"
+        android:layout_marginStart="120dp"
         android:textSize="40sp"
         android:textColor="#0000FF"
         android:text="@string/na" />

@@ -12,12 +12,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CurrentStats extends Activity {
@@ -34,6 +39,7 @@ public class CurrentStats extends Activity {
 	static final String ASSIST = "Assisted Shot";
 	static final String FOUL = "Committed Foul";
 	static final String TURNOVER = "Turned over ball";
+	ListView lv;
 	ArrayList<CurrentStatsListData> values;
 	LayoutInflater inflater;
 	String team1, team2, tablename;
@@ -44,12 +50,13 @@ public class CurrentStats extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_stats);
-        ListView lv = (ListView)findViewById(R.id.lvStatList);
+        lv = (ListView)findViewById(R.id.lvStatList);
         db = new SqliteHelper(this.getApplicationContext());
         Intent mIntent = getIntent();
         team1 = mIntent.getStringExtra("TEAM1");
 		team2 = mIntent.getStringExtra("TEAM2");
 		tablename = mIntent.getStringExtra("TABLENAME");
+		setLongClick();
 		Toast.makeText(CurrentStats.this, tablename, Toast.LENGTH_SHORT).show();
 		registerForContextMenu(lv);
 		getPlays();
@@ -86,6 +93,22 @@ public class CurrentStats extends Activity {
 		    }
 		}
     	cursor.close();
+	}
+	public void setLongClick() {
+		lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> parent, View viewClicked,
+                    int pos, long id) {
+                // TODO Auto-generated method stub
+            	RelativeLayout relativeLayoutParent = (RelativeLayout) viewClicked;
+            	TextView tvPlayNum = (TextView) relativeLayoutParent.getChildAt(0);
+            	String playNum = tvPlayNum.getText().toString();
+                db.delPlay(playNum, tablename);
+                getPlays();
+                lv.setAdapter(new CurrentStatsBaseAdapter(context, values));
+                return true;
+            }
+        });
 	}
 	public void onBackPressed() {
 		Intent intent = new Intent(this, CourtActivity.class);

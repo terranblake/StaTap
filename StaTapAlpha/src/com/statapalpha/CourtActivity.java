@@ -36,7 +36,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	String team, team1, team2, team1n, team2n, gamename, gamenamen, tablename, message;
 	Button b, c; //b = button c=player
 	TextView d, e; //d = Player Points TV	e = Player Fouls TV
-	int GameId, currentplay;
+	int GameId;
 	String player; // Player number for current play
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
@@ -55,9 +55,6 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		
 		convertStrings();
 		createTable();
-		getCurrentPlay();
-		message = "There are currently "+Integer.toString(currentplay-1)+" play(s) in this game";
-		Toast.makeText(CourtActivity.this, message, Toast.LENGTH_SHORT).show();
 		// Gets players
 		getPlayers();
 		initialization();
@@ -70,9 +67,6 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		e = (TextView) findViewById(R.id.p1f);
 		isHome = true;
 		initialLoad();
-	}
-	public void getCurrentPlay() {
-		currentplay = ((db.countPlays(tablename))+1);
 	}
 	public void stats(View view) {
 		Intent intent = new Intent(this, StatActivity.class);
@@ -215,27 +209,21 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		int jnum = Integer.parseInt(c.getText().toString());
 		db.recordPlay(Integer.parseInt(player), team, "FC", position, tablename);
 		e.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
-		currentplay++;
 	}
 	public void recordRebound(View v) {
 		db.recordPlay(Integer.parseInt(player), team, "RB", position, tablename);
-		currentplay++;
 	}
 	public void recordAssist(View v) {
 		db.recordPlay(Integer.parseInt(player), team, "AST", position, tablename);
-		currentplay++;
 	}
 	public void recordBlock(View v) {
 		db.recordPlay(Integer.parseInt(player), team, "BL", position, tablename);
-		currentplay++;
 	}
 	public void recordSteal(View v) {
 		db.recordPlay(Integer.parseInt(player), team, "STL", position, tablename);
-		currentplay++;
 	}
 	public void recordTurnover(View v) {
 		db.recordPlay(Integer.parseInt(player), team, "TO", position, tablename);
-		currentplay++;
 	}
 	public void recordMadeShot(View v) {
 		b = (Button)v;
@@ -250,7 +238,6 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		
 		db.recordPlay(Integer.parseInt(player), team, action, position, tablename);
 		d.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
-		currentplay++;
 		refreshScore();
 		
 	}
@@ -264,7 +251,6 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 			action = "FTM";break;
 		}
 		db.recordPlay(Integer.parseInt(player), team, action, position, tablename);
-		currentplay++;
 	}
 	
 	public void substitution(View v) {
@@ -309,44 +295,43 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	
 
 	public void undoPlay(View view) {
-		
-		if (currentplay == 1) {
-			Toast.makeText(CourtActivity.this, "No plays to Undo", Toast.LENGTH_SHORT).show();
-		} else {
-			String undoPlayAction = db.grabUndoAction(tablename, currentplay);
-			int jnum = db.grabUndoJNum(tablename, currentplay);
-			String jnumS = Integer.toString(jnum);
-			String teamname = db.grabTeamName(tablename, currentplay);
-		db.undoPlay(tablename, currentplay);
-		switch(undoPlayAction) {
+		Cursor undo = db.grabPlays(tablename);
+		String playNum = "", jnum = "", action = "", teamname = "";
+		if (undo != null && undo.getCount() != 0) {
+		    undo.moveToFirst();
+		    playNum = undo.getString(0);
+		    jnum = undo.getString(1);
+		    action = undo.getString(2);
+		    teamname = undo.getString(3);
+		}
+		Toast.makeText(getApplicationContext(), playNum, Toast.LENGTH_SHORT).show();
+		undo.close();
+		switch(action) {
 		case "F2H":case "F3H":case "FTH":
 			if (teamname.equals(team1)) {
-				
-				if (homePlayersIn.contains(jnumS)) { 
-					undoHomeScore(jnumS);
+				if (homePlayersIn.contains(jnum)) { 
+					undoHomeScore(jnum);
 				}
 			} else {
-				if (awayPlayersIn.contains(jnumS)) { 
-					undoAwayScore(jnumS);
+				if (awayPlayersIn.contains(jnum)) { 
+					undoAwayScore(jnum);
 				}
 			}
 			break;
 		case "FC":
 			if (teamname.equals(team1)) {
-				
-				if (homePlayersIn.contains(jnumS)) { 
-					undoHomeFoul(jnumS);
+				if (homePlayersIn.contains(jnum)) { 
+					undoHomeFoul(jnum);
 				}
 			} else {
-				if (awayPlayersIn.contains(jnumS)) { 
-					undoAwayFoul(jnumS);
+				if (awayPlayersIn.contains(jnum)) { 
+					undoAwayFoul(jnum);
 				}
 			}
 			break;
 		}
-		currentplay--;
-		}
 	}
+	
 	public void undoHomeFoul(String jnum) {
 		Button z,y,x,w,v;
 		TextView u;
