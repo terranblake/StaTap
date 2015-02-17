@@ -11,15 +11,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.lang.Math;
 import java.util.ArrayList;
 
 import com.example.statapalpha.R;
-import com.example.statapalpha.R.id;
-import com.example.statapalpha.R.layout;
 
 // Court Screen
 @SuppressLint("DefaultLocale")
@@ -281,7 +279,8 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 			position.x = (int)event.getX(0);
 			position.y = (int)event.getY(0);
 		}
-	    
+		String msg = (int)event.getX(0) + " , " + (int)event.getY(0);
+	    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 	    return super.onTouchEvent(event);
 	}
 	

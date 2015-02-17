@@ -3,15 +3,13 @@ package com.statapalpha;
 import java.util.ArrayList;
 
 import com.example.statapalpha.R;
-import com.example.statapalpha.R.id;
-import com.example.statapalpha.R.layout;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
  
 public class StatBaseAdapter extends BaseAdapter {
@@ -42,7 +40,7 @@ public class StatBaseAdapter extends BaseAdapter {
                 return position;
         }
  
-        @Override
+        @SuppressLint("InflateParams") @Override
         public View getView(int position, View convertView, ViewGroup parent) {
                 MyViewHolder mViewHolder;
                 
@@ -71,7 +69,6 @@ public class StatBaseAdapter extends BaseAdapter {
                 return convertView;
         }
         
-        // or you can try better way
         private TextView detail(View v, int resId, int num) {
                 TextView tv = (TextView) v.findViewById(resId);
                 String rawr = Integer.toString(num);
@@ -80,7 +77,8 @@ public class StatBaseAdapter extends BaseAdapter {
         }
         
         private class MyViewHolder {
-                public TextView tvNum, tvP, tvFTA, tvFTM, tvFGA, tvFGM, tvTPA, tvTPM, tvA, tvRB, tvS, tvTO, tvF, tvBL;
+                @SuppressWarnings("unused")
+				public TextView tvNum, tvP, tvFTA, tvFTM, tvFGA, tvFGM, tvTPA, tvTPM, tvA, tvRB, tvS, tvTO, tvF, tvBL;
         }
  
 }

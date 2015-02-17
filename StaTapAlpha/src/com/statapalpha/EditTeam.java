@@ -3,15 +3,12 @@ package com.statapalpha;
 import java.util.ArrayList;
 
 import com.example.statapalpha.R;
-import com.example.statapalpha.R.id;
-import com.example.statapalpha.R.layout;
-import com.example.statapalpha.R.menu;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -23,7 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -42,7 +38,7 @@ public class EditTeam extends Activity {
 	ArrayList<EditListData> values;
 	Cursor cursor;
 	Context context = EditTeam.this;
-	@Override
+	@SuppressLint("DefaultLocale") @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_team);
@@ -104,31 +100,7 @@ public class EditTeam extends Activity {
         	}
 	}
 	
-	private void populateListViews() {
-		
-		Cursor cursor = db.getPlayerJNums(tableteamname);
-		
-		ArrayList<String> jnums = new ArrayList<String>();
-		if (cursor != null && cursor.getCount() != 0) {
-		    cursor.moveToFirst();
-		    while (!cursor.isAfterLast()) {
 
-		        jnums.add(cursor.getString(cursor.getColumnIndex("jersey_num")));
-
-		        cursor.moveToNext();
-		    }
-		}
-    	cursor.close();
-    	//Build Adapter
-    	ArrayAdapter<String> t1adapter = new ArrayAdapter<String>(
-    			this,					// Context
-    			R.layout.jerseylistview,	// Layout to use
-    			jnums);				// Items to be displayed		
-    	//Configure the List View
-    	ListView t1list = (ListView) findViewById(R.id.listViewPlayers);
-    	t1list.setAdapter(t1adapter);
-    	
-	}
 	
 	public void addPlayer(View view) {
 		Integer Jersey_Num;
@@ -188,12 +160,7 @@ public class EditTeam extends Activity {
         }
   }
     private void registerClickCallback() {
-		// TODO Auto-generated method stub
-    	//This uses the List View and adds a listener to check for clicks/taps on different
-    	//list view items. It will then display a message telling you which one you have selected.
     	ListView list = (ListView) findViewById(R.id.listViewPlayers);
-    	
-    	//This Will check if there is a click on a ListView item
     	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     		
 			@Override

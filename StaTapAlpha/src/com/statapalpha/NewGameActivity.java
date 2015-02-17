@@ -2,11 +2,10 @@ package com.statapalpha;
 
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.*;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,9 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.statapalpha.R;
-import com.example.statapalpha.R.id;
-import com.example.statapalpha.R.layout;
-import com.example.statapalpha.R.menu;
 
 public class NewGameActivity extends Activity {
 	EditText title;
@@ -129,7 +125,7 @@ public class NewGameActivity extends Activity {
 		finish();
 		startActivity(intent);
 	}
-	public void confirm(View view) {
+	@SuppressLint("DefaultLocale") public void confirm(View view) {
 		
 		Intent intent = new Intent(this, CourtActivity.class);
 		gTitle = title.getText().toString();

@@ -3,9 +3,6 @@ package com.statapalpha;
 import java.util.ArrayList;
 
 import com.example.statapalpha.R;
-import com.example.statapalpha.R.id;
-import com.example.statapalpha.R.layout;
-import com.example.statapalpha.R.menu;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View.OnKeyListener;
-import android.view.inputmethod.EditorInfo;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -129,12 +125,7 @@ public class CreateTeam extends Activity {
     }
     //single tap
     private void registerClickCallback() {
-		// TODO Auto-generated method stub
-    	//This uses the List View and adds a listener to check for clicks/taps on different
-    	//list view items. It will then display a message telling you which one you have selected.
     	ListView list = (ListView) findViewById(R.id.listView1);
-    	
-    	//This Will check if there is a click on a ListView item
     	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     		
 			@Override

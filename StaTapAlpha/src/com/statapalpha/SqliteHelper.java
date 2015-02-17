@@ -1,13 +1,13 @@
 package com.statapalpha;
  
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
  
-public class SqliteHelper extends SQLiteOpenHelper {
+@SuppressLint("DefaultLocale") public class SqliteHelper extends SQLiteOpenHelper {
  
     // Database Version
     private static final int DATABASE_VERSION = 1;
@@ -36,12 +36,10 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		
 		
     }
-    public void delGame(String gamenamen, String team1n, String team2n) {
+    @SuppressLint("DefaultLocale") public void delGame(String gamenamen, String team1n, String team2n) {
     	SQLiteDatabase db = this.getReadableDatabase();
-    	String command1, command2, gamename, team1, team2;
+    	String command1, command2, gamename;
     	gamename = gamenamen.replaceAll(" ", "_").toLowerCase();
-    	team1 = team1n.replaceAll(" ", "_").toLowerCase();
-    	team2 = team2n.replaceAll(" ", "_").toLowerCase();
     	command1 = "DELETE FROM games WHERE game_name = '"+gamename+"'";
     	command2 = "DROP TABLE IF EXISTS "+gamename;
     	db.execSQL(command1);
@@ -84,7 +82,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	cursor.close();
     	return number;
     }
-    public int countPlayers(String teamname) {
+    @SuppressLint("DefaultLocale") public int countPlayers(String teamname) {
     	SQLiteDatabase db = this.getReadableDatabase();
     	int players = 0;
     	String teamLower = teamname.replaceAll(" ", "_").toLowerCase();
@@ -198,7 +196,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	
     	db.close(); 
     }
-    public Cursor getJNums(String teamname) {
+    @SuppressLint("DefaultLocale") public Cursor getJNums(String teamname) {
     	SQLiteDatabase db = this.getReadableDatabase();
     	String teamname2;
     	teamname2 = teamname.replaceAll(" ", "_").toLowerCase();

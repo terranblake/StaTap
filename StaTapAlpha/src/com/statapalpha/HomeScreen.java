@@ -3,10 +3,7 @@ package com.statapalpha;
 import java.util.ArrayList;
 
 import com.example.statapalpha.R;
-import com.example.statapalpha.R.id;
-import com.example.statapalpha.R.layout;
-import com.example.statapalpha.R.menu;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,8 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
-//import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -109,7 +104,7 @@ public class HomeScreen extends Activity {
     	//This Will check if there is a click on a ListView item
     	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     		
-			@Override
+			@SuppressLint("DefaultLocale") @Override
 			public void onItemClick(AdapterView<?> parent, View viewClicked,
 					int position, long id) {
 					LinearLayout linearLayoutParent = (LinearLayout) viewClicked;

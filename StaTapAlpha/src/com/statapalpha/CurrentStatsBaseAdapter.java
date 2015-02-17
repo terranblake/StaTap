@@ -3,9 +3,8 @@ package com.statapalpha;
 import java.util.ArrayList;
 
 import com.example.statapalpha.R;
-import com.example.statapalpha.R.id;
-import com.example.statapalpha.R.layout;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -43,6 +42,7 @@ public class CurrentStatsBaseAdapter extends BaseAdapter {
             return position;
     }
 
+    @SuppressLint("InflateParams") 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
             MyViewHolder mViewHolder;
