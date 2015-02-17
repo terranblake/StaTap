@@ -2,8 +2,7 @@
 
 ##Bugs
 <ul>
-	<li>WE ARE GONNA CRASH IF YOU START A GAME WITH 4 PLAYERS</li>
-	<li>WE ARE ALSO GONNA CRASH IF YOU MAKE A GAME NORMALLY, THEN MAKE ONE OF THE TEAMS HAVE LESS THAN 4 PLAYERS AND TRY TO RESUME THAT GAME</li>
+	<li>Fixed all current bugs.</li>
 </ul>
 
 
@@ -55,7 +54,7 @@
 
 ===============		
 ###Stat Screen
-#####Stat Format - Damian
+#####~~Stat Format - Damian~~ DONE!
 <ul>
 	<li>Change Font sizes and colors to distinguish between stats</li>
 	<li>Clean up stats screen</li>
