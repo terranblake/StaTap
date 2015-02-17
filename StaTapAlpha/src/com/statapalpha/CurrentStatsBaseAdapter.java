@@ -7,6 +7,7 @@ import com.example.statapalpha.R.id;
 import com.example.statapalpha.R.layout;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,16 +55,21 @@ public class CurrentStatsBaseAdapter extends BaseAdapter {
                     mViewHolder = (MyViewHolder) convertView.getTag();
             }
             
-            mViewHolder.tvPNum = detail(convertView, R.id.tvPNum, myList.get(position).getpNum());
-            mViewHolder.tvJNum  = detail(convertView, R.id.tvJNum,  myList.get(position).getjNum());
-            mViewHolder.tvPlay  = detail(convertView, R.id.tvPlay,  myList.get(position).getPlay());
+            mViewHolder.tvPNum = detail(convertView, R.id.tvPNum, myList.get(position).getpNum(), position);
+            mViewHolder.tvJNum  = detail(convertView, R.id.tvJNum,  myList.get(position).getjNum(), position);
+            mViewHolder.tvPlay  = detail(convertView, R.id.tvPlay,  myList.get(position).getPlay(), position);
             return convertView;
     }
     
     // or you can try better way
-    private TextView detail(View v, int resId, String rawr) {
+    private TextView detail(View v, int resId, String rawr, int position) {
             TextView tv = (TextView) v.findViewById(resId);
             tv.setText(rawr);
+            if (!(myList.get(position).getHome())) {
+            	tv.setTextColor(Color.parseColor("#FF0000"));
+            	TextView blah = (TextView) v.findViewById(R.id.tvHashtag);
+            	blah.setTextColor(Color.parseColor("#FF0000"));
+            }
             return tv;
     }
     

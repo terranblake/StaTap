@@ -87,6 +87,11 @@ public class CurrentStats extends Activity {
 		    	case "STL": playy = STEAL;break;
 		    	}
 		    	data.Play = playy;
+		    	if ((cursor.getString(3)).equals(team2)) {
+		    		data.isHome = false;
+		    	} else {
+		    		data.isHome = true;
+		    	}
 		    	db = new SqliteHelper(this.getApplicationContext());
 		    	values.add(data);
 		        cursor.moveToNext();
@@ -99,7 +104,6 @@ public class CurrentStats extends Activity {
 
             public boolean onItemLongClick(AdapterView<?> parent, View viewClicked,
                     int pos, long id) {
-                // TODO Auto-generated method stub
             	RelativeLayout relativeLayoutParent = (RelativeLayout) viewClicked;
             	TextView tvPlayNum = (TextView) relativeLayoutParent.getChildAt(0);
             	String playNum = tvPlayNum.getText().toString();

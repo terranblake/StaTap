@@ -2,6 +2,7 @@ package com.statapalpha;
 
 public class CurrentStatsListData {
 	String pNum, jNum, Play, teamname;
+	boolean isHome;
 	public String getjNum() {
         return jNum;
 	}
@@ -23,7 +24,10 @@ public class CurrentStatsListData {
 	public void setPlay(String aaa) {
         Play = aaa;
 	}
-	public String getTeamName() {
-		return teamname;
+	public boolean getHome() {
+		return isHome;
+	}
+	public void setHome(boolean aaaa) {
+        isHome= aaaa;
 	}
 }

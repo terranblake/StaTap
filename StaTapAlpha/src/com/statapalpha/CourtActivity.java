@@ -304,7 +304,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		    action = undo.getString(2);
 		    teamname = undo.getString(3);
 		}
-		Toast.makeText(getApplicationContext(), playNum, Toast.LENGTH_SHORT).show();
+		db.delPlay(playNum, tablename);
 		undo.close();
 		switch(action) {
 		case "F2H":case "F3H":case "FTH":
