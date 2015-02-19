@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,7 +51,8 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		setContentView(R.layout.activity_court);
 		db = new SqliteHelper(this.getApplicationContext());
 		//Get Team 1 and 2 and Game Title
-		
+		//Testing
+		//End Testing
 		
 		convertStrings();
 		createTable();
