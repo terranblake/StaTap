@@ -62,8 +62,10 @@ public class HomeScreen extends Activity {
 	public void blah(View view) {
 		if (paused) {
 			startTimer();
+			paused = false;
 		} else {
 			blah.cancel();
+			paused = true;
 		}
 	}
     public void newGame(View view) {
