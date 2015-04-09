@@ -465,6 +465,16 @@
                 android:layout_height="85dp"
                 android:onClick="recordMissedShot"
                 android:text="@string/miss" />
+
+            <Button
+                android:id="@+id/timer"
+                android:layout_width="190dp"
+                android:layout_height="100dp"
+                android:text="BLANK"
+                android:background="@android:color/transparent"
+                android:textSize="45sp"
+                android:onClick="timer" />
+
         </LinearLayout>
     </LinearLayout>
 

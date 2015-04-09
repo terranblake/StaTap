@@ -4,9 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -34,7 +33,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	ArrayList<String> awayPlayersBench = new ArrayList<String>();
 	
 	String team, team1, team2, team1n, team2n, gamename, gamenamen, tablename, message;
-	Button b, c; //b = button c=player
+	Button b, c, timer; //b = button c=player
 	TextView d, e; //d = Player Points TV	e = Player Fouls TV
 	int GameId;
 	String player; // Player number for current play
@@ -42,9 +41,10 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	position position = new position(); // Position for current play
 	int playNumber = 0;
 	private PopupMenu popupMenu;
-	boolean isHome;
+	boolean isHome, paused;
 	int playerButton = 0;
-	
+	long total, seconds;
+	CountDownTimer main;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,12 +53,97 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		//Get Team 1 and 2 and Game Title
 		//Testing
 		//End Testing
-		
+		timer = (Button) findViewById(R.id.timer);
+		seconds = 17;
+		total = seconds*1000;
+		paused = true;
 		convertStrings();
 		createTable();
 		// Gets players
 		getPlayers();
 		initialization();
+		initializeTimer();
+	}
+	public void initializeTimer() {
+		int seconds = (int) ((total/1000) % 60);
+		int minutes = (int) ((total/1000) / 60);
+		int milliseconds = (int) ((total % 1000) / 10);
+		if (seconds < 60) {
+			if (milliseconds < 10) {
+				if (seconds < 10) {
+					timer.setText("0" + seconds + " : 0" + milliseconds);
+				} else {
+					timer.setText(seconds + " : 0" + milliseconds);
+				}
+			} else {
+				if (seconds < 10) {
+					timer.setText("0" + seconds + " : " + milliseconds);
+				} else {
+					timer.setText(seconds + " : " + milliseconds);
+				}
+			}
+		} else {
+			if (seconds < 10) {
+				timer.setText(minutes + " : 0" + seconds);
+			} else {
+				timer.setText(minutes + " : " + seconds);
+			}
+		}
+		if (minutes < 10) {
+			timer.setText(" " + timer.getText());
+		}
+	}
+	public void startTimer() {
+		main = new CountDownTimer(total, 10) {
+	    	public void onTick(long bleh) {
+	    		if (bleh < 60000) {
+	    			int seconds = (int) ((bleh/1000) % 60);
+	    			int milliseconds = (int) ((bleh % 1000) / 10);
+	    			int minutes = (int) ((bleh/1000) / 60);
+	    			if (milliseconds < 10) {
+	    				if (seconds < 10) {
+	    					timer.setText("0" + seconds + " : 0" + milliseconds);
+	    				} else {
+	    					timer.setText(seconds + " : 0" + milliseconds);
+	    				}
+	    			} else {
+	    				if (seconds < 10) {
+	    					timer.setText("0" + seconds + " : " + milliseconds);
+	    				} else {
+	    					timer.setText(seconds + " : " + milliseconds);
+	    				}
+	    			}
+	    			if (minutes < 10) {
+	    				timer.setText(" " + timer.getText());
+	    			}
+	    			total = bleh;
+	    		} else {
+	    			int seconds = (int) ((bleh/1000) % 60);
+	    			int minutes = (int) ((bleh/1000) / 60);
+	    			if (seconds < 10) {
+	    				timer.setText(minutes + " : 0" + seconds);
+	    			} else {
+	    				timer.setText(minutes + " : " + seconds);
+	    			}
+	    			if (minutes < 10) {
+	    				timer.setText(" " + timer.getText());
+	    			}
+	    			total = bleh;
+	    		}
+	    	}
+	    	public void onFinish() {
+	    		timer.setText("00 : 00");
+	    	}
+	    }.start();		
+	}
+	public void timer(View view) {
+		if (paused) {
+			startTimer();
+			paused = false;
+		} else {
+			main.cancel();
+			paused = true;
+		}
 	}
 	public void initialization() {
 		//This is just so we don't have any errors to start with

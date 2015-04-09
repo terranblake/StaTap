@@ -7,7 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
  
-@SuppressLint("DefaultLocale") public class SqliteHelper extends SQLiteOpenHelper {
+@SuppressLint("DefaultLocale") 
+public class SqliteHelper extends SQLiteOpenHelper {
  
     // Database Version
     private static final int DATABASE_VERSION = 1;
@@ -441,7 +442,6 @@ import android.database.sqlite.SQLiteOpenHelper;
     	return plays;
     }
     public void undoPlay(String tablename, int play) {
-    	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
     	int playd = (play-1);
     	db.execSQL("DELETE FROM "+tablename+" WHERE play_id = "+playd);

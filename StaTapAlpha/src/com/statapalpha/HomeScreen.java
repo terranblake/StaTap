@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -18,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,8 +30,8 @@ public class HomeScreen extends Activity {
 	boolean paused;
 	ListView lv;
 	TextView beep;
+	Button timer;
 	Context context = HomeScreen.this;
-	CountDownTimer blah;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,30 +43,7 @@ public class HomeScreen extends Activity {
 		lv.setAdapter(new HomeBaseAdapter(context, values));
         registerClickCallback();
         registerForContextMenu(lv);
-        beep = (TextView) findViewById(R.id.mTextField);
-        paused = true;
-        total = 30000;
         
-	}
-	public void startTimer() {
-		blah = new CountDownTimer(total, 1000) {
-	    	public void onTick(long bleh) {
-	    		beep.setText("seconds remaining: " + bleh/1000);
-	    		total = bleh;
-	    	}
-	    	public void onFinish() {
-	    		beep.setText("done!");
-	    	}
-	    };
-	}
-	public void blah(View view) {
-		if (paused) {
-			startTimer();
-			paused = false;
-		} else {
-			blah.cancel();
-			paused = true;
-		}
 	}
     public void newGame(View view) {
     	//This here starts the New Game Screen
