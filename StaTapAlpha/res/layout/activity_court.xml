@@ -469,11 +469,32 @@
             <Button
                 android:id="@+id/timer"
                 android:layout_width="190dp"
-                android:layout_height="100dp"
+                android:layout_height="70dp"
                 android:text="BLANK"
                 android:background="@android:color/transparent"
                 android:textSize="45sp"
                 android:onClick="timer" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="95dp"
+                    android:layout_height="wrap_content"
+                    android:text="Prev"
+                    android:onClick="prevQuarter" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="95dp"
+                    android:layout_height="wrap_content"
+                    android:text="Next"
+                    android:onClick="nextQuarter" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

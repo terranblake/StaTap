@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.statapalpha.R;
@@ -125,12 +126,14 @@ public class NewGameActivity extends Activity {
 		finish();
 		startActivity(intent);
 	}
-	@SuppressLint("DefaultLocale") public void confirm(View view) {
-		
+	@SuppressLint("DefaultLocale") 
+	public void confirm(View view) {
+		Spinner spinner = (Spinner) findViewById(R.id.spinnerT);
 		Intent intent = new Intent(this, CourtActivity.class);
 		gTitle = title.getText().toString();
 		gTeam1 = team1.getText().toString();
 		gTeam2 = team2.getText().toString();
+		int timeG = (Integer.parseInt(spinner.getSelectedItem().toString())) * 60000;
 		if (!gTitle.matches("[a-zA-Z0-9 ]*")) {
 			Toast.makeText(NewGameActivity.this, "", Toast.LENGTH_SHORT).show();
 	    	
@@ -154,7 +157,7 @@ public class NewGameActivity extends Activity {
 			intent.putExtra("TEAM1", teamm1);
 	    	intent.putExtra("TEAM2", teamm2);
 	    	intent.putExtra("GAME_TITLE", titlee);
-	    	db.createGame(gTitle, teamn1, teamn2);
+	    	db.createGame(gTitle, teamn1, teamn2, timeG);
 	    	finish();
 	    	startActivity(intent);
 		}

@@ -1,12 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Team"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@style/Team"
     tools:context="com.example.statapalpha.NewGame" >
 
     <TextView
@@ -17,15 +18,6 @@
         android:text="@string/pickteams"
         android:textSize="70sp"
         android:textStyle="bold" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/linearLayout3"
-        android:layout_centerVertical="true"
-        android:orientation="vertical" >
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/teamlv"
@@ -135,9 +127,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textStyle="bold"
+                android:text="@string/gametitle"
                 android:textSize="20sp"
-                android:text="@string/gametitle" />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editText1"
@@ -148,6 +140,26 @@
                 android:inputType="text"
                 android:labelFor="@+id/editText1"
                 android:maxLength="35" />
+        </LinearLayout>
+
+        <LinearLayout
+            android1:layout_width="match_parent"
+            android1:layout_height="wrap_content" >
+
+            <TextView
+                android1:id="@+id/textView2"
+                android1:layout_width="150dp"
+                android1:layout_marginTop="20dp"
+                android1:layout_height="wrap_content"
+                android1:textSize="24sp"
+                android1:text="@string/timeP" />
+
+            <Spinner
+                android1:id="@+id/spinnerT"
+                android1:layout_width="80dp"
+                android1:layout_marginTop="20dp"
+                android1:layout_height="wrap_content"
+                android1:entries="@array/time_array" />
 
         </LinearLayout>
 
@@ -155,11 +167,12 @@
             android:id="@+id/button2"
             android:layout_width="190dp"
             android:layout_height="0dp"
+            android:layout_marginTop="60dp"
             android:layout_weight="1"
-            android:layout_marginTop="120dp"
             android:onClick="confirm"
             android:text="@string/confirm"
             android:textSize="30sp" />
+
     </LinearLayout>
 
 </RelativeLayout>

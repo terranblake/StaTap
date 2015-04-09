@@ -58,6 +58,7 @@ public class CurrentStatsBaseAdapter extends BaseAdapter {
             mViewHolder.tvPNum = detail(convertView, R.id.tvPNum, myList.get(position).getpNum(), position);
             mViewHolder.tvJNum  = detail(convertView, R.id.tvJNum,  myList.get(position).getjNum(), position);
             mViewHolder.tvPlay  = detail(convertView, R.id.tvPlay,  myList.get(position).getPlay(), position);
+            mViewHolder.tvTime =  detail(convertView, R.id.tvTime, myList.get(position).getTime(), position);
             return convertView;
     }
     
@@ -74,7 +75,7 @@ public class CurrentStatsBaseAdapter extends BaseAdapter {
     }
     
     public class MyViewHolder {
-            public TextView tvPNum, tvJNum, tvPlay;
+            public TextView tvPNum, tvJNum, tvPlay, tvTime;
     }
 
 }

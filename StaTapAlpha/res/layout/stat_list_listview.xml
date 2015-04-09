@@ -34,5 +34,13 @@
         android:textSize="40sp"
         android:textColor="#0000FF"
         android:text="@string/na" />
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="600dp"
+        android:textSize="40sp"
+        android:textColor="#000000"
+        android:text="@string/na" />
 
 </RelativeLayout>

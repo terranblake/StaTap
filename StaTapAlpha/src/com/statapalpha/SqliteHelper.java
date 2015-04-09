@@ -32,7 +32,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE IF NOT EXISTS teams(id INTEGER PRIMARY KEY AUTOINCREMENT,Team_Names TEXT UNIQUE);");
 		
 		//Create Games Table
-		db.execSQL("CREATE TABLE IF NOT EXISTS games(id INTEGER PRIMARY KEY AUTOINCREMENT, game_name TEXT, team1 TEXT, team2 TEXT)");
+		db.execSQL("CREATE TABLE IF NOT EXISTS games(id INTEGER PRIMARY KEY AUTOINCREMENT, game_name TEXT, team1 TEXT, team2 TEXT, q1T INTEGER, q2T INTEGER, q3T INTEGER, q4T INTEGER)");
 		
 		
 		
@@ -46,6 +46,12 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	db.execSQL(command1);
     	db.execSQL(command2);
     	
+    }
+    public void updateQuarterTime(String gamename, long seconds, int quarter) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	int time = (int) seconds;
+    	String command = "UPDATE games SET q" + quarter + "T=" + time + " WHERE game_name = '"+gamename+"'";
+    	db.execSQL(command);
     }
     public int getGames() {
     	SQLiteDatabase db = this.getReadableDatabase();
@@ -71,6 +77,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	}
     	cursor.close();
     	return title;
+    }
+    public Cursor getQuarterTimes(String gamename) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+    	onCreate(db);
+    	Cursor cursor;
+    	String command = "SELECT q1T, q2T, q3T, q4T FROM games WHERE game_name = '"+gamename+"'";
+    	cursor = db.rawQuery(command, null);
+    	return cursor;
     }
     public int duplicateGame(String gamename) {
     	SQLiteDatabase db = this.getReadableDatabase();
@@ -328,7 +342,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	// 4. close
     	db.close(); 
     }
-    public void createGame(String gamename, String team1, String team2) {
+    public void createGame(String gamename, String team1, String team2, int time) {
     	
     	SQLiteDatabase db = this.getWritableDatabase();
     	onCreate(db);
@@ -336,6 +350,10 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	values.put(GAME_TITLES, gamename);
     	values.put(TEAM_1, team1);
     	values.put(TEAM_2, team2);
+    	values.put("q1T", time);
+    	values.put("q2T", time);
+    	values.put("q3T", time);
+    	values.put("q4T", time);
     	db.insert("games", // table name
     	    	null, //nullColumnHack
     	    	values);
@@ -387,13 +405,13 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public void createStatTable(String gamename) {
     	SQLiteDatabase db = this.getWritableDatabase();
     	db.execSQL("CREATE TABLE IF NOT EXISTS "+gamename+"(play_id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, game_id INTEGER, Jersey_num INTEGER, team_name TEXT, " +
-				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER)");
+				"half_num INTEGER, action TEXT, x_coord INTEGER, y_coord INTEGER, time INTEGER)");
     	db.close();  
     }
     public Cursor grabPlays(String gamename) {
     	Cursor cursor;
     	SQLiteDatabase db = this.getWritableDatabase();
-    	String command = "SELECT play_id, Jersey_num, action, team_name FROM "+gamename+" ORDER BY play_id DESC";
+    	String command = "SELECT play_id, Jersey_num, action, team_name, time FROM "+gamename+" ORDER BY play_id DESC";
     	cursor = db.rawQuery(command,  null);
     	return cursor;
     }
@@ -404,7 +422,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	db.execSQL(command);
     	db.close();
     }
-    public void recordPlay(int player, String team, String action, CourtActivity.position position, String table) {
+    public void recordPlay(int player, String team, String action, CourtActivity.position position, String table, long time) {
     	
     	// 1. get reference to writable DB
     	SQLiteDatabase db = this.getWritableDatabase();
@@ -413,11 +431,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
     	onCreate(db);
     	// 2. create ContentValues to add key "column"/value
     	ContentValues values = new ContentValues();
+    	int seconds = (int) time;
     	values.put("jersey_num", player); // get title 
     	values.put("action", action);
     	values.put("x_coord", position.x);
     	values.put("y_coord", position.y);
     	values.put("team_name", team);
+    	values.put("time", seconds);
+    	
     	
     	// 3. insert
     	db.insert(table, // table name

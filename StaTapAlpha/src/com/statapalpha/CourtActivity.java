@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
@@ -35,7 +36,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	String team, team1, team2, team1n, team2n, gamename, gamenamen, tablename, message;
 	Button b, c, timer; //b = button c=player
 	TextView d, e; //d = Player Points TV	e = Player Fouls TV
-	int GameId;
+	int GameId, q1T, q2T, q3T, q4T;
 	String player; // Player number for current play
 	String action = ""; // Action text for current play
 	position position = new position(); // Position for current play
@@ -43,6 +44,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	private PopupMenu popupMenu;
 	boolean isHome, paused;
 	int playerButton = 0;
+	int currentQuarter;
 	long total, seconds;
 	CountDownTimer main;
 	@Override
@@ -54,8 +56,6 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		//Testing
 		//End Testing
 		timer = (Button) findViewById(R.id.timer);
-		seconds = 17;
-		total = seconds*1000;
 		paused = true;
 		convertStrings();
 		createTable();
@@ -64,11 +64,84 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		initialization();
 		initializeTimer();
 	}
+	public void initialization() {
+		//This is just so we don't have any errors to start with
+		team = team1;
+		
+		
+		currentQuarter = 1;
+		grabGameTimes();
+		c = (Button) findViewById(R.id.p1);
+		d = (TextView) findViewById(R.id.p1p);
+		e = (TextView) findViewById(R.id.p1f);
+		isHome = true;
+		initialLoad();
+	}
+	public void grabGameTimes() {
+		Cursor gametimes = db.getQuarterTimes(gamename);
+		if(gametimes.moveToFirst()) {
+			q1T = gametimes.getInt(0);
+			q2T = gametimes.getInt(1);
+			q3T = gametimes.getInt(2);
+			q4T = gametimes.getInt(3);
+    	}
+		switch (currentQuarter) {
+		case 1:total = q1T;break;
+		case 2:total = q2T;break;
+		case 3:total = q3T;break;
+		case 4:total = q4T;break;
+		}
+		gametimes.close();
+	}
+	public void convertStrings() {
+		Intent mIntent = getIntent();
+		team1 = mIntent.getStringExtra("TEAM1");
+		team2 = mIntent.getStringExtra("TEAM2");
+		gamename = mIntent.getStringExtra("GAME_TITLE");
+		tablename = gamename;
+	}
+	public void nextQuarter(View view) {
+		if (!(currentQuarter == 4)) {
+			if (!(paused)) {
+				db.updateQuarterTime(gamename, total, currentQuarter);
+				main.cancel();
+				paused = true;
+			}
+			currentQuarter++;
+			grabGameTimes();
+			initializeTimer();
+		}
+	}
+	public void prevQuarter(View view) {
+		if (!(currentQuarter == 1)) {
+			if (!(paused)) {
+				db.updateQuarterTime(gamename, total, currentQuarter);
+				main.cancel();
+				paused = true;
+			}
+			currentQuarter--;
+			grabGameTimes();
+			initializeTimer();
+		}
+	}
+	public void timer(View view) {
+		if (paused) {
+			startTimer();
+			paused = false;
+		} else {
+			db.updateQuarterTime(gamename, total, currentQuarter);
+			main.cancel();
+			paused = true;
+		}
+	}
 	public void initializeTimer() {
 		int seconds = (int) ((total/1000) % 60);
 		int minutes = (int) ((total/1000) / 60);
 		int milliseconds = (int) ((total % 1000) / 10);
-		if (seconds < 60) {
+		if (minutes < 1) {
+			timer.setTextColor(Color.RED);
+		}
+		if (seconds < 60 && minutes < 1) {
 			if (milliseconds < 10) {
 				if (seconds < 10) {
 					timer.setText("0" + seconds + " : 0" + milliseconds);
@@ -100,6 +173,9 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	    			int seconds = (int) ((bleh/1000) % 60);
 	    			int milliseconds = (int) ((bleh % 1000) / 10);
 	    			int minutes = (int) ((bleh/1000) / 60);
+	    			if (minutes < 1) {
+	    				timer.setTextColor(Color.RED);
+	    			}
 	    			if (milliseconds < 10) {
 	    				if (seconds < 10) {
 	    					timer.setText("0" + seconds + " : 0" + milliseconds);
@@ -136,25 +212,10 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	    	}
 	    }.start();		
 	}
-	public void timer(View view) {
-		if (paused) {
-			startTimer();
-			paused = false;
-		} else {
-			main.cancel();
-			paused = true;
-		}
-	}
-	public void initialization() {
-		//This is just so we don't have any errors to start with
-		team = team1;
-		c = (Button) findViewById(R.id.p1);
-		d = (TextView) findViewById(R.id.p1p);
-		e = (TextView) findViewById(R.id.p1f);
-		isHome = true;
-		initialLoad();
-	}
+	
+	
 	public void stats(View view) {
+		db.updateQuarterTime(gamename, total, currentQuarter);
 		Intent intent = new Intent(this, StatActivity.class);
     	intent.putExtra("TEAM1", team1);
     	intent.putExtra("TEAM2", team2);
@@ -163,6 +224,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
     	startActivity(intent);
 	}
 	public void statList(View view) {
+		db.updateQuarterTime(gamename, total, currentQuarter);
 		Intent intent = new Intent(this, CurrentStats.class);
     	intent.putExtra("TEAM1", team1);
     	intent.putExtra("TEAM2", team2);
@@ -173,13 +235,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	public void createTable() {
 		db.createStatTable(tablename);
 	}
-	public void convertStrings() {
-		Intent mIntent = getIntent();
-		team1 = mIntent.getStringExtra("TEAM1");
-		team2 = mIntent.getStringExtra("TEAM2");
-		gamename = mIntent.getStringExtra("GAME_TITLE");
-		tablename = gamename;
-	}
+	
 	// Populates arrays with player numbers
 	void getPlayers() {
 		Cursor cursorH = db.getPlayerJNums(team1);
@@ -293,23 +349,23 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 	*/
 	public void recordFoul(View v) {
 		int jnum = Integer.parseInt(c.getText().toString());
-		db.recordPlay(Integer.parseInt(player), team, "FC", position, tablename);
+		db.recordPlay(Integer.parseInt(player), team, "FC", position, tablename, total);
 		e.setText(Integer.toString(db.getFouls(jnum, team, tablename)));
 	}
 	public void recordRebound(View v) {
-		db.recordPlay(Integer.parseInt(player), team, "RB", position, tablename);
+		db.recordPlay(Integer.parseInt(player), team, "RB", position, tablename, total);
 	}
 	public void recordAssist(View v) {
-		db.recordPlay(Integer.parseInt(player), team, "AST", position, tablename);
+		db.recordPlay(Integer.parseInt(player), team, "AST", position, tablename, total);
 	}
 	public void recordBlock(View v) {
-		db.recordPlay(Integer.parseInt(player), team, "BL", position, tablename);
+		db.recordPlay(Integer.parseInt(player), team, "BL", position, tablename, total);
 	}
 	public void recordSteal(View v) {
-		db.recordPlay(Integer.parseInt(player), team, "STL", position, tablename);
+		db.recordPlay(Integer.parseInt(player), team, "STL", position, tablename, total);
 	}
 	public void recordTurnover(View v) {
-		db.recordPlay(Integer.parseInt(player), team, "TO", position, tablename);
+		db.recordPlay(Integer.parseInt(player), team, "TO", position, tablename, total);
 	}
 	public void recordMadeShot(View v) {
 		b = (Button)v;
@@ -322,7 +378,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		}
 		int jnum = Integer.parseInt(c.getText().toString());
 		
-		db.recordPlay(Integer.parseInt(player), team, action, position, tablename);
+		db.recordPlay(Integer.parseInt(player), team, action, position, tablename, total);
 		d.setText(Integer.toString(db.getPoints(jnum, team, tablename)));
 		refreshScore();
 		
@@ -336,7 +392,7 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 		case R.id.ftMissed:
 			action = "FTM";break;
 		}
-		db.recordPlay(Integer.parseInt(player), team, action, position, tablename);
+		db.recordPlay(Integer.parseInt(player), team, action, position, tablename, total);
 	}
 	
 	public void substitution(View v) {
@@ -368,7 +424,6 @@ public class CourtActivity extends Activity implements OnMenuItemClickListener{
 			position.y = (int)event.getY(0);
 		}
 		String msg = (int)event.getX(0) + " , " + (int)event.getY(0);
-	    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 	    return super.onTouchEvent(event);
 	}
 	

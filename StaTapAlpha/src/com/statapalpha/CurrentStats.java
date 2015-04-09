@@ -86,6 +86,25 @@ public class CurrentStats extends Activity {
 		    	} else {
 		    		data.isHome = true;
 		    	}
+		    	int totalTime = cursor.getInt(4) / 1000;
+		    	int sec = (int) (totalTime % 60);
+		    	int min = (int) (totalTime) / 60;
+		    	String time = "";
+		    	if (min > 0) {
+		    		if (min < 10) {
+		    			time = time + "0" + min + ":";
+		    		} else {
+		    			time = time + min + ":";
+		    		}
+		    	} else {
+		    		time = time + "00:";
+		    	}
+		    	if (sec < 10) {
+		    		time = time + "0" + sec;
+		    	} else {
+		    		time = time + sec;
+		    	}
+		    	data.time = time;
 		    	db = new SqliteHelper(this.getApplicationContext());
 		    	values.add(data);
 		        cursor.moveToNext();
