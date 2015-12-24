@@ -1,5 +1,11 @@
 #StaTap
 
+<ul>
+<li>Android application that uses real-time data, input by the user, to create a statistical analysis of the current game and all past games that have been logged in the application</li>
+<br>
+<li>Created by the Olathe South Senior CaSE program class of 2014-2015</li>
+</ul>
+
 ##Bugs
 <ul>
 	<li>Fixed all current bugs.</li>
